@@ -1,7 +1,7 @@
 # capstone project for D  
 
 ## getting started  
-centos7, ruby2.4.3, rails5.1.5, postgresql10.2
+centos7, ruby2.4.3, rails5.1.5, postgresql10.2, nodejs8.9.4
 ### windows  
 1. install ruby 
     - [download](https://rubyinstaller.org/downloads/)
@@ -22,6 +22,7 @@ centos7, ruby2.4.3, rails5.1.5, postgresql10.2
 	- make user (d8taflow:ireallyhopeidontfailthisclass) with super rights
 	- make databases (make sure to set owner d8taflow)
 4. install git [here](https://git-scm.com/downloads)
+5. install nodejs [here] (https://nodejs.org/en/download/)
 
 
 ### linux or windows using wsl
@@ -36,6 +37,7 @@ centos7, ruby2.4.3, rails5.1.5, postgresql10.2
 	ireallyhopeidontfailthisclass
 	\q
 	```
+3. install nodejs [here] (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
 
 ### macos
 idk goodluck
