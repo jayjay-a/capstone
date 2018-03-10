@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
-  resources :projecttypes
-  resources :projectstatuses
-  resources :projectnotes
   resources :projects
   resources :subcontractor_statuses
   resources :subcontractors
-  resources :rentallists
-  resources :rentalequipments
-  resources :materiallists
   resources :materials
   resources :customer_statuses
   resources :customers

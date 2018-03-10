@@ -1,2 +1,0 @@
-class Projectnote < ApplicationRecord
-end

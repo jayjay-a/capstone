@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310033314) do
+ActiveRecord::Schema.define(version: 20180310035612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20180310033314) do
 
   create_table "SubcontractorStatuses", primary_key: "subcontractor_status_id", force: :cascade do |t|
     t.string "subcontractor_status_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "Subcontractors", primary_key: "subcontractor_id", force: :cascade do |t|
+    t.integer "subcontractor_status_id"
+    t.string "subcontractor_name"
+    t.string "subcontractor_phone"
+    t.string "subcontractor_email"
+    t.string "company"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -72,7 +82,7 @@ ActiveRecord::Schema.define(version: 20180310033314) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "materiallists", primary_key: "material_list_id", force: :cascade do |t|
+  create_table "material_lists", primary_key: "material_list_id", force: :cascade do |t|
     t.integer "project_id"
     t.integer "material_id"
     t.decimal "unit_price"
@@ -87,7 +97,7 @@ ActiveRecord::Schema.define(version: 20180310033314) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "projectnotes", primary_key: "project_note_id", force: :cascade do |t|
+  create_table "project_notes", primary_key: "project_note_id", force: :cascade do |t|
     t.integer "project_id"
     t.text "project_notes"
     t.date "project_note_date"
@@ -96,39 +106,29 @@ ActiveRecord::Schema.define(version: 20180310033314) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "projectstatuses", primary_key: "project_status_id", force: :cascade do |t|
+  create_table "project_statuses", primary_key: "project_status_id", force: :cascade do |t|
     t.string "project_status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "projecttypes", primary_key: "project_type_id", force: :cascade do |t|
+  create_table "project_types", primary_key: "project_type_id", force: :cascade do |t|
     t.string "project_type_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "rentalequipments", primary_key: "rental_equipment_id", force: :cascade do |t|
+  create_table "rentail_equipments", primary_key: "rental_equipment_id", force: :cascade do |t|
     t.string "rental_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "rentallists", primary_key: "rental_list_id", force: :cascade do |t|
+  create_table "rental_lists", primary_key: "rental_list_id", force: :cascade do |t|
     t.integer "project_id"
     t.integer "rental_equipment_id"
     t.decimal "rental_price"
     t.string "cost_frequency"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "subcontractors", primary_key: "subcontractor_id", force: :cascade do |t|
-    t.integer "subcontractor_status_id"
-    t.string "subcontractor_name"
-    t.string "subcontractor_phone"
-    t.string "subcontractor_email"
-    t.string "company"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,2 +1,0 @@
-class Materiallist < ApplicationRecord
-end
