@@ -1,0 +1,37 @@
+<%= form_with(model: job_note, local: true) do |form| %>
+  <% if job_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job_note.errors.count, "error") %> prohibited this job_note from being saved:</h2>
+
+      <ul>
+      <% job_note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :job_id %>
+    <%= form.number_field :job_id, id: :job_note_job_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_notes %>
+    <%= form.text_area :job_notes, id: :job_note_job_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_notes_owner %>
+    <%= form.text_field :job_notes_owner, id: :job_note_job_notes_owner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_notes_date %>
+    <%= form.date_select :job_notes_date, id: :job_note_job_notes_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

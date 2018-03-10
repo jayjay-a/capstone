@@ -10,10 +10,98 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227184404) do
+ActiveRecord::Schema.define(version: 20180310035504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "employee_statuses", primary_key: "employee_status_id", force: :cascade do |t|
+    t.string "employee_status_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employee_types", primary_key: "employee_type_id", force: :cascade do |t|
+    t.string "employee_type_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", primary_key: "employee_id", force: :cascade do |t|
+    t.integer "employee_status_id"
+    t.integer "employee_type_id"
+    t.integer "state_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "join_date"
+    t.date "dismiss_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_notes", primary_key: "job_notes_id", force: :cascade do |t|
+    t.integer "job_id"
+    t.text "job_notes"
+    t.string "job_notes_owner"
+    t.date "job_notes_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_statuses", primary_key: "job_status_id", force: :cascade do |t|
+    t.string "job_status_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_types", primary_key: "job_type_id", force: :cascade do |t|
+    t.string "job_type_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", primary_key: "job_id", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "job_type_id"
+    t.integer "job_status_id"
+    t.date "job_start_date"
+    t.date "job_end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "states", primary_key: "state_id", force: :cascade do |t|
+    t.string "state_name"
+    t.string "state_abbrev"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "task_notes", primary_key: "task_note_id", force: :cascade do |t|
+    t.integer "task_id"
+    t.text "task_notes"
+    t.string "task_note_owner"
+    t.date "task_note_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "task_statuses", primary_key: "task_status_id", force: :cascade do |t|
+    t.string "task_status_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", primary_key: "task_id", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "assignment_id"
+    t.integer "task_status_id"
+    t.date "task_start_date"
+    t.date "task_end_date"
+    t.string "task_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", primary_key: "user_id", force: :cascade do |t|
     t.string "user_privilege"

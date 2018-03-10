@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails capstone: test" uuid="fa3101eb-e015-485f-a1ec-e9f2811debe9">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>d8taflow</user-name>
+    </data-source>
+    <data-source name="Rails capstone: development" uuid="e7b2b7d2-97e0-4909-bb3e-3f4430df90e3">
+      <database-info product="PostgreSQL" version="10.2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>d8taflow</user-name>
+      <introspection-schemas>capstone_development:public</introspection-schemas>
+    </data-source>
+    <data-source name="Rails capstone: production" uuid="b370692e-eee7-4a76-b783-611f55a9a89b">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>d8taflow</user-name>
+    </data-source>
+  </component>
+</project>
