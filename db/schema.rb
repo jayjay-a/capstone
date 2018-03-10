@@ -10,44 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310035612) do
+ActiveRecord::Schema.define(version: 20180310042347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "Projects", primary_key: "project_id", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "project_status_id"
-    t.integer "project_type_id"
-    t.date "project_start_date"
-    t.date "project_end_date"
-    t.date "bid_submit_date"
-    t.decimal "bid_material_cost"
-    t.string "bid_cost_of_labor_decimal"
-    t.decimal "bid_cost_of_permits"
-    t.decimal "bid_equipment_rental"
-    t.string "bid_freight_decimal"
-    t.decimal "tax_rate"
-    t.decimal "bid_amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "SubcontractorStatuses", primary_key: "subcontractor_status_id", force: :cascade do |t|
-    t.string "subcontractor_status_description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "Subcontractors", primary_key: "subcontractor_id", force: :cascade do |t|
-    t.integer "subcontractor_status_id"
-    t.string "subcontractor_name"
-    t.string "subcontractor_phone"
-    t.string "subcontractor_email"
-    t.string "company"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "assignments", primary_key: "assignment_id", force: :cascade do |t|
     t.integer "subcontractor_id"
@@ -118,7 +84,25 @@ ActiveRecord::Schema.define(version: 20180310035612) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rentail_equipments", primary_key: "rental_equipment_id", force: :cascade do |t|
+  create_table "projects", primary_key: "project_id", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "project_status_id"
+    t.integer "project_type_id"
+    t.date "project_start_date"
+    t.date "project_end_date"
+    t.date "bid_submit_date"
+    t.decimal "bid_material_cost"
+    t.string "bid_cost_of_labor_decimal"
+    t.decimal "bid_cost_of_permits"
+    t.decimal "bid_equipment_rental"
+    t.string "bid_freight_decimal"
+    t.decimal "tax_rate"
+    t.decimal "bid_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rental_equipments", primary_key: "rental_equipment_id", force: :cascade do |t|
     t.string "rental_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -129,6 +113,22 @@ ActiveRecord::Schema.define(version: 20180310035612) do
     t.integer "rental_equipment_id"
     t.decimal "rental_price"
     t.string "cost_frequency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subcontractor_statuses", primary_key: "subcontractor_status_id", force: :cascade do |t|
+    t.string "subcontractor_status_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subcontractors", primary_key: "subcontractor_id", force: :cascade do |t|
+    t.integer "subcontractor_status_id"
+    t.string "subcontractor_name"
+    t.string "subcontractor_phone"
+    t.string "subcontractor_email"
+    t.string "company"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
