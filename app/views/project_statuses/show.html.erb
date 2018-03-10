@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project status description:</strong>
+  <%= @project_status.project_status_description %>
+</p>
+
+<%= link_to 'Edit', edit_project_status_path(@project_status) %> |
+<%= link_to 'Back', project_statuses_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  project_notes: MyText
+  project_note_date: 2018-03-09
+  note_owner: MyString
+
+two:
+  project_id: 1
+  project_notes: MyText
+  project_note_date: 2018-03-09
+  note_owner: MyString
