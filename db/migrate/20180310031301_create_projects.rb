@@ -1,6 +1,6 @@
 class CreateProjects < ActiveRecord::Migration[5.1]
   def change
-    create_table :Projects, id: false do |t|
+    create_table :projects, id: false do |t|
       t.primary_key :project_id
       t.integer :customer_id
       t.integer :project_status_id
