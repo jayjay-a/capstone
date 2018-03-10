@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227184404) do
+ActiveRecord::Schema.define(version: 20180309223835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", primary_key: "assignment_id", force: :cascade do |t|
+    t.integer "subcontractor_id"
+    t.integer "task_id"
+    t.integer "employee_id"
+    t.date "assignment_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", primary_key: "user_id", force: :cascade do |t|
     t.string "user_privilege"
