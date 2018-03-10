@@ -1,0 +1,2 @@
+class RentalEquipment < ApplicationRecord
+end

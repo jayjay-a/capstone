@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subcontractor_status_id: 1
+  subcontractor_name: MyString
+  subcontractor_phone: MyString
+  subcontractor_email: MyString
+  company: MyString
+
+two:
+  subcontractor_status_id: 1
+  subcontractor_name: MyString
+  subcontractor_phone: MyString
+  subcontractor_email: MyString
+  company: MyString

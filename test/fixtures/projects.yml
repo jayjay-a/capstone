@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  project_status_id: 
+  er: MyString
+  project_type_id: 1
+  project_start_date: 2018-03-09
+  project_end_date: 2018-03-09
+  bid_submit_date: 2018-03-09
+  bid_material_cost: 9.99
+  bid_cost_of_labor_decimal: MyString
+  bid_cost_of_permits: 9.99
+  bid_equipment_rental: 9.99
+  bid_freight_decimal: MyString
+  tax_rate: 9.99
+  bid_amount: 9.99
+
+two:
+  customer_id: 1
+  project_status_id: 
+  er: MyString
+  project_type_id: 1
+  project_start_date: 2018-03-09
+  project_end_date: 2018-03-09
+  bid_submit_date: 2018-03-09
+  bid_material_cost: 9.99
+  bid_cost_of_labor_decimal: MyString
+  bid_cost_of_permits: 9.99
+  bid_equipment_rental: 9.99
+  bid_freight_decimal: MyString
+  tax_rate: 9.99
+  bid_amount: 9.99

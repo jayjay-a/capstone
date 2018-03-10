@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>State:</strong>
+  <%= @customer.state_id %>
+</p>
+
+<p>
+  <strong>Customer status:</strong>
+  <%= @customer.customer_status_id %>
+</p>
+
+<p>
+  <strong>Customer name:</strong>
+  <%= @customer.customer_name %>
+</p>
+
+<p>
+  <strong>Customer branch:</strong>
+  <%= @customer.customer_branch %>
+</p>
+
+<p>
+  <strong>Customer address 1:</strong>
+  <%= @customer.customer_address_1 %>
+</p>
+
+<p>
+  <strong>Customer address 2:</strong>
+  <%= @customer.customer_address_2 %>
+</p>
+
+<p>
+  <strong>String:</strong>
+  <%= @customer.string %>
+</p>
+
+<p>
+  <strong>Customer rep name 1:</strong>
+  <%= @customer.customer_rep_name_1 %>
+</p>
+
+<p>
+  <strong>Customer rep name 2:</strong>
+  <%= @customer.customer_rep_name_2 %>
+</p>
+
+<p>
+  <strong>Customer rep phone 1:</strong>
+  <%= @customer.customer_rep_phone_1 %>
+</p>
+
+<p>
+  <strong>Customer rep phone 2:</strong>
+  <%= @customer.customer_rep_phone_2 %>
+</p>
+
+<p>
+  <strong>Customer rep email 1:</strong>
+  <%= @customer.customer_rep_email_1 %>
+</p>
+
+<p>
+  <strong>Customer rep email 2:</strong>
+  <%= @customer.customer_rep_email_2 %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
