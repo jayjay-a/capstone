@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rental description:</strong>
+  <%= @rental_equipment.rental_description %>
+</p>
+
+<%= link_to 'Edit', edit_rental_equipment_path(@rental_equipment) %> |
+<%= link_to 'Back', rental_equipments_path %>

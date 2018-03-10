@@ -1,0 +1,2 @@
+module SubcontractorStatusesHelper
+end

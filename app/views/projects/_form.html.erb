@@ -1,0 +1,87 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.number_field :customer_id, id: :project_customer_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_status_id %>
+    <%= form.text_field :project_status_id, id: :project_project_status_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :er %>
+    <%= form.text_field :er, id: :project_er %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_type_id %>
+    <%= form.number_field :project_type_id, id: :project_project_type_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_start_date %>
+    <%= form.date_select :project_start_date, id: :project_project_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_end_date %>
+    <%= form.date_select :project_end_date, id: :project_project_end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bid_submit_date %>
+    <%= form.date_select :bid_submit_date, id: :project_bid_submit_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bid_material_cost %>
+    <%= form.text_field :bid_material_cost, id: :project_bid_material_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bid_cost_of_labor_decimal %>
+    <%= form.text_field :bid_cost_of_labor_decimal, id: :project_bid_cost_of_labor_decimal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bid_cost_of_permits %>
+    <%= form.text_field :bid_cost_of_permits, id: :project_bid_cost_of_permits %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bid_equipment_rental %>
+    <%= form.text_field :bid_equipment_rental, id: :project_bid_equipment_rental %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bid_freight_decimal %>
+    <%= form.text_field :bid_freight_decimal, id: :project_bid_freight_decimal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tax_rate %>
+    <%= form.text_field :tax_rate, id: :project_tax_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bid_amount %>
+    <%= form.text_field :bid_amount, id: :project_bid_amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
