@@ -1,0 +1,37 @@
+<%= form_with(model: projectnote, local: true) do |form| %>
+  <% if projectnote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(projectnote.errors.count, "error") %> prohibited this projectnote from being saved:</h2>
+
+      <ul>
+      <% projectnote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.number_field :project_id, id: :projectnote_project_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_notes %>
+    <%= form.text_area :project_notes, id: :projectnote_project_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_note_date %>
+    <%= form.date_select :project_note_date, id: :projectnote_project_note_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note_owner %>
+    <%= form.text_field :note_owner, id: :projectnote_note_owner %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

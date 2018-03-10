@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @project.customer_id %>
+</p>
+
+<p>
+  <strong>Project status:</strong>
+  <%= @project.project_status_id %>
+</p>
+
+<p>
+  <strong>Er:</strong>
+  <%= @project.er %>
+</p>
+
+<p>
+  <strong>Project type:</strong>
+  <%= @project.project_type_id %>
+</p>
+
+<p>
+  <strong>Project start date:</strong>
+  <%= @project.project_start_date %>
+</p>
+
+<p>
+  <strong>Project end date:</strong>
+  <%= @project.project_end_date %>
+</p>
+
+<p>
+  <strong>Bid submit date:</strong>
+  <%= @project.bid_submit_date %>
+</p>
+
+<p>
+  <strong>Bid material cost:</strong>
+  <%= @project.bid_material_cost %>
+</p>
+
+<p>
+  <strong>Bid cost of labor decimal:</strong>
+  <%= @project.bid_cost_of_labor_decimal %>
+</p>
+
+<p>
+  <strong>Bid cost of permits:</strong>
+  <%= @project.bid_cost_of_permits %>
+</p>
+
+<p>
+  <strong>Bid equipment rental:</strong>
+  <%= @project.bid_equipment_rental %>
+</p>
+
+<p>
+  <strong>Bid freight decimal:</strong>
+  <%= @project.bid_freight_decimal %>
+</p>
+
+<p>
+  <strong>Tax rate:</strong>
+  <%= @project.tax_rate %>
+</p>
+
+<p>
+  <strong>Bid amount:</strong>
+  <%= @project.bid_amount %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

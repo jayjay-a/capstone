@@ -1,0 +1,22 @@
+<%= form_with(model: projectstatus, local: true) do |form| %>
+  <% if projectstatus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(projectstatus.errors.count, "error") %> prohibited this projectstatus from being saved:</h2>
+
+      <ul>
+      <% projectstatus.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :project_status_description %>
+    <%= form.text_field :project_status_description, id: :projectstatus_project_status_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
