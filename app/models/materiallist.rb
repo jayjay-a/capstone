@@ -1,0 +1,2 @@
+class Materiallist < ApplicationRecord
+end

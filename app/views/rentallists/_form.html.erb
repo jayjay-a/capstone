@@ -1,0 +1,37 @@
+<%= form_with(model: rentallist, local: true) do |form| %>
+  <% if rentallist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rentallist.errors.count, "error") %> prohibited this rentallist from being saved:</h2>
+
+      <ul>
+      <% rentallist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.number_field :project_id, id: :rentallist_project_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rental_equipment_id %>
+    <%= form.number_field :rental_equipment_id, id: :rentallist_rental_equipment_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rental_price %>
+    <%= form.text_field :rental_price, id: :rentallist_rental_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost_frequency %>
+    <%= form.text_field :cost_frequency, id: :rentallist_cost_frequency %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

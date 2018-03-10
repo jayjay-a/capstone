@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rentalequipments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rental description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rentalequipments.each do |rentalequipment| %>
+      <tr>
+        <td><%= rentalequipment.rental_description %></td>
+        <td><%= link_to 'Show', rentalequipment %></td>
+        <td><%= link_to 'Edit', edit_rentalequipment_path(rentalequipment) %></td>
+        <td><%= link_to 'Destroy', rentalequipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rentalequipment', new_rentalequipment_path %>

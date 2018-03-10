@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310021130) do
+ActiveRecord::Schema.define(version: 20180310023440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,27 @@ ActiveRecord::Schema.define(version: 20180310021130) do
     t.string "customer_rep_phone_2"
     t.string "customer_rep_email_1"
     t.string "customer_rep_email_2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materiallists", primary_key: "material_list_id", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "material_id"
+    t.decimal "unit_price"
+    t.decimal "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", primary_key: "material_id", force: :cascade do |t|
+    t.string "material_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rentalequipments", primary_key: "rental_equipment_id", force: :cascade do |t|
+    t.string "rental_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @materiallist.project_id %>
+</p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @materiallist.material_id %>
+</p>
+
+<p>
+  <strong>Unit price:</strong>
+  <%= @materiallist.unit_price %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @materiallist.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_materiallist_path(@materiallist) %> |
+<%= link_to 'Back', materiallists_path %>

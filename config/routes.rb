@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :rentallists
+  resources :rentalequipments
+  resources :materiallists
+  resources :materials
   resources :customer_statuses
   resources :customers
   resources :assignments

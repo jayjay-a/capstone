@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rentallists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Rental equipment</th>
+      <th>Rental price</th>
+      <th>Cost frequency</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rentallists.each do |rentallist| %>
+      <tr>
+        <td><%= rentallist.project_id %></td>
+        <td><%= rentallist.rental_equipment_id %></td>
+        <td><%= rentallist.rental_price %></td>
+        <td><%= rentallist.cost_frequency %></td>
+        <td><%= link_to 'Show', rentallist %></td>
+        <td><%= link_to 'Edit', edit_rentallist_path(rentallist) %></td>
+        <td><%= link_to 'Destroy', rentallist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rentallist', new_rentallist_path %>

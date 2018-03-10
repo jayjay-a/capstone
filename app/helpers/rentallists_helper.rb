@@ -1,0 +1,2 @@
+module RentallistsHelper
+end
