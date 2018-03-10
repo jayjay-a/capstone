@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309223835) do
+ActiveRecord::Schema.define(version: 20180310021130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,30 @@ ActiveRecord::Schema.define(version: 20180309223835) do
     t.integer "task_id"
     t.integer "employee_id"
     t.date "assignment_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customer_statuses", primary_key: "customer_status_id", force: :cascade do |t|
+    t.string "customer_status_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", primary_key: "customer_id", force: :cascade do |t|
+    t.integer "state_id"
+    t.integer "customer_status_id"
+    t.string "customer_name"
+    t.string "customer_branch"
+    t.string "customer_address_1"
+    t.string "customer_address_2"
+    t.string "string"
+    t.string "customer_rep_name_1"
+    t.string "customer_rep_name_2"
+    t.string "customer_rep_phone_1"
+    t.string "customer_rep_phone_2"
+    t.string "customer_rep_email_1"
+    t.string "customer_rep_email_2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

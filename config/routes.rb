@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :customer_statuses
+  resources :customers
   resources :assignments
   root 'home#index'
 

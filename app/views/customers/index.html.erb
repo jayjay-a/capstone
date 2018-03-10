@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>Customer status</th>
+      <th>Customer name</th>
+      <th>Customer branch</th>
+      <th>Customer address 1</th>
+      <th>Customer address 2</th>
+      <th>String</th>
+      <th>Customer rep name 1</th>
+      <th>Customer rep name 2</th>
+      <th>Customer rep phone 1</th>
+      <th>Customer rep phone 2</th>
+      <th>Customer rep email 1</th>
+      <th>Customer rep email 2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.state_id %></td>
+        <td><%= customer.customer_status_id %></td>
+        <td><%= customer.customer_name %></td>
+        <td><%= customer.customer_branch %></td>
+        <td><%= customer.customer_address_1 %></td>
+        <td><%= customer.customer_address_2 %></td>
+        <td><%= customer.string %></td>
+        <td><%= customer.customer_rep_name_1 %></td>
+        <td><%= customer.customer_rep_name_2 %></td>
+        <td><%= customer.customer_rep_phone_1 %></td>
+        <td><%= customer.customer_rep_phone_2 %></td>
+        <td><%= customer.customer_rep_email_1 %></td>
+        <td><%= customer.customer_rep_email_2 %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>
