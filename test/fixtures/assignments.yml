@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subcontractor_id: 
+  task_id: 
+  employee_id: 
+  assignment_date: 2018-03-09
+
+two:
+  subcontractor_id: 
+  task_id: 
+  employee_id: 
+  assignment_date: 2018-03-09
