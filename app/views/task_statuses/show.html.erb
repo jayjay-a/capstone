@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task status description:</strong>
+  <%= @task_status.task_status_description %>
+</p>
+
+<%= link_to 'Edit', edit_task_status_path(@task_status) %> |
+<%= link_to 'Back', task_statuses_path %>

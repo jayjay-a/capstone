@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @job_note.job_id %>
+</p>
+
+<p>
+  <strong>Job notes:</strong>
+  <%= @job_note.job_notes %>
+</p>
+
+<p>
+  <strong>Job notes owner:</strong>
+  <%= @job_note.job_notes_owner %>
+</p>
+
+<p>
+  <strong>Job notes date:</strong>
+  <%= @job_note.job_notes_date %>
+</p>
+
+<%= link_to 'Edit', edit_job_note_path(@job_note) %> |
+<%= link_to 'Back', job_notes_path %>

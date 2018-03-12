@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @task_note.task_id %>
+</p>
+
+<p>
+  <strong>Task notes:</strong>
+  <%= @task_note.task_notes %>
+</p>
+
+<p>
+  <strong>Task note owner:</strong>
+  <%= @task_note.task_note_owner %>
+</p>
+
+<p>
+  <strong>Taske note date:</strong>
+  <%= @task_note.taske_note_date %>
+</p>
+
+<%= link_to 'Edit', edit_task_note_path(@task_note) %> |
+<%= link_to 'Back', task_notes_path %>

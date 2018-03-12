@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+
+  resources :task_statuses
+  resources :task_notes
+  resources :tasks
+  resources :job_types
+  resources :job_statuses
+  resources :job_notes
+  resources :jobs
+  resources :employee_types
+  resources :employee_statuses
+  resources :states
+  resources :employees
   resources :rental_lists
   resources :rental_equipments
   resources :project_types
@@ -12,6 +24,7 @@ Rails.application.routes.draw do
   resources :customer_statuses
   resources :customers
   resources :assignments
+
   root 'home#index'
 
   devise_for :users, controllers: { registrations: "registrations"}
