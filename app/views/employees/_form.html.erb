@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :employee_status_id %>
-    <%= form.number_field :employee_status_id, id: :employee_employee_status_id %>
+    <%= form.collection_select :employee_status_id, EmployeeStatus.all, :employee_status_id, :employee_status_description ,{prompt: "Select a status"}%>
   </div>
 
   <div class="field">
     <%= form.label :employee_type_id %>
-    <%= form.number_field :employee_type_id, id: :employee_employee_type_id %>
+    <%= form.collection_select :employee_type_id, EmployeeType.all, :employee_type_id, :employee_type_description ,{prompt: "Select a type"}%>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= form.label :state_id %>
-    <%= form.number_field :state_id, id: :employee_state_id %>
+    <%= form.collection_select :state_id, State.all, :state_id, :state_name ,{prompt: "Select a type"}%>
   </div>
 
   <div class="field">
