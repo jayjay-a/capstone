@@ -2,17 +2,17 @@
 
 <p>
   <strong>Subcontractor:</strong>
-  <%= @assignment.subcontractor_id %>
+  <%= @assignment.subcontractor.subcontractor_name %>
 </p>
 
 <p>
   <strong>Task:</strong>
-  <%= @assignment.task_id %>
+  <%= @assignment.task.task_description %>
 </p>
 
 <p>
   <strong>Employee:</strong>
-  <%= @assignment.employee_id %>
+  <%= @assignment.employee.first_name %>
 </p>
 
 <p>

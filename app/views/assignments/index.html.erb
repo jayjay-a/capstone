@@ -16,9 +16,9 @@
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= assignment.subcontractor_id %></td>
-        <td><%= assignment.task_id %></td>
-        <td><%= assignment.employee_id %></td>
+        <td><%= assignment.subcontractor.subcontractor_name %></td>
+        <td><%= assignment.task.task_description %></td>
+        <td><%= assignment.employee.first_name %></td>
         <td><%= assignment.assignment_date %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

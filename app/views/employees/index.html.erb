@@ -19,9 +19,9 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= employee.employee_status_id %></td>
-        <td><%= employee.employee_type_id %></td>
-        <td><%= employee.state_id %></td>
+        <td><%= employee.employee_status.employee_status_description %></td>
+        <td><%= employee.employee_type.employee_type_description %></td>
+        <td><%= employee.state.state_name %></td>
         <td><%= employee.first_name %></td>
         <td><%= employee.last_name %></td>
         <td><%= employee.join_date %></td>

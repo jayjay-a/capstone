@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :subcontractor_status_id %>
-    <%= form.number_field :subcontractor_status_id, id: :subcontractor_subcontractor_status_id %>
+    <%= form.label :subcontractor_status_id  %>
+    <%= form.collection_select :subcontractor_status_id, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description ,{prompt: "Select a status"}%>
   </div>
 
   <div class="field">
