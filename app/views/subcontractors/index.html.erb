@@ -17,7 +17,7 @@
   <tbody>
     <% @subcontractors.each do |subcontractor| %>
       <tr>
-        <td><%= subcontractor.subcontractor_status_id %></td>
+        <td><%= subcontractor.subcontractor_status.subcontractor_status_description %></td>
         <td><%= subcontractor.subcontractor_name %></td>
         <td><%= subcontractor.subcontractor_phone %></td>
         <td><%= subcontractor.subcontractor_email %></td>
