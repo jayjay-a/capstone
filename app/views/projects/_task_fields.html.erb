@@ -1,0 +1,29 @@
+<%# these fields are added as a nested thing to project form%>
+<div id = nested-fields class="nested-fields" style="width:350px">
+  <div class="field">
+    <%= f.label :assignment_id %>
+    <%= f.number_field :assignment_id, id: :task_assignment_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_status_id %>
+    <%= f.number_field :task_status_id, id: :task_task_status_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_start_date %>
+    <%= f.date_select :task_start_date, id: :task_task_start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_end_date %>
+    <%= f.date_select :task_end_date, id: :task_task_end_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_description %>
+    <%= f.text_field :task_description, id: :task_task_description %>
+  </div>
+
+  <%= link_to_remove_association "Remove task", f %>
+</div>

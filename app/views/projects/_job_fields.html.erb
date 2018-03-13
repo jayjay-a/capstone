@@ -1,5 +1,5 @@
 <%# these fields are added as a nested thing to project form%>
-<div id = nested-fields class="nested-fields" style="width:350px">
+<div id = nested-fields class="nested-fields" style="width:400px">
   <div class="field">
     <%= f.label :job_type_id  %>
     <%= f.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description ,{prompt: "Select a status"}%>
@@ -18,6 +18,16 @@
   <div class="field">
     <%= f.label :job_end_date %>
     <%= f.date_select :job_end_date, id: :job_job_end_date %>
+  </div>
+
+  <%# adding tasks to job%>
+  <div id="task">
+    <%= f.fields_for :tasks do |task| %>
+      <%= render 'task_fields', f: task %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add task", f, :tasks %>
+    </div>
   </div>
 
   <%= link_to_remove_association "Remove Job", f %>
