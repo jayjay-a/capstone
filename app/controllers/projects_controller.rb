@@ -69,6 +69,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:customer_id, :project_status_id, :project_type_id, :project_start_date, :project_end_date, :bid_submit_date, :bid_material_cost, :bid_cost_of_labor, :bid_cost_of_permits, :bid_equipment_rental, :bid_freight, :tax_rate, :bid_amount, jobs_attributes:[:job_id, :project_id, :job_type_id, :job_status_id, :job_start_date, :job_end_date])
+      params.require(:project).permit(:customer_id, :project_status_id, :project_type_id, :project_start_date, :project_end_date, :bid_submit_date, :bid_material_cost, :bid_cost_of_labor, :bid_cost_of_permits, :bid_equipment_rental, :bid_freight, :tax_rate, :bid_amount, jobs_attributes:[:job_id, :project_id, :job_type_id, :job_status_id, :job_start_date, :job_end_date, tasks_attributes:[:task_id, :job_id, :task_status_id, :task_start_date, :task_end_date, :task_description]])
     end
 end
