@@ -24,8 +24,8 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.state_id %></td>
-        <td><%= customer.customer_status_id %></td>
+        <td><%= customer.state.state_name %></td>
+        <td><%= customer.customer_status.customer_status_description %></td>
         <td><%= customer.customer_name %></td>
         <td><%= customer.customer_branch %></td>
         <td><%= customer.customer_address_1 %></td>
