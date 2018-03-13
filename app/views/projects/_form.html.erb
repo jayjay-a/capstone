@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :customer_id  %>
-    <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name ,{prompt: "Select a status"}%>
+    <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name ,{prompt: "Select a customer"}%>
   </div>
 
   <div class="field">
     <%= form.label :project_status_id  %>
-    <%= form.collection_select :project_status_id, Project.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}%>
+    <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}%>
   </div>
 
    <div class="field">
     <%= form.label :project_type_id  %>
-    <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description ,{prompt: "Select a status"}%>
+    <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description ,{prompt: "Select a type"}%>
   </div>
 
   <div class="field">
