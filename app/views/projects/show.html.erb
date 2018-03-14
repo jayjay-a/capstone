@@ -2,17 +2,17 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @project.customer_id %>
-</p>
-
-<p>
-  <strong>Project status:</strong>
-  <%= @project.project_status_id %>
+  <%= @project.customer.customer_name %>
 </p>
 
 <p>
   <strong>Project type:</strong>
-  <%= @project.project_type_id %>
+  <%= @project.project_type.project_type_description %>
+</p>
+
+<p>
+  <strong>Project status:</strong>
+  <%= @project.project_status.project_status_description %>
 </p>
 
 <p>
@@ -63,6 +63,22 @@
 <p>
   <strong>Bid amount:</strong>
   <%= @project.bid_amount %>
+</p>
+
+<%# jobs+tasks of a project%>
+<%# find a better styling for this!!!%>
+<p>
+  <strong>Jobs:</strong>
+  <p>
+    <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
+      <%= job.job_type.job_type_description %>
+      <ul>
+        <% job.tasks.each do |task| %> <%# iterates through each related task to this job%>
+         <li><%= task.task_description %></li>
+        <% end %>
+      </ul>
+    </p>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
