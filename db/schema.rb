@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313204948) do
+ActiveRecord::Schema.define(version: 20180315205030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20180313204948) do
     t.string "customer_branch"
     t.string "customer_address_1"
     t.string "customer_address_2"
-    t.string "string"
     t.string "customer_rep_name_1"
     t.string "customer_rep_name_2"
     t.string "customer_rep_phone_1"

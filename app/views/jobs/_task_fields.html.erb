@@ -1,0 +1,24 @@
+<%# these fields are added as a nested thing to the job form%>
+<div id = nested-fields class="nested-fields" style="width:350px">
+  <div class="field">
+    <%= f.label :task_status_id %>
+    <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {prompt: "Select a status"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_start_date %>
+    <%= f.date_select :task_start_date, id: :task_task_start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_end_date %>
+    <%= f.date_select :task_end_date, id: :task_task_end_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_description %>
+    <%= f.text_field :task_description, id: :task_task_description %>
+  </div>
+
+  <%= link_to_remove_association "Remove task", f %>
+</div>
