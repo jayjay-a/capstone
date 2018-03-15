@@ -6,26 +6,26 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="<%= 'active' if params[:controller] == 'home' %>">
         <a class="nav-link" <%= link_to 'Home', root_path %></a>
       </li>
 
-      <li class="nav-item">
+      <li class="<%= 'active' if params[:controller] == 'projects' %>"> 
         <a class="nav-link" <%= link_to 'Projects', projects_path %></a>
       </li>
 
-      <li class="nav-item">
+      <li class="<%= 'active' if params[:controller] == 'customers' %>">
         <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
       </li>
     </ul>
 
+    <%# sign in%>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Account <b class="caret"></b>
-          </a>
-        
+          </a>     
 
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Action</a>
