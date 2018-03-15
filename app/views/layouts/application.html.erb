@@ -10,9 +10,10 @@
 
   <body>
   <%= render ('layouts/header.html.erb') %>
-  <%= render('layouts/messages.html.erb') %>
+  
   
     <div class="container">
+      <%= render ('layouts/messages.html.erb') %>
       <%= yield %>
     </div>
   </body>
