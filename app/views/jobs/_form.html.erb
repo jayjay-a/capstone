@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :job_type_id %>
-    <%= form.number_field :job_type_id, id: :job_job_type_id %>
+    <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {prompt: "Select a type"} %>
   </div>
 
   <div class="field">
     <%= form.label :job_status_id %>
-    <%= form.number_field :job_status_id, id: :job_job_status_id %>
+    <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {prompt: "Select a status"} %>
   </div>
 
   <div class="field">
@@ -34,6 +34,16 @@
   <div class="field">
     <%= form.label :job_end_date %>
     <%= form.date_select :job_end_date, id: :job_job_end_date %>
+  </div>
+
+  <%# adding tasks to job%>
+  <div id="task">
+    <%= form.fields_for :tasks do |task| %>
+      <%= render 'task_fields', f: task %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add task", form, :tasks %>
+    </div>
   </div>
 
   <div class="actions">

@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Project</th>
+      <th>Customer</th>
+      <th>Customer branch</th>
       <th>Job type</th>
       <th>Job status</th>
       <th>Job start date</th>
@@ -18,8 +20,10 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.project_id %></td>
-        <td><%= job.job_type_id %></td>
-        <td><%= job.job_status_id %></td>
+        <td><%= job.project.customer.customer_name %></td>
+        <td><%= job.project.customer.customer_branch %></td>
+        <td><%= job.job_type.job_type_description %></td>
+        <td><%= job.job_status.job_status_description %></td>
         <td><%= job.job_start_date %></td>
         <td><%= job.job_end_date %></td>
         <td><%= link_to 'Show', job %></td>
