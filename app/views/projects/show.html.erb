@@ -65,6 +65,8 @@
   <%= @project.bid_amount %>
 </p>
 
+        <%= link_to @project.jobs, jobs_url(:project_id => @project.project_id)%></td>
+
 <%# jobs+tasks of a project%>
 <%# find a better styling for this!!!%>
 <p>

@@ -178,6 +178,13 @@ ActiveRecord::Schema.define(version: 20180315205030) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "steven_is_stupids", force: :cascade do |t|
+    t.string "whystevenstupid"
+    t.integer "stupidrating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subcontractor_statuses", primary_key: "subcontractor_status_id", force: :cascade do |t|
     t.string "subcontractor_status_description"
     t.datetime "created_at", null: false
