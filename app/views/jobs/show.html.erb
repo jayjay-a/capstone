@@ -32,14 +32,10 @@
 
 <%# tasks of a job%>
 <%# find a better styling for this!!!%>
-<p>
   <strong>Tasks:</strong> </br>
   <% @job.tasks.each do |task| %> <%# iterates through each related task to this job%>
-    <%= task.task_description %></br>
+    <li><%= link_to task.task_description, task %></li>
   <% end %>
-</p>
-
-
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>
