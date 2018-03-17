@@ -25,5 +25,12 @@
   <%= @task.task_description %>
 </p>
 
+<%# notes of a task%>
+<%# find a bettesr styling for this!!!%>
+  <strong>Notes:</strong></br>
+    <% @task.task_notes.each do |task_note| %> 
+      <%= simple_format(task_note.task_notes) %>
+  <% end %>
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

@@ -79,6 +79,14 @@
         <% end %>
       </ul>-->
   <% end %>
+</br>
+
+<%# notes of a project%>
+<%# find a bettesr styling for this!!!%>
+  <strong>Notes:</strong></br>
+    <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
+      <%= simple_format(project_note.project_notes) %>
+  <% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

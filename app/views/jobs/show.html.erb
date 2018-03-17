@@ -37,5 +37,13 @@
     <li><%= link_to task.task_description, task %></li>
   <% end %>
 
+</br>
+<%# notes of a job%>
+<%# find a bettesr styling for this!!!%>
+  <strong>Notes:</strong></br>
+    <% @job.job_notes.each do |job_note| %> 
+      <%= simple_format(job_note.job_notes) %>
+  <% end %>
+
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>
