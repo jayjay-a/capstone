@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315205030) do
+ActiveRecord::Schema.define(version: 20180317001503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180315205030) do
     t.date "job_end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_jobs_on_project_id"
   end
 
   create_table "material_lists", primary_key: "material_list_id", force: :cascade do |t|
@@ -178,13 +179,6 @@ ActiveRecord::Schema.define(version: 20180315205030) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "steven_is_stupids", force: :cascade do |t|
-    t.string "whystevenstupid"
-    t.integer "stupidrating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "subcontractor_statuses", primary_key: "subcontractor_status_id", force: :cascade do |t|
     t.string "subcontractor_status_description"
     t.datetime "created_at", null: false
@@ -224,6 +218,7 @@ ActiveRecord::Schema.define(version: 20180315205030) do
     t.string "task_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_tasks_on_job_id"
   end
 
   create_table "users", primary_key: "user_id", force: :cascade do |t|
@@ -238,4 +233,6 @@ ActiveRecord::Schema.define(version: 20180315205030) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "jobs", "projects", primary_key: "project_id"
+  add_foreign_key "tasks", "jobs", primary_key: "job_id"
 end
