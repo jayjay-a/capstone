@@ -6,4 +6,5 @@ class Job < ApplicationRecord
   belongs_to :job_status
 
   accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :job_notes, allow_destroy: true, reject_if: :all_blank
 end
