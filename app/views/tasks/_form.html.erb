@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :job_id %>
-    <%= form.number_field :job_id, id: :task_job_id %>
+    <%= form.label :job_id  %>
+    <%= form.collection_select :job_id, Job.all, :job_id, :job_id ,{prompt: "Select a job"} %>
   </div>
 
   <div class="field">
-    <%= form.label :task_status_id %>
-    <%= form.number_field :task_status_id, id: :task_task_status_id %>
+    <%= form.label :task_status_id  %>
+    <%= form.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description ,{prompt: "Select a job"} %>
   </div>
 
   <div class="field">
