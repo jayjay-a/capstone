@@ -11,5 +11,6 @@ class Project < ApplicationRecord
     #cocoon
     accepts_nested_attributes_for :jobs, allow_destroy: true, reject_if: :all_blank
     accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
+    accepts_nested_attributes_for :project_notes, allow_destroy: true, reject_if: :all_blank
 
 end
