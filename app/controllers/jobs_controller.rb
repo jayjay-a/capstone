@@ -5,6 +5,10 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    # domain/jobs?project_id=x
+    # if params[:project_id]
+    #   @jobs = Job.where(project_id: params[:project_id])
+    # end
   end
 
   # GET /jobs/1

@@ -65,23 +65,20 @@
   <%= @project.bid_amount %>
 </p>
 
-        <%= link_to @project.jobs, jobs_url(:project_id => @project.project_id)%></td>
+<%#= if want link to show all jobs link_to @project.jobs, jobs_url(:project_id => @project.id)%>
 
-<%# jobs+tasks of a project%>
-<%# find a better styling for this!!!%>
-<p>
-  <strong>Jobs:</strong>
-  <p>
+<%# jobs of a project%>
+<%# find a bettesr styling for this!!!%>
+  <strong>Jobs:</strong></br>
     <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
-      <%= job.job_type.job_type_description %>
+      <li><%= link_to job.job_type.job_type_description, job %></li>
+      <!--show tasks as well
       <ul>
         <% job.tasks.each do |task| %> <%# iterates through each related task to this job%>
          <li><%= task.task_description %></li>
         <% end %>
-      </ul>
-    </p>
+      </ul>-->
   <% end %>
-</p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
