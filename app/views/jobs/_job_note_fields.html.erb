@@ -1,0 +1,19 @@
+<%# these fields are added as a nested thing to project form%>
+<div id = nested-fields class="nested-fields" style="width:400px">
+  <div class="field">
+    <%= f.label :job_notes %>
+    <%= f.text_area :job_notes, id: :job_note_job_notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :job_notes_owner %>
+    <%= f.text_field :job_notes_owner, id: :job_note_job_notes_owner %>
+  </div>
+
+  <div class="field">
+    <%= f.label :job_notes_date %>
+    <%= f.date_select :job_notes_date, id: :job_note_job_notes_date %>
+  </div>
+
+  <%= link_to_remove_association "Remove Note", f %>
+</div>
