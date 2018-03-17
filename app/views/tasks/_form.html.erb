@@ -36,6 +36,16 @@
     <%= form.text_field :task_description, id: :task_task_description %>
   </div>
 
+  <%# adding notes to task%>
+  <div id="notes">
+    <%= form.fields_for :task_notes do |notes| %>
+      <%= render 'project_note_fields', f: notes %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add Note", form, :task_notes %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

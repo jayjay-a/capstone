@@ -1,0 +1,19 @@
+<%# these fields are added as a nested thing to task form%>
+<div id = nested-fields class="nested-fields" style="width:400px">
+  <div class="field">
+    <%= f.label :task_notes %>
+    <%= f.text_area :task_notes, id: :task_note_task_notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_note_owner %>
+    <%= f.text_field :task_note_owner, id: :task_note_task_note_owner %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_note_date %>
+    <%= f.date_select :task_note_date, id: :task_note_task_note_date %>
+  </div>
+
+  <%= link_to_remove_association "Remove Note", f %>
+</div>

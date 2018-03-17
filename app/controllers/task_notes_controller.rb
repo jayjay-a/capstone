@@ -69,6 +69,6 @@ class TaskNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_note_params
-      params.require(:task_note).permit(:task_id, :task_notes, :task_note_owner, :taske_note_date)
+      params.require(:task_note).permit(:task_id, :task_notes, :task_note_owner, :task_note_date)
     end
 end
