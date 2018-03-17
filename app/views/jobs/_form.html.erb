@@ -46,6 +46,16 @@
     </div>
   </div>
 
+  <%# adding notes to project%>
+  <div id="notes">
+    <%= form.fields_for :job_notes do |notes| %>
+      <%= render 'job_note_fields', f: notes %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add Note", form, :job_notes %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
