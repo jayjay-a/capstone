@@ -73,7 +73,7 @@ class ProjectsController < ApplicationController
                                       jobs_attributes:[:id, :job_id, :project_id, :job_type_id, :job_status_id, :job_start_date, :job_end_date, :_destroy, 
                                                         tasks_attributes:[:id, :task_id, :job_id, :task_status_id, :task_start_date, :task_end_date, :task_description, :_destroy]
                                                       ],
-                                      project_notes_attributes:[:id, :project_note_id, :project_notes, :project_note_date, :note_owner]
+                                      project_notes_attributes:[:id, :project_note_id, :project_notes, :project_note_date, :note_owner, :_destroy]
                                       )
     end
 end
