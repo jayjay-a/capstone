@@ -15,6 +15,18 @@
 //= require_tree .
 //
 //= require jquery3
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 //= require cocoon
+
+function showAssignment1(){
+    document.getElementById('employeeRadioDropdown').style.display ='none';
+    document.getElementById('subcontractorRadioDropdown').style.display ='block';
+    document.getElementById('defaultCheckedSubcontractor').style.display ='none';
+}
+function showAssignment2(){
+    document.getElementById('employeeRadioDropdown').style.display = 'block';
+    document.getElementById('subcontractorRadioDropdown').style.display ='none';
+    document.getElementById('defaultCheckedSubcontractor').style.display ='none';
+}
