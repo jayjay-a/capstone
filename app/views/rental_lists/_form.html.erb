@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :project_id %>
-    <%= form.number_field :project_id, id: :rental_list_project_id %>
+    <%= form.label :project_id  %>
+    <%= form.collection_select :project_id, Project.all, :project_id, :project_id ,{prompt: "Select a project"}%>
   </div>
 
   <div class="field">
-    <%= form.label :rental_equipment_id %>
-    <%= form.number_field :rental_equipment_id, id: :rental_list_rental_equipment_id %>
+    <%= form.label :rental_equipment_id  %>
+    <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description ,{prompt: "Select a rental equipment"}%>
   </div>
 
   <div class="field">

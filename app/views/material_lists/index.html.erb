@@ -17,7 +17,7 @@
     <% @material_lists.each do |material_list| %>
       <tr>
         <td><%= material_list.project_id %></td>
-        <td><%= material_list.material_id %></td>
+        <td><%= material_list.material.material_description %></td>
         <td><%= material_list.unit_price %></td>
         <td><%= material_list.quantity %></td>
         <td><%= link_to 'Show', material_list %></td>
