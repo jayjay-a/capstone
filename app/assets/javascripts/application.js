@@ -17,4 +17,16 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
 //= require cocoon
+
+$(document).ready(function(){
+    $('.datepicker').datepicker({
+        maxViewMode: 2,
+        todayBtn: true,
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        format: 'yyyy-mm-dd'
+    });
+  });
