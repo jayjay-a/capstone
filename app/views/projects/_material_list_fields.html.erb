@@ -1,0 +1,20 @@
+<%# these fields are added as a nested thing to project form%>
+<div id = nested-fields class="nested-fields" style="width:400px">
+
+  <div class="field">
+    <%= f.label :material_id  %>
+    <%= f.collection_select :material_id, Material.all, :material_id, :material_description ,{prompt: "Select a material"}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :unit_price %>
+    <%= f.text_field :unit_price, id: :material_list_unit_price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity, id: :material_list_quantity %>
+  </div>
+
+  <%= link_to_remove_association "Remove Material", f %>
+</div>
