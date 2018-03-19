@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317001503) do
+ActiveRecord::Schema.define(version: 20180319221325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180317001503) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "job_notes", primary_key: "job_notes_id", force: :cascade do |t|
+  create_table "job_notes", primary_key: "job_note_id", id: :bigint, default: -> { "nextval('job_notes_job_notes_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "job_id"
     t.text "job_notes"
     t.string "job_notes_owner"
