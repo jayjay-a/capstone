@@ -1,4 +1,29 @@
 <%= form_with(model: project, local: true) do |form| %>
+
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="date"]');
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            var options={
+                format: 'yyyy-mm-dd',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -21,15 +46,15 @@
     <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}%>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= form.label :project_type_id  %>
     <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description ,{prompt: "Select a type"}%>
   </div>
 
-  <div class="field">
-    <%= form.label :project_start_date %>
-    <%= form.date_select :project_start_date, id: :project_project_start_date %>
-  </div>
+    <div class="field">
+      <label class="control-label" for="project_start_date">Project Start Date</label>
+      <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
+    </div>
 
   <div class="field">
     <%= form.label :project_end_date %>
@@ -119,4 +144,5 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
