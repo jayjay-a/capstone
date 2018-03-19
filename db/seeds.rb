@@ -160,7 +160,7 @@ TaskStatus.create!([
 
 # Customers
 Customer.create!([
-                     { id: 1, state_id: 43, customer_status_id: 1, customer_name: 'Olive Garden', customer_branch: '1862', customer_address_1: '22503 N US Hwy 281 Bldg 1 San Antonio, 78258', customer_address_2: '', string: '', customer_rep_name_1: 'Julius C. Huck', customer_rep_name_2: 'Daniel Johnson', customer_rep_phone_1: '(210)-481-9964', customer_rep_phone_2: '', customer_rep_email_1: 'OliveGarden1862@Darden.com', customer_rep_email_2: '' }
+                     { id: 1, state_id: 43, customer_status_id: 1, customer_name: 'Olive Garden', customer_branch: '1862', customer_address_1: '22503 N US Hwy 281 Bldg 1 San Antonio, 78258', customer_address_2: '', customer_rep_name_1: 'Julius C. Huck', customer_rep_name_2: 'Daniel Johnson', customer_rep_phone_1: '(210)-481-9964', customer_rep_phone_2: '', customer_rep_email_1: 'OliveGarden1862@Darden.com', customer_rep_email_2: '' }
                  ])
 
 # Employees
