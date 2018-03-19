@@ -51,10 +51,10 @@
     <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description ,{prompt: "Select a type"}%>
   </div>
 
-    <div class="field">
-      <label class="control-label" for="project_start_date">Project Start Date</label>
-      <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
-    </div>
+  <div class="field">
+    <label class="control-label" for="project_start_date">Project start date</label>
+    <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
+  </div>
 
   <div class="field">
     <%= form.label :project_end_date %>
