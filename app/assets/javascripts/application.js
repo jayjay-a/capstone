@@ -19,14 +19,13 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require cocoon
+//
+//= require select2
 
-function showAssignment1(){
-    document.getElementById('employeeRadioDropdown').style.display ='none';
-    document.getElementById('subcontractorRadioDropdown').style.display ='block';
-    document.getElementById('defaultCheckedSubcontractor').style.display ='none';
-}
-function showAssignment2(){
-    document.getElementById('employeeRadioDropdown').style.display = 'block';
-    document.getElementById('subcontractorRadioDropdown').style.display ='none';
-    document.getElementById('defaultCheckedSubcontractor').style.display ='none';
-}
+$(document).ready(function() {
+    $('select').select2();
+});
+
+$( "select" ).select2({
+    theme: "bootstrap"
+});
