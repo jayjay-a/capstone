@@ -28,17 +28,17 @@
 
   <div class="field">
     <%= form.label :project_start_date %>
-    <%= form.text_field :project_start_date, id: :project_project_start_date, :class => 'datepicker' %>
+    <%= form.text_field :project_start_date, id: :project_project_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= form.label :project_end_date %>
-    <%= form.date_select :project_end_date, id: :project_project_end_date %>
+    <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= form.label :bid_submit_date %>
-    <%= form.date_select :bid_submit_date, id: :project_bid_submit_date %>
+    <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">

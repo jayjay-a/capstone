@@ -23,7 +23,6 @@
 $(document).ready(function(){
     $('.datepicker').datepicker({
         maxViewMode: 2,
-        todayBtn: true,
         forceParse: false,
         autoclose: true,
         todayHighlight: true,
