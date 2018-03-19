@@ -12,12 +12,12 @@
 
   <div class="field">
     <%= f.label :job_start_date %>
-    <%= f.date_select :job_start_date, id: :job_job_start_date %>
+    <%= f.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= f.label :job_end_date %>
-    <%= f.date_select :job_end_date, id: :job_job_end_date %>
+    <%= f.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <%# adding tasks to job%>

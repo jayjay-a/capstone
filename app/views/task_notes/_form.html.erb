@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :task_note_date %>
-    <%= form.date_select :task_note_date, id: :task_note_task_note_date %>
+    <%= form.text_field :task_note_date, id: :task_note_task_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="actions">

@@ -18,10 +18,9 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
-//= require cocoon
-//
+//= require bootstrap-datepicker
 //= require select2
-
+//= require cocoon
 
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks
     $(document).ready(function() { //select2 drop boxes
@@ -31,6 +30,17 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
     $( "select" ).select2({ //adds bootstrap theme to select2
         theme: "bootstrap"
     });
+
+    $(document).ready(function(){ //datepicker
+        $('.datepicker').datepicker({
+            maxViewMode: 2,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            format: 'yyyy-mm-dd'
+        });
+      });
+    
 })
 
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields
@@ -41,4 +51,14 @@ $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select
     $( "select" ).select2({ //adds bootstrap theme to select2
         theme: "bootstrap"
     });
+
+    $(document).ready(function(){ //datepicker
+        $('.datepicker').datepicker({
+            maxViewMode: 2,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            format: 'yyyy-mm-dd'
+        });
+      });
 });

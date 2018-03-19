@@ -21,24 +21,24 @@
     <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}%>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= form.label :project_type_id  %>
     <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description ,{prompt: "Select a type"}%>
   </div>
 
   <div class="field">
     <%= form.label :project_start_date %>
-    <%= form.date_select :project_start_date, id: :project_project_start_date %>
+    <%= form.text_field :project_start_date, id: :project_project_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= form.label :project_end_date %>
-    <%= form.date_select :project_end_date, id: :project_project_end_date %>
+    <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= form.label :bid_submit_date %>
-    <%= form.date_select :bid_submit_date, id: :project_bid_submit_date %>
+    <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
@@ -119,4 +119,5 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

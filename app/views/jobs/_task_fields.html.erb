@@ -7,12 +7,12 @@
 
   <div class="field">
     <%= f.label :task_start_date %>
-    <%= f.date_select :task_start_date, id: :task_task_start_date %>
+    <%= f.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= f.label :task_end_date %>
-    <%= f.date_select :task_end_date, id: :task_task_end_date %>
+    <%= f.text_field :task_end_date, id: :task_task_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
