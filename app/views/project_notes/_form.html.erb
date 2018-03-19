@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :project_note_date %>
-    <%= form.date_select :project_note_date, id: :project_note_project_note_date %>
+    <%= form.text_field :project_note_date, id: :project_note_project_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
