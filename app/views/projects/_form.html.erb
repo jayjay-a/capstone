@@ -82,7 +82,27 @@
       <%= render 'job_fields', f: job %>
     <% end %>
     <div class="link">
-      <%= link_to_add_association "Add job", form, :jobs %>
+      <%= link_to_add_association "Add Job", form, :jobs %>
+    </div>
+  </div>
+
+  <%# adding materials to project%>
+  <div id="material_lists">
+    <%= form.fields_for :material_lists do |material_list| %>
+      <%= render 'material_list_fields', f: material_list %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add Material", form, :material_lists %>
+    </div>
+  </div>
+
+  <%# adding rental equipment to project%>
+  <div id="rental_lists">
+    <%= form.fields_for :rental_lists do |rental_list| %>
+      <%= render 'rental_list_fields', f: rental_list %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add Rental Equipment", form, :rental_lists %>
     </div>
   </div>
 

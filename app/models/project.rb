@@ -15,5 +15,6 @@ class Project < ApplicationRecord
     accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
     accepts_nested_attributes_for :project_notes, allow_destroy: true, reject_if: :all_blank
     accepts_nested_attributes_for :material_lists, allow_destroy: true, reject_if: :all_blank
+    accepts_nested_attributes_for :rental_lists, allow_destroy: true, reject_if: :all_blank
 
 end
