@@ -20,7 +20,7 @@
 //= require bootstrap-datepicker
 //= require cocoon
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('.datepicker').datepicker({
         maxViewMode: 2,
         forceParse: false,
@@ -28,4 +28,17 @@ $(document).ready(function(){
         todayHighlight: true,
         format: 'yyyy-mm-dd'
     });
-  });
+  });*/
+
+window.onInit = function(handler){
+    $(document).on('ready page:change', handler)
+}
+onInit(function() {
+    $('#dpd1').datepicker({
+        maxViewMode: 2,
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        format: 'yyyy-mm-dd'
+    });
+})
