@@ -21,24 +21,24 @@
     <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}%>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= form.label :project_type_id  %>
     <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description ,{prompt: "Select a type"}%>
   </div>
 
   <div class="field">
     <%= form.label :project_start_date %>
-    <%= form.date_select :project_start_date, id: :project_project_start_date %>
+    <%= form.text_field :project_start_date, id: :project_project_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= form.label :project_end_date %>
-    <%= form.date_select :project_end_date, id: :project_project_end_date %>
+    <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
     <%= form.label :bid_submit_date %>
-    <%= form.date_select :bid_submit_date, id: :project_bid_submit_date %>
+    <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
   <div class="field">
@@ -82,7 +82,27 @@
       <%= render 'job_fields', f: job %>
     <% end %>
     <div class="link">
-      <%= link_to_add_association "Add job", form, :jobs %>
+      <%= link_to_add_association "Add Job", form, :jobs %>
+    </div>
+  </div>
+
+  <%# adding materials to project%>
+  <div id="material_lists">
+    <%= form.fields_for :material_lists do |material_list| %>
+      <%= render 'material_list_fields', f: material_list %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add Material", form, :material_lists %>
+    </div>
+  </div>
+
+  <%# adding rental equipment to project%>
+  <div id="rental_lists">
+    <%= form.fields_for :rental_lists do |rental_list| %>
+      <%= render 'rental_list_fields', f: rental_list %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association "Add Rental Equipment", form, :rental_lists %>
     </div>
   </div>
 
@@ -99,4 +119,5 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

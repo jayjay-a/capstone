@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :project_id %>
-    <%= form.number_field :project_id, id: :material_list_project_id %>
+    <%= form.label :project_id  %>
+    <%= form.collection_select :project_id, Project.all, :project_id, :project_id ,{prompt: "Select a project"}%>
   </div>
 
   <div class="field">
-    <%= form.label :material_id %>
-    <%= form.number_field :material_id, id: :material_list_material_id %>
+    <%= form.label :material_id  %>
+    <%= form.collection_select :material_id, Material.all, :material_id, :material_description ,{prompt: "Select a material"}%>
   </div>
 
   <div class="field">

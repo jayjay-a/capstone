@@ -1,0 +1,20 @@
+<%# these fields are added as a nested thing to project form%>
+<div id = nested-fields class="nested-fields" style="width:400px">
+
+  <div class="field">
+    <%= f.label :rental_equipment_id  %>
+    <%= f.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description ,{prompt: "Select a rental equipment"}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :rental_price %>
+    <%= f.text_field :rental_price, id: :rental_list_rental_price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cost_frequency %>
+    <%= f.text_field :cost_frequency, id: :rental_list_cost_frequency %>
+  </div>
+
+  <%= link_to_remove_association "Remove Equipment", f %>
+</div>
