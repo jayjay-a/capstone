@@ -11,16 +11,18 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
 //
 //= require jquery3
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require cocoon
+//
+//= require select2
 
-/*$(document).ready(function(){
+$(document).ready(function(){
     $('.datepicker').datepicker({
         maxViewMode: 2,
         forceParse: false,
@@ -28,17 +30,24 @@
         todayHighlight: true,
         format: 'yyyy-mm-dd'
     });
-  });*/
+  });
 
-window.onInit = function(handler){
-    $(document).on('ready page:change', handler)
-}
-onInit(function() {
-    $('#dpd1').datepicker({
-        maxViewMode: 2,
-        forceParse: false,
-        autoclose: true,
-        todayHighlight: true,
-        format: 'yyyy-mm-dd'
+document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks
+    $(document).ready(function() { //select2 drop boxes
+        $('select').select2();
+    });
+
+    $( "select" ).select2({ //adds bootstrap theme to select2
+        theme: "bootstrap"
     });
 })
+
+$(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields
+    $(document).ready(function() { //select2 drop boxes
+        $('select').select2();
+    });
+
+    $( "select" ).select2({ //adds bootstrap theme to select2
+        theme: "bootstrap"
+    });
+});
