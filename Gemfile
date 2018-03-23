@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.11', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt', platforms: [:ruby, :x64_mingw, :mingw]
 
+gem 'materialize-sass'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
