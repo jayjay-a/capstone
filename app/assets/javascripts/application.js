@@ -58,8 +58,7 @@ $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select
             forceParse: false,
             autoclose: true,
             todayHighlight: true,
-            format: 'yyyy-mm-dd',
-            clearBtn: true
+            format: 'yyyy-mm-dd'
         });
       });
 });
