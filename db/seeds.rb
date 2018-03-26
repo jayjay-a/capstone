@@ -187,8 +187,7 @@ MaterialList.create!([
 # Project Notes
 ProjectNote.create!([
                       { project_id: 1, project_notes: 'Cannot start working until 2013-05-05', project_note_date: '2013-04-21', note_owner: 'April Garay' },
-                      { project_id: 2, rental_equipment_id: 1, rental_price: '$550.00', cost_frequency: 'by week' }
-                    ])
+                      ])
 
 # Subcontractors
 Subcontractor.create!([
