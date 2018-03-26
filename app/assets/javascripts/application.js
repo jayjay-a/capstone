@@ -11,15 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require materialize-sprockets
 //= require turbolinks
 //= require_tree .
-//
 //= require jquery3
-//= require jquery_ujs
 //= require popper
-//= require bootstrap-sprockets
-//= require bootstrap-datepicker
+//= require materialize-sprockets
 //= require select2
 //= require cocoon
 
@@ -28,17 +24,10 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
         $('select').select2();
     });
    
-    $( "select" ).select2({ //adds bootstrap theme to select2
-        theme: "bootstrap"
-    });
-
     $(document).ready(function(){ //datepicker
         $('.datepicker').datepicker({
-            maxViewMode: 2,
-            forceParse: false,
-            autoclose: true,
-            todayHighlight: true,
-            format: 'yyyy-mm-dd'
+            format: 'yyyy-mm-dd',
+            showDaysInNextAndPreviousMonths: true
         });
       });
     
@@ -48,18 +37,9 @@ $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select
     $(document).ready(function() { //select2 drop boxes
         $('select').select2();
     });
-   
-    $( "select" ).select2({ //adds bootstrap theme to select2
-        theme: "bootstrap"
-    });
 
     $(document).ready(function(){ //datepicker
         $('.datepicker').datepicker({
-            maxViewMode: 2,
-            forceParse: false,
-            autoclose: true,
-            todayHighlight: true,
-            format: 'yyyy-mm-dd'
         });
       });
 });
