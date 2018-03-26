@@ -1,11 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" <%= link_to 'Rollingstone Construction', root_path %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
+</ul>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Rollingstone Construction</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
       <li class="<%= 'active' if params[:controller] == 'home' %>">
         <a class="nav-link" <%= link_to 'Home', root_path %></a>
       </li>
@@ -17,8 +22,18 @@
       <li class="<%= 'active' if params[:controller] == 'customers' %>">
         <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
       </li>
+
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
+
     </ul>
 
+
+  </div>
+</nav>
+
+
+<% if false%> this is just how an if logged in, show or dont show login button and logout. this used bootstrap styling
     <%# sign in%>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
@@ -37,5 +52,4 @@
         </li>
     </ul>
   </div>
-
-</nav>
+</nav><% end %>

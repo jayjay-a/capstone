@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+        
   <div class="field">
     <%= form.label :customer_id  %>
     <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name ,{prompt: "Select a customer"}, :class => 'browser-default' %>

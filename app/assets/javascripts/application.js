@@ -29,7 +29,11 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
             format: 'yyyy-mm-dd',
             showDaysInNextAndPreviousMonths: true
         });
-      });
+    });
+
+    $(document).ready(function(){ //datepicker
+        $(".dropdown-trigger").dropdown();
+    });
     
 })
 
@@ -41,5 +45,5 @@ $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select
     $(document).ready(function(){ //datepicker
         $('.datepicker').datepicker({
         });
-      });
+    });
 });
