@@ -9,7 +9,8 @@
 <nav>
   <div class="nav-wrapper">
     <a href="#" class="brand-logo">Rollingstone Construction</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
 
       <li class="<%= 'active' if params[:controller] == 'home' %>">
         <a class="nav-link" <%= link_to 'Home', root_path %></a>
@@ -31,6 +32,21 @@
 
   </div>
 </nav>
+
+<ul class="sidenav" id="mobile-demo">
+  <li class="<%= 'active' if params[:controller] == 'home' %>">
+    <a class="nav-link" <%= link_to 'Home', root_path %></a>
+  </li>
+
+  <li class="<%= 'active' if params[:controller] == 'projects' %>"> 
+    <a class="nav-link" <%= link_to 'Projects', projects_path %></a>
+  </li>
+
+  <li class="<%= 'active' if params[:controller] == 'customers' %>">
+    <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
+  </li>
+  <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
+</ul>
 
 
 <% if false%> this is just how an if logged in, show or dont show login button and logout. this used bootstrap styling

@@ -20,6 +20,7 @@
 //= require unobtrusive_flash
 //= require unobtrusive_flash_ui
 
+
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks
     $(document).ready(function() { //select2 drop boxes
         $('select').select2();
@@ -32,14 +33,18 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
         });
     });
 
-    $(document).ready(function(){
+    $(document).ready(function(){ //dropdown on navbar
         $(".dropdown-trigger").dropdown();
     });
 
-    $(document).ready(function(){ //
+    $(document).ready(function(){ //hides flash message
         UnobtrusiveFlash.flashOptions['timeout'] = 5000; // milliseconds
     });
-    
+
+    $(document).ready(function(){ //sidenav mobile
+        $('.sidenav').sidenav();
+    });
+    $('.sidenav').sidenav();
 })
 
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields
