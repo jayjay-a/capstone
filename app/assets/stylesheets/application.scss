@@ -16,11 +16,11 @@
  @import 'materialize';
  @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
  @import 'select2-materialize.scss';
+ @import 'unobtrusive_flash_ui';
 
 .ilike-blue-container {
   @extend .blue-text, .text-lighten-4;
 }
-
 
  #nested-fields {
     border: solid 3px;
@@ -29,11 +29,24 @@
     margin-bottom: 10px;
 }
 
+#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper {
+  padding: 10px 0;
+  background: rgb(212, 237, 218);
+  color: rgb(21,87,36);
+  opacity: 1;
+}
+
+#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper.unobtrusive-flash-error {
+  background: rgb(248, 215, 218);
+  color: rgb(114,28,36);
+}
+
 textarea{
   width: 100%!important;
 }
+
 .navbar{
-    margin-bottom: 15px
+    margin-bottom: 15px;
 }
 
 //form errors

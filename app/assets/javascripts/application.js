@@ -14,10 +14,11 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery3
-//= require popper
 //= require materialize-sprockets
 //= require select2
 //= require cocoon
+//= require unobtrusive_flash
+//= require unobtrusive_flash_ui
 
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks
     $(document).ready(function() { //select2 drop boxes
@@ -31,8 +32,12 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
         });
     });
 
-    $(document).ready(function(){ //datepicker
+    $(document).ready(function(){
         $(".dropdown-trigger").dropdown();
+    });
+
+    $(document).ready(function(){ //
+        UnobtrusiveFlash.flashOptions['timeout'] = 5000; // milliseconds
     });
     
 })
@@ -42,7 +47,7 @@ $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select
         $('select').select2();
     });
 
-    $(document).ready(function(){ //datepicker
+    $(document).ready(function(){
         $('.datepicker').datepicker({
         });
     });
