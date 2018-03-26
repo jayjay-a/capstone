@@ -2,18 +2,16 @@
 
 # Customer Statuses
 CustomerStatus.create!([
-                         { customer_status_description: 'Current Customer' },
-                         { customer_status_description: 'No Longer Customer' },
-                         { customer_status_description: 'Prospective Customer' },
+                         { customer_status_description: 'Active Customer' },
+                         { customer_status_description: 'Inactive Customer' },
+                         { customer_status_description: 'Potential Customer' },
                          { customer_status_description: 'Bad Customer' }
                        ])
 
 # Employee Statuses
 EmployeeStatus.create!([
-                         { employee_status_description: 'Current Employee' },
-                         { employee_status_description: 'Previous Employee' },
-                         { employee_status_description: 'Prospective Employee' }
-
+                         { employee_status_description: 'Active Employee' },
+                         { employee_status_description: 'Inactive Employee' }
                        ])
 
 # Employee Types
@@ -32,15 +30,15 @@ JobStatus.create!([
 
 # Job Types
 JobType.create!([
-                  { job_type_description: 'Woodwork' },
-                  { job_type_description: 'Ceiling Fix' },
-                  { job_type_description: 'Floor Fix' },
-                  { job_type_description: 'Paint Job' },
-                  { job_type_description: 'Roof Fix' },
-                  { job_type_description: 'Fill a Hole' },
-                  { job_type_description: 'Patch a Wall' },
-                  { job_type_description: 'Tear Down a Wall' },
-                  { job_type_description: 'Fix a Light Structure' }
+                  { job_type_description: 'Flooring' },
+                  { job_type_description: 'Walls' },
+                  { job_type_description: 'Equipment' },
+                  { job_type_description: 'Furniture' },
+                  { job_type_description: 'Wood Work' },
+                  { job_type_description: 'Miscellaneous' },
+                  { job_type_description: 'Restroom Remodel' },
+                  { job_type_description: 'Ceiling Tile' },
+                  { job_type_description: 'Paint Job' }
                 ])
 
 # Materials
@@ -147,14 +145,14 @@ State.create!([
 SubcontractorStatus.create!([
                               { subcontractor_status_description: 'Active' },
                               { subcontractor_status_description: 'Terminated' },
-                              { subcontractor_status_description: 'Temporary' }
+                              { subcontractor_status_description: 'Inactive' }
                             ])
 
 # Task Statuses
 TaskStatus.create!([
-                     { task_status_description: 'Active' },
-                     { task_status_description: 'Waiting for another Task to finish' },
-                     { task_status_description: 'Completed' }
+                     { task_status_description: 'In Progress' },
+                     { task_status_description: 'Completed' },
+                     { task_status_description: 'Not Started' }
                    ])
 
 # Customers
