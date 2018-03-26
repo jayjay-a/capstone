@@ -186,8 +186,8 @@ MaterialList.create!([
 
 # Project Notes
 ProjectNote.create!([
-                      { project_id: 1, project_notes: 'Cannot start working until 2013-05-05', project_note_date: '2013-04-21', note_owner: 'April Garay' },
-                      ])
+                      { project_id: 1, project_notes: 'Cannot start working until 2013-05-05', project_note_date: '2013-04-21', note_owner: 'April Garay' }
+                    ])
 
 # Subcontractors
 Subcontractor.create!([
@@ -215,20 +215,20 @@ Task.create!([
 # Task Notes
 TaskNote.create!([
                    { task_id: 1, task_notes: "1. Remove approximately 28ln ft of 3\" x 12' trim under tile at bar on first and second booth
-               2. Remove trim at table 315 (9\" x 12' & 4\" x 12')
-               3. Remove window sill at table 315
-               4. Remove booths
-               5. Open Wall
-               6. water test exterior wall & window to see where water is entering
-               7. Paint inside wall & studs with oil base kilz to prevent humidity
-               8. install water membrane
-               9. Install 4 ft of concrete board @ bottom of wall
-               10. Install plywood
-               11. Tape & Float
-               12. Install, stain, & varnish new wall & window trim - seal back of wood to prevent from warping
-               13. Install booths", task_note_owner: 'Alex Garay', task_note_date: '2013-05-23' },
+             2. Remove trim at table 315 (9\" x 12' & 4\" x 12')
+             3. Remove window sill at table 315
+             4. Remove booths
+             5. Open Wall
+             6. water test exterior wall & window to see where water is entering
+             7. Paint inside wall & studs with oil base kilz to prevent humidity
+             8. install water membrane
+             9. Install 4 ft of concrete board @ bottom of wall
+             10. Install plywood
+             11. Tape & Float
+             12. Install, stain, & varnish new wall & window trim - seal back of wood to prevent from warping
+             13. Install booths", task_note_owner: 'Alex Garay', task_note_date: '2013-05-23' },
                    { task_id: 1, task_notes: "1. Remove and replace header trim on vestibule doors & secure the closers.
-               2. Repair nail pops at the first booth in the bar", task_note_owner: 'Alex Garay', task_note_date: '2013-05-23' }
+             2. Repair nail pops at the first booth in the bar", task_note_owner: 'Alex Garay', task_note_date: '2013-05-23' }
                  ])
 
 # Assignments
