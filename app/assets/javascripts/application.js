@@ -49,6 +49,11 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
     $(document).ready(function(){ //footer modal
         $('.modal').modal();
     });
+
+  $("input[name='suboremp']:radio")
+    .change(function() {
+      $("#sub").toggle($(this).val() == "button_one");
+      $("#emp").toggle($(this).val() == "button_two"); });
           
 })
 
