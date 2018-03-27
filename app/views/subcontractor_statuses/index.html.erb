@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Subcontractor Statuses</h1>
+Download:
+<%= link_to 'CSV', subcontractor_statuses_path(format: "csv") %> |
+<%= link_to 'Excel', subcontractor_statuses_path(format: "xls") %>
 
 <table class="responsive-table">
   <thead>

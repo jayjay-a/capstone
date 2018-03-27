@@ -2,24 +2,20 @@
 
 <h1>Subcontractors</h1>
 
-Download:
-<%= link_to 'CSV', subcontractors_path(format: "csv") %> |
-<%= link_to 'Excel', subcontractors_path(format: "xls") %>
-
 <table class="responsive-table">
   <thead>
-    <tr>
-      <th>Subcontractor status</th>
-      <th>Subcontractor name</th>
-      <th>Subcontractor phone</th>
-      <th>Subcontractor email</th>
-      <th>Company</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Subcontractor status</th>
+    <th>Subcontractor name</th>
+    <th>Subcontractor phone</th>
+    <th>Subcontractor email</th>
+    <th>Company</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @subcontractors.each do |subcontractor| %>
+  <% @subcontractors.each do |subcontractor| %>
       <tr>
         <td><%= subcontractor.subcontractor_status.subcontractor_status_description %></td>
         <td><%= subcontractor.subcontractor_name %></td>
@@ -30,7 +26,7 @@ Download:
         <td><%= link_to 'Edit', edit_subcontractor_path(subcontractor) %></td>
         <td><%= link_to 'Destroy', subcontractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
