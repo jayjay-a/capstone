@@ -3,10 +3,17 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   # GET /projects.json
+
+  
   def index
-    @projects = Project.all
+    @search = Project.ransack(params[:q]) #for ransack
+    @projects = @search.result
   end
 
+  def search #for ransack
+    index
+    render :index
+  end
   # GET /projects/1
   # GET /projects/1.json
   def show

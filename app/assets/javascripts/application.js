@@ -29,7 +29,8 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
     $(document).ready(function(){ //datepicker
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
-            showDaysInNextAndPreviousMonths: true
+            showDaysInNextAndPreviousMonths: true,
+            showClearBtn: true
         });
     });
 
@@ -44,7 +45,11 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
     $(document).ready(function(){ //sidenav mobile
         $('.sidenav').sidenav();
     });
-    $('.sidenav').sidenav();
+
+    $(document).ready(function(){ //footer modal
+        $('.modal').modal();
+    });
+          
 })
 
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields
