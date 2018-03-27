@@ -10,7 +10,7 @@ class BigintToInt < ActiveRecord::Migration[5.1]
     change_column :job_notes,               :job_note_id,               :integer
     change_column :job_statuses,            :job_status_id,             :integer
     change_column :job_types,               :job_type_id,               :integer
-    change_column :materials,                :material_id,               :integer
+    change_column :materials,                :material_id,              :integer
     change_column :material_lists,          :material_list_id,          :integer
     change_column :projects,                :project_id,                :integer
     change_column :project_notes,           :project_note_id,           :integer
