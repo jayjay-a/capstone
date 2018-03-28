@@ -1,18 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Subcontractor:</strong>
-  <%= @assignment.subcontractor.subcontractor_name %>
+  <strong>Assigned:</strong>
+  <%= @assignment.subcontractor.try(:subcontractor_name) %>
+  <%= @assignment.employee.try(:first_name) %>
 </p>
 
 <p>
   <strong>Task:</strong>
   <%= @assignment.task.task_description %>
-</p>
-
-<p>
-  <strong>Employee:</strong>
-  <%= @assignment.employee.first_name %>
 </p>
 
 <p>

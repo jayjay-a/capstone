@@ -2,6 +2,27 @@
 
 <h1>Projects</h1>
 
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">  <i class="material-icons">filter_list</i></a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <%# ransack%>
+      <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
+        <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+        <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+
+        <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}, :class => 'browser-default'%>
+
+        <%= f.submit 'Submit', class: "btn" %>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 <table class="responsive-table">
   <thead>
     <tr>
@@ -10,10 +31,11 @@
       <th>Customer branch</th>
       <th>Project type</th>
       <th>Project status</th>
-      
-      <% if false %><%# block comment%>
+
       <th>Project start date</th>
       <th>Project end date</th>
+      <% if false %><%# block comment%>
+      
       <th>Bid submit date</th>
       <th>Bid material cost</th>
       <th>Bid cost of labor</th>
@@ -36,9 +58,10 @@
         <td><%= project.project_type.project_type_description %></td>
         <td><%= project.project_status.project_status_description %></td>
 
-      <% if false %><%# block comment%>
         <td><%= project.project_start_date %></td>
         <td><%= project.project_end_date %></td>
+      <% if false %><%# block comment%>
+        
         <td><%= project.bid_submit_date %></td>
         <td><%= project.bid_material_cost %></td>
         <td><%= project.bid_cost_of_labor %></td>
