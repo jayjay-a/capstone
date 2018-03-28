@@ -21,49 +21,53 @@
 //= require unobtrusive_flash_ui
 
 
-document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks
-    $(document).ready(function() { //select2 drop boxes
-        $('select').select2();
-    });
-   
-    $(document).ready(function(){ //datepicker
-        $('.datepicker').datepicker({
+document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   
+    $(document).ready(function(){ //loads
+        $('select').select2({     //select2
+            placeholder: function(){ //sets placeholder based on data-placeholder in the field
+                $(this).data('placeholder');
+            },
+            allowClear: true
+        });
+
+        $('.datepicker').datepicker({ //datepicker
             format: 'yyyy-mm-dd',
             showDaysInNextAndPreviousMonths: true,
             showClearBtn: true
         });
+
+        $(".dropdown-trigger").dropdown(); //dropdown on the navbar
+
+        UnobtrusiveFlash.flashOptions['timeout'] = 5000; //shows and hides flash messagetimeout in milliseconds
+
+        $('.sidenav').sidenav(); //show side navbar on mobile
+
+        $('.modal').modal(); //display modals
     });
 
-    $(document).ready(function(){ //dropdown on navbar
-        $(".dropdown-trigger").dropdown();
+    $("input[name='suboremp']:radio") //shows/hide divs on assignments for subcontracors or employees
+        .change(function() {
+            $("#sub").toggle($(this).val() == "button_one");
+            $("#emp").toggle($(this).val() == "button_two");
+            $("#subbies").select2('val', 'All'); //clears based on radio button pressing
+            $("#empies").select2('val', null);
     });
 
-    $(document).ready(function(){ //hides flash message
-        UnobtrusiveFlash.flashOptions['timeout'] = 5000; // milliseconds
-    });
-
-    $(document).ready(function(){ //sidenav mobile
-        $('.sidenav').sidenav();
-    });
-
-    $(document).ready(function(){ //footer modal
-        $('.modal').modal();
-    });
-
-  $("input[name='suboremp']:radio")
-    .change(function() {
-      $("#sub").toggle($(this).val() == "button_one");
-      $("#emp").toggle($(this).val() == "button_two"); });
-          
 })
 
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields
     $(document).ready(function() { //select2 drop boxes
-        $('select').select2();
-    });
+        $('select').select2({     //select2
+            placeholder: function(){ //sets placeholder based on data-placeholder in the field
+                $(this).data('placeholder');
+            },
+            allowClear: true
+        });
 
-    $(document).ready(function(){
-        $('.datepicker').datepicker({
+        $('.datepicker').datepicker({ //datepicker
+            format: 'yyyy-mm-dd',
+            showDaysInNextAndPreviousMonths: true,
+            showClearBtn: true
         });
     });
 });
