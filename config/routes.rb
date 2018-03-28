@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'aaron_reports/report1'
+
+  get 'aaron_reports/report2'
+
+  get 'aaron_reports/report3'
+
   resources :task_statuses
   resources :task_notes
   resources :tasks
