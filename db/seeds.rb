@@ -75,9 +75,9 @@ ProjectStatus.create!([
 # Project Types
 ProjectType.create!([
                       { project_type_description: 'Restaurant' },
-                      { project_type_description: 'Grocery Store' },
-                      { project_type_description: 'Hotel' },
-                      { project_type_description: 'School' }
+                      { project_type_description: 'Commercial' },
+                      { project_type_description: 'Residential' },
+                      { project_type_description: 'Government' }
                     ])
 
 # Rental Equipment
