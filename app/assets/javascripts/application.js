@@ -50,7 +50,7 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
             $("#sub").toggle($(this).val() == "button_one");
             $("#emp").toggle($(this).val() == "button_two");
             $("#subbies").select2('val', 'All'); //clears based on radio button pressing
-            $("#empies").select2('val', null);
+            $("#empies").select2('val', 'All');
     });
 
 })

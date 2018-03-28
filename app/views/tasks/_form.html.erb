@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :job_id  %>
-    <%= form.collection_select :job_id, Job.all, :job_id, :job_id ,{prompt: "Select a job"} %>
+    <%= form.collection_select :job_id, Job.all, :job_id, :job_id, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Job' } %>
   </div>
 
   <div class="field">
     <%= form.label :task_status_id  %>
-    <%= form.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description ,{prompt: "Select a job"} %>
+    <%= form.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status' } %>
   </div>
 
   <div class="field">

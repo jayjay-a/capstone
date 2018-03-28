@@ -2,12 +2,12 @@
 <div id = nested-fields class="nested-fields" style="width:400px">
   <div class="field">
     <%= f.label :job_type_id  %>
-    <%= f.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description ,{prompt: "Select a status"}%>
+    <%= f.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Project' } %>
   </div>
 
   <div class="field">
     <%= f.label :job_status_id  %>
-    <%= f.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description ,{prompt: "Select a type"}%>
+    <%= f.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
   </div>
 
   <div class="field">

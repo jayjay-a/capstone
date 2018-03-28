@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :rental_equipment_id  %>
-    <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description ,{prompt: "Select a rental equipment"}%>
+    <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
   </div>
 
   <div class="field">
