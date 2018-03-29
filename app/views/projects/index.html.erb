@@ -31,11 +31,10 @@
       <th>Customer branch</th>
       <th>Project type</th>
       <th>Project status</th>
-
       <th>Project start date</th>
       <th>Project end date</th>
-      <% if false %><%# block comment%>
-      
+
+      <% if false %><%# block comment These are unused for the index page%>
       <th>Bid submit date</th>
       <th>Bid material cost</th>
       <th>Bid cost of labor</th>
@@ -44,7 +43,9 @@
       <th>Bid freight</th>
       <th>Tax rate</th>
       <th>Bid amount</th>
-      <%end%>
+      <th>Bid fuel cost</th>
+      <th>Bid lodging cost</th>
+      <%end%><%# end block comment%>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -57,11 +58,10 @@
         <td><%= project.customer.customer_branch %></td>
         <td><%= project.project_type.project_type_description %></td>
         <td><%= project.project_status.project_status_description %></td>
-
         <td><%= project.project_start_date %></td>
         <td><%= project.project_end_date %></td>
-      <% if false %><%# block comment%>
-        
+
+        <% if false %><%# block comment These are unused for the index page%>
         <td><%= project.bid_submit_date %></td>
         <td><%= project.bid_material_cost %></td>
         <td><%= project.bid_cost_of_labor %></td>
@@ -70,7 +70,9 @@
         <td><%= project.bid_freight %></td>
         <td><%= project.tax_rate %></td>
         <td><%= project.bid_amount %></td> %>
-      <% end %>
+        <td><%= project.bid_fuel_cost %></td>
+        <td><%= project.bid_lodging_cost %></td> %>
+        <% end %><%# end block comment%>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
