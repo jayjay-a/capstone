@@ -2,7 +2,7 @@
 
 <p>
   <strong>Assigned:</strong>
-  <%= @assignment.subcontractor.try(:subcontractor_name) %>
+  <%= @assignment.subcontractor.try(:subcontractor_name) %> <%# they will only fill in one or the other so this is if not nil show person (sub or emp) %>
   <%= @assignment.employee.try(:first_name) %>
 </p>
 

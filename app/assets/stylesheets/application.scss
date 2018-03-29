@@ -25,14 +25,15 @@
   @extend .blue-text, .text-lighten-4;
 }
 
- #nested-fields {
+ #nested-fields { //nested forms bad style. remove this when we change how nested forms look
     border: solid 3px;
     padding: 10px;
     text-align: center;
     margin-bottom: 10px;
 }
 
-#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper {
+//flash messages
+#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper { 
   padding: 10px 0;
   background: rgb(212, 237, 218);
   color: rgb(21,87,36);
@@ -43,8 +44,9 @@
   background: rgb(248, 215, 218);
   color: rgb(114,28,36);
 }
+//end flash messages
 
-textarea{
+textarea{ //fixes textareas having a weird width and exceeding nested forms
   width: 100%!important;
 }
 
@@ -82,7 +84,3 @@ textarea{
     list-style: square;
   }
 //end form errors
-
-.hide {
-  display: none;
-}
