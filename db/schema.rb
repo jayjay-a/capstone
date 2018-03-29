@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319221657) do
+ActiveRecord::Schema.define(version: 20180329022653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,13 +146,13 @@ ActiveRecord::Schema.define(version: 20180319221657) do
     t.date "project_start_date"
     t.date "project_end_date"
     t.date "bid_submit_date"
-    t.decimal "bid_material_cost"
-    t.decimal "bid_cost_of_labor"
-    t.decimal "bid_cost_of_permits"
-    t.decimal "bid_equipment_rental"
-    t.decimal "bid_freight"
+    t.decimal "bid_material_cost", precision: 8, scale: 2
+    t.decimal "bid_cost_of_labor", precision: 8, scale: 2
+    t.decimal "bid_cost_of_permits", precision: 8, scale: 2
+    t.decimal "bid_equipment_rental", precision: 8, scale: 2
+    t.decimal "bid_freight", precision: 8, scale: 2
     t.decimal "tax_rate"
-    t.decimal "bid_amount"
+    t.decimal "bid_amount", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(version: 20180319221657) do
   create_table "rental_lists", primary_key: "rental_list_id", id: :serial, force: :cascade do |t|
     t.integer "project_id"
     t.integer "rental_equipment_id"
-    t.decimal "rental_price"
+    t.decimal "rental_price", precision: 8, scale: 2
     t.string "cost_frequency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
