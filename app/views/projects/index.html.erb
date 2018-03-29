@@ -2,14 +2,14 @@
 
 <h1>Projects</h1>
 
-  <!-- Modal Trigger -->
+  <%# button to open up the modal at bottom which has filter options%> 
   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">  <i class="material-icons">filter_list</i></a>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal bottom-sheet">
+  <%# modal at bottom for filtering options %>
+  <div id="modal1" class="modal bottom-sheet"><%# start modal %>
     <div class="modal-content">
       <h4>Modal Header</h4>
-      <%# ransack%>
+      <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
         <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
         <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
@@ -19,10 +19,8 @@
         <%= f.submit 'Submit', class: "btn" %>
       <% end %>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+  </div> <%# end modal %>
+  
 <table class="responsive-table">
   <thead>
     <tr>
@@ -34,7 +32,7 @@
       <th>Project start date</th>
       <th>Project end date</th>
 
-      <% if false %><%# block comment These are unused for the index page%>
+      <% comment do %> these are unused in the index page. just here for easy access if needed
       <th>Bid submit date</th>
       <th>Bid material cost</th>
       <th>Bid cost of labor</th>
@@ -45,7 +43,7 @@
       <th>Bid amount</th>
       <th>Bid fuel cost</th>
       <th>Bid lodging cost</th>
-      <%end%><%# end block comment%>
+      <% comment end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -61,7 +59,7 @@
         <td><%= project.project_start_date %></td>
         <td><%= project.project_end_date %></td>
 
-        <% if false %><%# block comment These are unused for the index page%>
+        <% comment do %> these are unused in the index page. just here for easy access if needed
         <td><%= project.bid_submit_date %></td>
         <td><%= project.bid_material_cost %></td>
         <td><%= project.bid_cost_of_labor %></td>
@@ -72,7 +70,8 @@
         <td><%= project.bid_amount %></td> %>
         <td><%= project.bid_fuel_cost %></td>
         <td><%= project.bid_lodging_cost %></td> %>
-        <% end %><%# end block comment%>
+        <% comment end %>
+
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>

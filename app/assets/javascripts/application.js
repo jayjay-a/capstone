@@ -33,8 +33,9 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
         $('.datepicker').datepicker({ //datepicker
             format: 'yyyy-mm-dd',
             showDaysInNextAndPreviousMonths: true,
-            showClearBtn: true
+            showClearBtn: true,
         });
+        $(".datepicker").datepicker('setDate', new Date()); //defaults current date as default selected
 
         $(".dropdown-trigger").dropdown(); //dropdown on the navbar
 

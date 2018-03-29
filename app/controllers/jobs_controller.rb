@@ -76,5 +76,6 @@ class JobsController < ApplicationController
       params.require(:job).permit(:project_id, :job_type_id, :job_status_id, :job_start_date, :job_end_date, 
                                   tasks_attributes:[:id, :task_id, :job_id, :task_status_id, :task_start_date, :task_end_date, :task_description, :_destroy],
                                   job_notes_attributes:[:id, :job_note_id, :job_id, :job_notes, :job_note_owner, :job_note_date, :_destroy])
+                                  #model_attributes are nested. id and _destroy are required cause it prevents a bug where the fields duplicate when update/deleting
     end
 end

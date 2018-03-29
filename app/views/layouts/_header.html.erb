@@ -1,7 +1,7 @@
-<!-- Dropdown Structure -->
+<%# dropdown contents on navbar %>
 <ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
+  <li><a href="#!">replace or</a></li>
+  <li><a href="#!">delete this</a></li>
   <li class="divider"></li>
   <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
 </ul>
@@ -9,9 +9,10 @@
 <nav>
   <div class="nav-wrapper">
     <a href="#" class="brand-logo">Rollingstone Construction</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
 
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+    <ul class="right hide-on-med-and-down">
       <li class="<%= 'active' if params[:controller] == 'home' %>">
         <a class="nav-link" <%= link_to 'Home', root_path %></a>
       </li>
@@ -24,15 +25,13 @@
         <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
       </li>
 
-      <!-- Dropdown Trigger -->
+      <%# drop down trigger on navbar%>
       <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
-
     </ul>
-
-
   </div>
 </nav>
 
+<%# side navbar for mobile %>
 <ul class="sidenav" id="mobile-demo">
   <li class="<%= 'active' if params[:controller] == 'home' %>">
     <a class="nav-link" <%= link_to 'Home', root_path %></a>
@@ -49,7 +48,7 @@
 </ul>
 
 
-<% if false%> this is just how an if logged in, show or dont show login button and logout. this used bootstrap styling
+<%comment do %> this is just how an if logged in, show or dont show login button and logout. this used bootstrap styling
     <%# sign in%>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
@@ -68,4 +67,5 @@
         </li>
     </ul>
   </div>
-</nav><% end %>
+</nav>
+<% comment end %>
