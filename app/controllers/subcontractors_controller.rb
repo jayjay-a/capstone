@@ -5,11 +5,19 @@ class SubcontractorsController < ApplicationController
   # GET /subcontractors.json
   def index
     @subcontractors = Subcontractor.all
+    respond_to do |format|
+      format.html
+      format.pdf
+    end
   end
 
   # GET /subcontractors/1
   # GET /subcontractors/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf
+    end
   end
 
   # GET /subcontractors/new

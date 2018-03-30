@@ -1,0 +1,41 @@
+<h1>Report11</h1>
+<p id="notice"><%= notice %></p>
+
+<h2>Show Bid Information from Project</h2>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Project ID</th>
+    <th>Project Status Description</th>
+    <th>Bid Submit Date</th>
+    <th>Bid Amount</th>
+    <th>Bid Cost of Labor</th>
+    <th>Bid Cost of Permits</th>
+    <th>Bid Equipment Rental</th>
+    <th>Bid Freight</th>
+    <th>Bid Fuel Cost</th>
+    <th>Bid Lodging Cost</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @bidinfo_proj.each do |bids| %>
+      <tr>
+        <td><%= bids['project_id'] %></td>
+        <td><%= bids['project_status_description'] %></td>
+        <td><%= bids['bid_submit_date'] %></td>
+        <td><%= bids['bid_amount'] %></td>
+        <td><%= bids['bid_cost_of_labor'] %></td>
+        <td><%= bids['bid_cost_of_permits'] %></td>
+        <td><%= bids['bid_equipment_rental'] %></td>
+        <td><%= bids['bid_freight'] %></td>
+        <td><%= bids['bid_fuel_cost'] %></td>
+        <td><%= bids['bid_lodging_cost'] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

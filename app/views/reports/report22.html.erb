@@ -1,0 +1,33 @@
+<h1>Report22</h1>
+<p id="notice"><%= notice %></p>
+
+<h2>Show Active Tasks</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Job ID</th>
+    <th>Task ID</th>
+    <th>Task Status ID</th>
+    <th>Task Start Date</th>
+    <th>Task End Date</th>
+    <th>Task Description</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @active_tasks.each do |a| %>
+      <tr>
+        <td><%= a['job_id'] %></td>
+        <td><%= a['task_id'] %></td>
+        <td><%= a['task_status_id'] %></td>
+        <td><%= a['task_start_date'] %></td>
+        <td><%= a['task_end_date'] %></td>
+        <td><%= a['task_description'] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+

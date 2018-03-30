@@ -1,0 +1,26 @@
+<h1>Report17</h1>
+<p id="notice"><%= notice %></p>
+
+<h2>Show Frequency of a Subcontractor being Hired</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Subcontractor Name</th>
+    <th>Job Type Description</th>
+    <th>Number Frequency</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sub_freq.each do |freq| %>
+      <tr>
+        <td><%= freq['subcontractor_name'] %></td>
+        <td><%= freq['job_type_description'] %></td>
+        <td><%= freq['frequency'] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
