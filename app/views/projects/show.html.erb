@@ -65,24 +65,32 @@
   <%= @project.bid_amount %>
 </p>
 
-<%#= if want link to show all jobs link_to @project.jobs, jobs_url(:project_id => @project.id)%>
+<p>
+  <strong>Bid fuel cost:</strong>
+  <%= @project.bid_fuel_cost %>
+</p>
+
+<p>
+  <strong>Bid lodging cost:</strong>
+  <%= @project.bid_lodging_cost %>
+</p>
+
 
 <%# jobs of a project%>
-<%# find a bettesr styling for this!!!%>
   <strong>Jobs:</strong></br>
     <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
       <li><%= link_to job.job_type.job_type_description, job %></li>
-      <!--show tasks as well
+      <% comment do %>if you want task on the jobs for the show, uncomment this
       <ul>
         <% job.tasks.each do |task| %> <%# iterates through each related task to this job%>
          <li><%= task.task_description %></li>
-        <% end %>
-      </ul>-->
+        <% end %> 
+      <% comment end %>
+      </ul>
   <% end %>
 </br>
 
 <%# notes of a project%>
-<%# find a bettesr styling for this!!!%>
   <strong>Notes:</strong></br>
     <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
       <%= simple_format(project_note.project_notes) %>

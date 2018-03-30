@@ -72,5 +72,6 @@ class TasksController < ApplicationController
       params.require(:task).permit(:job_id, :task_status_id, :task_start_date, :task_end_date, :task_description,
                                     task_notes_attributes:[:id, :task_note_id, :task_id, :task_notes, :task_note_owner, :task_note_date, :_destroy],
                                     assignments_attributes:[:id, :assignment_id, :subcontractor_id, :task_id, :employee_id, :assignment_date, :_destroy])
+                                    #model_attributes are nested. id and _destroy are required cause it prevents a bug where the fields duplicate when update/deleting
     end
 end
