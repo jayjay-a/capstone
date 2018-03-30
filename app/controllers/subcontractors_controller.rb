@@ -5,6 +5,11 @@ class SubcontractorsController < ApplicationController
   # GET /subcontractors.json
   def index
     @subcontractors = Subcontractor.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data  @subcontractors.to_csv}
+      format.xls {send_data  @subcontractors.to_csv(col_sep: "\t")}
+    end
   end
 
   # GET /subcontractors/1
