@@ -40,13 +40,13 @@
         <td><%= project.project_start_date %></td>
         <td><%= project.project_end_date %></td>
         <td><%= project.bid_submit_date %></td>
-        <td><%= project.bid_material_cost %></td>
-        <td><%= project.bid_cost_of_labor %></td>
-        <td><%= project.bid_cost_of_permits %></td>
-        <td><%= project.bid_equipment_rental %></td>
-        <td><%= project.bid_freight %></td>
+        <td><%= number_to_currency(project.bid_material_cost) %></td>
+        <td><%= number_to_currency(project.bid_cost_of_labor) %></td>
+        <td><%= number_to_currency(project.bid_cost_of_permits) %></td>
+        <td><%= number_to_currency(project.bid_equipment_rental) %></td>
+        <td><%= number_to_currency(project.bid_freight) %></td>
         <td><%= project.tax_rate %></td>
-        <td><%= project.bid_amount %></td> %>
+        <td><%= number_to_currency(project.bid_amount) %></td> %>
       <% end %>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
