@@ -68,7 +68,12 @@ Where project_statuses.project_status_description = 'project ongoing'
 "
     # Anil's SQL Report
     @active_projects = ActiveRecord::Base.connection.execute(sql)
-  end
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
+    end
   def report5
     sql = "Select
 projects.project_id,
@@ -84,6 +89,11 @@ INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
 Where project_statuses.project_status_description = 'Awaiting Bid Response';
 "
     @waiting_bid = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
     #Anil's SQL Report
   end
   def report6
@@ -103,6 +113,11 @@ Where project_statuses.project_status_description = 'Awaiting Bid Response';
     Where project_notes.project_note_date = current_date::date;"
 
     @notes_today = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
     #Anil's SQL Report
   end
   def report7
@@ -121,6 +136,11 @@ Where project_statuses.project_status_description = 'Awaiting Bid Response';
 
 
     @bid_denied = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
     #Anil's SQL Report
   end
   def report8
@@ -139,6 +159,11 @@ Where project_statuses.project_status_description = 'Awaiting Bid Response';
     WHERE projects.project_id = 6;"
 
     @specific_matlist = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
     #Anil's SQL Report
 
   end
@@ -148,6 +173,11 @@ FROM customers c
 JOIN projects p ON c.customer_id = p.customer_id;
 "
     @specific_custproj = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kristina's SQL Report
 
@@ -158,6 +188,11 @@ JOIN jobs j ON p.project_id = j.project_id
 JOIN job_types jt ON j.job_type_id = jt.job_type_id;"
 
     @specific_jobproj = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kristina's SQL Report
   def report11
@@ -169,6 +204,11 @@ FROM PROJECTS p
 JOIN PROJECT_STATUSES ps ON p.project_status_id = ps.project_status_id;"
 
     @bidinfo_proj = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kristina's SQL Report
   def report12
@@ -179,6 +219,11 @@ JOIN job_types jt ON j.job_type_id = jt.job_type_id
 JOIN tasks t ON j.job_id = t.job_id;"
 
     @alltask_job = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kristina's SQL Report
 
@@ -188,6 +233,11 @@ FROM projects p
 JOIN project_types pt ON p.project_type_id = pt.project_type_id;
 "
     @specific_projtype = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report14
@@ -212,6 +262,11 @@ JOIN jobs j ON p.project_id = j.project_id
 JOIN job_types jt ON j.job_type_id = jt.job_type_id;
 "
     @duration_job = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kristina's SQL Report
 
@@ -224,6 +279,11 @@ JOIN job_types jt ON j.job_type_id = jt.job_type_id
 JOIN tasks t ON t.job_id = j.job_id;
 "
     @duration_task = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report17
@@ -236,6 +296,11 @@ JOIN job_types jt ON j.job_type_id = jt.job_type_id
 GROUP BY subcontractor_name, job_type_description;
 "
     @sub_freq = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kristina's SQL Report
   def report18
@@ -247,6 +312,11 @@ INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
 WHERE job_statuses.job_status_description = 'Completed';
 "
     @complete_jobs = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kunle's SQL Report
   def report19
@@ -258,6 +328,11 @@ INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
 WHERE job_statuses.job_status_description = 'Ongoing'"
 
     @ongoing_jobs = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kunle's SQL Report
   def report20
@@ -271,6 +346,11 @@ on Rental_Equipments.rental_equipment_id = Rental_Lists.rental_equipment_id
 Where projects.Project_id = 7;
 "
     @specific_rentlist = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kunle's SQL Report
   def report21
@@ -279,6 +359,11 @@ From projects
 Where Project_start_date between current_date and current_date + 7;
 "
     @weekly_proj = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kunle's SQL Report
 
@@ -289,6 +374,11 @@ From Tasks
 Where task_status_id = 1;
 "
     @active_tasks = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report23
@@ -298,6 +388,11 @@ From Tasks
 Where task_status_id = 2;
 "
     @complete_tasks = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report24
@@ -305,6 +400,11 @@ Where task_status_id = 2;
 From projects
 Where Project_start_date between current_date and current_date + 30;"
     @monthly_proj = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report25
@@ -312,6 +412,11 @@ Where Project_start_date between current_date and current_date + 30;"
 From projects
 Where Project_start_date between current_date and current_date + 365;"
     @yearly_proj = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report26
@@ -319,6 +424,11 @@ Where Project_start_date between current_date and current_date + 365;"
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
             WHERE subst.subcontractor_status_description = 'Active';"
     @active_subs = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
 end
