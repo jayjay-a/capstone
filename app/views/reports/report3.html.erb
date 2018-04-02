@@ -2,6 +2,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Show Completed Projects</h2>
+Download:
+<%= link_to "Excel", reports_report3_path(format: "xlsx") %> |
+<%= link_to "PDF", reports_report3_path(format: "pdf") %>
 
 <table class="table">
   <thead>

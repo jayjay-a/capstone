@@ -8,6 +8,11 @@ class ReportsController < ApplicationController
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
             WHERE subst.subcontractor_status_description = 'Terminated';"
     @term_subs = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report2
@@ -18,6 +23,11 @@ JOIN Project_types projty ON proj.project_type_id = projty.project_type_id
 JOIN Project_statuses projstat on proj.project_status_id = projstat.project_status_id
 WHERE proj.bid_amount > 100;"
     @great_bids = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report3
@@ -35,6 +45,11 @@ INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
 Where project_statuses.project_status_description = 'project completed';"
 # Anil's SQL Report
     @complete_projects = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
 
   def report4
@@ -181,6 +196,11 @@ FROM projects p
 JOIN customers c ON p.customer_id = c.customer_id;
 "
     @duration_proj = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+    end
   end
   #Kristina's SQL Report
 

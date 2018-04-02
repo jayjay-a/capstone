@@ -2,6 +2,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Show Duration of Project</h2>
+Download:
+<%= link_to "Excel", reports_report14_path(format: "xlsx") %> |
+<%= link_to "PDF", reports_report14_path(format: "pdf") %>
 
 <table class="table">
   <thead>
@@ -21,7 +24,7 @@
         <td><%= duration['project_id'] %></td>
         <td><%= duration['customer_name'] %></td>
         <td><%= duration['customer_branch'] %></td>
-        <!--<td><%= duration['job_type_description'] %></td> -->
+        <!--<td><!-- %= duration['job_type_description'] %></td> -->
         <td><%= duration['days'] %></td>
       </tr>
   <% end %>

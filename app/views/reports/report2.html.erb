@@ -2,6 +2,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Projects with Bid Amount greater than X dollars</h2>
+Download:
+<%= link_to "Excel", reports_report2_path(format: "xlsx") %> |
+<%= link_to "PDF", reports_report2_path(format: "pdf") %>
 
 <table class="table">
   <thead>

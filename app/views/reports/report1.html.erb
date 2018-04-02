@@ -2,6 +2,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Terminated Subcontractors</h2>
+Download:
+<%= link_to "Excel", reports_report1_path(format: "xlsx") %> |
+<%= link_to "PDF", reports_report1_path(format: "pdf") %>
 
 <table class="table">
   <thead>
