@@ -56,6 +56,16 @@
 </p>
 
 <p>
+  <strong>Bid fuel cost:</strong>
+  <%= number_to_currency(@project.bid_fuel_cost) %>
+</p>
+
+<p>
+  <strong>Bid lodging cost:</strong>
+  <%= number_to_currency(@project.bid_lodging_cost) %>
+</p>
+
+<p>
   <strong>Tax rate:</strong>
   <%= @project.tax_rate %>
 </p>
@@ -63,16 +73,6 @@
 <p>
   <strong>Bid amount:</strong>
   <%= number_to_currency(@project.bid_amount) %>
-</p>
-
-<p>
-  <strong>Bid fuel cost:</strong>
-  <%= @project.bid_fuel_cost %>
-</p>
-
-<p>
-  <strong>Bid lodging cost:</strong>
-  <%= @project.bid_lodging_cost %>
 </p>
 
 
