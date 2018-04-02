@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   resources :subcontractors
   resources :materials
   resources :customer_statuses
-  resources :customers
+  resources :customers do
+    collection do
+      match 'search' => 'customers#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
   resources :assignments
 
   root 'home#index'
