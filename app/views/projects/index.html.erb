@@ -5,28 +5,50 @@
   <%# button to open up the modal at bottom which has filter options%> 
   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">  <i class="material-icons">filter_list</i></a>
 
-  <%# modal at bottom for filtering options %>
+  <%# filter modal at bottom for filtering options %>
   <div id="modal1" class="modal bottom-sheet"><%# start modal %>
     <div class="modal-content">
-      <h4>Modal Header</h4>
+      <h4>Filters</h4>
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
         <div class="row">
-        <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker col s2' %>
-        <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker col s2' %>
+          <div class="field col s2">
+            <%= f.label :project_start_date_gteq, "Start Date" %>
+            <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :project_start_date_lteq, "End Date" %>
+            <%= f.text_field :project_start_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
         </div>
 
-        <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
-        <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a status' }%>
-        <%= f.collection_select :customer_id_eq, Customer.all, :customer_id, :customer_and_branch, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a customer' } %>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+          </div>
+          <div class="field col s2">
+            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a status' }%>
+          </div>
+          <div class="field col s2">
+            <%= f.collection_select :customer_id_eq, Customer.all, :customer_id, :customer_and_branch, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a customer' } %>
+          </div>
+        </div>
 
-        <%= f.text_field :bid_amount_gteq, id: :project_bid_amount %>
-        <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.label :bid_amount_gteq %>
+            <%= f.text_field :bid_amount_gteq, id: :project_bid_amount %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :bid_amount_lteq %>
+            <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
+          </div>
+        </div>
 
         <%= f.submit 'Submit', class: "btn" %>
       <% end %>
     </div>
-  </div> <%# end modal %>
+  </div> <%# end filter modal %>
   
 <table class="responsive-table">
   <thead>
@@ -38,6 +60,7 @@
       <th>Project status</th>
       <th>Project start date</th>
       <th>Project end date</th>
+      <th>Bid amount</th>
 
       <% comment do %> these are unused in the index page. just here for easy access if needed
       <th>Bid submit date</th>
@@ -47,7 +70,6 @@
       <th>Bid equipment rental</th>
       <th>Bid freight</th>
       <th>Tax rate</th>
-      <th>Bid amount</th>
       <th>Bid fuel cost</th>
       <th>Bid lodging cost</th>
       <% comment end %>
@@ -65,6 +87,7 @@
         <td><%= project.project_status.project_status_description %></td>
         <td><%= project.project_start_date %></td>
         <td><%= project.project_end_date %></td>
+        <td><%= project.bid_amount %></td>
 
         <% comment do %> these are unused in the index page. just here for easy access if needed
         <td><%= project.bid_submit_date %></td>
@@ -74,7 +97,6 @@
         <td><%= project.bid_equipment_rental %></td>
         <td><%= project.bid_freight %></td>
         <td><%= project.tax_rate %></td>
-        <td><%= project.bid_amount %></td> %>
         <td><%= project.bid_fuel_cost %></td>
         <td><%= project.bid_lodging_cost %></td> %>
         <% comment end %>
