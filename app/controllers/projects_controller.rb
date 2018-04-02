@@ -3,10 +3,17 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   # GET /projects.json
+
+  
   def index
-    @projects = Project.all
+    @search = Project.ransack(params[:q]) #for ransack
+    @projects = @search.result
   end
 
+  def search #for ransack
+    index
+    render :index
+  end
   # GET /projects/1
   # GET /projects/1.json
   def show
@@ -69,7 +76,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:customer_id, :project_status_id, :project_type_id, :project_start_date, :project_end_date, :bid_submit_date, :bid_material_cost, :bid_cost_of_labor, :bid_cost_of_permits, :bid_equipment_rental, :bid_freight, :tax_rate, :bid_amount, 
+      params.require(:project).permit(:customer_id, :project_status_id, :project_type_id, :project_start_date, :project_end_date, :bid_submit_date, :bid_material_cost, :bid_cost_of_labor, :bid_cost_of_permits, :bid_equipment_rental, :bid_freight, :tax_rate, :bid_amount, :bid_fuel_cost, :bid_lodging_cost,
                                       jobs_attributes:[:id, :job_id, :project_id, :job_type_id, :job_status_id, :job_start_date, :job_end_date, :_destroy, 
                                                         tasks_attributes:[:id, :task_id, :job_id, :task_status_id, :task_start_date, :task_end_date, :task_description, :_destroy]
                                                       ],
@@ -77,5 +84,6 @@ class ProjectsController < ApplicationController
                                       material_lists_attributes:[:id, :material_list_id, :project_id, :material_id, :unit_price, :quantity, :_destroy],
                                       rental_lists_attributes:[:id, :renta_list_id, :project_id, :rental_equipment_id, :rental_price, :cost_frequency, :_destroy]
                                       )
+                                      #model_attributes are nested. id and _destroy are required cause it prevents a bug where the fields duplicate when update/deleting
     end
 end

@@ -11,6 +11,7 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
+  <%# rememberable isnt used as of right now 20180329 %>
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -23,4 +24,5 @@
   </div>
 <% end %>
 
+<%# remove sign ups from the shared links%>
 <%= render "devise/shared/links" %>

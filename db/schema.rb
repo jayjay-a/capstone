@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329022653) do
+ActiveRecord::Schema.define(version: 20180319221657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,8 @@ ActiveRecord::Schema.define(version: 20180329022653) do
     t.decimal "bid_amount", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "bid_fuel_cost"
+    t.decimal "bid_lodging_cost"
   end
 
   create_table "rental_equipments", primary_key: "rental_equipment_id", id: :serial, force: :cascade do |t|

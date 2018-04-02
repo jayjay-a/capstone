@@ -9,23 +9,49 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *= require bootstrap-datepicker3
  *= require select2
- *= require select2-bootstrap
  */
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
- @import "bootstrap";
+ @import "materialize/components/color-variables";
+  $primary-color: #0d47a1 !default;
+  $secondary-color: #1976d2 !default;
+ @import 'materialize';
+ @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+ @import 'select2-materialize.scss';
+ @import 'unobtrusive_flash_ui';
 
- #nested-fields {
+.ilike-blue-container {
+  @extend .blue-text, .text-lighten-4;
+}
+
+ #nested-fields { //nested forms bad style. remove this when we change how nested forms look
     border: solid 3px;
     padding: 10px;
     text-align: center;
     margin-bottom: 10px;
 }
 
+//flash messages
+#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper { 
+  padding: 10px 0;
+  background: rgb(212, 237, 218);
+  color: rgb(21,87,36);
+  opacity: 1;
+}
+
+#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper.unobtrusive-flash-error {
+  background: rgb(248, 215, 218);
+  color: rgb(114,28,36);
+}
+//end flash messages
+
+textarea{ //fixes textareas having a weird width and exceeding nested forms
+  width: 100%!important;
+}
+
 .navbar{
-    margin-bottom: 15px
+    margin-bottom: 15px;
 }
 
 //form errors
@@ -58,7 +84,3 @@
     list-style: square;
   }
 //end form errors
-
-.hide {
-  display: none;
-}

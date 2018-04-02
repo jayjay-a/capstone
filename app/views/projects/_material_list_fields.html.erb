@@ -1,9 +1,9 @@
-<%# these fields are added as a nested thing to project form%>
+<%# these fields are added as a nested form to project form%>
 <div id = nested-fields class="nested-fields" style="width:400px">
 
   <div class="field">
     <%= f.label :material_id  %>
-    <%= f.collection_select :material_id, Material.all, :material_id, :material_description ,{prompt: "Select a material"}%>
+    <%= f.collection_select :material_id, Material.all, :material_id, :material_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Material' } %>
   </div>
 
   <div class="field">
