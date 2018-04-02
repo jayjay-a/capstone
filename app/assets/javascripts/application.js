@@ -44,7 +44,16 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
         $('.sidenav').sidenav(); //show side navbar on mobile
 
         $('.modal').modal(); //display modals
+
     });
+
+    $(document).ready(function(){
+        $('ul.tabs').tabs({
+            swipeable : false,
+            responsiveThreshold : 1500
+        });
+    });
+
 
     $("input[name='suboremp']:radio") //shows/hide divs on assignments for subcontracors or employees
         .change(function() {

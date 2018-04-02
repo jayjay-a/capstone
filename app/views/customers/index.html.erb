@@ -1,22 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Customers</h1>
+<body>
+<div>
+  <h2 class="center-align" >Customers</h2>
+</div>
 
 <table class="responsive-table">
   <thead>
     <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Branch</th>
+      <th>Street</th>
+      <th>City and Zip</th>
       <th>State</th>
-      <th>Customer status</th>
-      <th>Customer name</th>
-      <th>Customer branch</th>
-      <th>Customer address 1</th>
-      <th>Customer address 2</th>
-      <th>Customer rep name 1</th>
-      <th>Customer rep name 2</th>
-      <th>Customer rep phone 1</th>
-      <th>Customer rep phone 2</th>
-      <th>Customer rep email 1</th>
-      <th>Customer rep email 2</th>
+      <th>First Rep</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Second Rep</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>ACTION</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,17 +28,17 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.state.state_name %></td>
         <td><%= customer.customer_status.customer_status_description %></td>
         <td><%= customer.customer_name %></td>
         <td><%= customer.customer_branch %></td>
         <td><%= customer.customer_address_1 %></td>
         <td><%= customer.customer_address_2 %></td>
+        <td><%= customer.state.state_name %></td>
         <td><%= customer.customer_rep_name_1 %></td>
-        <td><%= customer.customer_rep_name_2 %></td>
         <td><%= customer.customer_rep_phone_1 %></td>
-        <td><%= customer.customer_rep_phone_2 %></td>
         <td><%= customer.customer_rep_email_1 %></td>
+        <td><%= customer.customer_rep_name_2 %></td>
+        <td><%= customer.customer_rep_phone_2 %></td>
         <td><%= customer.customer_rep_email_2 %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
@@ -46,4 +50,11 @@
 
 <br>
 
-<%= link_to 'New Customer', new_customer_path %>
+
+<div class="right-align">
+  <button class="btn waves-effect waves-light" type="add_new" name="action">
+    <span class="Black-text text-darken-2"><%= link_to 'New Customer', new_customer_path %></span>
+    <i class="material-icons right">person_add</i>
+  </button>
+</div>
+
