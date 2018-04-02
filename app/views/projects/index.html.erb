@@ -3,10 +3,10 @@
 <h1>Projects</h1>
 
   <%# button to open up the modal at bottom which has filter options%> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">  <i class="material-icons">filter_list</i></a>
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter">  <i class="material-icons">filter_list</i></a>
 
   <%# filter modal at bottom for filtering options %>
-  <div id="modal1" class="modal bottom-sheet"><%# start modal %>
+  <div id="filter" class="modal bottom-sheet"><%# start modal %>
     <div class="modal-content">
       <h4>Filters</h4>
       <%# using ransack to search for these inputs%>
@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <%= f.submit 'Submit', class: "btn" %>
+        <%= f.submit 'Apply', class: "btn" %>
       <% end %>
     </div>
   </div> <%# end filter modal %>
