@@ -11,10 +11,17 @@
       <h4>Modal Header</h4>
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
-        <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-        <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+        <div class="row">
+        <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker col s2' %>
+        <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker col s2' %>
+        </div>
 
-        <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}, :class => 'browser-default'%>
+        <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+        <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a status' }%>
+        <%= f.collection_select :customer_id_eq, Customer.all, :customer_id, :customer_and_branch, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a customer' } %>
+
+        <%= f.text_field :bid_amount_gteq, id: :project_bid_amount %>
+        <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
 
         <%= f.submit 'Submit', class: "btn" %>
       <% end %>
