@@ -379,7 +379,7 @@ Project.create!([
 
 # Material Lists
 MaterialList.create!([
-                       { project_id: 1, material_id: 1, unit_price: '1.89`', quantity: '250' },
+                       { project_id: 1, material_id: 1, unit_price: '1.89', quantity: '250' },
                        { project_id: 2, material_id: 2, unit_price: '0.99', quantity: '523' },
                        { project_id: 3, material_id: 3, unit_price: '6.98', quantity: '103' },
                        { project_id: 4, material_id: 4, unit_price: '5.94', quantity: '97' },
