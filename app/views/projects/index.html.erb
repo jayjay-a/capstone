@@ -2,7 +2,7 @@
 
 <h1>Projects</h1>
 
-  <%# button to open up the modal at bottom which has filter options%> 
+  <%# button to open up the modal at bottom which has filter options%>
   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">  <i class="material-icons">filter_list</i></a>
 
   <%# modal at bottom for filtering options %>
@@ -20,7 +20,7 @@
       <% end %>
     </div>
   </div> <%# end modal %>
-  
+
 <table class="responsive-table">
   <thead>
     <tr>
@@ -40,10 +40,11 @@
       <th>Bid equipment rental</th>
       <th>Bid freight</th>
       <th>Tax rate</th>
-      <th>Bid amount</th>
       <th>Bid fuel cost</th>
       <th>Bid lodging cost</th>
+      <th>Bid amount</th>
       <% comment end %>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -61,15 +62,16 @@
 
         <% comment do %> these are unused in the index page. just here for easy access if needed
         <td><%= project.bid_submit_date %></td>
-        <td><%= project.bid_material_cost %></td>
-        <td><%= project.bid_cost_of_labor %></td>
-        <td><%= project.bid_cost_of_permits %></td>
-        <td><%= project.bid_equipment_rental %></td>
-        <td><%= project.bid_freight %></td>
+        <td><%= number_to_currency(project.bid_material_cost) %></td>
+        <td><%= number_to_currency(project.bid_cost_of_labor) %></td>
+        <td><%= number_to_currency(project.bid_cost_of_permits) %></td>
+        <td><%= number_to_currency(project.bid_equipment_rental) %></td>
+        <td><%= number_to_currency(project.bid_freight) %></td>
+        <td><%= number_to_currency(project.bid_fuel_cost) %></td>
+        <td><%= number_to_currency(project.bid_lodging_cost) %></td> %>
         <td><%= project.tax_rate %></td>
-        <td><%= project.bid_amount %></td> %>
-        <td><%= project.bid_fuel_cost %></td>
-        <td><%= project.bid_lodging_cost %></td> %>
+        <td><%= number_to_currency(project.bid_amount) %></td> %>
+
         <% comment end %>
 
         <td><%= link_to 'Show', project %></td>

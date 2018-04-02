@@ -32,27 +32,37 @@
 
 <p>
   <strong>Bid material cost:</strong>
-  <%= @project.bid_material_cost %>
+  <%= number_to_currency(@project.bid_material_cost) %>
 </p>
 
 <p>
-  <strong>Bid cost of labor decimal:</strong>
-  <%= @project.bid_cost_of_labor %>
+  <strong>Bid cost of labor:</strong>
+  <%= number_to_currency(@project.bid_cost_of_labor) %>
 </p>
 
 <p>
   <strong>Bid cost of permits:</strong>
-  <%= @project.bid_cost_of_permits %>
+  <%= number_to_currency(@project.bid_cost_of_permits) %>
 </p>
 
 <p>
   <strong>Bid equipment rental:</strong>
-  <%= @project.bid_equipment_rental %>
+  <%= number_to_currency(@project.bid_equipment_rental) %>
 </p>
 
 <p>
-  <strong>Bid freight decimal:</strong>
-  <%= @project.bid_freight %>
+  <strong>Bid freight:</strong>
+  <%= number_to_currency(@project.bid_freight) %>
+</p>
+
+<p>
+  <strong>Bid fuel cost:</strong>
+  <%= number_to_currency(@project.bid_fuel_cost) %>
+</p>
+
+<p>
+  <strong>Bid lodging cost:</strong>
+  <%= number_to_currency(@project.bid_lodging_cost) %>
 </p>
 
 <p>
@@ -62,17 +72,7 @@
 
 <p>
   <strong>Bid amount:</strong>
-  <%= @project.bid_amount %>
-</p>
-
-<p>
-  <strong>Bid fuel cost:</strong>
-  <%= @project.bid_fuel_cost %>
-</p>
-
-<p>
-  <strong>Bid lodging cost:</strong>
-  <%= @project.bid_lodging_cost %>
+  <%= number_to_currency(@project.bid_amount) %>
 </p>
 
 
