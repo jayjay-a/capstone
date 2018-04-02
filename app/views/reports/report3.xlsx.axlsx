@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Show Completed Projects") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(ID, customer_name, project_status_description, project_type_id, bid_submit_date, project_start_date, project_end_date)
+  
+  # each user is a row on your spreadsheet
+  @complete_projects.each do |item|
+    sheet.add_row [item['project_id'], item['customer_name'], item['project_status_description'], item['project_type_id'], item['bid_submit_date'], item['project_start_date'], item['project_end_date']]
+  end
+end
