@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20180402045428) do
   create_table "material_lists", primary_key: "material_list_id", id: :serial, force: :cascade do |t|
     t.integer "project_id"
     t.integer "material_id"
-    t.decimal "unit_price"
+    t.decimal "unit_price", precision: 8, scale: 2
     t.decimal "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
