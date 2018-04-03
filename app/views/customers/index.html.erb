@@ -27,10 +27,10 @@
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Branch</th>
-      <th>Status</th>
-      <th>Address</th>
+      <th><%= sort_link(@search, :customer_name, "Name") %></th>
+      <th><%= sort_link(@search, :customer_branch, "Branch") %></th>
+      <th><%= sort_link(@search, :customer_address_1, "Address") %></th>
+      <th><%= sort_link(@search, :customer_status_id, "Status") %></th>
       
       <% comment do %>these are unused in the index page. just here for easy access if needed
       <th>State</th>
@@ -51,8 +51,8 @@
       <tr>
         <td><%= customer.customer_name %></td>
         <td><%= customer.customer_branch %></td>
-        <td><%= customer.customer_status.customer_status_description %></td>
         <td><%= customer.customer_address_1 %></td>
+        <td><%= customer.customer_status.customer_status_description %></td>
 
 
         <% comment do %>these are unused in the index page. just here for easy access if needed

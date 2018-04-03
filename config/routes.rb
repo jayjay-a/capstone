@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   resources :project_types
   resources :project_statuses
   resources :project_notes
-  resources :material_lists
+  resources :material_lists do
+    collection do
+      match 'search' => 'material_lists#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
   resources :projects do
     collection do
       match 'search' => 'projects#search', via: [:get, :post], as: :search #for ransack
@@ -24,7 +28,11 @@ Rails.application.routes.draw do
   end
   resources :subcontractor_statuses
   resources :subcontractors
-  resources :materials
+  resources :materials do
+    collection do
+      match 'search' => 'materials#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
   resources :customer_statuses
   resources :customers do
     collection do

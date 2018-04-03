@@ -4,7 +4,13 @@ class MaterialListsController < ApplicationController
   # GET /material_lists
   # GET /material_lists.json
   def index
-    @material_lists = MaterialList.all
+    @search = MaterialList.ransack(params[:q]) #for ransack
+    @material_lists = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /material_lists/1

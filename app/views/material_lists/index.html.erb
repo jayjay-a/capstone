@@ -2,13 +2,33 @@
 
 <h1>Material Lists</h1>
 
+  <%# button to open up the modal at bottom which has filter options%> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter">  <i class="material-icons">filter_list</i></a>
+
+  <%# filter modal at bottom for filtering options %>
+  <div id="filter" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Filters</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_material_lists_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.text_field :material_material_description_matches %>
+          </div>
+        </div>
+        <%= f.submit 'Apply', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end filter modal %>
+  
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Project</th>
-      <th>Material</th>
-      <th>Unit price</th>
-      <th>Quantity</th>
+      <th><%= sort_link(@search, :project_id) %></th>
+      <th><%= sort_link(@search, :material_material_description, "Material") %></th>
+      <th><%= sort_link(@search, :unit_price) %></th>
+      <th><%= sort_link(@search, :quantity) %></th>
+      <th><%= sort_link(@search, :totals) %></th> <%# this dont work %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +40,7 @@
         <td><%= material_list.material.material_description %></td>
         <td><%= material_list.unit_price %></td>
         <td><%= material_list.quantity %></td>
+        <td><%= material_list.total %></td>
         <td><%= link_to 'Show', material_list %></td>
         <td><%= link_to 'Edit', edit_material_list_path(material_list) %></td>
         <td><%= link_to 'Destroy', material_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>

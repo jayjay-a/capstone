@@ -53,14 +53,14 @@
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Project ID</th>
-      <th>Customer</th>
-      <th>Customer branch</th>
-      <th>Project type</th>
-      <th>Project status</th>
-      <th>Project start date</th>
-      <th>Project end date</th>
-      <th>Bid amount</th>
+      <th><%= sort_link(@search, :project_id) %></th>
+      <th><%= sort_link(@search, :customer_id) %></th>
+      <th><%= sort_link(@search, :customer_customer_branch, "Branch") %></th> <%# fix this %>
+      <th><%= sort_link(@search, :project_type) %></th>
+      <th><%= sort_link(@search, :project_status) %></th>
+      <th><%= sort_link(@search, :project_start_date) %></th>
+      <th><%= sort_link(@search, :project_end_date) %></th>
+      <th><%= sort_link(@search, :bid_amount) %></th>
 
       <% comment do %> these are unused in the index page. just here for easy access if needed
       <th>Bid submit date</th>
