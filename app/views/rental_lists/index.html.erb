@@ -68,7 +68,7 @@
       <tr>
         <td><%= rental_list.project_id %></td>
         <td><%= rental_list.rental_equipment.rental_description %></td>
-        <td><%= rental_list.rental_price %></td>
+        <td><%= number_to_currency(rental_list.rental_price) %></td>
         <td><%= rental_list.cost_frequency %></td>
         <td><%= link_to 'Show', rental_list %></td>
         <td><%= link_to 'Edit', edit_rental_list_path(rental_list) %></td>
