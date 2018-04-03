@@ -4,8 +4,15 @@ class EmployeeTypesController < ApplicationController
   # GET /employee_types
   # GET /employee_types.json
   def index
-    @employee_types = EmployeeType.all
+    @search = EmployeeType.ransack(params[:q]) #for ransack
+    @employee_types = @search.result
   end
+
+  def search #for ransack
+    index
+    render :index
+  end
+
 
   # GET /employee_types/1
   # GET /employee_types/1.json

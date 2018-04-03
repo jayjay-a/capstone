@@ -4,8 +4,15 @@ class StatesController < ApplicationController
   # GET /states
   # GET /states.json
   def index
-    @states = State.all
+    @search = State.ransack(params[:q]) #for ransack
+    @states = @search.result
   end
+
+  def search #for ransack
+    index
+    render :index
+  end
+
 
   # GET /states/1
   # GET /states/1.json

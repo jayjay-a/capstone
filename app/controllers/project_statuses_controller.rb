@@ -4,7 +4,13 @@ class ProjectStatusesController < ApplicationController
   # GET /project_statuses
   # GET /project_statuses.json
   def index
-    @project_statuses = ProjectStatus.all
+    @search = ProjectStatus.ransack(params[:q]) #for ransack
+    @project_statuses = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /project_statuses/1

@@ -4,7 +4,13 @@ class RentalEquipmentsController < ApplicationController
   # GET /rental_equipments
   # GET /rental_equipments.json
   def index
-    @rental_equipments = RentalEquipment.all
+    @search = RentalEquipment.ransack(params[:q]) #for ransack
+    @rental_equipments = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /rental_equipments/1
