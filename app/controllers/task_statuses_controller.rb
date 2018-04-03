@@ -4,8 +4,15 @@ class TaskStatusesController < ApplicationController
   # GET /task_statuses
   # GET /task_statuses.json
   def index
-    @task_statuses = TaskStatus.all
+    @search = TaskStatus.ransack(params[:q]) #for ransack
+    @task_statuses = @search.result
   end
+
+  def search #for ransack
+    index
+    render :index
+  end
+
 
   # GET /task_statuses/1
   # GET /task_statuses/1.json

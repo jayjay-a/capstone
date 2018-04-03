@@ -4,8 +4,15 @@ class JobStatusesController < ApplicationController
   # GET /job_statuses
   # GET /job_statuses.json
   def index
-    @job_statuses = JobStatus.all
+    @search = JobStatus.ransack(params[:q]) #for ransack
+    @job_statuses = @search.result
   end
+
+  def search #for ransack
+    index
+    render :index
+  end
+
 
   # GET /job_statuses/1
   # GET /job_statuses/1.json

@@ -4,7 +4,13 @@ class JobNotesController < ApplicationController
   # GET /job_notes
   # GET /job_notes.json
   def index
-    @job_notes = JobNote.all
+    @search = JobNote.ransack(params[:q]) #for ransack
+    @job_notes = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /job_notes/1

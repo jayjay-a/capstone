@@ -4,7 +4,13 @@ class SubcontractorStatusesController < ApplicationController
   # GET /subcontractor_statuses
   # GET /subcontractor_statuses.json
   def index
-    @subcontractor_statuses = SubcontractorStatus.all
+    @search = SubcontractorStatus.ransack(params[:q]) #for ransack
+    @subcontractor_statuses = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /subcontractor_statuses/1
