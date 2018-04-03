@@ -15,8 +15,16 @@ Rails.application.routes.draw do
       match 'search' => 'employees#search', via: [:get, :post], as: :search #for ransack
      end
   end
-  resources :rental_lists
-  resources :rental_equipments
+  resources :rental_lists do
+    collection do
+      match 'search' => 'rental_lists#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
+  resources :rental_equipments do
+    collection do
+      match 'search' => 'rental_equipments#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
   resources :project_types
   resources :project_statuses
   resources :project_notes

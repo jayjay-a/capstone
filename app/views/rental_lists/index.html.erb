@@ -2,6 +2,56 @@
 
 <h1>Rental Lists</h1>
 
+  <%# button to open up the modal at bottom which has filter options%> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter">  <i class="material-icons">filter_list</i></a>
+
+  <%# filter modal at bottom for filtering options %>
+  <div id="filter" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Filters</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_rental_lists_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.label :rental_price_gteq %>
+            <%= f.text_field :rental_price_gteq %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :rental_price_lteq %>
+            <%= f.text_field :rental_price_lteq %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.label :cost_frequency %>
+            <%= f.text_field :cost_frequency_cont %>
+         </div>
+        </div>
+        <%= f.submit 'Apply', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end filter modal %>
+
+  <%# button to open up the modal at bottom which has search %> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons">search</i></a>
+
+  <%# search modal at bottom for search %>
+  <div id="search" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Search</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_rental_lists_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s6">
+            <%= f.label :rental_list_id %>
+            <%= f.text_field :rental_equipment_rental_description_or_cost_frequency_cont %>
+          </div>
+        </div>
+        <%= f.submit 'Search', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end search modal %>
+
 <table class="responsive-table">
   <thead>
     <tr>
