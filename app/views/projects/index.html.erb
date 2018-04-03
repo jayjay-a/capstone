@@ -13,24 +13,26 @@
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
         <div class="row">
           <div class="field col s2">
-            <%= f.label :project_start_date_gteq, "Start Date" %>
+            <%= f.label :project_start_date_gteq, "Minimum start date" %>
             <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
           <div class="field col s2">
-            <%= f.label :project_start_date_lteq, "End Date" %>
+            <%= f.label :project_start_date_lteq, "Maximum start date" %>
             <%= f.text_field :project_start_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
         </div>
 
         <div class="row">
           <div class="field col s2">
+            <%= f.label :project_end_date_gteq, "Minimum end date" %>
+            <%= f.text_field :project_end_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :project_end_date_lteq, "Maximum end date" %>
+            <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+          <div class="field col s2">
             <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
-          </div>
-          <div class="field col s2">
-            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a status' }%>
-          </div>
-          <div class="field col s2">
-            <%= f.collection_select :customer_id_eq, Customer.all, :customer_id, :customer_and_branch, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a customer' } %>
           </div>
         </div>
 
@@ -43,7 +45,10 @@
             <%= f.label :bid_amount_lteq %>
             <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
           </div>
-        </div>
+          <div class="field col s2">
+            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a status' }%>
+          </div>
+        </div>      
 
         <%= f.submit 'Apply', class: "btn" %>
       <% end %>
