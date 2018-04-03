@@ -49,6 +49,26 @@
       <% end %>
     </div>
   </div> <%# end filter modal %>
+
+  <%# button to open up the modal at bottom which has search %> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons">search</i></a>
+
+  <%# search modal at bottom for search %>
+  <div id="search" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Search</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s6">
+            <%= f.label :customer_id %>
+            <%= f.text_field :customer_customer_name_cont %>
+          </div>
+        </div>
+        <%= f.submit 'Search', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end search modal %>
   
 <table class="responsive-table">
   <thead>

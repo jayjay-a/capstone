@@ -2,24 +2,25 @@
 
 <h1>Materials</h1>
 
-  <%# button to open up the modal at bottom which has filter options%> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#filter">  <i class="material-icons">filter_list</i></a>
+  <%# button to open up the modal at bottom which has search%> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons">search</i></a>
 
-  <%# filter modal at bottom for filtering options %>
-  <div id="filter" class="modal bottom-sheet"><%# start modal %>
+  <%# search modal at bottom for searching material desc %>
+  <div id="search" class="modal bottom-sheet"><%# start modal %>
     <div class="modal-content">
-      <h4>Filters</h4>
+      <h4>Search</h4>
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_materials_path, html: { method: :post } do |f| %>
         <div class="row">
           <div class="field col s6">
-            <%= f.text_field :material_description_matches %>
+            <%= f.label :material_id %>
+            <%= f.text_field :material_description_cont %>
           </div>
         </div>
-        <%= f.submit 'Apply', class: "btn" %>
+        <%= f.submit 'Search', class: "btn" %>
       <% end %>
     </div>
-  </div> <%# end filter modal %>
+  </div> <%# end search modal %>
 
 <table class="responsive-table">
   <thead>
