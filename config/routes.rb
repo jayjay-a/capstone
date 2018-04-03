@@ -47,7 +47,11 @@ Rails.application.routes.draw do
       match 'search' => 'customers#search', via: [:get, :post], as: :search #for ransack
      end
   end
-  resources :assignments
+  resources :assignments do
+    collection do
+      match 'search' => 'assignments#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
 
   root 'home#index'
 
