@@ -31,7 +31,11 @@ Rails.application.routes.draw do
      end
   end
   resources :subcontractor_statuses
-  resources :subcontractors
+  resources :subcontractors do
+    collection do
+      match 'search' => 'subcontractors#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
   resources :materials do
     collection do
       match 'search' => 'materials#search', via: [:get, :post], as: :search #for ransack
