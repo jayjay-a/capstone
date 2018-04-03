@@ -18,12 +18,14 @@ class ReportsController < ApplicationController
 
   #projects with bid greater than x dollars
   def report2
+    @bid_amount_in = params[:q]
+    
     sql = "SELECT proj.project_id, cust.customer_name, cust.customer_branch, projty.project_type_description, projstat.project_status_description
            FROM Projects proj
            JOIN Customers cust ON proj.customer_id = cust.customer_id
            JOIN Project_types projty ON proj.project_type_id = projty.project_type_id
            JOIN Project_statuses projstat on proj.project_status_id = projstat.project_status_id
-           WHERE proj.bid_amount > 100;"
+           WHERE proj.bid_amount > #{@bid_amount_in};"
 
     @great_bids = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|

@@ -6,6 +6,12 @@ Download:
 <%= link_to "Excel", reports_report2_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report2_path(format: "pdf") %>
 
+<%= form_tag reports_report2_path, method: :get do %>
+<%= label_tag(:q, "Bid amount >") %>
+<%= text_field_tag :q, @bid_amount_input %>
+<%= submit_tag("submit") %>
+<% end %>
+
 <table class="table">
   <thead>
   <tr>
@@ -32,3 +38,5 @@ Download:
 </table>
 
 <br>
+
+
