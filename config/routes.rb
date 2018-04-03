@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :employee_types
   resources :employee_statuses
   resources :states
-  resources :employees
+  resources :employees do
+    collection do
+      match 'search' => 'employees#search', via: [:get, :post], as: :search #for ransack
+     end
+  end
   resources :rental_lists
   resources :rental_equipments
   resources :project_types
