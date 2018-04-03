@@ -238,6 +238,7 @@ class ReportsController < ApplicationController
     sql = "SELECT project_id, project_type_description
            FROM projects p
            JOIN project_types pt ON p.project_type_id = pt.project_type_id;"
+
     @specific_projtype = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -246,11 +247,12 @@ class ReportsController < ApplicationController
     end
   end
 
+  # show duration of project - kristina
   def report14
     sql = "SELECT p.project_id, customer_name, customer_branch, project_end_date - project_start_date AS days
-FROM projects p
-JOIN customers c ON p.customer_id = c.customer_id;
-"
+            FROM projects p
+            JOIN customers c ON p.customer_id = c.customer_id;"
+
     @duration_proj = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -258,15 +260,15 @@ JOIN customers c ON p.customer_id = c.customer_id;
       format.pdf
     end
   end
-  #Kristina's SQL Report
-
+ 
+  #show duration of job in project - kristina
   def report15
     sql = "SELECT p.project_id, customer_name, customer_branch, jt.job_type_description, job_end_date - job_start_date AS days
-FROM projects p
-JOIN customers c ON p.customer_id = c.customer_id
-JOIN jobs j ON p.project_id = j.project_id
-JOIN job_types jt ON j.job_type_id = jt.job_type_id;
-"
+           FROM projects p
+           JOIN customers c ON p.customer_id = c.customer_id
+           JOIN jobs j ON p.project_id = j.project_id
+           JOIN job_types jt ON j.job_type_id = jt.job_type_id;"
+
     @duration_job = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -274,16 +276,16 @@ JOIN job_types jt ON j.job_type_id = jt.job_type_id;
       format.pdf
     end
   end
-  #Kristina's SQL Report
-
+  
+  # show duration of task in project
   def report16
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, job_type_description, task_description, task_end_date - task_start_date AS days
-FROM projects p
-JOIN customers c ON p.customer_id = c.customer_id
-JOIN jobs j ON p.project_id = j.project_id
-JOIN job_types jt ON j.job_type_id = jt.job_type_id
-JOIN tasks t ON t.job_id = j.job_id;
-"
+           FROM projects p
+           JOIN customers c ON p.customer_id = c.customer_id
+           JOIN jobs j ON p.project_id = j.project_id
+           JOIN job_types jt ON j.job_type_id = jt.job_type_id
+           JOIN tasks t ON t.job_id = j.job_id;"
+
     @duration_task = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -292,15 +294,16 @@ JOIN tasks t ON t.job_id = j.job_id;
     end
   end
 
+  #show frequency of subcontractor being hired - kristina
   def report17
     sql = "SELECT s.SUBCONTRACTOR_NAME, jt.job_type_description, COUNT(a.SUBCONTRACTOR_ID) AS frequency
-FROM ASSIGNMENTS a
-JOIN SUBCONTRACTORS s ON a.subcontractor_id = s.subcontractor_id
-JOIN tasks t ON t.task_id = a.task_id
-JOIN jobs j ON t.job_id = j.job_id
-JOIN job_types jt ON j.job_type_id = jt.job_type_id
-GROUP BY subcontractor_name, job_type_description;
-"
+           FROM ASSIGNMENTS a
+           JOIN SUBCONTRACTORS s ON a.subcontractor_id = s.subcontractor_id
+           JOIN tasks t ON t.task_id = a.task_id
+           JOIN jobs j ON t.job_id = j.job_id
+           JOIN job_types jt ON j.job_type_id = jt.job_type_id
+           GROUP BY subcontractor_name, job_type_description;"
+
     @sub_freq = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -308,15 +311,16 @@ GROUP BY subcontractor_name, job_type_description;
       format.pdf
     end
   end
-  #Kristina's SQL Report
+  
+  #show completed projects - kunle
   def report18
-    sql= "Select projects.Project_Id, jobs.job_id, jobs.job_status_id,
-job_statuses.job_status_description
-FROM jobs
-INNER Join Projects on projects.project_id = jobs.project_id
-INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
-WHERE job_statuses.job_status_description = 'Completed';
-"
+    sql = "SELECT projects.Project_Id, jobs.job_id, jobs.job_status_id,
+           job_statuses.job_status_description
+           FROM jobs
+           INNER Join Projects on projects.project_id = jobs.project_id
+           INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
+           WHERE job_statuses.job_status_description = 'Completed';"
+
     @complete_jobs = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -324,14 +328,15 @@ WHERE job_statuses.job_status_description = 'Completed';
       format.pdf
     end
   end
-  #Kunle's SQL Report
+
+  #show ongoing projects -kunle
   def report19
-    sql= "Select projects.Project_Id, jobs.job_id, jobs.job_status_id,
-job_statuses.job_status_description
-FROM jobs
-INNER Join Projects on projects.project_id = jobs.project_id
-INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
-WHERE job_statuses.job_status_description = 'Ongoing'"
+    sql = "SELECT projects.Project_Id, jobs.job_id, jobs.job_status_id,
+           job_statuses.job_status_description
+           FROM jobs
+           INNER Join Projects on projects.project_id = jobs.project_id
+           INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
+           WHERE job_statuses.job_status_description = 'Ongoing';"
 
     @ongoing_jobs = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
@@ -340,17 +345,18 @@ WHERE job_statuses.job_status_description = 'Ongoing'"
       format.pdf
     end
   end
-  #Kunle's SQL Report
+
+  #show rental list for this project -kunle
   def report20
-    sql= "Select Projects.project_ID, Rental_Lists.rental_list_id,
-Rental_Lists.rental_price, Rental_Lists.cost_frequency,
-Rental_Equipments.rental_equipment_id, Rental_Equipments.rental_description
-FROM Rental_Lists
-INNER Join Projects on Projects.project_id = Rental_Lists.project_id
-INNER Join Rental_Equipments
-on Rental_Equipments.rental_equipment_id = Rental_Lists.rental_equipment_id
-Where projects.Project_id = 7;
-"
+    sql = "SELECT Projects.project_ID, Rental_Lists.rental_list_id,
+           Rental_Lists.rental_price, Rental_Lists.cost_frequency,
+           Rental_Equipments.rental_equipment_id, Rental_Equipments.rental_description
+           FROM Rental_Lists
+           INNER Join Projects on Projects.project_id = Rental_Lists.project_id
+           INNER Join Rental_Equipments
+           on Rental_Equipments.rental_equipment_id = Rental_Lists.rental_equipment_id
+           WHERE projects.Project_id = 7;"
+
     @specific_rentlist = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -358,12 +364,13 @@ Where projects.Project_id = 7;
       format.pdf
     end
   end
-  #Kunle's SQL Report
+
+  #show projects for this month-kunle
   def report21
-    sql= "Select Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
-From projects
-Where Project_start_date between current_date and current_date + 7;
-"
+    sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
+          FROM projects
+          WHERE Project_start_date between current_date and current_date + 7;"
+
     @weekly_proj = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -373,12 +380,13 @@ Where Project_start_date between current_date and current_date + 7;
   end
   #Kunle's SQL Report
 
+  #show active tasks
   def report22
-    sql= "Select task_id, job_id, task_status_id, task_start_date, task_end_date,
-Task_description
-From Tasks
-Where task_status_id = 1;
-"
+    sql = "SELECT task_id, job_id, task_status_id, task_start_date, task_end_date,
+           Task_description
+           FROM Tasks
+           WHERE task_status_id = 1;"
+
     @active_tasks = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -387,12 +395,13 @@ Where task_status_id = 1;
     end
   end
 
+  #show completed tasks
   def report23
-    sql = "Select task_id, job_id, task_status_id, task_start_date, task_end_date,
-Task_description
-From Tasks
-Where task_status_id = 2;
-"
+    sql = "SELECT task_id, job_id, task_status_id, task_start_date, task_end_date,
+           Task_description
+           FROM Tasks
+           WHERE task_status_id = 2;"
+
     @complete_tasks = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -401,10 +410,12 @@ Where task_status_id = 2;
     end
   end
 
+  #show projects for this week
   def report24
-    sql = "Select Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
-From projects
-Where Project_start_date between current_date and current_date + 30;"
+    sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
+           FROM projects
+           WHERE Project_start_date between current_date and current_date + 30;"
+
     @monthly_proj = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -413,10 +424,12 @@ Where Project_start_date between current_date and current_date + 30;"
     end
   end
 
+  #show projects for this year
   def report25
-    sql= "Select Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
-From projects
-Where Project_start_date between current_date and current_date + 365;"
+    sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
+           FROM projects
+           WHERE Project_start_date between current_date and current_date + 365;"
+
     @yearly_proj = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -425,10 +438,12 @@ Where Project_start_date between current_date and current_date + 365;"
     end
   end
 
+  #show active subcontractors
   def report26
     sql = "SELECT sub.subcontractor_name FROM Subcontractors sub
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
-            WHERE subst.subcontractor_status_description = 'Active';"
+           WHERE subst.subcontractor_status_description = 'Active';"
+           
     @active_subs = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
