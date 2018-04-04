@@ -81,8 +81,8 @@
         <td><%= customer.customer_address_2 %></td>
         <td><%= customer.customer_rep_name_1 %></td>
         <td><%= customer.customer_rep_name_2 %></td>
-        <td><%= customer.customer_rep_phone_1 %></td>
-        <td><%= customer.customer_rep_phone_2 %></td>
+        <td><%= number_to_phone(customer.customer_rep_phone_1, area_code: true) %></td>
+        <td><%= number_to_phone(customer.customer_rep_phone_2, area_code: true) %></td>
         <td><%= customer.customer_rep_email_1 %></td>
         <td><%= customer.customer_rep_email_2 %></td>
         <% comment end %>

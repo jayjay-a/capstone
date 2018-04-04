@@ -12,28 +12,31 @@
  *= require select2
  */
 
- // Custom bootstrap variables must be set or imported *before* bootstrap.
- @import "materialize/components/color-variables";
-  $primary-color: #0d47a1 !default;
-  $secondary-color: #1976d2 !default;
+ @import "materialize/components/color-variables"; //load these custom color variables BEFORE importing materialize!!
+  $primary-color: #0d47a1 !default; //navbar like stuff
+  $secondary-color: #1976d2 !default; //input and buttons and such"
  @import 'materialize';
- @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
- @import 'select2-materialize.scss';
- @import 'unobtrusive_flash_ui';
+ @import 'https://fonts.googleapis.com/icon?family=Material+Icons'; //icons for materialize
+ @import 'select2-materialize.scss'; //for select2 dropdown boxes styling
+ @import 'unobtrusive_flash_ui'; //flash messages
 
-.ilike-blue-container {
-  @extend .blue-text, .text-lighten-4;
+#nested-fields { //nested forms bad style. remove this when we change how nested forms look
+    border: solid 3px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+textarea{ //fixes textareas having a weird width and exceeding nested forms
+  width: 100%!important;
 }
 
 .modal { //makes it so stuff like a whole ass select box is not hidden
   overflow: visible;
 }
 
- #nested-fields { //nested forms bad style. remove this when we change how nested forms look
-    border: solid 3px;
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 10px;
+.navbar{
+    margin-bottom: 15px;
 }
 
 //flash messages
@@ -50,24 +53,14 @@
 }
 //end flash messages
 
-textarea{ //fixes textareas having a weird width and exceeding nested forms
-  width: 100%!important;
-}
-
-.navbar{
-    margin-bottom: 15px;
-}
-
 //form errors
-.field_with_errors {
-    padding: 2px;
-    background-color: red;
-    display: table;
+.field_with_errors label {
+    color: #F44336;
   }
   
   #error_explanation {
     width: 450px;
-    border: 2px solid red;
+    border: 2px solid #F44336;
     padding: 7px 7px 0;
     margin-bottom: 20px;
     background-color: #f0f0f0;
@@ -79,7 +72,7 @@ textarea{ //fixes textareas having a weird width and exceeding nested forms
     padding: 5px 5px 5px 15px;
     font-size: 100%;
     margin: -7px -7px 0;
-    background-color: #c00;
+    background-color: #d32f2f ;
     color: #fff;
   }
   
