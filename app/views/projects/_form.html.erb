@@ -126,40 +126,11 @@
 <%# Job Tab%> <%# adding jobs to project%>
   <div id="job" class="col s12">
     <p>
-    <div class="row">
-      <div class="field col s6">
-        <label>Job Type</label>
-        <select>
-          <option value="" disabled selected>Select a Type</option>
-        </select>
+      <div class="left-align">
+      <button class="btn waves-effect waves-light" type="add_new" name="action">
+        <%= link_to_add_association "Add Job", form, :jobs %>
+      </button>
       </div>
-
-      <div class="field col s6">
-        <label>Job Status</label>
-        <select>
-          <option value="" disabled selected>Select a Status</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field col s6">
-        <label>Job Start Date</label>
-        <input type="text" class="datepicker" PLACEHOLDER="YYYY-MM-DD">
-      </div>
-
-      <div class="field col s6">
-        <label>Job End Date</label>
-        <input type="text" class="datepicker" PLACEHOLDER="YYYY-MM-DD">
-      </div>
-    </div>
-
-    <%= form.fields_for :jobs do |job| %>
-      <%= render 'job_fields', f: job %>
-    <% end %>
-    <div class="link">
-      <%= link_to_add_association "Add Additional Jobs", form, :jobs %>
-    </div>
     </p>
   </div>
 

@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+
+<div class ="center-align">
   <div class="field">
     <%= form.label :project_id  %>
     <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Project' } %>
@@ -35,6 +37,7 @@
     <%= form.label :job_end_date %>
     <%= form.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
+</div>
 
   <%# adding tasks to job%>
   <div id="task">
