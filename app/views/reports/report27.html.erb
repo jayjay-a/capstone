@@ -1,0 +1,27 @@
+<h1>Report27</h1>
+<p id="notice"><%= notice %></p>
+
+<h2>Show Frequency of Rental Equipment used</h2>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Rental Item Description</th>
+    <th>Frequency Count</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @rent_freq.each do |notes| %>
+      <tr>
+        <td><%= notes['rental_description'] %></td>
+        <td><%= notes['count'] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

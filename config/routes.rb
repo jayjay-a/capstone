@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
   get 'reports/index' => 'reports#index'
 
+  get 'reports/report30'
+
+  get 'reports/report29'
+
+  get 'reports/report28'
+
+  get 'reports/report27'
+
   get 'reports/report23'
 
   get 'reports/report24'

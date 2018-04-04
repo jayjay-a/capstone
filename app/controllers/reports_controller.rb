@@ -256,9 +256,12 @@ class ReportsController < ApplicationController
 
   # show duration of project - kristina
   def report14
-    sql = "SELECT p.project_id, customer_name, customer_branch, project_end_date - project_start_date AS days
+    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, p.project_start_date, p.project_end_date, p.project_end_date - p.project_start_date AS days
             FROM projects p
-            JOIN customers c ON p.customer_id = c.customer_id;"
+            JOIN customers c ON p.customer_id = c.customer_id
+			      JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
+			      WHERE project_status_description = 'Project Completed'
+			      ORDER BY project_start_date, days desc;"
 
     @duration_proj = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
@@ -456,6 +459,69 @@ class ReportsController < ApplicationController
       format.html
       format.xlsx
       format.pdf
+    end
+  end
+
+  def report27
+    sql ="Select r.rental_description, count (r.rental_equipment_id)
+    from rental_lists rl
+    join rental_equipments r on r.rental_equipment_id = rl.rental_equipment_id
+    group by r.rental_equipment_id
+    order by r.rental_equipment_id ASC;"
+    @rent_freq = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+      #Anil's SQL Report
+    end
+  end
+
+  def report28
+    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
+ps.project_status_description, p.project_start_date, p.project_end_date, pn.project_notes
+FROM projects p
+JOIN customers c ON p.customer_id = c.customer_id
+JOIN project_types pt ON p.project_type_id = pt.project_type_id
+JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
+JOIN project_notes pn ON p.project_id = pn.project_id
+"
+    @proj_ntes = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+      #?'s SQL Report
+    end
+  end
+
+  def report29
+    sql = "SELECT Subcontractors.subcontractor_name, Tasks.task_description FROM Assignments
+JOIN Subcontractors ON Assignments.subcontractor_id = Subcontractors.subcontractor_id
+JOIN Tasks ON Assignments.task_id = Tasks.task_id
+WHERE Subcontractors.subcontractor_name = 'Philmon Tanuri'; "
+
+    @assi_task = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+      #Aaron's SQL Report
+    end
+  end
+
+  def report30
+    sql = "SELECT sub.subcontractor_name FROM Subcontractors sub
+LEFT OUTER JOIN Assignments a ON sub.subcontractor_id = a.subcontractor_id
+JOIN Subcontractor_Statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
+WHERE a.subcontractor_id IS NULL AND subst.subcontractor_status_description != 'Terminated';"
+
+    @inact_subs = ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.pdf
+      #Aaron's SQL Report
     end
   end
 

@@ -1,11 +1,12 @@
 wb = xlsx_package.workbook
 
-wb.add_worksheet(name: "Duration of Project") do |sheet|
+wb.add_worksheet(name: "Project Duration") do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w(project_id, customer_name, customer_branch, days_duration)
+  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Project_Start_Date Project_End_Date Days)
   
   # each user is a row on your spreadsheet
-  @duration_proj.each do |item|
-    sheet.add_row [item['project_id'], item['customer_name'], item['customer_branch'], item['days']]
+  @duration_proj.each do |p|
+   sheet.add_row [p['project_id'], p['customer_name'], p['customer_branch'],
+                                 p['project_start_date'], p['project_end_date'], p['days']]
   end
 end
