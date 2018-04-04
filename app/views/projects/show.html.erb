@@ -67,7 +67,7 @@
 
 <p>
   <strong>Tax rate:</strong>
-  <%= @project.tax_rate %>
+  <%= number_to_percentage(@project.tax_rate, precision: 2 ) %>
 </p>
 
 <p>
