@@ -14,14 +14,15 @@ class Project < ApplicationRecord
   validates :project_status_id, presence: true
   validates :project_type_id, presence: true
   validates :bid_submit_date, presence: true
-  validates :bid_material_cost, presence: true
-  validates :bid_cost_of_labor, presence: true
-  validates :bid_cost_of_permits, presence: true
-  validates :bid_equipment_rental, presence: true
-  validates :bid_freight, presence: true
-  validates :tax_rate, presence: true
-  validates :bid_fuel_cost, presence: true
-  validates :bid_amount, presence: true
+  validates :bid_material_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater'}
+  validates :bid_cost_of_labor, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_cost_of_permits, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_equipment_rental, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_freight, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :tax_rate, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_fuel_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_lodging_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_amount, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
 
   # cocoon
   accepts_nested_attributes_for :jobs, allow_destroy: true, reject_if: :all_blank

@@ -4,6 +4,6 @@ class RentalList < ApplicationRecord
 
   validates :project_id, presence: true
   validates :rental_equipment_id, presence: true
-  validates :rental_price, presence: true
-  validates :cost_frequency, presence: true
+  validates :rental_price, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :cost_frequency, presence: true, length: { maximum: 30 }
 end

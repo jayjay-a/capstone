@@ -8,6 +8,7 @@ class Task < ApplicationRecord
   validates :job_id, presence: true
   validates :task_status_id, presence: true
   validates :task_start_date, presence: true
+  validates :task_description, allow_nil: true, length: { maximum: 200 }
 
   #nested form
   accepts_nested_attributes_for :task_notes, allow_destroy: true, reject_if: :all_blank

@@ -4,6 +4,6 @@ class MaterialList < ApplicationRecord
 
   validates :project_id, presence: true
   validates :material_id, presence: true
-  validates :unit_price, presence: true
-  validates :quantity, presence: true
+  validates :unit_price, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }, length: 10
 end
