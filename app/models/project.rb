@@ -10,9 +10,9 @@ class Project < ApplicationRecord
   belongs_to :project_status
   belongs_to :project_type
 
-  validates :customer_id, presence: true, numericality: true
-  validates :project_status_id, presence: true, numericality: true
-  validates :project_type_id, presence: true, numericality: true
+  validates :customer_id, presence: true
+  validates :project_status_id, presence: true
+  validates :project_type_id, presence: true
   validates :bid_submit_date, presence: true
   validates :bid_material_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater'}
   validates :bid_cost_of_labor, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
