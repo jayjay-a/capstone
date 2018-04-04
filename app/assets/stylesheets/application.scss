@@ -25,6 +25,10 @@
   @extend .blue-text, .text-lighten-4;
 }
 
+.modal { //makes it so stuff like a whole ass select box is not hidden
+  overflow: visible;
+}
+
  #nested-fields { //nested forms bad style. remove this when we change how nested forms look
     border: solid 3px;
     padding: 10px;

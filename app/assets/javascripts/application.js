@@ -21,7 +21,7 @@
 
 
 $(document).ready(function(){ //loads
-    $('select').select2({     //select2
+    $('.select2').select2({     //select2
         placeholder: function(){ //sets placeholder based on data-placeholder in the field
             $(this).data('placeholder');
         },

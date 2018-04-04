@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :project_id  %>
-    <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Project' } %>
+    <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
   </div>
 
   <div class="field">
     <%= form.label :job_type_id %>
-    <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+    <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
   </div>
 
   <div class="field">
     <%= form.label :job_status_id %>
-    <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+    <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
   </div>
 
   <div class="field">
