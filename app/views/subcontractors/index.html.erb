@@ -19,7 +19,7 @@
       <tr>
         <td><%= subcontractor.subcontractor_status.subcontractor_status_description %></td>
         <td><%= subcontractor.subcontractor_name %></td>
-        <td><%= subcontractor.subcontractor_phone %></td>
+        <td><%= number_to_phone(subcontractor.subcontractor_phone, area_code: true) %></td>
         <td><%= subcontractor.subcontractor_email %></td>
         <td><%= subcontractor.company %></td>
         <td><%= link_to 'Show', subcontractor %></td>
