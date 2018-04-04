@@ -21,15 +21,19 @@
  @import 'select2-materialize.scss';
  @import 'unobtrusive_flash_ui';
 
-.ilike-blue-container {
-  @extend .blue-text, .text-lighten-4;
-}
-
- #nested-fields { //nested forms bad style. remove this when we change how nested forms look
+#nested-fields { //nested forms bad style. remove this when we change how nested forms look
     border: solid 3px;
     padding: 10px;
     text-align: center;
     margin-bottom: 10px;
+}
+
+textarea{ //fixes textareas having a weird width and exceeding nested forms
+  width: 100%!important;
+}
+
+.navbar{
+    margin-bottom: 15px;
 }
 
 //flash messages
@@ -46,24 +50,14 @@
 }
 //end flash messages
 
-textarea{ //fixes textareas having a weird width and exceeding nested forms
-  width: 100%!important;
-}
-
-.navbar{
-    margin-bottom: 15px;
-}
-
 //form errors
-.field_with_errors {
-    padding: 2px;
-    background-color: red;
-    display: table;
+.field_with_errors label {
+    color: #F44336;
   }
   
   #error_explanation {
     width: 450px;
-    border: 2px solid red;
+    border: 2px solid #F44336;
     padding: 7px 7px 0;
     margin-bottom: 20px;
     background-color: #f0f0f0;
@@ -75,7 +69,7 @@ textarea{ //fixes textareas having a weird width and exceeding nested forms
     padding: 5px 5px 5px 15px;
     font-size: 100%;
     margin: -7px -7px 0;
-    background-color: #c00;
+    background-color: #d32f2f ;
     color: #fff;
   }
   
