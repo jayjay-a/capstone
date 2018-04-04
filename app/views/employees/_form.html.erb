@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :employee_status_id %>
-    <%= form.collection_select :employee_status_id, EmployeeStatus.all, :employee_status_id, :employee_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+    <%= form.collection_select :employee_status_id, EmployeeStatus.all, :employee_status_id, :employee_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
   </div>
 
   <div class="field">
     <%= form.label :employee_type_id %>
-    <%= form.collection_select :employee_type_id, EmployeeType.all, :employee_type_id, :employee_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+    <%= form.collection_select :employee_type_id, EmployeeType.all, :employee_type_id, :employee_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
   </div>
 
  <div class="field">
     <%= form.label :state_id %>
-    <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a State' } %>
+    <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a State' } %>
   </div>
 
   <div class="field">

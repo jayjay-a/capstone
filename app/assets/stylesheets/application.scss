@@ -12,14 +12,13 @@
  *= require select2
  */
 
- // Custom bootstrap variables must be set or imported *before* bootstrap.
- @import "materialize/components/color-variables";
-  $primary-color: #0d47a1 !default;
-  $secondary-color: #1976d2 !default;
+ @import "materialize/components/color-variables"; //load these custom color variables BEFORE importing materialize!!
+  $primary-color: #0d47a1 !default; //navbar like stuff
+  $secondary-color: #1976d2 !default; //input and buttons and such"
  @import 'materialize';
- @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
- @import 'select2-materialize.scss';
- @import 'unobtrusive_flash_ui';
+ @import 'https://fonts.googleapis.com/icon?family=Material+Icons'; //icons for materialize
+ @import 'select2-materialize.scss'; //for select2 dropdown boxes styling
+ @import 'unobtrusive_flash_ui'; //flash messages
 
 #nested-fields { //nested forms bad style. remove this when we change how nested forms look
     border: solid 3px;
@@ -30,6 +29,10 @@
 
 textarea{ //fixes textareas having a weird width and exceeding nested forms
   width: 100%!important;
+}
+
+.modal { //makes it so stuff like a whole ass select box is not hidden
+  overflow: visible;
 }
 
 .navbar{

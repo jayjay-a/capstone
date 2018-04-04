@@ -3,7 +3,7 @@
 <h1>Projects</h1>
 
   <%# button to open up the modal at bottom which has filter options%> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#filter">  <i class="material-icons">filter_list</i></a>
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
 
   <%# filter modal at bottom for filtering options %>
   <div id="filter" class="modal bottom-sheet"><%# start modal %>
@@ -13,6 +13,24 @@
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
         <div class="row">
           <div class="field col s2">
+            <%= f.label :project_status_id %>
+            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a Status' }%>
+          </div>
+          <div class="field col s2">
+            <%= f.label :project_type_id %>
+            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :selected => 1, "data-placeholder" => 'Select a Type' } %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :bid_amount_gteq, "Minimum bid amount" %>
+            <%= f.text_field :bid_amount_gteq, id: :project_bid_amount %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :bid_amount_lteq, "Maximum bid amount" %>
+            <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field col s2">
             <%= f.label :project_start_date_gteq, "Minimum start date" %>
             <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
@@ -20,9 +38,6 @@
             <%= f.label :project_start_date_lteq, "Maximum start date" %>
             <%= f.text_field :project_start_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
-        </div>
-
-        <div class="row">
           <div class="field col s2">
             <%= f.label :project_end_date_gteq, "Minimum end date" %>
             <%= f.text_field :project_end_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
@@ -31,24 +46,7 @@
             <%= f.label :project_end_date_lteq, "Maximum end date" %>
             <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
-          <div class="field col s2">
-            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
-          </div>
         </div>
-
-        <div class="row">
-          <div class="field col s2">
-            <%= f.label :bid_amount_gteq %>
-            <%= f.text_field :bid_amount_gteq, id: :project_bid_amount %>
-          </div>
-          <div class="field col s2">
-            <%= f.label :bid_amount_lteq %>
-            <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
-          </div>
-          <div class="field col s2">
-            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a status' }%>
-          </div>
-        </div>      
 
         <%= f.submit 'Apply', class: "btn" %>
       <% end %>
@@ -56,7 +54,7 @@
   </div> <%# end filter modal %>
 
   <%# button to open up the modal at bottom which has search %> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons">search</i></a>
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons right">search</i>search</a>
 
   <%# search modal at bottom for search %>
   <div id="search" class="modal bottom-sheet"><%# start modal %>
@@ -81,8 +79,8 @@
       <th><%= sort_link(@search, :project_id) %></th>
       <th><%= sort_link(@search, :customer_id) %></th>
       <th><%= sort_link(@search, :customer_customer_branch, "Branch") %></th> <%# fix this %>
-      <th><%= sort_link(@search, :project_type) %></th>
-      <th><%= sort_link(@search, :project_status) %></th>
+      <th><%= sort_link(@search, :project_type_project_type_description, "Type") %></th>
+      <th><%= sort_link(@search, :project_status_project_status_description, "Status") %></th>
       <th><%= sort_link(@search, :project_start_date) %></th>
       <th><%= sort_link(@search, :project_end_date) %></th>
       <th><%= sort_link(@search, :bid_amount) %></th>
@@ -141,3 +139,7 @@
 <br>
 
 <%= link_to 'New Project', new_project_path %>
+
+<script>
+    $('select').formSelect();
+</script>

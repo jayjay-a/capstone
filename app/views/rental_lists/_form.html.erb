@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :project_id  %>
-    <%= form.collection_select :project_id, Project.all, :project_id, :project_id ,{prompt: "Select a project"}%>
+    <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' }%>
   </div>
 
   <div class="field">
     <%= form.label :rental_equipment_id  %>
-    <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
+    <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
   </div>
 
   <div class="field">

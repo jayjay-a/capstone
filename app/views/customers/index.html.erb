@@ -3,7 +3,7 @@
 <h1>Customers</h1>
 
   <%# button to open up the modal at bottom which has filter options%> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#filter">  <i class="material-icons">filter_list</i></a>
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
 
   <%# filter modal at bottom for filtering options %>
   <div id="filter" class="modal bottom-sheet"><%# start modal %>
@@ -13,10 +13,12 @@
       <%= search_form_for @search, url: search_customers_path, html: { method: :post } do |f| %>
         <div class="row">
           <div class="field col s2">
-            <%= f.collection_select :customer_status_id_eq, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+            <%= f.label :customer_status_id %>
+            <%= f.collection_select :customer_status_id_eq, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a Status' } %>
           </div>
           <div class="field col s2">
-            <%= f.collection_select :state_id_eq, State.all, :state_id, :state_name, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a State' } %>
+            <%= f.label :state_id %>
+            <%= f.collection_select :state_id_eq, State.all, :state_id, :state_name, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a State' } %>
           </div>
         </div>
         <%= f.submit 'Apply', class: "btn" %>
@@ -25,7 +27,7 @@
   </div> <%# end filter modal %>
 
   <%# button to open up the modal at bottom which has search %> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons">search</i></a>
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons right">search</i>search</a>
 
   <%# search modal at bottom for search %>
   <div id="search" class="modal bottom-sheet"><%# start modal %>
@@ -96,3 +98,7 @@
 <br>
 
 <%= link_to 'New Customer', new_customer_path %>
+
+<script>
+    $('select').formSelect();
+</script>
