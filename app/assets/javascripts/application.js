@@ -48,7 +48,7 @@ document.addEventListener("turbolinks:load", function() { //fixes having to refr
     });
 
     $(document).ready(function(){
-        $('ul.tabs').tabs({
+       $('ul.tabs').tabs({
             swipeable : false,
             responsiveThreshold : 1500
         });
