@@ -2,35 +2,90 @@
 
 <h1>Projects</h1>
 
-  <%# button to open up the modal at bottom which has filter options%>
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">  <i class="material-icons">filter_list</i></a>
+  <%# button to open up the modal at bottom which has filter options%> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter">  <i class="material-icons">filter_list</i></a>
 
-  <%# modal at bottom for filtering options %>
-  <div id="modal1" class="modal bottom-sheet"><%# start modal %>
+  <%# filter modal at bottom for filtering options %>
+  <div id="filter" class="modal bottom-sheet"><%# start modal %>
     <div class="modal-content">
-      <h4>Modal Header</h4>
+      <h4>Filters</h4>
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
-        <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-        <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.label :project_start_date_gteq, "Minimum start date" %>
+            <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :project_start_date_lteq, "Maximum start date" %>
+            <%= f.text_field :project_start_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+        </div>
 
-        <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description ,{prompt: "Select a status"}, :class => 'browser-default'%>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.label :project_end_date_gteq, "Minimum end date" %>
+            <%= f.text_field :project_end_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :project_end_date_lteq, "Maximum end date" %>
+            <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+          <div class="field col s2">
+            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+          </div>
+        </div>
 
-        <%= f.submit 'Submit', class: "btn" %>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.label :bid_amount_gteq %>
+            <%= f.text_field :bid_amount_gteq, id: :project_bid_amount %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :bid_amount_lteq %>
+            <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
+          </div>
+          <div class="field col s2">
+            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a status' }%>
+          </div>
+        </div>      
+
+        <%= f.submit 'Apply', class: "btn" %>
       <% end %>
     </div>
-  </div> <%# end modal %>
+  </div> <%# end filter modal %>
+
+  <%# button to open up the modal at bottom which has search %> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons">search</i></a>
+
+  <%# search modal at bottom for search %>
+  <div id="search" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Search</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s6">
+            <%= f.label :customer_id %>
+            <%= f.text_field :customer_customer_name_cont %>
+          </div>
+        </div>
+        <%= f.submit 'Search', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end search modal %>
 
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Project ID</th>
-      <th>Customer</th>
-      <th>Customer branch</th>
-      <th>Project type</th>
-      <th>Project status</th>
-      <th>Project start date</th>
-      <th>Project end date</th>
+      <th><%= sort_link(@search, :project_id) %></th>
+      <th><%= sort_link(@search, :customer_id) %></th>
+      <th><%= sort_link(@search, :customer_customer_branch, "Branch") %></th> <%# fix this %>
+      <th><%= sort_link(@search, :project_type) %></th>
+      <th><%= sort_link(@search, :project_status) %></th>
+      <th><%= sort_link(@search, :project_start_date) %></th>
+      <th><%= sort_link(@search, :project_end_date) %></th>
+      <th><%= sort_link(@search, :bid_amount) %></th>
 
       <% comment do %> these are unused in the index page. just here for easy access if needed
       <th>Bid submit date</th>
@@ -59,6 +114,7 @@
         <td><%= project.project_status.project_status_description %></td>
         <td><%= project.project_start_date %></td>
         <td><%= project.project_end_date %></td>
+        <td><%= number_to_currency(project.bid_amount) %></td>
 
         <% comment do %> these are unused in the index page. just here for easy access if needed
         <td><%= project.bid_submit_date %></td>
@@ -71,8 +127,8 @@
         <td><%= number_to_currency(project.bid_lodging_cost) %></td> %>
         <td><%= number_to_percentage(project.tax_rate) %></td>
         <td><%= number_to_currency(project.bid_amount) %></td> %>
-
         <% comment end %>
+  
 
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>

@@ -4,8 +4,15 @@ class ProjectTypesController < ApplicationController
   # GET /project_types
   # GET /project_types.json
   def index
-    @project_types = ProjectType.all
+    @search = ProjectType.ransack(params[:q]) #for ransack
+    @project_types = @search.result
   end
+
+  def search #for ransack
+    index
+    render :index
+  end
+
 
   # GET /project_types/1
   # GET /project_types/1.json

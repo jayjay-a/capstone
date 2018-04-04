@@ -516,32 +516,34 @@ RentalList.create!([
 
 # Subcontractors
 Subcontractor.create!([
-                        { subcontractor_status_id: 2, subcontractor_name: 'Kessie Mcguire	Mcguire Western Construction, LLC', subcontractor_phone: '(294) 536-8845', subcontractor_email: 'Kessie.Mcguire@MWC.com', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Gretchen Sargent	Sargent Construction Group, LLC', subcontractor_phone: '(309) 577-5877', subcontractor_email: 'Gretchen.Sargent@SCG.net', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 3, subcontractor_name: 'Regan Franks	Franks Construction Group, LP', subcontractor_phone: '(784) 741-3266', subcontractor_email: 'Regan.Franks@FCG.net', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'Alea Anderson	Endeaors Unlimited, INC.', subcontractor_phone: '(378) 891-3511', subcontractor_email: 'Alea.Anderson@EU.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'Eden Thornton	Eden Construction Company', subcontractor_phone: '(792) 992-2259', subcontractor_email: 'Eden.Thornton@EC.com', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'Yardley Mueller	Mueller Building Company', subcontractor_phone: '(870) 843-5441', subcontractor_email: 'Yardley.Mueller@MB.net', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Lawrence Mckay	McKay Industrial Construction, LLC', subcontractor_phone: '(310) 227-8465', subcontractor_email: 'Lawrence.Mckay@MKIC.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 3, subcontractor_name: 'Dustin Wilkins	Wilkins Construction', subcontractor_phone: '(453) 468-9884', subcontractor_email: 'Dustin.Wilkins@W.net', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Tamekah Carpenter	Carpenter\'s Company, LLC', subcontractor_phone: '(291) 230-1952', subcontractor_email: 'Tamekah.Carpenter@CC.com', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Grace Barnett	Barnett Constructions, LP', subcontractor_phone: '(865) 617-3331', subcontractor_email: 'Grace.Barnett@BC.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Brennan Justice	Grunley Constructions, INC', subcontractor_phone: '(219) 439-2448', subcontractor_email: 'Brennan.Justice@GC.net', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'Deacon Sandoval	Sandoval Constructions, LP', subcontractor_phone: '(942) 433-2439', subcontractor_email: 'Deacon.Sandoval@SC.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 3, subcontractor_name: 'Fay Rodriquez	Great Build Constructions, LLC', subcontractor_phone: '(787) 353-8448', subcontractor_email: 'Fay.Rodriquez@GBC.net', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Ahmed Hammond	Building Blocks Company, LP', subcontractor_phone: '(510) 721-0061', subcontractor_email: 'Ahmed.Hammond@BBC.com', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'Maia Carson	Carson Construction, INC', subcontractor_phone: '(273) 604-4250', subcontractor_email: 'Maia.Carson@CC.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 3, subcontractor_name: 'Keely Barlow	Barlow NorthWestern Builders, LP', subcontractor_phone: '(247) 635-7435', subcontractor_email: 'Keely.Barlow@BNWB.net', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Elvis Newton	Newton Builders, LLC', subcontractor_phone: '(586) 711-9908', subcontractor_email: 'Elvis.Newton@NB.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'Nehru Dominguez	Brick By Brick Constructions, INC', subcontractor_phone: '(841) 570-5330', subcontractor_email: 'Nehru.Dominguez@BBBC.com', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Griffith Hurley	Hurley Constructions, LP', subcontractor_phone: '(746) 311-7510', subcontractor_email: 'Griffith.Hurley@HC.net', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'McKenzie Brown	Brown Brothers Company, INC', subcontractor_phone: '(436) 418-5356', subcontractor_email: 'McKenzie.Brown@BBC.net', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 3, subcontractor_name: 'Chadwick Macdonald	Mac Construction Company, LP', subcontractor_phone: '(207) 700-8918', subcontractor_email: 'Chadwick.Macdonald@constructors.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Idola Harmon	Harmon Builders, LLC', subcontractor_phone: '(504) 398-1897', subcontractor_email: 'Idola.Harmon@HB.com', company: 'Frank\'s Subcontractors' },
-                        { subcontractor_status_id: 1, subcontractor_name: 'Raphael Farmer	Farmer Constructions, LP', subcontractor_phone: '(665) 341-3217', subcontractor_email: 'Raphael.Farmer@builders.com', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Cyrus Langley	Langley Great Builds, LLC', subcontractor_phone: '(280) 733-7674', subcontractor_email: 'Cyrus.Langley@builders.com', company: 'Subcontractors International' },
-                        { subcontractor_status_id: 2, subcontractor_name: 'Robin Rodriquez	Rodriguez Construction, LLC', subcontractor_phone: '(853) 531-1868', subcontractor_email: 'Robin.Rodriquez@constructors.com', company: 'Subcontractors International' }
-                      ])
+                       { subcontractor_status_id: 2, subcontractor_name: 'Kessie Mcguire', subcontractor_phone: '(294) 536-8845', subcontractor_email: 'Kessie.Mcguire@MWC.com', company: 'Mcguire Western Construction, LLC' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Gretchen Sargent', subcontractor_phone: '(309) 577-5877', subcontractor_email: 'Gretchen.Sargent@SCG.net', company: 'Sargent Construction Group, LLC' },
+                       { subcontractor_status_id: 3, subcontractor_name: 'Regan Franks', subcontractor_phone: '(784) 741-3266', subcontractor_email: 'Regan.Franks@FCG.net', company: 'Franks Construction Group, LP' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'Alea Anderson', subcontractor_phone: '(378) 891-3511', subcontractor_email: 'Alea.Anderson@EU.com', company: 'Endeavor Unlimited, INC.' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'Eden Thornton', subcontractor_phone: '(792) 992-2259', subcontractor_email: 'Eden.Thornton@EC.com', company: 'Eden Construction Company' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'Yardley Mueller', subcontractor_phone: '(870) 843-5441', subcontractor_email: 'Yardley.Mueller@MB.net', company: 'Mueller Building Company' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Lawrence Mckay', subcontractor_phone: '(310) 227-8465', subcontractor_email: 'Lawrence.Mckay@MKIC.com', company: 'McKay Industrial Construction, LLC' },
+                       { subcontractor_status_id: 3, subcontractor_name: 'Dustin Wilkins', subcontractor_phone: '(453) 468-9884', subcontractor_email: 'Dustin.Wilkins@W.net', company: 'Wilkins Construction' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Tamekah Carpenter', subcontractor_phone: '(291) 230-1952', subcontractor_email: 'Tamekah.Carpenter@CC.com', company: 'Carpenter\'s Company, LLC' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Grace Barnett', subcontractor_phone: '(865) 617-3331', subcontractor_email: 'Grace.Barnett@BC.com', company: 'Barnett Constructions, LP' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Brennan Justice', subcontractor_phone: '(219) 439-2448', subcontractor_email: 'Brennan.Justice@GC.net', company: 'Grunley Constructions, INC' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'Deacon Sandoval', subcontractor_phone: '(942) 433-2439', subcontractor_email: 'Deacon.Sandoval@SC.com', company: 'Sandoval Constructions, LP' },
+                       { subcontractor_status_id: 3, subcontractor_name: 'Fay Rodriquez', subcontractor_phone: '(787) 353-8448', subcontractor_email: 'Fay.Rodriquez@GBC.net', company: 'Great Build Constructions, LLC' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Ahmed Hammond', subcontractor_phone: '(510) 721-0061', subcontractor_email: 'Ahmed.Hammond@BBC.com', company: 'Building Blocks Company, LP' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'Maia Carson', subcontractor_phone: '(273) 604-4250', subcontractor_email: 'Maia.Carson@CC.com', company: 'Carson Construction, INC' },
+                       { subcontractor_status_id: 3, subcontractor_name: 'Keely Barlow', subcontractor_phone: '(247) 635-7435', subcontractor_email: 'Keely.Barlow@BNWB.net', company: 'Barlow NorthWestern Builders, LP' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Elvis Newton', subcontractor_phone: '(586) 711-9908', subcontractor_email: 'Elvis.Newton@NB.com', company: 'Newton Builders, LLC' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'Nehru Dominguez', subcontractor_phone: '(841) 570-5330', subcontractor_email: 'Nehru.Dominguez@BBBC.com', company: 'Brick By Brick Constructions, INC' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Griffith Hurley', subcontractor_phone: '(746) 311-7510', subcontractor_email: 'Griffith.Hurley@HC.net', company: 'Hurley Constructions, LP' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'McKenzie Brown', subcontractor_phone: '(436) 418-5356', subcontractor_email: 'McKenzie.Brown@BBC.net', company: 'Brown Brothers Company, INC' },
+                       { subcontractor_status_id: 3, subcontractor_name: 'Chadwick Macdonald', subcontractor_phone: '(207) 700-8918', subcontractor_email: 'Chadwick.Macdonald@constructors.com', company: 'Mac Construction Company, LP' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Idola Harmon', subcontractor_phone: '(504) 398-1897', subcontractor_email: 'Idola.Harmon@HB.com', company: 'Harmon Builders, LLC' },
+                       { subcontractor_status_id: 1, subcontractor_name: 'Raphael Farmer', subcontractor_phone: '(665) 341-3217', subcontractor_email: 'Raphael.Farmer@builders.com', company: 'Farmer Constructions, LP' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Cyrus Langley', subcontractor_phone: '(280) 733-7674', subcontractor_email: 'Cyrus.Langley@builders.com', company: 'Langley Great Builds, LLC' },
+                       { subcontractor_status_id: 2, subcontractor_name: 'Robin Rodriquez', subcontractor_phone: '(853) 531-1868', subcontractor_email: 'Robin.Rodriquez@constructors.com', company: 'Rodriguez Construction, LLC' }
+                     ])
+
+
 
 # Jobs
 Job.create!([
