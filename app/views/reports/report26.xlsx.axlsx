@@ -1,11 +1,11 @@
 wb = xlsx_package.workbook
 
-wb.add_worksheet(name: "Terminated Subcontractors") do |sheet|
+wb.add_worksheet(name: "Active Subcontractors") do |sheet|
   # this is the head row of your spreadsheet
   sheet.add_row %w(Subcontractor_Name Company)
-  
+
   # each user is a row on your spreadsheet
-  @term_subs.each do |subcontractor|
+  @active_subs.each do |subcontractor|
     sheet.add_row [subcontractor['subcontractor_name'], subcontractor['company']]
   end
 end

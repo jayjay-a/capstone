@@ -1,22 +1,22 @@
-<h1>Report3</h1>
+<!--<h1>Report3</h1>-->
 <p id="notice"><%= notice %></p>
 
-<h2>Show Completed Projects</h2>
+<h2>Completed Projects</h2>
+<h6>
 Download:
 <%= link_to "Excel", reports_report3_path(format: "xlsx") %> |
-<%= link_to "PDF", reports_report3_path(format: "pdf") %>
+<%= link_to "PDF", reports_report3_path(format: "pdf") %></h6>
 
 <table class="table">
   <thead>
   <tr>
-    <th>ID</th>
+    <th>Project ID</th>
     <th>Customer Name</th>
-    <th>Project Status Description</th>
-    <th>Project Type ID</th>
-    <th>Bid Submit Date</th>
+    <th>Customer Branch</th>
+    <th>Project Type Description</th>
     <th>Project Start Date</th>
     <th>Project End Date</th>
-    <th colspan="3"></th>
+    <th colspan="6"></th>
   </tr>
   </thead>
 
@@ -25,9 +25,8 @@ Download:
       <tr>
         <td><%= projects['project_id'] %></td>
         <td><%= projects['customer_name'] %></td>
-        <td><%= projects['project_status_description'] %></td>
-        <td><%= projects['project_type_id'] %></td>
-        <td><%= projects['bid_submit_date'] %></td>
+        <td><%= projects['customer_branch'] %></td>
+        <td><%= projects['project_type_description'] %></td>
         <td><%= projects['project_start_date'] %></td>
         <td><%= projects['project_end_date'] %></td>
       </tr>

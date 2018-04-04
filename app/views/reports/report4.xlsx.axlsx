@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Active Projects") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Project_Type_Description Bid_Submit_Date Project_Start_Date)
+
+  # each user is a row on your spreadsheet
+  @active_projects.each do |p|
+    sheet.add_row [p['project_id'], p['customer_name'], p['customer_branch'],
+                              p['project_type_description'], p['bid_submit_date'], p['project_start_date']]
+  end
+end

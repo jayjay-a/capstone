@@ -5,9 +5,9 @@ class ReportsController < ApplicationController
 
   #terminated contractors
   def report1
-    sql = "SELECT sub.subcontractor_name FROM Subcontractors sub
+    sql = "SELECT sub.subcontractor_name, sub.company FROM Subcontractors sub
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
-            WHERE subst.subcontractor_status_description = 'Terminated';"
+           WHERE subst.subcontractor_status_description = 'Terminated';"
     @term_subs = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -39,16 +39,17 @@ class ReportsController < ApplicationController
   def report3
     sql = "SELECT
            projects.project_id,
-           Customers.customer_name,
-           project_statuses.project_status_description,
-           projects.project_type_id,
+           customers.customer_name,
+		       customers.customer_branch,
+           project_types.project_type_description,
            projects.project_start_date,
-           projects.project_end_date,
-           projects.bid_submit_Date
+           projects.project_end_date
            FROM projects
-           INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
+			     INNER JOIN project_statuses ON projects.project_status_id = project_statuses.project_status_id
+           INNER JOIN Project_types ON Projects.project_type_id=Project_types.project_type_id
            INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           FROM project_statuses.project_status_description = 'Project Completed';"
+           WHERE project_statuses.project_status_description = 'Project Completed'
+           ORDER BY project_end_date;"
 
     @complete_projects = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
@@ -62,16 +63,17 @@ class ReportsController < ApplicationController
   def report4
     sql = "SELECT
            projects.project_id,
-           Customers.customer_name,
-           project_statuses.project_status_description,
-           projects.project_type_id,
+           customers.customer_name,
+		       customers.customer_branch,
+           project_types.project_type_description,
            projects.project_start_date,
-           projects.project_end_date,
-           projects.bid_submit_Date
+           projects.bid_submit_date
            FROM projects
-           INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
+			     INNER JOIN project_statuses ON projects.project_status_id = project_statuses.project_status_id
+           INNER JOIN Project_types ON Projects.project_type_id=Project_types.project_type_id
            INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           WHERE project_statuses.project_status_description = 'Project Active';"
+           WHERE project_statuses.project_status_description = 'Project Active'
+           ORDER BY project_start_date;"
 
     @active_projects = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
@@ -86,15 +88,15 @@ class ReportsController < ApplicationController
     sql = "SELECT
            projects.project_id,
            Customers.customer_name,
-           project_statuses.project_status_description,
-           projects.project_type_id,
-           projects.project_start_date,
-           projects.project_end_date,
+		       Customers.customer_branch,
+           project_types.project_type_description,
            projects.bid_submit_Date
            From projects
+		       INNER JOIN project_types ON projects.project_type_id = project_types.project_type_id
            INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
            INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           Where project_statuses.project_status_description = 'Awaiting Bid Response';"
+           Where project_statuses.project_status_description = 'Awaiting Bid Response'
+		       ORDER BY bid_submit_date;"
 
     @waiting_bid = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
@@ -105,44 +107,44 @@ class ReportsController < ApplicationController
   end
 
   #notes today -anil
-  def report6
-    sql = "SELECT
-           projects.project_id,
-           Customers.customer_name,
-           project_statuses.project_status_description,
-           projects.bid_submit_date,
-           projects.project_start_date,
-           projects.project_end_date,
-           project_notes.project_notes,
-           project_notes.project_note_date
-           From projects
-           INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
-           INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           INNER JOIN Project_notes ON Project_notes.Project_id = Projects.Project_id
-           Where project_notes.project_note_date = current_date::date;"
-
-    @notes_today = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report6
+  #   sql = "SELECT
+  #          projects.project_id,
+  #          Customers.customer_name,
+  #          project_statuses.project_status_description,
+  #          projects.bid_submit_date,
+  #          projects.project_start_date,
+  #          projects.project_end_date,
+  #          project_notes.project_notes,
+  #          project_notes.project_note_date
+  #          From projects
+  #          INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
+  #          INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
+  #          INNER JOIN Project_notes ON Project_notes.Project_id = Projects.Project_id
+  #          Where project_notes.project_note_date = current_date::date;"
+  #
+  #   @notes_today = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show denied bids - anil
   def report7
     sql = "SELECT
            projects.project_id,
            Customers.customer_name,
-           project_statuses.project_status_description,
-           projects.project_type_id,
-           projects.project_start_date,
-           projects.project_end_date,
+			     customers.customer_branch,
+           project_types.project_type_description,
            projects.bid_submit_Date
            FROM projects
+		       INNER JOIN project_types ON projects.project_type_id = project_types.project_type_id
            INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
            INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           WHERE project_statuses.project_status_description = 'Bid Denied';"
+           WHERE project_statuses.project_status_description = 'Bid Denied'
+		       ORDER BY bid_submit_date;"
 
     @bid_denied = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
@@ -178,7 +180,8 @@ class ReportsController < ApplicationController
   def report9
     sql = "SELECT c.customer_name, c.customer_branch, p.project_id, p.bid_amount
            FROM customers c
-           JOIN projects p ON c.customer_id = p.customer_id;"
+           JOIN projects p ON c.customer_id = p.customer_id
+           WHERE c.customer_id = 1;"
     @specific_custproj = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
       format.html
@@ -189,10 +192,12 @@ class ReportsController < ApplicationController
 
   #show all projects and all job types - kristina
   def report10
-    sql = "SELECT p.project_id, jt.job_type_description
+    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description
            FROM projects p
+		       JOIN customers c ON p.customer_id = c.customer_id
            JOIN jobs j ON p.project_id = j.project_id
-           JOIN job_types jt ON j.job_type_id = jt.job_type_id;"
+           JOIN job_types jt ON j.job_type_id = jt.job_type_id
+           ORDER BY project_start_date, job_start_date;"
 
     @specific_jobproj = ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
@@ -315,38 +320,38 @@ class ReportsController < ApplicationController
   end
   
   #show completed projects - kunle
-  def report18
-    sql = "SELECT projects.Project_Id, jobs.job_id, jobs.job_status_id,
-           job_statuses.job_status_description
-           FROM jobs
-           INNER Join Projects on projects.project_id = jobs.project_id
-           INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
-           WHERE job_statuses.job_status_description = 'Completed';"
-
-    @complete_jobs = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report18
+  #   sql = "SELECT projects.Project_Id, jobs.job_id, jobs.job_status_id,
+  #          job_statuses.job_status_description
+  #          FROM jobs
+  #          INNER Join Projects on projects.project_id = jobs.project_id
+  #          INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
+  #          WHERE job_statuses.job_status_description = 'Completed';"
+  #
+  #   @complete_jobs = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show ongoing projects -kunle
-  def report19
-    sql = "SELECT projects.Project_Id, jobs.job_id, jobs.job_status_id,
-           job_statuses.job_status_description
-           FROM jobs
-           INNER Join Projects on projects.project_id = jobs.project_id
-           INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
-           WHERE job_statuses.job_status_description = 'Ongoing';"
-
-    @ongoing_jobs = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report19
+  #   sql = "SELECT projects.Project_Id, jobs.job_id, jobs.job_status_id,
+  #          job_statuses.job_status_description
+  #          FROM jobs
+  #          INNER Join Projects on projects.project_id = jobs.project_id
+  #          INNER Join Job_statuses on job_statuses.job_status_id = jobs.job_status_id
+  #          WHERE job_statuses.job_status_description = 'Ongoing';"
+  #
+  #   @ongoing_jobs = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show rental list for this project -kunle
   def report20
@@ -442,7 +447,7 @@ class ReportsController < ApplicationController
 
   #show active subcontractors
   def report26
-    sql = "SELECT sub.subcontractor_name FROM Subcontractors sub
+    sql = "SELECT sub.subcontractor_name, sub.company FROM Subcontractors sub
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
            WHERE subst.subcontractor_status_description = 'Active';"
            

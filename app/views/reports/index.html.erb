@@ -1,79 +1,99 @@
-<h3> I can't style :( Report Header goes here</h3>
+<h3>Reports</h3>
 
-<h8><td><%= link_to 'Show Terminated Subcontractors', reports_report1_path %></td></h8> | Download: <%= link_to "Excel", reports_report1_path(format: "xlsx") %> | <%= link_to "PDF", reports_report1_path(format: "pdf") %>
+
+<h8><td><%= link_to 'Terminated Subcontractors', reports_report1_path %></td></h8> | Download: <%= link_to "Excel", reports_report1_path(format: "xlsx") %> |
+<%= link_to "PDF", reports_report1_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Projects with Bid Amount greater than X dollars', reports_report2_path %></td> | Download: <%= link_to "Excel", reports_report2_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report2_path(format: "pdf") %>
 <br><br>
-<td><%= link_to 'Show Completed Projects', reports_report3_path %></td> | Download: <%= link_to "Excel", reports_report3_path(format: "xlsx") %> |
+
+<td><%= link_to 'Completed Projects', reports_report3_path %></td> | Download: <%= link_to "Excel", reports_report3_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report3_path(format: "pdf") %>
 <br><br>
-<td><%= link_to 'Show Active Projects', reports_report4_path %></td> | Download: <%= link_to "Excel", reports_report4_path(format: "xlsx") %> |
+
+<td><%= link_to 'Active Projects', reports_report4_path %></td> | Download: <%= link_to "Excel", reports_report4_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report4_path(format: "pdf") %>
 <br><br>
-<td><%= link_to 'Show Awaiting Bids', reports_report5_path %></td> | Download: <%= link_to "Excel", reports_report5_path(format: "xlsx") %> |
+
+<td><%= link_to 'Awaiting Bid Response', reports_report5_path %></td> | Download: <%= link_to "Excel", reports_report5_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report5_path(format: "pdf") %>
 <br><br>
-<td><%= link_to 'Show Notes Today', reports_report6_path %></td> | Download: <%= link_to "Excel", reports_report6_path(format: "xlsx") %> |
-<%= link_to "PDF", reports_report6_path(format: "pdf") %>
-<br><br>
-<td><%= link_to 'Show Denied Bids', reports_report7_path %></td> | Download: <%= link_to "Excel", reports_report7_path(format: "xlsx") %> |
+
+
+
+<td><%= link_to 'Denied Bids', reports_report7_path %></td> | Download: <%= link_to "Excel", reports_report7_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report7_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Awaiting Bids', reports_report8_path %></td> | Download: <%= link_to "Excel", reports_report8_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report8_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Projects with Specific Customer', reports_report9_path %></td> | Download: <%= link_to "Excel", reports_report9_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report9_path(format: "pdf") %>
 <br><br>
-<td><%= link_to 'Show Projects with a certain Job Type', reports_report10_path %></td> | Download: <%= link_to "Excel", reports_report10_path(format: "xlsx") %> |
-<%= link_to "PDF", reports_report10_path(format: "pdf") %>
-<br><br>
+
+
+
 <td><%= link_to 'Show Bid Information from Project', reports_report11_path %></td>  | Download: <%= link_to "Excel", reports_report11_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report11_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show All Tasks for a Job', reports_report12_path %></td> | Download: <%= link_to "Excel", reports_report12_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report12_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show All Projects of a certain Project Type', reports_report13_path %></td>  | Download: <%= link_to "Excel", reports_report13_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report13_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Duration of Project', reports_report14_path %></td> | Download: <%= link_to "Excel", reports_report14_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report14_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Duration of Job in Project', reports_report15_path %></td> | Download: <%= link_to "Excel", reports_report15_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report15_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Duration of Task in Project', reports_report16_path %></td> | Download: <%= link_to "Excel", reports_report16_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report16_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Frequency of Subcontractor Being Hired', reports_report17_path %></td> | Download: <%= link_to "Excel", reports_report17_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report17_path(format: "pdf") %>
 <br><br>
-<td><%= link_to 'Show Completed Projects', reports_report18_path %></td> | Download: <%= link_to "Excel", reports_report18_path(format: "xlsx") %> |
-<%= link_to "PDF", reports_report18_path(format: "pdf") %>
-<br><br>
+
+
 <td><%= link_to 'Show Ongoing Projects', reports_report19_path %></td> | Download: <%= link_to "Excel", reports_report19_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report19_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Rental List for This Project', reports_report20_path %></td>  | Download: <%= link_to "Excel", reports_report20_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report20_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Projects for this month', reports_report21_path %></td> | Download: <%= link_to "Excel", reports_report21_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report21_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Active Tasks', reports_report22_path %></td> | Download: <%= link_to "Excel", reports_report22_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report22_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Completed Tasks', reports_report23_path %></td> | Download: <%= link_to "Excel", reports_report23_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report23_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Projects for this week', reports_report24_path %></td> | Download: <%= link_to "Excel", reports_report24_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report24_path(format: "pdf") %>
 <br><br>
+
 <td><%= link_to 'Show Projects for this year', reports_report25_path %></td> | Download: <%= link_to "Excel", reports_report25_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report25_path(format: "pdf") %>
 <br><br>
-<td><%= link_to 'Show Active Subcontractors', reports_report26_path %></td>  | Download: <%= link_to "Excel", reports_report26_path(format: "xlsx") %> |
+
+<td><%= link_to 'Active Subcontractors', reports_report26_path %></td>  | Download: <%= link_to "Excel", reports_report26_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report26_path(format: "pdf") %>
 <br><br>

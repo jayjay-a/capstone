@@ -2,6 +2,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Show Projects with specific customer</h2>
+<h6>Download:
+  <%= link_to "Excel", reports_report9_path(format: "xlsx") %> |
+  <%= link_to "PDF", reports_report9_path(format: "pdf") %></h6>
 
 <table class="table">
   <thead>
