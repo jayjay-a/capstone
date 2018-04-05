@@ -27,6 +27,19 @@
     margin-bottom: 10px;
 }
 
+
+select.select2 {
+  display: block;
+}
+
+.form-control.select2-hidden-accessible {
+  top: 350px;
+}
+
+.contenedor-select2 {
+position: relative;
+}
+
 textarea{ //fixes textareas having a weird width and exceeding nested forms
   width: 100%!important;
 }

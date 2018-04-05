@@ -28,17 +28,17 @@
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :employee_first_name, :pattern => "[a-zA-Z]+",  oninvalid: "setCustomValidity('Only enter letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+    <%= form.text_field :first_name, id: :employee_first_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
   </div>
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :employee_last_name, :pattern => "[a-zA-Z]",  oninvalid: "setCustomValidity('Only enter letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+    <%= form.text_field :last_name, id: :employee_last_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
   </div>
 
   <div class="field">
     <%= form.label :join_date %>
-    <%= form.text_field :join_date, id: :employee_join_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    <%= form.text_field :join_date, id: :employee_join_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', required: true %>
   </div>
 
   <div class="field">
