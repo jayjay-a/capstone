@@ -28,12 +28,12 @@
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :employee_first_name %>
+    <%= form.text_field :first_name, id: :employee_first_name, :pattern => "[a-zA-Z]+",  oninvalid: "setCustomValidity('Only enter letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
   </div>
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :employee_last_name %>
+    <%= form.text_field :last_name, id: :employee_last_name, :pattern => "[a-zA-Z]",  oninvalid: "setCustomValidity('Only enter letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
   </div>
 
   <div class="field">
