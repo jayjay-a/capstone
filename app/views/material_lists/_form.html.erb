@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= form.label :unit_price %>
-    <%= form.text_field :unit_price, id: :material_list_unit_price %>
+    <%= form.number_field :unit_price, id: :material_list_unit_price, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.text_field :quantity, id: :material_list_quantity %>
+    <%= form.number_field :quantity, id: :material_list_quantity, required: true %>
   </div>
 
   <div class="actions">

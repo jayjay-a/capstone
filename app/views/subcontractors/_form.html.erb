@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :subcontractor_name %>
-    <%= form.text_field :subcontractor_name, id: :subcontractor_subcontractor_name %>
+    <%= form.text_field :subcontractor_name, id: :subcontractor_subcontractor_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :subcontractor_email %>
-    <%= form.text_field :subcontractor_email, id: :subcontractor_subcontractor_email %>
+    <%= form.text_field :subcontractor_email, id: :subcontractor_subcontractor_email, type: "email" %>
   </div>
 
   <div class="field">
