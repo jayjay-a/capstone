@@ -80,10 +80,10 @@
       <th><%= sort_link(@search, :customer_id) %></th>
       <th><%= sort_link(@search, :customer_customer_branch, "Branch") %></th> <%# fix this %>
       <th><%= sort_link(@search, :project_type_project_type_description, "Type") %></th>
-      <th><%= sort_link(@search, :project_status_project_status_description, "Status") %></th>
       <th><%= sort_link(@search, :project_start_date) %></th>
       <th><%= sort_link(@search, :project_end_date) %></th>
       <th><%= sort_link(@search, :bid_amount) %></th>
+      <th><%= sort_link(@search, :project_status_project_status_description, "Status") %></th>
 
       <% comment do %> these are unused in the index page. just here for easy access if needed
       <th>Bid submit date</th>
@@ -109,10 +109,10 @@
         <td><%= project.customer.customer_name %></td>
         <td><%= project.customer.customer_branch %></td>
         <td><%= project.project_type.project_type_description %></td>
-        <td><%= project.project_status.project_status_description %></td>
         <td><%= project.project_start_date %></td>
         <td><%= project.project_end_date %></td>
         <td><%= number_to_currency(project.bid_amount) %></td>
+        <td><%= project.project_status.project_status_description %></td>
 
         <% comment do %> these are unused in the index page. just here for easy access if needed
         <td><%= project.bid_submit_date %></td>
