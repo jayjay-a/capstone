@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :join_date %>
-    <%= form.text_field :join_date, id: :employee_join_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', required: true %>
+    <%= form.text_field :join_date, id: :employee_join_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => employee.join_date || Date.today.strftime('%Y-%m-%d'), required: true %>
   </div>
 
   <div class="field">

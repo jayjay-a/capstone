@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rental Lists</h1>
+<h1>Rental List</h1>
 
   <%# button to open up the modal at bottom which has filter options%> 
   <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
@@ -43,7 +43,6 @@
       <%= search_form_for @search, url: search_rental_lists_path, html: { method: :post } do |f| %>
         <div class="row">
           <div class="field col s6">
-            <%= f.label :rental_list_id %>
             <%= f.text_field :rental_equipment_rental_description_or_cost_frequency_cont %>
           </div>
         </div>
@@ -55,10 +54,10 @@
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Project</th>
-      <th>Rental equipment</th>
-      <th>Rental price</th>
-      <th>Cost frequency</th>
+      <th><%= sort_link(@search, :project_id) %></th>
+      <th><%= sort_link(@search, :rental_equipment, "Rentail Equipment") %></th>
+      <th><%= sort_link(@search, :rental_price, "Rental Price") %></th>
+      <th><%= sort_link(@search, :cost_frequency, "Cost Frequency") %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -72,7 +71,7 @@
         <td><%= rental_list.cost_frequency %></td>
         <td><%= link_to 'Show', rental_list %></td>
         <td><%= link_to 'Edit', edit_rental_list_path(rental_list) %></td>
-        <td><%= link_to 'Destroy', rental_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', rental_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

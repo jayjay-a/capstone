@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Material Lists</h1>
+<h1>Material List</h1>
 
   <%# button to open up the modal at bottom which has filter options%> 
   <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
@@ -85,10 +85,10 @@
         <td><%= material_list.material.material_description %></td>
         <td><%= number_to_currency(material_list.unit_price) %></td>
         <td><%= material_list.quantity %></td>
-        <td><%= material_list.total %></td>
+        <td><%= number_to_currency(material_list.total) %></td>
         <td><%= link_to 'Show', material_list %></td>
         <td><%= link_to 'Edit', edit_material_list_path(material_list) %></td>
-        <td><%= link_to 'Destroy', material_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', material_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
