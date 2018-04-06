@@ -14,7 +14,7 @@ class Project < ApplicationRecord
   validates :project_status_id, presence: true
   validates :project_type_id, presence: true
   validates :bid_submit_date, presence: true
-  validates :bid_material_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater'}
+  validates :bid_material_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_cost_of_labor, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_cost_of_permits, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_equipment_rental, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
@@ -30,4 +30,8 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :project_notes, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :material_lists, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :rental_lists, allow_destroy: true, reject_if: :all_blank
+
+  def before_update
+    self.day ||= Date.today if new_record?
+  end
 end

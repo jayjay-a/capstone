@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-        
+
   <div class="field">
     <%= form.label :customer_id  %>
     <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Customer' } %>
@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :bid_submit_date %>
-    <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => Date.today %>
   </div>
 
   <div class="field">
@@ -78,7 +78,7 @@
 
   <div class="field">
     <%= form.label :tax_rate %>
-    <%= form.text_field :tax_rate, id: :project_tax_rate %>
+    <%= form.text_field :tax_rate, id: :project_tax_rate, :value => '8.25%' %>
   </div>
 
   <div class="field">
