@@ -30,8 +30,4 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :project_notes, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :material_lists, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :rental_lists, allow_destroy: true, reject_if: :all_blank
-
-  def before_update
-    self.day ||= Date.today if new_record?
-  end
 end
