@@ -2,7 +2,7 @@
 
 <body>
 <div>
-  <h2 class="center-align" >Projects</h2>
+  <h2>Projects</h2>
 </div>
 
   <%# button to open up the modal at bottom which has filter options%> 
@@ -23,7 +23,9 @@
       <% end %>
     </div>
   </div> <%# end modal %>
-  
+
+
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Project"), new_project_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -85,4 +87,3 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>

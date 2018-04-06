@@ -1,42 +1,39 @@
 <%# these fields are added as a nested form to project form%>
-
-<div class="row">
+<div id = nested-fields class="nested-fields">
+  <p>
   <form class="col s12">
     <div class="row">
-      <div class="field col s6">
+      <div class="field col s3">
         <%= f.label :job_type_id %>
         <%= f.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Project'} %>
       </div>
-
-      <div class="field col s6">
+      <div class="field col s3">
         <%= f.label :job_status_id %>
         <%= f.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type'} %>
       </div>
-    </div>
-
+    </div><%# end row %>
     <div class="row">
-      <div class="field col s6">
+      <div class="field col s3">
         <%= f.label :job_start_date %>
         <%= f.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
-
-      <div class="field col s6">
+      <div class="field col s3">
         <%= f.label :job_end_date %>
         <%= f.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
-    </div>
+    </div><%# end row %>
   </form>
-</div>
 
-<%# adding tasks to job%>
-<div id="task">
-  <%= f.fields_for :tasks do |task| %>
-    <%= render 'task_fields', f: task %>
-  <% end %>
-  <div class="link">
-    <%= link_to_add_association "Add task", f, :tasks %>
+  <%# adding tasks to job%>
+  <div id="task">
+    <%= f.fields_for :tasks do |task| %>
+      <%= render 'task_fields', f: task %>
+    <% end %>
+    <p>
+      <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add task"), f, :tasks, class: "btn waves-effect waves-light" %> </br>
+    </p>
   </div>
-</div>
-
-<%= link_to_remove_association "Remove Job", f %>
+    <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Job"), f, class: "btn waves-effect waves-light" %> 
+  </p>
+  <hr>
 </div>
