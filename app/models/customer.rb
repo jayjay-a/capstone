@@ -10,8 +10,8 @@ class Customer < ApplicationRecord
   validates :customer_address_2, allow_nil: true, length: { maximum: 100 }
   validates :customer_rep_name_1, presence: true, length: { maximum: 70 }
   validates :customer_rep_name_2, allow_nil: true, length: { maximum: 70 }
-  validates :customer_rep_phone_1, allow_nil: true, length: { maximum: 15 }
-  validates :customer_rep_phone_2, allow_nil: true, length: { maximum: 26 }
+  validates :customer_rep_phone_1, allow_nil: true, length: { maximum: 15 }, format: { with: /[(]\d{3}[)] \d{3}-\d{4}/, message: "needs to be in (XXX) XXX-XXX format" }
+  validates :customer_rep_phone_2, allow_nil: true, length: { maximum: 26 }, format: { with: /[(]\d{3}[)] \d{3}-\d{4}/, message: "needs to be in (XXX) XXX-XXX format" }
   validates :customer_rep_email_1, allow_nil: true, length: { maximum: 70 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: 'is not a valid email address' }
   validates :customer_rep_email_2, allow_nil: true, length: { maximum: 70 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: 'is not a valid email address' }
 
