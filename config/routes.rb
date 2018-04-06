@@ -60,6 +60,9 @@ Rails.application.routes.draw do
       match 'search' => 'assignments#search', via: [:get, :post], as: :search #for ransack
      end
   end
+  get "/pages/admin_panel" => "pages#admin_panel"
+
+  resources :pages
 
   root 'home#index'
 
