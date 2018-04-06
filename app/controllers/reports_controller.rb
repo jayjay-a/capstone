@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
 
   #terminated contractors
   def report1
-    sql = "SELECT sub.subcontractor_name, sub.company FROM Subcontractors sub
+    sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email FROM Subcontractors sub
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
            WHERE subst.subcontractor_status_description = 'Terminated';"
     @term_subs = ActiveRecord::Base.connection.execute(sql)
@@ -450,7 +450,7 @@ class ReportsController < ApplicationController
 
   #show active subcontractors
   def report26
-    sql = "SELECT sub.subcontractor_name, sub.company FROM Subcontractors sub
+    sql = "SELECT sub.subcontractor_name, sub.subcontractor_phone, sub.subcontractor_email, sub.company FROM Subcontractors sub
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
            WHERE subst.subcontractor_status_description = 'Active';"
            
@@ -511,7 +511,7 @@ WHERE Subcontractors.subcontractor_name = 'Philmon Tanuri'; "
   end
 
   def report30
-    sql = "SELECT sub.subcontractor_name FROM Subcontractors sub
+    sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email FROM Subcontractors sub
 LEFT OUTER JOIN Assignments a ON sub.subcontractor_id = a.subcontractor_id
 JOIN Subcontractor_Statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
 WHERE a.subcontractor_id IS NULL AND subst.subcontractor_status_description != 'Terminated';"

@@ -1,16 +1,21 @@
-<h1>Report30</h1>
+<!--<h1>Report30</h1>-->
 <p id="notice"><%= notice %></p>
 
-<h2>Show Inactive Subcontractors</h2>
-Download:
+<h2>Inactive Subcontractors</h2>
+<h6>
+  Download:
 <%= link_to "Excel", reports_report30_path(format: "xlsx") %> |
 <%= link_to "PDF", reports_report30_path(format: "pdf") %>
+</h6>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Subcontractor name</th>
-    <th colspan="3"></th>
+    <th>Subcontractor Name</th>
+    <th>Company</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th colspan="4"></th>
   </tr>
   </thead>
 
@@ -18,6 +23,9 @@ Download:
   <% @inact_subs.each do |subcontractor| %>
       <tr>
         <td><%= subcontractor['subcontractor_name'] %></td>
+        <td><%= subcontractor['company'] %></td>
+        <td><%= subcontractor['subcontractor_phone'] %></td>
+        <td><%= subcontractor['subcontractor_email'] %></td>
       </tr>
   <% end %>
   </tbody>
