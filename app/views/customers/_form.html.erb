@@ -1,3 +1,5 @@
+<h2>New Customer</h2>
+
 <%= form_with(model: customer, local: true) do |form| %>
   <% if customer.errors.any? %>
     <div id="error_explanation" xmlns: xmlns: xmlns:>
@@ -11,103 +13,76 @@
     </div>
   <% end %>
 
-  <body>
-  <div>
-    <h2 class="center-align" >New Customer</h2>
-  </div>
-
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s4">
-          <%= form.label :Name %>
-          <%= form.text_field :customer_name, id: :customer_customer_name %>
-        </div>
-
-        <div class="input-field col s4">
-          <%= form.label :Branch %>
-          <%= form.text_field :customer_branch, id: :customer_customer_branch %>
-        </div>
-
-        <div class="input-field col s4">
-          <%= form.label :customer_status_id %>
-          <%= form.collection_select :customer_status_id, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Status'} %>
-        </div>
+    <div class="row"><%# row 1%>
+      <div class="input col s4">
+        <%= form.label :Name %>
+        <%= form.text_field :customer_name, id: :customer_customer_name %>
       </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <%= form.label :Street %>
-          <%= form.text_field :customer_address_1, id: :customer_customer_address_1 %>
-        </div>
+      <div class="input col s4">
+        <%= form.label :Branch %>
+        <%= form.text_field :customer_branch, id: :customer_customer_branch %>
       </div>
-
-      <div class="row">
-        <div class="input-field col s8">
-          <%= form.label :CITY_AND_ZIP %>
-          <%= form.text_field :customer_address_2, id: :customer_customer_address_2 %>
-        </div>
-
-        <div class="input-field col s4">
-          <%= form.label :state_id %>
-          <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'State'} %>
-        </div>
+      <div class="input col s4">
+        <%= form.label :customer_status_id %>
+        <%= form.collection_select :customer_status_id, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Status'} %>
       </div>
+    </div><%# row 1 end%>
 
-      <div class="row">
-        <div class="input-field col s6">
-          <%= form.label :First_Representative %>
-          <%= form.text_field :customer_rep_name_1, id: :customer_customer_rep_name_1 %>
-        </div>
-
-        <div class="input-field col s6">
-          <%= form.label :Phone %>
-          <%= form.text_field :customer_rep_phone_1, id: :customer_customer_rep_phone_1 %>
-        </div>
+    <div class="row"> <%# row 2%>
+      <div class="input col s4">
+        <%= form.label :customer_address_1,"Street Address" %>
+        <%= form.text_field :customer_address_1, id: :customer_customer_address_1 %>
       </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <%= form.label :Email %>
-          <%= form.text_field :customer_rep_email_1, id: :customer_customer_rep_email_1 %>
-        </div>
+      <div class="input col s2">
+        <%= form.label :customer_address_2, "Suite or Apartment #" %>
+        <%= form.text_field :customer_address_2, id: :customer_customer_address_2 %>
       </div>
-
-      <div class="row">
-        <div class="input-field col s6">
-          <%= form.label :Second_Representative %>
-          <%= form.text_field :customer_rep_name_2, id: :customer_customer_rep_name_2 %>
-        </div>
-
-        <div class="input-field col s6">
-          <%= form.label :Phone %>
-          <%= form.text_field :customer_rep_phone_2, id: :customer_customer_rep_phone_2 %>
-        </div>
+      <div class="input col s2">
+        <%= form.label :customer_city, "City" %>
+        <%= form.text_field :customer_city, id: :customer_customer_city %>
       </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <%= form.label :Email %>
-          <%= form.text_field :customer_rep_email_2, id: :customer_customer_rep_email_2 %>
-        </div>
+      <div class="input col s2">
+        <%= form.label :customer_zipcode, "Zipcode" %>
+        <%= form.text_field :customer_zipcode, id: :customer_customer_zipcode %>
       </div>
-    </form>
-  </div>
-  </body>
+      <div class="input col s2">
+        <%= form.label :state_id %>
+        <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'State'} %>
+      </div>
+    </div><%# row 2 end%>
 
+    <div class="row"><%# row 3%> 
+      <div class="input col s4">
+        <%= form.label :customer_rep_name_1, "First Representative" %>
+        <%= form.text_field :customer_rep_name_1, id: :customer_customer_rep_name_1 %>
+      </div>
+      <div class="input col s4">
+        <%= form.label :customer_rep_phone_1, "First Representative Phone" %>
+        <%= form.text_field :customer_rep_phone_1, id: :customer_customer_rep_phone_1 %>
+      </div>
+      <div class="input col s4">
+        <%= form.label :customer_rep_email_1, "First Representative Email" %>
+        <%= form.text_field :customer_rep_email_1, id: :customer_customer_rep_email_1 %>
+      </div>
+    </div> <%# row3 end %>
+    
+    <div class="row"> <%# row 4 end %>
+      <div class="input col s4">
+        <%= form.label :customer_rep_name_2, "Second Representative Name" %>
+        <%= form.text_field :customer_rep_name_2, id: :customer_customer_rep_name_2 %>
+      </div>
+      <div class="input col s4">
+        <%= form.label :customer_rep_phone_2, "Second Representative Phone" %>
+        <%= form.text_field :customer_rep_phone_2, id: :customer_customer_rep_phone_2 %>
+      </div>
+      <div class="input col s4">
+        <%= form.label :customer_rep_email_2, "Second Representative Email" %>
+        <%= form.text_field :customer_rep_email_2, id: :customer_customer_rep_email_2 %>
+      </div>
+    </div> <%# row 4 end %>
 
-  <div class="right-align">
-  <button class="btn waves-effect waves-light" type="submit" name="action">
-    <%= form.submit %>
-    <i class="material-icons right">person_add</i>
-  </button>
+<%= button_tag( :class => "btn waves-effect waves-light right") do %>
+  Save<i class="material-icons right">save</i>
+<% end %>
 
-    <button class="btn waves-effect waves-light" type="add_new" name="action">
-      <%= link_to 'CANCEL', customers_path %>
-      <i class="material-icons right">cancel</i>
-    </button>
-  </div>
-
-
-  <br>
 <% end %>
