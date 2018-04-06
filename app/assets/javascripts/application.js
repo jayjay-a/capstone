@@ -17,9 +17,6 @@
 //= require materialize-sprockets
 //= require select2
 //= require cocoon
-//= require unobtrusive_flash
-//= require unobtrusive_flash_ui
-
 
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   
     $(document).ready(function(){ //loads
