@@ -44,7 +44,6 @@ gem 'materialize-sass', '~> 1.0.0.beta'
 gem 'sprockets-rails', '>= 2.3.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'unobtrusive_flash', '>=3'
 
 # Use for Cocoon
 gem 'cocoon'
