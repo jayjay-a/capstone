@@ -9,25 +9,45 @@ class ReportsController < ApplicationController
            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
            WHERE subst.subcontractor_status_description = 'Terminated';"
     @term_subs = ActiveRecord::Base.connection.execute(sql)
+    @filename = 'terminated_subcontractors.pdf'
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="terminated_subcontractors.xlsx"'
+      }
       format.pdf
     end
   end
 
+
   #projects with bid greater than x dollars
   def report2
-    @bid_amount_in = params[:q]
-    
-    sql = "SELECT proj.project_id, cust.customer_name, cust.customer_branch, projty.project_type_description, projstat.project_status_description
-           FROM Projects proj
-           JOIN Customers cust ON proj.customer_id = cust.customer_id
-           JOIN Project_types projty ON proj.project_type_id = projty.project_type_id
-           JOIN Project_statuses projstat on proj.project_status_id = projstat.project_status_id
-           WHERE proj.bid_amount > #{@bid_amount_in};"
-
+    @bid_amount_in = nil
+    @job_type_in = nil
+    @bid_amount_in ||= params[:q]
+    @job_type_in ||= params[:t] #when text field is empty or wrong data type, need an error exception handling
+      if @job_type_in == nil && @bid_amount_in == nil
+          sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
+                  pt.project_status_description, p.bid_amount
+	                FROM projects p
+	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
+                	JOIN customers c ON p.customer_id = c.customer_id
+	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
+	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
+	                ORDER BY p.project_id, p.bid_amount desc"
+        elsif @job_type_in != nil || @bid_amount_in != nil
+          sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
+                  pt.project_status_description, p.bid_amount
+	                FROM projects p
+	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
+                	JOIN customers c ON p.customer_id = c.customer_id
+	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
+	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
+	                WHERE jt.job_type_id = #{@job_type_in} AND p.bid_amount > #{@bid_amount_in}
+	                ORDER BY p.bid_amount desc;"
+end
     @great_bids = ActiveRecord::Base.connection.execute(sql)
+    #@test_bids = Project.where("bid_amount > #{@bid_amount_in}")
     respond_to do |format|
       format.html
       format.xlsx
