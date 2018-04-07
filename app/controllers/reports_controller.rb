@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
 
   end
 
+
   #terminated contractors
   def report1
     sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email FROM Subcontractors sub
@@ -48,6 +49,7 @@ class ReportsController < ApplicationController
 end
     @great_bids = ActiveRecord::Base.connection.execute(sql)
     #@test_bids = Project.where("bid_amount > #{@bid_amount_in}")
+    @filename = 'compare_projects.xlsx'
     respond_to do |format|
       format.html
       format.xlsx

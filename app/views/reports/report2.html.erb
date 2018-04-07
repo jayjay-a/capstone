@@ -1,21 +1,26 @@
 <!--<h1>Report2</h1>-->
 <p id="notice"><%= notice %></p>
 
-<h2>Projects with Bid Amount greater than X dollars</h2>
+<h2>Compare Projects by Job Type and Bid Amount</h2>
 
 <%= form_tag reports_report2_path, method: :get do %>
     <h6>Download:
-      <%= link_to "Excel", reports_report2_path(@bid_amount_in, format: "xlsx", :q => params[:q]) %> |
-      <%= link_to "PDF", reports_report2_path(@bid_amount_in, format: "pdf", :q => params[:q]) %>
+      <%= link_to "Excel", reports_report2_path(format: "xlsx", :q => params[:q], :t => params[:t]) %> |
+      <%= link_to "PDF", reports_report2_path(format: "pdf",  :q => params[:q], :t => params[:t]) %>
     </h6>
-
+<br>
+    <div class="row">
+      <div class="col s3">
     <%= label_tag(:t, "Job Type Description") %>
-    <%= collection_select :t, :job_type_id, JobType.all, :job_type_id, :job_type_description,
-                          {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Job Type'} %>
-
-    <%= label_tag(:q, "Bid amount >") %>
+    <%= select_tag(:t, options_from_collection_for_select(JobType.all, "id", "job_type_description",params[:t]),:prompt => "Select a Job Type") %>
+      </div>
+      <div class="col s2">
+    <%= label_tag(:q, "Bid Amount") %>
     <%= text_field_tag :q, @bid_amount_in %>
-    <%= submit_tag("submit") %>
+      </div>
+    </div>
+    <%= submit_tag("Submit") %>
+
 <% end %>
 
 <table class="table">
