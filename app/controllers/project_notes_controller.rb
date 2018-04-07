@@ -4,7 +4,13 @@ class ProjectNotesController < ApplicationController
   # GET /project_notes
   # GET /project_notes.json
   def index
-    @project_notes = ProjectNote.all
+    @search = ProjectNote.ransack(params[:q]) #for ransack
+    @project_notes = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /project_notes/1

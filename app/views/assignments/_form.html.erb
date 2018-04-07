@@ -15,28 +15,28 @@
   <label><input type="radio" name="suboremp" value="button_one"/><span>Subcontractor</span></label>
   <label><input type="radio" name="suboremp" value="button_two"/><span>Employee</span></label>
 
-  <div id="sub" style="display:none">
+  <div id="sub">
     <div class="field">
       <%= form.label :subcontractor_id %>
-      <%= form.collection_select :subcontractor_id, Subcontractor.all, :subcontractor_id, :subcontractor_name ,{:prompt => true}, { :id => 'subbies', :selected => 1, "data-placeholder" => 'Select a Subcontractor' }%>
+      <%= form.collection_select :subcontractor_id, Subcontractor.all, :subcontractor_id, :subcontractor_name ,{:prompt => true}, {:class=> 'select2', :id => 'subbies', :selected => 1, "data-placeholder" => 'Select a Subcontractor', required: true }%>
     </div>
   </div>
 
-  <div id="emp" style="display:none">
+  <div id="emp">
     <div class="field">
       <%= form.label :employee_id %>
-      <%= form.collection_select :employee_id, Employee.all, :employee_id, :first_name , {:prompt => true}, { :id => 'empies', :selected => 1, "data-placeholder" => 'Select an Employee' }%>
+      <%= form.collection_select :employee_id, Employee.all, :employee_id, :first_name , {:prompt => true}, {:class=> 'select2', :id => 'empies', :selected => 1, "data-placeholder" => 'Select an Employee' }%>
    </div>
   </div>
 
   <div class="field">
     <%= form.label :task_id %>
-    <%= form.collection_select :task_id, Task.all, :task_id, :task_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Task' } %>
+    <%= form.collection_select :task_id, Task.all, :task_id, :task_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Task' } %>
   </div>
 
   <div class="field">
     <%= form.label :assignment_date %>
-    <%= form.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    <%= form.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => assignment.assignment_date || Date.today.strftime('%Y-%m-%d') %>
   </div>
 
   <div class="actions">

@@ -1,13 +1,56 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Assignments</h1>
+
+  <%# button to open up the modal at bottom which has filter options%> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
+
+  <%# filter modal at bottom for filtering options %>
+  <div id="filter" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Filters</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_assignments_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s2">
+            <%= f.label :assignment_date_gteq, "Minimum assignment date" %>
+            <%= f.text_field :assignment_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+          <div class="field col s2">
+            <%= f.label :assignment_date_lteq, "Maximum assignment date" %>
+            <%= f.text_field :assignment_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+          </div>
+        </div>
+        <%= f.submit 'Apply', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end filter modal %>
+
+  <%# button to open up the modal at bottom which has search %> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons right">search</i>search</a>
+
+  <%# search modal at bottom for search %>
+  <div id="search" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Search</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_assignments_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s6">
+            <%= f.text_field :subcontractor_subcontractor_name_or_employee_first_name_or_employee_last_name_or_task_task_description_cont %>
+          </div>
+        </div>
+        <%= f.submit 'Search', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end search modal %>
 
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Assigned</th>
-      <th>Task</th>
-      <th>Assignment date</th>
+      <th>Assigned</th> <%# fix later %>
+      <th><%= sort_link(@search, :task_task_description, "Task") %></th>
+      <th><%= sort_link(@search, :assignment_date) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +64,7 @@
         <td><%= assignment.assignment_date %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>State:</strong>
@@ -52,12 +52,12 @@
 
 <p>
   <strong>Customer rep phone 1:</strong>
-  <%= @customer.customer_rep_phone_1 %>
+  <%= number_to_phone(@customer.customer_rep_phone_1, area_code: true) %>
 </p>
 
 <p>
   <strong>Customer rep phone 2:</strong>
-  <%= @customer.customer_rep_phone_2 %>
+  <%= number_to_phone(@customer.customer_rep_phone_2, area_code: true) %>
 </p>
 
 <p>

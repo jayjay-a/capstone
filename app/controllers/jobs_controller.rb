@@ -4,12 +4,15 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
-    # domain/jobs?project_id=x
-    # if params[:project_id]
-    #   @jobs = Job.where(project_id: params[:project_id])
-    # end
+    @search = Job.ransack(params[:q]) #for ransack
+    @jobs = @search.result
   end
+
+  def search #for ransack
+    index
+    render :index
+  end
+
 
   # GET /jobs/1
   # GET /jobs/1.json

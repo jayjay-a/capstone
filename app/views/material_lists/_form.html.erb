@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= form.label :project_id  %>
-    <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Project' } %>
+    <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
   </div>
 
   <div class="field">
     <%= form.label :material_id  %>
-    <%= form.collection_select :material_id, Material.all, :material_id, :material_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Material' } %>
+    <%= form.collection_select :material_id, Material.all, :material_id, :material_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Material' } %>
   </div>
 
   <div class="field">
     <%= form.label :unit_price %>
-    <%= form.text_field :unit_price, id: :material_list_unit_price %>
+    <%= form.number_field :unit_price, id: :material_list_unit_price, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.text_field :quantity, id: :material_list_quantity %>
+    <%= form.number_field :quantity, id: :material_list_quantity, required: true %>
   </div>
 
   <div class="actions">

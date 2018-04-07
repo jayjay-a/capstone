@@ -1,11 +1,31 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Rental Equipments</h1>
+
+  <%# button to open up the modal at bottom which has search%> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons right">search</i>search</a>
+
+  <%# search modal at bottom for searching material desc %>
+  <div id="search" class="modal bottom-sheet"><%# start modal %>
+    <div class="modal-content">
+      <h4>Search</h4>
+      <%# using ransack to search for these inputs%>
+      <%= search_form_for @search, url: search_rental_equipments_path, html: { method: :post } do |f| %>
+        <div class="row">
+          <div class="field col s6">
+            <%= f.label :rental_equipment_id %>
+            <%= f.text_field :rental_description_cont %>
+          </div>
+        </div>
+        <%= f.submit 'Search', class: "btn" %>
+      <% end %>
+    </div>
+  </div> <%# end search modal %>
 
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Rental description</th>
+      <th><%= sort_link(@search, :rental_description) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,7 +36,7 @@
         <td><%= rental_equipment.rental_description %></td>
         <td><%= link_to 'Show', rental_equipment %></td>
         <td><%= link_to 'Edit', edit_rental_equipment_path(rental_equipment) %></td>
-        <td><%= link_to 'Destroy', rental_equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', rental_equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

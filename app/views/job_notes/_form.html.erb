@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= form.label :job_id %>
-    <%= form.number_field :job_id, id: :job_note_job_id %>
+    <%= form.collection_select :job_id, Project.all, :job_id, :job_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
   </div>
 
   <div class="field">
     <%= form.label :job_notes %>
-    <%= form.text_area :job_notes, id: :job_note_job_notes %>
+    <%= form.text_area :job_notes, id: :job_note_job_notes, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :job_notes_owner %>
-    <%= form.text_field :job_notes_owner, id: :job_note_job_notes_owner %>
+    <%= form.text_field :job_notes_owner, id: :job_note_job_notes_owne, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :job_notes_date %>
-    <%= form.text_field :job_notes_date, id: :job_note_job_notes_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    <%= form.text_field :job_notes_date, id: :job_note_job_notes_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => job_note.job_notes_date || Date.today.strftime('%Y-%m-%d'), required: true %>
   </div>
 
   <div class="actions">

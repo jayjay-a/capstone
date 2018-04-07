@@ -1,30 +1,69 @@
+<style>
+  #panell{
+   margin-top: 100px;
+   padding: 0px;
+ }
+ #loginbtn{
+   float: right;
+   margin-bottom: 10px;
+   margin-right: 10px;
+ }
+ #title{
+   background-color: #448aff;
+   color: white;
+   padding: 8px;
+   margin-top: 0px;
+   height: 50px;
+ }
+ form{
+   padding:0px;
+   border-radius: 3px;
+   box-sizing: border-box;
+ }
+ #email,#password{
+  margin-left: 20px;
+  margin-right: 20px;
+ }
+ #checkbox{
+  margin-left: 30px;
+ }
+ #linkies{
+   margin-left: 20px;
+ }
+.btn{ 
+  background-color: #448aff; 
+}
+</style>
 
-<h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s6 offset-s3 z-depth-1" id="panell">
+        <h5 id="title">Login</h5>
+        <form>
 
-  <%# rememberable isnt used as of right now 20180329 %>
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+          <div class="input-field" id="email">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="input-field" id="password">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+          <div id="linkies"><%= render "devise/shared/links" %></div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+          <%= button_tag( :class => "btn waves-effect waves-light", :id => "loginbtn") do %>
+            Login<i class="material-icons right">send</i>
+          <% end %>
+          
+
+        </form>
+      </div> <%# end panel %>
+    </div> <%# end row %>
+  </div> <%# end container%>
+
 <% end %>
 
 <%# remove sign ups from the shared links%>
-<%= render "devise/shared/links" %>
-

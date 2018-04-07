@@ -1,12 +1,12 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>States</h1>
 
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>State name</th>
-      <th>State abbrev</th>
+      <th><%= sort_link(@search, :state_name) %></th>
+      <th><%= sort_link(@search, :state_abbrev) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= state.state_abbrev %></td>
         <td><%= link_to 'Show', state %></td>
         <td><%= link_to 'Edit', edit_state_path(state) %></td>
-        <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

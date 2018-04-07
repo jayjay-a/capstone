@@ -4,7 +4,13 @@ class CustomerStatusesController < ApplicationController
   # GET /customer_statuses
   # GET /customer_statuses.json
   def index
-    @customer_statuses = CustomerStatus.all
+    @search = CustomerStatus.ransack(params[:q]) #for ransack
+    @customer_statuses = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /customer_statuses/1

@@ -4,7 +4,13 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @search = Employee.ransack(params[:q]) #for ransack
+    @employees = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /employees/1

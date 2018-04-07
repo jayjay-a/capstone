@@ -2,12 +2,12 @@
 <div id = nested-fields class="nested-fields" style="width:350px">
   <div class="field">
     <%= f.label :task_status_id %>
-    <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+    <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
   </div>
 
   <div class="field">
     <%= f.label :task_start_date %>
-    <%= f.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    <%= f.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', required: true %>
   </div>
 
   <div class="field">
@@ -17,7 +17,7 @@
 
   <div class="field">
     <%= f.label :task_description %>
-    <%= f.text_field :task_description, id: :task_task_description %>
+    <%= f.text_field :task_description, id: :task_task_description, required: true %>
   </div>
 
   <%= link_to_remove_association "Remove task", f %>

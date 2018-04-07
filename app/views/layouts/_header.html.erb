@@ -1,10 +1,4 @@
-<%# dropdown contents on navbar %>
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">replace or</a></li>
-  <li><a href="#!">delete this</a></li>
-  <li class="divider"></li>
-  <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
-</ul>
+<% unless controller.controller_name == "sessions"%>
 
 <nav>
   <div class="nav-wrapper">
@@ -25,11 +19,37 @@
         <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
       </li>
 
+      <li class="<%= 'active' if params[:controller] == 'employees' %>">
+        <a class="nav-link" <%= link_to 'Employees', employees_path %></a>
+      </li>
+
+      <li class="<%= 'active' if params[:controller] == 'subcontractors' %>">
+        <a class="nav-link" <%= link_to 'Subcontractors', subcontractors_path %></a>
+      </li>
+
+      <li class="<%= 'active' if params[:controller] == 'materials' %>">
+        <a class="nav-link" <%= link_to 'Materials', materials_path %></a>
+      </li>
+
+      <li class="<%= 'active' if params[:controller] == 'rental_equipments' %>">
+        <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
+      </li>
+
+      <li class="<%= 'active' if params[:controller] == 'pages' %>">
+        <a <%= link_to "Admin Panel", admin_panel_path %></a>
+      </li>
+
       <%# drop down trigger on navbar%>
       <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>
 </nav>
+
+<%# dropdown contents on navbar %>
+<ul id="dropdown1" class="dropdown-content">
+  <li class="divider"></li>
+  <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
+</ul>
 
 <%# side navbar for mobile %>
 <ul class="sidenav" id="mobile-demo">
@@ -44,12 +64,28 @@
   <li class="<%= 'active' if params[:controller] == 'customers' %>">
     <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
   </li>
+
+  <li class="<%= 'active' if params[:controller] == 'employees' %>">
+    <a class="nav-link" <%= link_to 'Employees', employees_path %></a>
+  </li>
+
+  <li class="<%= 'active' if params[:controller] == 'subcontractors' %>">
+    <a class="nav-link" <%= link_to 'Subcontractors', subcontractors_path %></a>
+  </li>
+
+  <li class="<%= 'active' if params[:controller] == 'materials' %>">
+    <a class="nav-link" <%= link_to 'Materials', materials_path %></a>
+  </li>
+
+  <li class="<%= 'active' if params[:controller] == 'rental_equipments' %>">
+    <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
+  </li>
+  
   <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
 </ul>
 
 
 <%comment do %> this is just how an if logged in, show or dont show login button and logout. this used bootstrap styling
-    <%# sign in%>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
@@ -69,3 +105,4 @@
   </div>
 </nav>
 <% comment end %>
+<%end%>

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Customer:</strong>
   <%= @project.customer.customer_name %>
@@ -32,47 +30,47 @@
 
 <p>
   <strong>Bid material cost:</strong>
-  <%= @project.bid_material_cost %>
+  <%= number_to_currency(@project.bid_material_cost) %>
 </p>
 
 <p>
-  <strong>Bid cost of labor decimal:</strong>
-  <%= @project.bid_cost_of_labor %>
+  <strong>Bid cost of labor:</strong>
+  <%= number_to_currency(@project.bid_cost_of_labor) %>
 </p>
 
 <p>
   <strong>Bid cost of permits:</strong>
-  <%= @project.bid_cost_of_permits %>
+  <%= number_to_currency(@project.bid_cost_of_permits) %>
 </p>
 
 <p>
   <strong>Bid equipment rental:</strong>
-  <%= @project.bid_equipment_rental %>
+  <%= number_to_currency(@project.bid_equipment_rental) %>
 </p>
 
 <p>
-  <strong>Bid freight decimal:</strong>
-  <%= @project.bid_freight %>
-</p>
-
-<p>
-  <strong>Tax rate:</strong>
-  <%= @project.tax_rate %>
-</p>
-
-<p>
-  <strong>Bid amount:</strong>
-  <%= @project.bid_amount %>
+  <strong>Bid freight:</strong>
+  <%= number_to_currency(@project.bid_freight) %>
 </p>
 
 <p>
   <strong>Bid fuel cost:</strong>
-  <%= @project.bid_fuel_cost %>
+  <%= number_to_currency(@project.bid_fuel_cost) %>
 </p>
 
 <p>
   <strong>Bid lodging cost:</strong>
-  <%= @project.bid_lodging_cost %>
+  <%= number_to_currency(@project.bid_lodging_cost) %>
+</p>
+
+<p>
+  <strong>Tax rate:</strong>
+  <%= number_to_percentage(@project.tax_rate, precision: 2 ) %>
+</p>
+
+<p>
+  <strong>Bid amount:</strong>
+  <%= number_to_currency(@project.bid_amount) %>
 </p>
 
 
