@@ -20,9 +20,9 @@
   <div id="job">
     <p>
       <div class="row"><%# row 1 %>
-        <div class="field col s3">
+        <div class="field col s6">
           <%= form.label :project_id  %>
-          <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
+          <%= form.collection_select :project_id, Project.all, :project_id, :project_and_customer_and_branch, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
         </div>
 
 

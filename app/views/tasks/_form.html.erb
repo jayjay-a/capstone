@@ -22,7 +22,7 @@
       <div class="row"> <%# row 1 %>
         <div class="field col s3">
           <%= form.label :job_id  %>
-          <%= form.collection_select :job_id, Job.all, :job_id, :job_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Job' } %>
+          <%= form.collection_select :job_id, Job.all, :job_id, :job_and_type, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Job' } %>
         </div>
       </div><%# row 1 end %>
 
