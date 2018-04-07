@@ -1,7 +1,6 @@
 <%# these fields are added as a nested form to project form%>
 <div id = nested-fields class="nested-fields">
   <p>
-  <form class="col s12">
     <div class="row">
       <div class="field col s3">
         <%= f.label :job_type_id %>
@@ -22,7 +21,6 @@
         <%= f.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
     </div><%# end row %>
-  </form>
 
   <%# adding tasks to job%>
   <div id="task">

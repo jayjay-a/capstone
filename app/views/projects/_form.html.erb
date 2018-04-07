@@ -1,5 +1,3 @@
-<h2>New Project</h2>
-
 <%= form_with(model: project, local: true) do |form| %>
   <% if project.errors.any? %>
       <div id="error_explanation">
@@ -105,6 +103,9 @@
 
 <%# Job Tab%> <%# adding jobs to project%>
   <div id="job" class="col s12">
+    <%= form.fields_for :jobs do |job| %>
+      <%= render 'job_fields', f: job %>
+    <% end %>
     <p>
         <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Job"), form, :jobs, class: "btn waves-effect waves-light" %> 
     </p>
@@ -112,6 +113,9 @@
 
 <%# Material List Tab%><%# adding materials to project%>
   <div id="material_list" class="col s12">
+    <%= form.fields_for :material_lists do |material_list| %>
+      <%= render 'material_list_fields', f: material_list %>
+    <% end %>
     <p>
         <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Material"), form, :material_lists, class: "btn waves-effect waves-light" %> 
     </p>
@@ -120,6 +124,9 @@
 
 <%# Rental List Tab%><%# adding rental equipment to project%>
   <div id="rental_list" class="col s12">
+    <%= form.fields_for :rental_lists do |rental_list| %>
+      <%= render 'rental_list_fields', f: rental_list %>
+    <% end %>
     <p>
         <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Rental Equipment"), form, :rental_lists, class: "btn waves-effect waves-light" %> 
     </p>
@@ -128,6 +135,9 @@
 
   <%# Notes Tab%> <%# adding notes to project%>
   <div id="notes" class="col s12">
+    <%= form.fields_for :project_notes do |notes| %>
+      <%= render 'project_note_fields', f: notes %>
+    <% end %>
     <p>
         <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Note"), form, :project_notes, class: "btn waves-effect waves-light" %> 
     </p>
