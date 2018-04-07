@@ -11,9 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :employee_type_description %>
-    <%= form.text_field :employee_type_description, id: :employee_type_employee_type_description, required: true %>
+  <div class="row">
+    <div class="field col s6" style="min-width: 200px;">
+      <%= form.label :employee_type_description %>
+      <%= form.text_field :employee_type_description, id: :employee_type_employee_type_description, required: true %>
+    </div>
   </div>
 
   <%= button_tag( :class => "btn waves-effect waves-light right") do %>
