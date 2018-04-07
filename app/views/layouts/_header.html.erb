@@ -66,10 +66,6 @@
     <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
   </li>
 
-  <li class="<%= 'active' if params[:controller] == 'employees' %>">
-    <a class="nav-link" <%= link_to 'Employees', employees_path %></a>
-  </li>
-
   <li class="<%= 'active' if params[:controller] == 'subcontractors' %>">
     <a class="nav-link" <%= link_to 'Subcontractors', subcontractors_path %></a>
   </li>
@@ -80,6 +76,10 @@
 
   <li class="<%= 'active' if params[:controller] == 'rental_equipments' %>">
     <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
+  </li>
+
+  <li class="<%= 'active' if params[:controller] == 'pages' %>">
+    <a <%= link_to "Admin Panel", admin_panel_path %></a>
   </li>
   
   <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
