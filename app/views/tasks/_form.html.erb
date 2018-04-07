@@ -11,49 +11,73 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :job_id  %>
-    <%= form.collection_select :job_id, Job.all, :job_id, :job_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Job' } %>
-  </div>
+  <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+    <li class="tab"><a class="active" href="#job">Task</a></li>
+    <li class="tab"><a href="#assignments">Assignments</a></li>
+    <li class="tab"><a href="#notes">Notes</a></li>
+  </ul>
 
-  <div class="field">
-    <%= form.label :task_status_id  %>
-    <%= form.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
-  </div>
+  <div id="job">
+    <p>
+      <div class="row"> <%# row 1 %>
+        <div class="field col s3">
+          <%= form.label :job_id  %>
+          <%= form.collection_select :job_id, Job.all, :job_id, :job_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Job' } %>
+        </div>
+      </div><%# row 1 end %>
 
-  <div class="field">
-    <%= form.label :task_start_date %>
-    <%= form.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
+      <div class="row"><%# row 2 %>
+        <div class="field col s3">
+          <%= form.label :task_status_id %>
+          <%= form.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'}%>
+        </div>
 
-  <div class="field">
-    <%= form.label :task_end_date %>
-    <%= form.text_field :task_end_date, id: :task_task_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
+        <div class="field col s3">
+          <%= form.label :task_start_date %>
+          <%= form.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :task_description %>
-    <%= form.text_area :task_description, id: :task_task_description, required: true %>
-  </div>
+        <div class="field col s3">
+          <%= form.label :task_end_date %>
+          <%= form.text_field :task_end_date, id: :task_task_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+        </div>
+      </div><%# row 2 end %>
 
-  <%# adding assignment to task%>
-  <div id="assignment">
-    <%= form.fields_for :assignments do |assignment| %>
-      <%= render 'assignment_fields', f: assignment %>
-    <% end %>
-    <div class="link">
-      <%= link_to_add_association "Add Assignment", form, :assignments %>
-    </div>
+      <div class="row"><%# row 3 %>
+        <div class="field col s9">
+          <%= form.label :task_description %>
+          <%= form.text_area :task_description, id: :task_task_description%>
+        </div>
+      </div><%# row 3 end %>
+    </p>
   </div>
-
-  <%# adding notes to task%>
+  
+  <div id="assignments">
+    <p>
+      <%# adding assignment to task%>
+      <div id="assignment">
+        <%= form.fields_for :assignments do |assignment| %>
+          <%= render 'assignment_fields', f: assignment %>
+        <% end %>
+        <div class="link">
+          <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Assignment"), form, :assignments, class: "btn waves-effect waves-light" %> 
+        </div>
+      </div>
+    </p>
+  </div>
+  
   <div id="notes">
-    <%= form.fields_for :task_notes do |notes| %>
-      <%= render 'task_note_fields', f: notes %>
-    <% end %>
-    <div class="link">
-      <%= link_to_add_association "Add Note", form, :task_notes %>
-    </div>
+    <p>
+      <%# adding notes to task%>
+      <div id="notes">
+        <%= form.fields_for :task_notes do |notes| %>
+          <%= render 'task_note_fields', f: notes %>
+        <% end %>
+        <div class="link">
+          <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Note"), form, :task_notes, class: "btn waves-effect waves-light" %> 
+        </div>
+      </div>
+    </p>
   </div>
 
   <%= button_tag( :class => "btn waves-effect waves-light right") do %>
