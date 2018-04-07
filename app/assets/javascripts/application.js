@@ -43,14 +43,6 @@ $(document).ready(function(){ //loads
     $('.tabs').tabs();
 });
 
-$("input[name='suboremp']:radio") //shows/hide divs on assignments for subcontracors or employees
-    .change(function() {
-        $("#sub").toggle($(this).val() == "button_one");
-        $("#emp").toggle($(this).val() == "button_two");
-        $("#subbies").select2('val', 'All'); //clears based on radio button pressing
-        $("#empies").select2('val', 'All');
-});
-
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   
     //currently unused cause we dont got turbolink no mo
 })
