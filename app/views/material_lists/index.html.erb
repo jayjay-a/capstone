@@ -65,7 +65,8 @@
       <% end %>
     </div>
   </div> <%# end search modal %>
-  
+
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Material List"), new_material_list_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -95,5 +96,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Material List', new_material_list_path %>

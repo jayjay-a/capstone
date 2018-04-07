@@ -2,6 +2,7 @@
 
 <h1>Employees</h1>
 
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Employee"), new_employee_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -33,5 +34,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Employee', new_employee_path %>
