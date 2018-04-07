@@ -7,9 +7,11 @@
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
     <ul class="right hide-on-med-and-down">
+      <% comment do %>
       <li class="<%= 'active' if params[:controller] == 'home' %>">
         <a class="nav-link" <%= link_to 'Home', root_path %></a>
       </li>
+      <% comment end %>
 
       <li class="<%= 'active' if params[:controller] == 'projects' %>"> 
         <a class="nav-link" <%= link_to 'Projects', projects_path %></a>
@@ -19,36 +21,33 @@
         <a class="nav-link" <%= link_to 'Customers', customers_path %></a>
       </li>
 
-      <li class="<%= 'active' if params[:controller] == 'employees' %>">
-        <a class="nav-link" <%= link_to 'Employees', employees_path %></a>
-      </li>
+      <%# drop down(resources) trigger on navbar%>
+      <li><a class="dropdown-trigger" href="#!" data-target="resources">Resources<i class="material-icons right">arrow_drop_down</i></a></li>
 
-      <li class="<%= 'active' if params[:controller] == 'subcontractors' %>">
-        <a class="nav-link" <%= link_to 'Subcontractors', subcontractors_path %></a>
-      </li>
-
-      <li class="<%= 'active' if params[:controller] == 'materials' %>">
-        <a class="nav-link" <%= link_to 'Materials', materials_path %></a>
-      </li>
-
-      <li class="<%= 'active' if params[:controller] == 'rental_equipments' %>">
-        <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
-      </li>
+      <li><a href="#">Reports</a></li> <%#placeolder%>
 
       <li class="<%= 'active' if params[:controller] == 'pages' %>">
         <a <%= link_to "Admin Panel", admin_panel_path %></a>
       </li>
 
-      <%# drop down trigger on navbar%>
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
+
     </ul>
   </div>
 </nav>
 
-<%# dropdown contents on navbar %>
-<ul id="dropdown1" class="dropdown-content">
-  <li class="divider"></li>
-  <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
+
+<%# dropdown2(resources) contents on navbar %>
+<ul id="resources" class="dropdown-content">
+  <li class="<%= 'active' if params[:controller] == 'subcontractors' %>">
+    <a class="nav-link" <%= link_to 'Subcontractors', subcontractors_path %></a>
+  </li>
+  <li class="<%= 'active' if params[:controller] == 'materials' %>">
+    <a class="nav-link" <%= link_to 'Materials', materials_path %></a>
+  </li>
+  <li class="<%= 'active' if params[:controller] == 'rental_equipments' %>">
+    <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
+  </li>
 </ul>
 
 <%# side navbar for mobile %>
