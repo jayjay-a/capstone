@@ -11,33 +11,39 @@
     </div>
   <% end %>
 
+  <div class="row"><%# row 1 %>
+    <div class="field col s3">
+      <%= form.label :project_id  %>
+      <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
+    </div>
 
-<div class ="center-align">
-  <div class="field">
-    <%= form.label :project_id  %>
-    <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
-  </div>
+    
+  </div> <%# row 1 end %>
 
-  <div class="field">
-    <%= form.label :job_type_id %>
-    <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
-  </div>
+  <div class="row"><%# row 2 %>
+    <div class="field col s3">
+      <%= form.label :job_type_id %>
+      <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :job_status_id %>
-    <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
-  </div>
+    <div class="field col s3">
+      <%= form.label :job_status_id %>
+      <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+    </div>
+  </div> <%# row 2 end%>
 
-  <div class="field">
-    <%= form.label :job_start_date %>
-    <%= form.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', required: true %>
-  </div>
+  <div class="row"><%# row 3 %>
+    <div class="field col s3">
+      <%= form.label :job_start_date %>
+      <%= form.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', required: true %>
+    </div>
 
-  <div class="field">
-    <%= form.label :job_end_date %>
-    <%= form.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
-</div>
+    <div class="field col s3">
+      <%= form.label :job_end_date %>
+      <%= form.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    </div>
+  </div> <%# row 3 end%>
+  
 
   <%# adding tasks to job%>
   <div id="task">
