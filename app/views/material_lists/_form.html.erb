@@ -31,7 +31,8 @@
     <%= form.number_field :quantity, id: :material_list_quantity, required: true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

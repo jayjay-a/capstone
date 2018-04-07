@@ -16,7 +16,8 @@
     <%= form.text_field :job_status_description, id: :job_status_job_status_description, required: true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

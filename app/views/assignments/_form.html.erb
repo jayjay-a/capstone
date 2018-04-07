@@ -31,7 +31,8 @@
     <%= form.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => assignment.assignment_date || Date.today.strftime('%Y-%m-%d') %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

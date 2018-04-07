@@ -21,7 +21,8 @@
     <%= form.text_field :state_abbrev, id: :state_state_abbrev, required: true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

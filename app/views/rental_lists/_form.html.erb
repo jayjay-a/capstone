@@ -31,7 +31,8 @@
     <%= form.text_field :cost_frequency, id: :rental_list_cost_frequency %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

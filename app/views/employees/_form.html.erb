@@ -46,7 +46,8 @@
     <%= form.text_field :dismiss_date, id: :employee_dismiss_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+  
 <% end %>

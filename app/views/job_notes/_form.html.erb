@@ -31,7 +31,8 @@
     <%= form.text_field :job_notes_date, id: :job_note_job_notes_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => job_note.job_notes_date || Date.today.strftime('%Y-%m-%d'), required: true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>
