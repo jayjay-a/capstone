@@ -3,7 +3,7 @@
   <div class="row">
     <div class="field col s4">
       <%= f.label :task_status_id %>
-      <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status'}%>
+      <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'}%>
     </div>
   </div>
 

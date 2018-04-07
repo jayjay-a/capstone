@@ -25,15 +25,15 @@
     <div class="row">
       <div class="field col s3">
         <%= form.label :project_status_id %>
-        <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status'} %>
+        <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'} %>
       </div>
       <div class="field col s3">
         <%= form.label :project_type_id %>
-        <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type'} %>
+        <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type'} %>
       </div>
       <div class="field col s4">
         <%= form.label :customer_id %>
-        <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Customer'} %>
+        <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Customer'} %>
       </div>
     </div>
     <div class="row">

@@ -4,7 +4,7 @@
   <div class="row">
     <div class="field col s10">
       <%= f.label :material_id  %>
-      <%= f.collection_select :material_id, Material.all, :material_id, :material_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Material' } %>
+      <%= f.collection_select :material_id, Material.all, :material_id, :material_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Material' } %>
     </div>
   </div>
 
