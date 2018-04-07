@@ -16,9 +16,6 @@
 //= require materialize-sprockets
 //= require select2
 //= require cocoon
-//= require unobtrusive_flash
-//= require unobtrusive_flash_ui
-
 
 $(document).ready(function(){ //loads
     $('.select2').select2({     //select2
@@ -37,11 +34,11 @@ $(document).ready(function(){ //loads
 
     $(".dropdown-trigger").dropdown(); //dropdown on the navbar
 
-    UnobtrusiveFlash.flashOptions['timeout'] = 5000; //shows and hides flash messagetimeout in milliseconds
-
     $('.sidenav').sidenav(); //show side navbar on mobile
 
     $('.modal').modal(); //display modals
+
+    $('.tabs').tabs();
 });
 
 $("input[name='suboremp']:radio") //shows/hide divs on assignments for subcontracors or employees
@@ -53,7 +50,7 @@ $("input[name='suboremp']:radio") //shows/hide divs on assignments for subcontra
 });
 
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   
-
+    //currently unused cause we dont got turbolink no mo
 })
 
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields

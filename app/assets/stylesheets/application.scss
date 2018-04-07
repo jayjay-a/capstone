@@ -19,20 +19,24 @@
  @import 'https://fonts.googleapis.com/icon?family=Material+Icons'; //icons for materialize
  @import 'select2-materialize.scss'; //for select2 dropdown boxes styling
 
-#nested-fields { //nested forms bad style. remove this when we change how nested forms look
-    border: solid 3px;
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 10px;
+ #nested-fields { //default cocoon id
+  margin-bottom: 10px;
 }
 
-#toast-container {
+#task-fields{ //nested task field inside of project>job
+  border-left: solid #82b1ff;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left:50px;
+}
+
+#toast-container { //success or invalid message position
   top: 7% !important;
   right: 35% !important;
   left: 35%;
 }
 
-select.select2 {
+select.select2 { 
   display: block;
 }
 
@@ -52,7 +56,7 @@ textarea{ //fixes textareas having a weird width and exceeding nested forms
   overflow: visible;
 }
 
-.navbar{
+.navbar{ 
     margin-bottom: 15px;
 }
 

@@ -1,6 +1,9 @@
 
 
-<h1>Projects</h1>
+<body>
+<div>
+  <h1>Projects</h1>
+</div>
 
   <%# button to open up the modal at bottom which has filter options%> 
   <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
@@ -71,8 +74,10 @@
         <%= f.submit 'Search', class: "btn" %>
       <% end %>
     </div>
-  </div> <%# end search modal %>
+  </div> <%# end modal %>
 
+
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Project"), new_project_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -135,10 +140,6 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %>
 
 <script>
     $('select').formSelect();

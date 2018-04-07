@@ -1,135 +1,151 @@
 <%= form_with(model: project, local: true) do |form| %>
   <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
-      <% project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+      <div id="error_explanation">
+        <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+        <ul>
+          <% project.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :customer_id  %>
-    <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Customer' } %>
+  <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+    <li class="tab"><a class="active" href="#project">Project</a></li>
+    <li class="tab"><a href="#cost">Costs</a></li>
+    <li class="tab"><a href="#job">Job</a></li>
+    <li class="tab"><a href="#material_list">Materials</a></li>
+    <li class="tab"><a href="#rental_list">Rental</a></li>
+    <li class="tab"><a href="#notes">Notes</a></li>
+  </ul>
+
+<%# Project Tab%>
+  <div id="project" class="col s12">
+    <p>
+    <div class="row">
+      <div class="field col s3">
+        <%= form.label :project_status_id %>
+        <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status'} %>
+      </div>
+      <div class="field col s3">
+        <%= form.label :project_type_id %>
+        <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type'} %>
+      </div>
+      <div class="field col s4">
+        <%= form.label :customer_id %>
+        <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name, {:prompt => true}, {:class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Customer'} %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field col s2">
+        <%= form.label :project_start_date %>
+        <%= form.text_field :project_start_date, id: :project_project_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+      </div>
+      <div class="field col s2">
+        <%= form.label :project_end_date %>
+        <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+      </div>
+      <div class="field col s2">
+        <%= form.label :bid_submit_date %>
+        <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+      </div>
+    </div>
+    </p>
   </div>
 
-  <div class="field">
-    <%= form.label :project_status_id  %>
-    <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+<%# Cost Tab%>
+  <div id="cost" class="col s12">
+    <p>
+    <div class="row">
+      <div class="field col s2">
+        <%= form.label :bid_material_cost %>
+        <%= form.text_field :bid_material_cost, id: :project_bid_material_cost %>
+      </div>
+      <div class="field col s2">
+        <%= form.label :bid_cost_of_labor %>
+        <%= form.text_field :bid_cost_of_labor, id: :project_bid_cost_of_labor %>
+      </div>
+      <div class="field col s2">
+        <%= form.label :bid_cost_of_permits %>
+        <%= form.text_field :bid_cost_of_permits, id: :project_bid_cost_of_permits %>
+      </div>
+      <div class="field col s2">
+        <%= form.label :bid_equipment_rental %>
+        <%= form.text_field :bid_equipment_rental, id: :project_bid_equipment_rental %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field col s2">
+        <%= form.label :bid_freight %>
+        <%= form.text_field :bid_freight, id: :project_bid_freight %>
+      </div>
+      <div class="field col s2">
+        <%= form.label :bid_fuel_cost %>
+        <%= form.text_field :bid_fuel_cost, id: :project_bid_fuel_cost %>
+      </div>
+      <div class="field col s2">
+        <%= form.label :bid_lodging_cost %>
+        <%= form.text_field :bid_lodging_cost, id: :project_bid_lodging_cost %>
+      </div>
+      <div class="field col s1">
+        <%= form.label :tax_rate %>
+        <%= form.text_field :tax_rate, id: :project_tax_rate %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field col s2">
+        <%= form.label :bid_amount %>
+        <%= form.text_field :bid_amount, id: :project_bid_amount %>
+      </div>
+    </div>
+    </p>
   </div>
 
-  <div class="field">
-    <%= form.label :project_type_id  %>
-    <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
-  </div>
-
-  <div class="field">
-    <%= form.label :project_start_date %>
-    <%= form.text_field :project_start_date, id: :project_project_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :project_end_date %>
-    <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_submit_date %>
-    <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => project.bid_submit_date || Date.today.strftime('%Y-%m-%d') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_material_cost %>
-    <%= form.number_field :bid_material_cost, id: :project_bid_material_cost %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_cost_of_labor %>
-    <%= form.number_field :bid_cost_of_labor, id: :project_bid_cost_of_labor %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_cost_of_permits %>
-    <%= form.number_field :bid_cost_of_permits, id: :project_bid_cost_of_permits %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_equipment_rental %>
-    <%= form.number_field :bid_equipment_rental, id: :project_bid_equipment_rental %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_freight %>
-    <%= form.number_field :bid_freight, id: :project_bid_freight %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_fuel_cost %>
-    <%= form.number_field :bid_fuel_cost, id: :project_bid_fuel_cost %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_lodging_cost %>
-    <%= form.number_field :bid_lodging_cost, id: :project_bid_lodging_cost %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tax_rate %>
-    <%= form.text_field :tax_rate, id: :project_tax_rate, :value => project.tax_rate || '8.25%' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bid_amount %>
-    <%= form.number_field :bid_amount, id: :project_bid_amount %>
-  </div>
-
-
-  
-  <%# adding jobs to project%>
-  <div id="jobs">
+<%# Job Tab%> <%# adding jobs to project%>
+  <div id="job" class="col s12">
     <%= form.fields_for :jobs do |job| %>
       <%= render 'job_fields', f: job %>
     <% end %>
-    <div class="link">
-      <%= link_to_add_association "Add Job", form, :jobs %>
-    </div>
+    <p>
+        <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Job"), form, :jobs, class: "btn waves-effect waves-light" %> 
+    </p>
   </div>
 
-  <%# adding materials to project%>
-  <div id="material_lists">
+<%# Material List Tab%><%# adding materials to project%>
+  <div id="material_list" class="col s12">
     <%= form.fields_for :material_lists do |material_list| %>
       <%= render 'material_list_fields', f: material_list %>
     <% end %>
-    <div class="link">
-      <%= link_to_add_association "Add Material", form, :material_lists %>
-    </div>
+    <p>
+        <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Material"), form, :material_lists, class: "btn waves-effect waves-light" %> 
+    </p>
   </div>
 
-  <%# adding rental equipment to project%>
-  <div id="rental_lists">
+
+<%# Rental List Tab%><%# adding rental equipment to project%>
+  <div id="rental_list" class="col s12">
     <%= form.fields_for :rental_lists do |rental_list| %>
       <%= render 'rental_list_fields', f: rental_list %>
     <% end %>
-    <div class="link">
-      <%= link_to_add_association "Add Rental Equipment", form, :rental_lists %>
-    </div>
+    <p>
+        <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Rental Equipment"), form, :rental_lists, class: "btn waves-effect waves-light" %> 
+    </p>
+    
   </div>
 
-  <%# adding notes to project%>
-  <div id="notes">
+  <%# Notes Tab%> <%# adding notes to project%>
+  <div id="notes" class="col s12">
     <%= form.fields_for :project_notes do |notes| %>
       <%= render 'project_note_fields', f: notes %>
     <% end %>
-    <div class="link">
-      <%= link_to_add_association "Add Note", form, :project_notes %>
-    </div>
+    <p>
+        <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Note"), form, :project_notes, class: "btn waves-effect waves-light" %> 
+    </p>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%# Adding buttons to the form for saving or cancel %>
+<%= button_tag( :class => "btn waves-effect waves-light right") do %>
+  Save<i class="material-icons right">save</i>
+<% end %>
 
 <% end %>
