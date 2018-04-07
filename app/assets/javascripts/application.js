@@ -32,7 +32,9 @@ $(document).ready(function(){ //loads
     });
     $(".datepicker").datepicker('setDate', new Date()); //defaults current date as default selected
 
-    $(".dropdown-trigger").dropdown(); //dropdown on the navbar
+    $(".dropdown-trigger").dropdown({ //dropdown on the navbar
+        constrainWidth: false
+    }); 
 
     $('.sidenav').sidenav(); //show side navbar on mobile
 
