@@ -8,6 +8,10 @@ class Ability
         can :create, :all
         can :read, :all
         can :update, :all
+        cannot :create, [User, ProjectStatus, JobStatus, TaskStatus,
+                         ProjectType, JobType, SubcontractorStatus,
+                         CustomerStatus, EmployeeStatus, EmployeeType,
+                         Employee, State]
         cannot :read, [User, ProjectStatus, JobStatus, TaskStatus,
                        ProjectType, JobType, SubcontractorStatus,
                        CustomerStatus, EmployeeStatus, EmployeeType,
@@ -16,11 +20,9 @@ class Ability
                          ProjectType, JobType, SubcontractorStatus,
                          CustomerStatus, EmployeeStatus, EmployeeType,
                          Employee, State]
-        cannot :create, [User, ProjectStatus, JobStatus, TaskStatus,
-                         ProjectType, JobType, SubcontractorStatus,
-                         CustomerStatus, EmployeeStatus, EmployeeType,
-                         Employee, State]
+        can :read, User, id: user.id
         can :update, User, id: user.id
+        
         if user.admin?
           can :manage, :all
         end
