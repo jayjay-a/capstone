@@ -18,13 +18,34 @@
  @import 'materialize';
  @import 'https://fonts.googleapis.com/icon?family=Material+Icons'; //icons for materialize
  @import 'select2-materialize.scss'; //for select2 dropdown boxes styling
- @import 'unobtrusive_flash_ui'; //flash messages
 
-#nested-fields { //nested forms bad style. remove this when we change how nested forms look
-    border: solid 3px;
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 10px;
+ #nested-fields { //default cocoon id
+  margin-bottom: 10px;
+}
+
+#task-fields{ //nested task field inside of project>job
+  border-left: solid #82b1ff;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left:50px;
+}
+
+#toast-container { //success or invalid message position
+  top: 7% !important;
+  right: 35% !important;
+  left: 35%;
+}
+
+select.select2 { 
+  display: block;
+}
+
+.form-control.select2-hidden-accessible {
+  top: 350px;
+}
+
+.contenedor-select2 {
+position: relative;
 }
 
 textarea{ //fixes textareas having a weird width and exceeding nested forms
@@ -35,23 +56,9 @@ textarea{ //fixes textareas having a weird width and exceeding nested forms
   overflow: visible;
 }
 
-.navbar{
+.navbar{ 
     margin-bottom: 15px;
 }
-
-//flash messages
-#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper { 
-  padding: 10px 0;
-  background: rgb(212, 237, 218);
-  color: rgb(21,87,36);
-  opacity: 1;
-}
-
-#unobtrusive-flash-messages .unobtrusive-flash-message-wrapper.unobtrusive-flash-error {
-  background: rgb(248, 215, 218);
-  color: rgb(114,28,36);
-}
-//end flash messages
 
 //form errors
 .field_with_errors label {

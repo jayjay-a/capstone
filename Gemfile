@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use sqlite3 as the database for Active Record
@@ -44,7 +43,6 @@ gem 'materialize-sass', '~> 1.0.0.beta'
 gem 'sprockets-rails', '>= 2.3.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'unobtrusive_flash', '>=3'
 
 # Use for Cocoon
 gem 'cocoon'

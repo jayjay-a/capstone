@@ -1,7 +1,8 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Tasks</h1>
 
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Task"), new_task_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -31,5 +32,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Task', new_task_path %>

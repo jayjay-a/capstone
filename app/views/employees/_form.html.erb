@@ -11,42 +11,48 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :employee_status_id %>
-    <%= form.collection_select :employee_status_id, EmployeeStatus.all, :employee_status_id, :employee_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
-  </div>
+  <div class="row"> <%# row 1 %>
+    <div class="field col s3">
+      <%= form.label :employee_status_id %>
+      <%= form.collection_select :employee_status_id, EmployeeStatus.all, :employee_status_id, :employee_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :employee_type_id %>
-    <%= form.collection_select :employee_type_id, EmployeeType.all, :employee_type_id, :employee_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
-  </div>
+    <div class="field col s3">
+      <%= form.label :employee_type_id %>
+      <%= form.collection_select :employee_type_id, EmployeeType.all, :employee_type_id, :employee_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+    </div>
 
- <div class="field">
-    <%= form.label :state_id %>
-    <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a State' } %>
-  </div>
+    <div class="field col s3">
+      <%= form.label :join_date %>
+      <%= form.text_field :join_date, id: :employee_join_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => employee.join_date || Date.today.strftime('%Y-%m-%d'), required: true %>
+    </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :employee_first_name %>
-  </div>
+    <div class="field col s3">
+      <%= form.label :dismiss_date %>
+      <%= form.text_field :dismiss_date, id: :employee_dismiss_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :employee_last_name %>
-  </div>
+  </div><%# row 1 end %>
 
-  <div class="field">
-    <%= form.label :join_date %>
-    <%= form.text_field :join_date, id: :employee_join_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => employee.join_date || Date.today.strftime('%Y-%m-%d') %>
-  </div>
+  <div class="row"><%# row 2 %>
+    <div class="field col s4">
+      <%= form.label :state_id %>
+      <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a State' } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :dismiss_date %>
-    <%= form.text_field :dismiss_date, id: :employee_dismiss_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
+    <div class="field col s4">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, id: :employee_first_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="field col s4">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, id: :employee_last_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+    </div>
+  </div><%# row 2 end %>
+    
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+  
 <% end %>

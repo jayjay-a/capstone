@@ -5,7 +5,6 @@ class Task < ApplicationRecord
   belongs_to :job
   belongs_to :project, optional: true
 
-  validates :job_id, presence: true
   validates :task_status_id, presence: true
   validates :task_start_date, presence: true
   validates :task_description, presence: true, length: { maximum: 200 }

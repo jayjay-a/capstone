@@ -1,7 +1,8 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Job Statuses</h1>
 
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Job Status"), new_job_status_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -23,5 +24,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Job Status', new_job_status_path %>

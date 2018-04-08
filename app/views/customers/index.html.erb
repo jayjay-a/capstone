@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Customers</h1>
+
+  <h1>Customers</h1>
 
   <%# button to open up the modal at bottom which has filter options%> 
   <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
@@ -46,6 +46,7 @@
     </div>
   </div> <%# end search modal %>
 
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Customer"), new_customer_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -79,11 +80,14 @@
 
         <% comment do %>these are unused in the index page. just here for easy access if needed
         <td><%= customer.customer_address_2 %></td>
+        <td><%= customer.state.state_name %></td>
         <td><%= customer.customer_rep_name_1 %></td>
         <td><%= customer.customer_rep_name_2 %></td>
         <td><%= number_to_phone(customer.customer_rep_phone_1, area_code: true) %></td>
         <td><%= number_to_phone(customer.customer_rep_phone_2, area_code: true) %></td>
         <td><%= customer.customer_rep_email_1 %></td>
+        <td><%= customer.customer_rep_name_2 %></td>
+        <td><%= customer.customer_rep_phone_2 %></td>
         <td><%= customer.customer_rep_email_2 %></td>
         <% comment end %>
 
@@ -96,8 +100,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Customer', new_customer_path %>
 
 <script>
     $('select').formSelect();

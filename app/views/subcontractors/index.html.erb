@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Subcontractors</h1>
 
@@ -41,6 +41,7 @@
     </div>
   </div> <%# end search modal %>
 
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Subcontractor"), new_subcontractor_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
@@ -70,8 +71,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Subcontractor', new_subcontractor_path %>
 
 <script>
     $('select').formSelect();
