@@ -36,10 +36,6 @@
         <%= form.text_field :customer_address_2, id: :customer_customer_address_2 %>
       </div>
       <div class="input col s2">
-        <%= form.label :customer_zipcode, "Zipcode" %>
-        <%= form.text_field :customer_zipcode, id: :customer_customer_zipcode %>
-      </div>
-      <div class="input col s2">
         <%= form.label :customer_city, "City" %>
         <%= form.text_field :customer_city, id: :customer_customer_city %>
       </div>
@@ -47,9 +43,13 @@
         <%= form.label :state_id %>
         <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'State'} %>
       </div>
+      <div class="input col s2">
+        <%= form.label :customer_zipcode, "Zipcode" %>
+        <%= form.text_field :customer_zipcode, id: :customer_customer_zipcode %>
+      </div>
     </div><%# row 2 end%>
 
-    <div class="row"><%# row 3%> 
+    <div class="row"><%# row 3%>
       <div class="input col s4">
 
         <%= form.label :customer_rep_name_1, "First Representative Name" %>
@@ -64,7 +64,7 @@
         <%= form.text_field :customer_rep_email_1, id: :customer_customer_rep_email_1, type: "email" %>
       </div>
     </div> <%# row3 end %>
-    
+
     <div class="row"> <%# row 4 end %>
       <div class="input col s4">
         <%= form.label :customer_rep_name_2, "Second Representative Name" %>

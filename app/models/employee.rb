@@ -7,8 +7,8 @@ class Employee < ApplicationRecord
   validates :employee_status_id, presence: true
   validates :employee_type_id, presence: true
   validates :state_id, presence: true
-  validates :first_name, presence: true, length: { maximum: 35 }
-  validates :last_name, presence: true, length: { maximum: 35 }
+  validates :first_name, presence: true, length: { maximum: 35 }, format: { with: /\A[^0-9`!@#\$%\^&*+_=(){}]+\z/ }
+  validates :last_name, presence: true, length: { maximum: 35 }, format: { with: /\A[^0-9`!@#\$%\^&*+_=(){}]+\z/ }
   validates :join_date, presence: true
 
   def first_and_last_name
