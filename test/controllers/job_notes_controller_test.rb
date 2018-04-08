@@ -17,7 +17,7 @@ class JobNotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job_note" do
     assert_difference('JobNote.count') do
-      post job_notes_url, params: { job_note: { job_id: @job_note.job_id, job_notes: @job_note.job_notes, job_notes_date: @job_note.job_notes_date, job_notes_owner: @job_note.job_notes_owner } }
+      post job_notes_url, params: { job_note: { job_id: @job_note.job_id, job_notes: @job_note.job_notes, job_note_date: @job_note.job_note_date, job_notes_owner: @job_note.job_notes_owner } }
     end
 
     assert_redirected_to job_note_url(JobNote.last)
@@ -34,7 +34,7 @@ class JobNotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job_note" do
-    patch job_note_url(@job_note), params: { job_note: { job_id: @job_note.job_id, job_notes: @job_note.job_notes, job_notes_date: @job_note.job_notes_date, job_notes_owner: @job_note.job_notes_owner } }
+    patch job_note_url(@job_note), params: { job_note: { job_id: @job_note.job_id, job_notes: @job_note.job_notes, job_note_date: @job_note.job_note_date, job_notes_owner: @job_note.job_note_owner } }
     assert_redirected_to job_note_url(@job_note)
   end
 

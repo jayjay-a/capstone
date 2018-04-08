@@ -30,4 +30,8 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :project_notes, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :material_lists, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :rental_lists, allow_destroy: true, reject_if: :all_blank
+
+  def project_and_customer_and_branch
+    "#{project_id} - #{customer.customer_name}, Branch: #{customer.customer_branch}"
+  end
 end

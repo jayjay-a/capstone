@@ -11,32 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :subcontractor_status_id  %>
-    <%= form.collection_select :subcontractor_status_id, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
-  </div>
+  <div class="row"> <%# row 1 %>
+    <div class="field col s4">
+      <%= form.label :subcontractor_status_id  %>
+      <%= form.collection_select :subcontractor_status_id, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :subcontractor_name %>
-    <%= form.text_field :subcontractor_name, id: :subcontractor_subcontractor_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
-  </div>
+    <div class="field col s6">
+      <%= form.label :company %>
+      <%= form.text_field :company, id: :subcontractor_company %>
+    </div>
+  </div> <%# row 1 end %>
 
-  <div class="field">
-    <%= form.label :subcontractor_phone %>
-    <%= form.text_field :subcontractor_phone, id: :subcontractor_subcontractor_phone %>
-  </div>
+  <div class="row"> <%# row 2 %>
+     <div class="field col s3">
+      <%= form.label :subcontractor_name %>
+      <%= form.text_field :subcontractor_name, id: :subcontractor_subcontractor_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :subcontractor_email %>
-    <%= form.text_field :subcontractor_email, id: :subcontractor_subcontractor_email, type: "email" %>
-  </div>
+    <div class="field col s3">
+      <%= form.label :subcontractor_phone %>
+      <%= form.text_field :subcontractor_phone, id: :subcontractor_subcontractor_phone %>
+    </div>
 
-  <div class="field">
-    <%= form.label :company %>
-    <%= form.text_field :company, id: :subcontractor_company %>
-  </div>
+    <div class="field col s3">
+      <%= form.label :subcontractor_email %>
+      <%= form.text_field :subcontractor_email, id: :subcontractor_subcontractor_email, type: "email" %>
+    </div>
+  </div> <%# row 2 end %>  
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

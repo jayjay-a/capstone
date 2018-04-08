@@ -32,21 +32,15 @@ $(document).ready(function(){ //loads
     });
     $(".datepicker").datepicker('setDate', new Date()); //defaults current date as default selected
 
-    $(".dropdown-trigger").dropdown(); //dropdown on the navbar
+    $(".dropdown-trigger").dropdown({ //dropdown on the navbar
+        constrainWidth: false
+    }); 
 
     $('.sidenav').sidenav(); //show side navbar on mobile
 
     $('.modal').modal(); //display modals
 
     $('.tabs').tabs();
-});
-
-$("input[name='suboremp']:radio") //shows/hide divs on assignments for subcontracors or employees
-    .change(function() {
-        $("#sub").toggle($(this).val() == "button_one");
-        $("#emp").toggle($(this).val() == "button_two");
-        $("#subbies").select2('val', 'All'); //clears based on radio button pressing
-        $("#empies").select2('val', 'All');
 });
 
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   

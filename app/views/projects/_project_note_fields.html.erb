@@ -4,7 +4,7 @@
   <div class="row">
     <div class="field">
       <%= f.label :project_notes %>
-      <%= f.text_area :project_notes, id: :project_note_project_notes, class: 'materialize-textarea' %>
+      <%= f.text_area :project_notes, id: :project_note_project_notes %>
     </div>
   </div>
 
@@ -15,8 +15,8 @@
     </div>
   
     <div class="field col s2">
-      <%= f.label :note_owner %>
-      <%= f.text_field :note_owner, id: :project_note_note_owner %>
+      <%= f.label :project_note_owner %>
+      <%= f.text_field :project_note_owner, id: :project_note_project_note_owner %>
     </div>
   </div>
   <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Note"), f, class: "btn waves-effect waves-light" %> 

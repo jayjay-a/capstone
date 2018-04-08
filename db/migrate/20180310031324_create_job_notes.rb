@@ -5,7 +5,7 @@ class CreateJobNotes < ActiveRecord::Migration[5.1]
       t.integer :job_id
       t.text :job_notes
       t.string :job_notes_owner
-      t.date :job_notes_date
+      t.date :job_note_date
 
       t.timestamps
     end

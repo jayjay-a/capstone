@@ -85,8 +85,8 @@
       <th><%= sort_link(@search, :customer_id) %></th>
       <th><%= sort_link(@search, :customer_customer_branch, "Branch") %></th> <%# fix this %>
       <th><%= sort_link(@search, :project_type_project_type_description, "Type") %></th>
-      <th><%= sort_link(@search, :project_start_date) %></th>
-      <th><%= sort_link(@search, :project_end_date) %></th>
+      <th><%= sort_link(@search, :project_start_date, "Start Date") %></th>
+      <th><%= sort_link(@search, :project_end_date, "End Date") %></th>
       <th><%= sort_link(@search, :bid_amount) %></th>
       <th><%= sort_link(@search, :project_status_project_status_description, "Status") %></th>
 
@@ -140,6 +140,8 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
 
 <script>
     $('select').formSelect();

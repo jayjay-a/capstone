@@ -45,10 +45,12 @@
     </div>
   </div> <%# end search modal %>
 
+<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Assignment"), new_assignment_path, class: "btn waves-effect waves-light right" %> 
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>Assigned</th> <%# fix later %>
+      <th><%= sort_link(@search, :subcontractor_subcontractor_name, "Subcontractor") %></th>
+      <th><%= sort_link(@search, :employee_first_name, "Employee") %></th>
       <th><%= sort_link(@search, :task_task_description, "Task") %></th>
       <th><%= sort_link(@search, :assignment_date) %></th>
       <th colspan="3"></th>
@@ -58,8 +60,8 @@
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= assignment.employee.try(:first_name) %> <%# they will only fill in one or the other so this is if not nil show person (sub or emp) %>
-            <%= assignment.subcontractor.try(:subcontractor_name) %></td>
+        <td><%= assignment.subcontractor.subcontractor_name %></td>
+        <td><%= assignment.employee.try(:first_and_last_name) %></td>
         <td><%= assignment.task.task_description %></td>
         <td><%= assignment.assignment_date %></td>
         <td><%= link_to 'Show', assignment %></td>
@@ -71,5 +73,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Assignment', new_assignment_path %>
