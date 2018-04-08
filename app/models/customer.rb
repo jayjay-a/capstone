@@ -14,6 +14,8 @@ class Customer < ApplicationRecord
   validates :customer_rep_phone_2, allow_nil: true, length: { maximum: 26 }
   validates :customer_rep_email_1, allow_nil: true, length: { maximum: 70 }
   validates :customer_rep_email_2, allow_nil: true, length: { maximum: 70 }
+  validates :customer_city, allow_nil: true, length: { maximum: 64 }
+  validates_format_of :customer_zipcode, allow_nil: true, length: { maximum: 16 }, with: /\A\d{5}(-\d{4})?\z/, message: 'should be in the form 12345 or 12345-1234'
 
   def customer_and_branch
     "#{customer_name} - #{customer_branch}"
