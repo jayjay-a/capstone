@@ -5,6 +5,9 @@ class Job < ApplicationRecord
   belongs_to :job_type
   belongs_to :job_status
 
+  validates :job_type_id, presence: true
+  validates :job_status_id, presence: true
+  validates :job_start_date, presence: true
 
   #nested forms
   accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
