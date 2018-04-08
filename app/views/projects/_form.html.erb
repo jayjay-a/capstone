@@ -47,7 +47,7 @@
       </div>
       <div class="field col s2">
         <%= form.label :bid_submit_date %>
-        <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => project.bid_submit_date || Date.today.strftime('%Y-%m-%d'), required: true %>
+        <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => project.bid_submit_date || Date.today.strftime('%Y-%m-%d') %>
       </div>
     </div>
     </p>
@@ -59,29 +59,29 @@
     <div class="row">
       <div class="field col s2">
         <%= form.label :bid_material_cost %>
-        <%= form.text_field :bid_material_cost, id: :project_bid_material_cost, required: true %>
+        <%= form.text_field :bid_material_cost, id: :project_bid_material_cost %>
       </div>
       <div class="field col s2">
         <%= form.label :bid_cost_of_labor %>
-        <%= form.text_field :bid_cost_of_labor, id: :project_bid_cost_of_labor, required: true %>
+        <%= form.text_field :bid_cost_of_labor, id: :project_bid_cost_of_labor %>
       </div>
       <div class="field col s2">
         <%= form.label :bid_cost_of_permits %>
-        <%= form.text_field :bid_cost_of_permits, id: :project_bid_cost_of_permits, required: true %>
+        <%= form.text_field :bid_cost_of_permits, id: :project_bid_cost_of_permits %>
       </div>
       <div class="field col s2">
         <%= form.label :bid_equipment_rental %>
-        <%= form.text_field :bid_equipment_rental, id: :project_bid_equipment_rental, required: true %>
+        <%= form.text_field :bid_equipment_rental, id: :project_bid_equipment_rental %>
       </div>
     </div>
     <div class="row">
       <div class="field col s2">
         <%= form.label :bid_freight %>
-        <%= form.text_field :bid_freight, id: :project_bid_freight, required: true %>
+        <%= form.text_field :bid_freight, id: :project_bid_freight %>
       </div>
       <div class="field col s2">
         <%= form.label :bid_fuel_cost %>
-        <%= form.text_field :bid_fuel_cost, id: :project_bid_fuel_cost, required: true %>
+        <%= form.text_field :bid_fuel_cost, id: :project_bid_fuel_cost %>
       </div>
       <div class="field col s2">
         <%= form.label :bid_lodging_cost %>
@@ -89,13 +89,13 @@
       </div>
       <div class="field col s1">
         <%= form.label :tax_rate %>
-        <%= form.text_field :tax_rate, id: :project_tax_rate, required: true %>
+        <%= form.text_field :tax_rate, id: :project_tax_rate %>
       </div>
     </div>
     <div class="row">
       <div class="field col s2">
         <%= form.label :bid_amount %>
-        <%= form.text_field :bid_amount, id: :project_bid_amount, required: true %>
+        <%= form.text_field :bid_amount, id: :project_bid_amount %>
       </div>
     </div>
     </p>

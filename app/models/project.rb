@@ -23,6 +23,8 @@ class Project < ApplicationRecord
   validates :bid_fuel_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_lodging_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_amount, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validate :project_start_date_cannot_be_before_bid_submit_date, unless: -> { project_start_date.blank? }
+  validate :project_end_date_cannot_be_before_project_start_date, unless: -> { project_end_date.blank? }
 
   # cocoon
   accepts_nested_attributes_for :jobs, allow_destroy: true, reject_if: :all_blank
@@ -33,5 +35,15 @@ class Project < ApplicationRecord
 
   def project_and_customer_and_branch
     "#{project_id} - #{customer.customer_name}, Branch: #{customer.customer_branch}"
+  end
+
+  def project_start_date_cannot_be_before_bid_submit_date
+    errors.add(:project_start_date, "can't be before the bid submit date") if
+        project_start_date < bid_submit_date
+  end
+
+  def project_end_date_cannot_be_before_project_start_date
+    errors.add(:project_end_date, "can't be before the project starts") if
+        project_end_date < project_start_date
   end
 end
