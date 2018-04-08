@@ -8,6 +8,7 @@ class Job < ApplicationRecord
   validates :job_type_id, presence: true
   validates :job_status_id, presence: true
   validates :job_start_date, presence: true
+  validate :job_end_date_cannot_be_before_job_start_date, unless: -> { job_end_date.blank? }
 
   #nested forms
   accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
@@ -15,5 +16,10 @@ class Job < ApplicationRecord
 
   def job_and_type
     "#{job_id} - #{job_type.job_type_description}"
+  end
+
+  def job_end_date_cannot_be_before_job_start_date
+    errors.add(:job_end_date, "can't be before the job start date") if
+        job_end_date < job_start_date
   end
 end
