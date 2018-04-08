@@ -98,7 +98,6 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.5, ruby-2.4.3-p205) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo-data (v1.2018.3, ruby-2.4.3-p205) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v4.1.6, ruby-2.4.3-p205) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="unobtrusive_flash (v3.3.1, ruby-2.4.3-p205) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.7, ruby-2.4.3-p205) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v3.5.1, ruby-2.4.3-p205) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.6.5, ruby-2.4.3-p205) [gem]" level="application" />
