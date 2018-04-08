@@ -6,6 +6,10 @@ class Ability
         can :create, :all
         can :read, :all
         can :update, :all
+        cannot :read, User
+        cannot :update, User
+        cannot :create, User
+        can :manage, User, id: user.id
         if user.admin?
           can :manage, :all
         end
