@@ -24,12 +24,12 @@
       <%# drop down(resources) trigger on navbar%>
       <li><a class="dropdown-trigger" href="#!" data-target="resources">Resources ⏷</a></li>
 
-      <li><a href="#">Reports</a></li> <%#placeolder%>
-
       <% if current_user.admin? %>
-      <li class="<%= 'active' if params[:controller] == 'pages' %>">
-        <a <%= link_to "Admin Panel", admin_panel_path %></a>
-      </li>
+        <li><a href="#">Reports</a></li> <%#placeolder%>
+
+        <li class="<%= 'active' if params[:controller] == 'pages' %>">
+          <a <%= link_to "Admin Panel", admin_panel_path %></a>
+        </li>
       <% end %>
 
       <li><a class="dropdown-trigger" href="#!" data-target="user"><%= current_user.name %></a></li>
@@ -86,9 +86,10 @@
   </li>
 
   <% if current_user.admin? %>
-  <li class="<%= 'active' if params[:controller] == 'pages' %>">
-    <a <%= link_to "Admin Panel", admin_panel_path %></a>
-  </li>
+    <li><a href="#">Reports</a></li> <%#placeolder%>
+    <li class="<%= 'active' if params[:controller] == 'pages' %>">
+      <a <%= link_to "Admin Panel", admin_panel_path %></a>
+    </li>
   <% end %>
   
   <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
