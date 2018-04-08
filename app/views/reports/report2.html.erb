@@ -13,13 +13,13 @@
       <div class="col s3">
     <%= label_tag(:t, "Job Type Description") %>
     <%= select_tag(:t, options_from_collection_for_select(JobType.all, "id", "job_type_description",params[:t]),:prompt => "Select a Job Type") %>
+        <%= submit_tag("Submit") %>
+        <%= link_to ("Clear"), reports_report2_path %>
       </div>
-      <div class="col s2">
-    <%= label_tag(:q, "Bid Amount") %>
-    <%= text_field_tag :q, @bid_amount_in %>
+      <div class="input-field col s2">
+        <%= text_field_tag :q, @bid_amount_in , :placeholder => "Bid Amount >" %>
       </div>
     </div>
-    <%= submit_tag("Submit") %>
 
 <% end %>
 

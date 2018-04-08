@@ -4,17 +4,34 @@ class ReportsController < ApplicationController
   end
 
 
-  #terminated contractors
+  #subcontractors by activity status
   def report1
-    sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email FROM Subcontractors sub
-           JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
-           WHERE subst.subcontractor_status_description = 'Terminated';"
-    @term_subs = ActiveRecord::Base.connection.execute(sql)
-    @filename = 'terminated_subcontractors.pdf'
+    @status_desc = nil
+    @sub_status = nil
+    @sub_status ||= params[:q]
+    if @sub_status == nil
+    sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email, MAX(a.assignment_date) AS last_date
+            FROM Subcontractors sub
+            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
+		        JOIN assignments a ON sub.subcontractor_id = a.subcontractor_id
+            GROUP BY subcontractor_name, company, subcontractor_phone, subcontractor_email
+		        ORDER BY subcontractor_name;"
+    elsif @sub_status != nil
+     sql =  "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email, MAX(a.assignment_date) AS last_date
+            FROM Subcontractors sub
+            JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
+		        JOIN assignments a ON sub.subcontractor_id = a.subcontractor_id
+            WHERE subst.subcontractor_status_id = #{@sub_status}
+            GROUP BY subcontractor_name, company, subcontractor_phone, subcontractor_email
+		        ORDER BY last_date desc;"
+    end
+    @status_desc = SubcontractorStatus.where(subcontractor_status_id: @sub_status).pluck(:subcontractor_status_description).to_sentence
+    @subcontractors = ActiveRecord::Base.connection.execute(sql)
+    @filename = "#{@status_desc}Subcontractors.pdf"
     respond_to do |format|
       format.html
       format.xlsx {
-        response.headers['Content-Disposition'] = 'attachment; filename="terminated_subcontractors.xlsx"'
+        response.headers['Content-Disposition'] = "attachment; filename= \"#{@status_desc}Subcontractors.xlsx\""
       }
       format.pdf
     end
@@ -231,17 +248,23 @@ end
 
   #show bid information from a project - kristina
   def report11
-    sql = "SELECT PROJECT_ID, ps.PROJECT_STATUS_DESCRIPTION,
-           BID_SUBMIT_DATE, BID_AMOUNT, BID_MATERIAL_COST,
-           BID_COST_OF_LABOR, BID_COST_OF_PERMITS,
-           BID_EQUIPMENT_RENTAL, BID_FREIGHT
-           FROM PROJECTS p
-           JOIN PROJECT_STATUSES ps ON p.project_status_id = ps.project_status_id;"
-
-    @bidinfo_proj = ActiveRecord::Base.connection.execute(sql)
+    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
+          p.bid_submit_date, p.bid_amount, ps.project_status_description
+          FROM projects p
+          JOIN jobs j ON p.project_id = j.project_id
+          JOIN job_types jt ON j.job_type_id = jt.job_type_id
+          JOIN customers c ON p.customer_id = c.customer_id
+          JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
+          WHERE ps.project_status_description != 'Project Completed'
+          AND ps.project_status_description != 'Project Active'
+          ORDER BY bid_submit_date;"
+    @bidinfo = ActiveRecord::Base.connection.execute(sql)
+    @filename = "Bid Information"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Bid_Information.xlsx"'
+      }
       format.pdf
     end
   end
@@ -263,18 +286,18 @@ end
   end
 
   #show all projects and their project type
-  def report13
-    sql = "SELECT project_id, project_type_description
-           FROM projects p
-           JOIN project_types pt ON p.project_type_id = pt.project_type_id;"
-
-    @specific_projtype = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report13
+  #   sql = "SELECT project_id, project_type_description
+  #          FROM projects p
+  #          JOIN project_types pt ON p.project_type_id = pt.project_type_id;"
+  #
+  #   @specific_projtype = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   # show duration of project - kristina
   def report14
@@ -286,9 +309,12 @@ end
 			      ORDER BY project_start_date, days desc;"
 
     @duration_proj = ActiveRecord::Base.connection.execute(sql)
+    @filename = "Project_Duration.pdf"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Project_Duration.xlsx"'
+      }
       format.pdf
     end
   end
@@ -328,18 +354,22 @@ end
 
   #show frequency of subcontractor being hired - kristina
   def report17
-    sql = "SELECT s.SUBCONTRACTOR_NAME, jt.job_type_description, COUNT(a.SUBCONTRACTOR_ID) AS frequency
+    sql = "SELECT s.SUBCONTRACTOR_NAME, jt.job_type_description, COUNT(a.SUBCONTRACTOR_ID) AS frequency,
+           s.SUBCONTRACTOR_PHONE, s.SUBCONTRACTOR_EMAIL
            FROM ASSIGNMENTS a
            JOIN SUBCONTRACTORS s ON a.subcontractor_id = s.subcontractor_id
            JOIN tasks t ON t.task_id = a.task_id
            JOIN jobs j ON t.job_id = j.job_id
            JOIN job_types jt ON j.job_type_id = jt.job_type_id
-           GROUP BY subcontractor_name, job_type_description;"
-
+           GROUP BY subcontractor_name, job_type_description, subcontractor_phone, subcontractor_email
+		       ORDER BY frequency desc, job_type_description;"
     @sub_freq = ActiveRecord::Base.connection.execute(sql)
+    @filename = "Subcontractor_Hiring_Frequency.pdf"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Subcontractor_Frequency.xlsx"'
+      }
       format.pdf
     end
   end
@@ -471,47 +501,60 @@ end
   end
 
   #show active subcontractors
-  def report26
-    sql = "SELECT sub.subcontractor_name, sub.subcontractor_phone, sub.subcontractor_email, sub.company FROM Subcontractors sub
-           JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
-           WHERE subst.subcontractor_status_description = 'Active';"
-           
-    @active_subs = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report26
+  #   sql = "SELECT sub.subcontractor_name, sub.subcontractor_phone, sub.subcontractor_email, sub.company FROM Subcontractors sub
+  #          JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
+  #          WHERE subst.subcontractor_status_description = 'Active';"
+  #
+  #   @active_subs = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
+  #rental equip freq
   def report27
-    sql ="Select r.rental_description, count (r.rental_equipment_id)
-    from rental_lists rl
-    join rental_equipments r on r.rental_equipment_id = rl.rental_equipment_id
-    group by r.rental_equipment_id
-    order by r.rental_equipment_id ASC;"
+    sql ="SELECT re.rental_description, jt.job_type_description, COUNT(rl.rental_equipment_id) AS frequency
+          FROM rental_equipments re
+          JOIN rental_lists rl ON re.rental_equipment_id = rl.rental_equipment_id
+          JOIN projects p ON p.project_id = rl.project_id
+          JOIN jobs j ON j.project_id = p.project_id
+          JOIN job_types jt ON jt.job_type_id = j.job_type_id
+          GROUP BY re.rental_description, jt.job_type_description
+          ORDER BY jt.job_type_description;"
     @rent_freq = ActiveRecord::Base.connection.execute(sql)
+    @filename = "Rental_Frequency.pdf"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Rental_Frequency.xlsx"'
+      }
       format.pdf
       #Anil's SQL Report
     end
   end
 
+  #show project notes
   def report28
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
-ps.project_status_description, p.project_start_date, p.project_end_date, pn.project_notes
-FROM projects p
-JOIN customers c ON p.customer_id = c.customer_id
-JOIN project_types pt ON p.project_type_id = pt.project_type_id
-JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
-JOIN project_notes pn ON p.project_id = pn.project_id
-"
-    @proj_ntes = ActiveRecord::Base.connection.execute(sql)
+          ps.project_status_description, p.bid_submit_date, p.project_start_date, pn.project_notes
+          FROM projects p
+          JOIN customers c ON p.customer_id = c.customer_id
+          JOIN project_types pt ON p.project_type_id = pt.project_type_id
+          JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
+          JOIN project_notes pn ON p.project_id = pn.project_id
+          WHERE project_status_description = 'Bid Accepted' OR project_status_description = 'Awaiting Bid Response'
+          OR project_status_description = 'Project Active'
+          ORDER BY bid_submit_date, project_start_date;"
+    @proj_notes = ActiveRecord::Base.connection.execute(sql)
+    @filename = "Project Notes"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Project_Notes.xlsx"'
+      }
       format.pdf
       #?'s SQL Report
     end
@@ -532,19 +575,20 @@ WHERE Subcontractors.subcontractor_name = 'Philmon Tanuri'; "
     end
   end
 
-  def report30
-    sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email FROM Subcontractors sub
-LEFT OUTER JOIN Assignments a ON sub.subcontractor_id = a.subcontractor_id
-JOIN Subcontractor_Statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
-WHERE a.subcontractor_id IS NULL AND subst.subcontractor_status_description != 'Terminated';"
-
-    @inact_subs = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-      #Aaron's SQL Report
-    end
-  end
+  #terminated subcontractors
+#   def report30
+#     sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email FROM Subcontractors sub
+# LEFT OUTER JOIN Assignments a ON sub.subcontractor_id = a.subcontractor_id
+# JOIN Subcontractor_Statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
+# WHERE a.subcontractor_id IS NULL AND subst.subcontractor_status_description != 'Terminated';"
+#
+#     @inact_subs = ActiveRecord::Base.connection.execute(sql)
+#     respond_to do |format|
+#       format.html
+#       format.xlsx
+#       format.pdf
+#       #Aaron's SQL Report
+#     end
+#   end
 
 end
