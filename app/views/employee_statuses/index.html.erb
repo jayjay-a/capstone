@@ -17,7 +17,7 @@
         <td><%= employee_status.employee_status_description %></td>
         <td><%= link_to 'Show', employee_status %></td>
         <td><%= link_to 'Edit', edit_employee_status_path(employee_status) %></td>
-        <td><%= link_to 'Delete', employee_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %><td><%= link_to 'Delete', employee_status,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
     <% end %>
   </tbody>

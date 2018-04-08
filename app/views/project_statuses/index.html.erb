@@ -17,7 +17,7 @@
         <td><%= project_status.project_status_description %></td>
         <td><%= link_to 'Show', project_status %></td>
         <td><%= link_to 'Edit', edit_project_status_path(project_status) %></td>
-        <td><%= link_to 'Delete', project_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %><td><%= link_to 'Delete', project_status,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
     <% end %>
   </tbody>

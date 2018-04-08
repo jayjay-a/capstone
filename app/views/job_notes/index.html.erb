@@ -23,7 +23,7 @@
         <td><%= job_note.job_note_date %></td>
         <td><%= link_to 'Show', job_note %></td>
         <td><%= link_to 'Edit', edit_job_note_path(job_note) %></td>
-        <td><%= link_to 'Delete', job_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %><td><%= link_to 'Delete', job_note,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
     <% end %>
   </tbody>
