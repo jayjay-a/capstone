@@ -816,5 +816,8 @@ Assignment.create!([
                    ])
 
 # Users
-# User.create!([
-#             ])
+User.create!([  { name: 'admin1', email: 'admin1@rsc.com', admin: true, password: '123456' },
+                { name: 'admin2', email: 'admin2@rsc.com', admin: true, password: '123456' },
+                { name: 'emp1', email: 'emp1@rsc.com', admin: false, password: '123456' },
+                { name: 'emp2', email: 'emp2@rsc.com', admin: false, password: '123456' }
+            ])
