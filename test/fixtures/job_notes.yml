@@ -3,11 +3,11 @@
 one:
   job_id: 1
   job_notes: MyText
-  job_notes_owner: MyString
-  job_notes_date: 2018-03-09
+  job_note_owner: MyString
+  job_note_date: 2018-03-09
 
 two:
   job_id: 1
   job_notes: MyText
-  job_notes_owner: MyString
-  job_notes_date: 2018-03-09
+  job_note_owner: MyString
+  job_note_date: 2018-03-09

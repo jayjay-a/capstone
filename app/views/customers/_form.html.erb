@@ -14,7 +14,7 @@
     <div class="row"><%# row 1%>
       <div class="input col s4">
         <%= form.label :Name %>
-        <%= form.text_field :customer_name, id: :customer_customer_name %>
+        <%= form.text_field :customer_name, id: :customer_customer_name, required: true %>
       </div>
       <div class="input col s4">
         <%= form.label :Branch %>
@@ -51,8 +51,9 @@
 
     <div class="row"><%# row 3%> 
       <div class="input col s4">
+
         <%= form.label :customer_rep_name_1, "First Representative Name" %>
-        <%= form.text_field :customer_rep_name_1, id: :customer_customer_rep_name_1 %>
+        <%= form.text_field :customer_rep_name_1, id: :customer_customer_rep_name_1, required: true %>
       </div>
       <div class="input col s4">
         <%= form.label :customer_rep_phone_1, "First Representative Phone" %>
@@ -60,7 +61,7 @@
       </div>
       <div class="input col s4">
         <%= form.label :customer_rep_email_1, "First Representative Email" %>
-        <%= form.text_field :customer_rep_email_1, id: :customer_customer_rep_email_1 %>
+        <%= form.text_field :customer_rep_email_1, id: :customer_customer_rep_email_1, type: "email" %>
       </div>
     </div> <%# row3 end %>
     
@@ -75,7 +76,7 @@
       </div>
       <div class="input col s4">
         <%= form.label :customer_rep_email_2, "Second Representative Email" %>
-        <%= form.text_field :customer_rep_email_2, id: :customer_customer_rep_email_2 %>
+        <%= form.text_field :customer_rep_email_2, id: :customer_customer_rep_email_2, type: "email" %>
       </div>
     </div> <%# row 4 end %>
 

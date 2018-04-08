@@ -10,4 +10,9 @@ class Employee < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 35 }
   validates :last_name, presence: true, length: { maximum: 35 }
   validates :join_date, presence: true
+
+  def first_and_last_name
+    "#{first_name} #{last_name}"
+  end
+
 end

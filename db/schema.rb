@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406203442) do
+ActiveRecord::Schema.define(version: 20180408001249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 20180406203442) do
   create_table "job_notes", primary_key: "job_note_id", id: :integer, default: -> { "nextval('job_notes_job_notes_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "job_id"
     t.text "job_notes"
-    t.string "job_notes_owner"
-    t.date "job_notes_date"
+    t.string "job_note_owner"
+    t.date "job_note_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 20180406203442) do
     t.integer "project_id"
     t.text "project_notes"
     t.date "project_note_date"
-    t.string "note_owner"
+    t.string "project_note_owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
