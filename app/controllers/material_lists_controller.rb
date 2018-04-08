@@ -1,11 +1,16 @@
 class MaterialListsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_material_list, only: [:show, :edit, :update, :destroy]
 
   # GET /material_lists
   # GET /material_lists.json
   def index
-    @search = MaterialList.ransack(params[:q]) #for ransack
-    @material_lists = @search.result
+    if user_signed_in?
+      @search = MaterialList.ransack(params[:q]) #for ransack
+      @material_lists = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

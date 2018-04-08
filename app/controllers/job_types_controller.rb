@@ -1,11 +1,16 @@
 class JobTypesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_job_type, only: [:show, :edit, :update, :destroy]
 
   # GET /job_types
   # GET /job_types.json
   def index
-    @search = JobType.ransack(params[:q]) #for ransack
-    @job_types = @search.result
+    if user_signed_in?
+      @search = JobType.ransack(params[:q]) #for ransack
+      @job_types = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

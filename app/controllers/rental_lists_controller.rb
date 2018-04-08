@@ -1,11 +1,16 @@
 class RentalListsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_rental_list, only: [:show, :edit, :update, :destroy]
 
   # GET /rental_lists
   # GET /rental_lists.json
   def index
-    @search = RentalList.ransack(params[:q]) #for ransack
-    @rental_lists = @search.result
+    if user_signed_in?
+      @search = RentalList.ransack(params[:q]) #for ransack
+      @rental_lists = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

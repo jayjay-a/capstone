@@ -1,11 +1,16 @@
 class SubcontractorsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_subcontractor, only: [:show, :edit, :update, :destroy]
 
   # GET /subcontractors
   # GET /subcontractors.json
   def index
-    @search = Subcontractor.ransack(params[:q]) #for ransack
-    @subcontractors = @search.result
+    if user_signed_in?
+      @search = Subcontractor.ransack(params[:q]) #for ransack
+      @subcontractors = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

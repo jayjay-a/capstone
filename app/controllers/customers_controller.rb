@@ -1,11 +1,16 @@
 class CustomersController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
   # GET /customers.json
   def index
+    if user_signed_in?
     @search = Customer.ransack(params[:q]) #for ransack
     @customers = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

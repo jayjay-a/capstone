@@ -1,11 +1,16 @@
 class ProjectTypesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_project_type, only: [:show, :edit, :update, :destroy]
 
   # GET /project_types
   # GET /project_types.json
   def index
-    @search = ProjectType.ransack(params[:q]) #for ransack
-    @project_types = @search.result
+    if user_signed_in?
+      @search = ProjectType.ransack(params[:q]) #for ransack
+      @project_types = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

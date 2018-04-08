@@ -1,11 +1,16 @@
 class ProjectStatusesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_project_status, only: [:show, :edit, :update, :destroy]
 
   # GET /project_statuses
   # GET /project_statuses.json
   def index
-    @search = ProjectStatus.ransack(params[:q]) #for ransack
-    @project_statuses = @search.result
+    if user_signed_in?
+      @search = ProjectStatus.ransack(params[:q]) #for ransack
+      @project_statuses = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

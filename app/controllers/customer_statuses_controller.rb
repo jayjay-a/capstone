@@ -1,11 +1,16 @@
 class CustomerStatusesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_customer_status, only: [:show, :edit, :update, :destroy]
 
   # GET /customer_statuses
   # GET /customer_statuses.json
   def index
-    @search = CustomerStatus.ransack(params[:q]) #for ransack
-    @customer_statuses = @search.result
+    if user_signed_in?
+      @search = CustomerStatus.ransack(params[:q]) #for ransack
+      @customer_statuses = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

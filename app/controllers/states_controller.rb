@@ -1,11 +1,16 @@
 class StatesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_state, only: [:show, :edit, :update, :destroy]
 
   # GET /states
   # GET /states.json
   def index
-    @search = State.ransack(params[:q]) #for ransack
-    @states = @search.result
+    if user_signed_in?
+      @search = State.ransack(params[:q]) #for ransack
+      @states = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

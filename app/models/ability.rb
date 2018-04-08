@@ -2,11 +2,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new # guest user (not logged in)
+    can :read, :all #set all indexes to redirect to login first
       if user.present?
         can :create, :all
         can :read, :all
         can :update, :all
-        cannot :read, User
+        cannot :read, [User]
         cannot :update, User
         cannot :create, User
         can :manage, User, id: user.id

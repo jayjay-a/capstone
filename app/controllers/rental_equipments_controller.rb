@@ -1,11 +1,16 @@
 class RentalEquipmentsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_rental_equipment, only: [:show, :edit, :update, :destroy]
 
   # GET /rental_equipments
   # GET /rental_equipments.json
   def index
-    @search = RentalEquipment.ransack(params[:q]) #for ransack
-    @rental_equipments = @search.result
+    if user_signed_in?
+      @search = RentalEquipment.ransack(params[:q]) #for ransack
+      @rental_equipments = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

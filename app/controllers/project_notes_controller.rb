@@ -1,11 +1,16 @@
 class ProjectNotesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_project_note, only: [:show, :edit, :update, :destroy]
 
   # GET /project_notes
   # GET /project_notes.json
   def index
-    @search = ProjectNote.ransack(params[:q]) #for ransack
-    @project_notes = @search.result
+    if user_signed_in?
+      @search = ProjectNote.ransack(params[:q]) #for ransack
+      @project_notes = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack
