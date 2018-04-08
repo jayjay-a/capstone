@@ -37,6 +37,9 @@ gem 'bcrypt', '~> 3.1.11', git: 'https://github.com/codahale/bcrypt-ruby.git', :
 # Use Devise for authentication
 gem 'devise'
 
+# Use cancancan for authorization
+gem 'cancancan'
+
 # Use for Materialize
 gem 'materialize-sass', '~> 1.0.0.beta'
 
