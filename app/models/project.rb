@@ -22,7 +22,7 @@ class Project < ApplicationRecord
   validates :tax_rate, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_fuel_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_lodging_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :bid_amount, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_amount, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validate :project_start_date_cannot_be_before_bid_submit_date, unless: -> { project_start_date.blank? }
   validate :project_end_date_cannot_be_before_project_start_date, unless: -> { project_end_date.blank? }
 
@@ -39,11 +39,11 @@ class Project < ApplicationRecord
 
   def project_start_date_cannot_be_before_bid_submit_date
     errors.add(:project_start_date, "can't be before the bid submit date") if
-        project_start_date < bid_submit_date
+       bid_submit_date &&  project_start_date < bid_submit_date
   end
 
   def project_end_date_cannot_be_before_project_start_date
     errors.add(:project_end_date, "can't be before the project starts") if
-        project_end_date < project_start_date
+        project_start_date && project_end_date < project_start_date
   end
 end
