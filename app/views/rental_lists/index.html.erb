@@ -65,7 +65,7 @@
 
   <tbody>
     <% @rental_lists.each do |rental_list| %>
-      <tr>
+      <tr data-link=" <%= rental_listpath(rental_list) %>" >
         <td><%= rental_list.project_id %></td>
         <td><%= rental_list.rental_equipment.rental_description %></td>
         <td><%= number_to_currency(rental_list.rental_price) %></td>
@@ -79,3 +79,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

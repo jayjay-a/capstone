@@ -71,7 +71,7 @@
 
   <tbody>
     <% @customers.each do |customer| %>
-      <tr>
+      <tr data-link=" <%= customer_path(customer) %>" >
         <td><%= customer.customer_name %></td>
         <td><%= customer.customer_branch %></td>
         <td><%= customer.customer_address_1 %></td>
@@ -104,6 +104,14 @@
 
 <br>
 
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
 <script>
     $('select').formSelect();
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
 </script>

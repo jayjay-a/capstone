@@ -19,7 +19,7 @@
 
   <tbody>
     <% @jobs.each do |job| %>
-      <tr>
+      <tr data-link=" <%= jobpath(job) %>" >
         <td><%= job.project_id %></td>
         <td><%= job.project.customer.customer_name %></td>
         <td><%= job.project.customer.customer_branch %></td>
@@ -36,3 +36,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

@@ -13,7 +13,7 @@
 
   <tbody>
     <% @customer_statuses.each do |customer_status| %>
-      <tr>
+      <tr data-link=" <%= customer_status_path(customer_status) %>" >
         <td><%= customer_status.customer_status_description %></td>
         <td><%= link_to 'Show', customer_status %></td>
         <td><%= link_to 'Edit', edit_customer_status_path(customer_status) %></td>
@@ -24,3 +24,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

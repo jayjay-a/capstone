@@ -18,7 +18,7 @@
 
   <tbody>
     <% @employees.each do |employee| %>
-      <tr>
+      <tr data-link=" <%= employee_path(employee) %>" >
         <td><%= employee.first_name %></td>
         <td><%= employee.last_name %></td>
         <td><%= employee.employee_type.employee_type_description %></td>
@@ -34,3 +34,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

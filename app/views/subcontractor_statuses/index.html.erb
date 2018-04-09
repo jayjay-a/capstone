@@ -13,7 +13,7 @@
 
   <tbody>
     <% @subcontractor_statuses.each do |subcontractor_status| %>
-      <tr>
+      <tr data-link=" <%= subcontractor_status_path(subcontractor_status) %>" >
         <td><%= subcontractor_status.subcontractor_status_description %></td>
         <td><%= link_to 'Show', subcontractor_status %></td>
         <td><%= link_to 'Edit', edit_subcontractor_status_path(subcontractor_status) %></td>
@@ -24,3 +24,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

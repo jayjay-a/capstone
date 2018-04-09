@@ -33,7 +33,7 @@
 
   <tbody>
     <% @materials.each do |material| %>
-      <tr>
+      <tr data-link=" <%= material_path(material) %>" >
         <td><%= material.material_description %></td>
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
@@ -44,3 +44,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

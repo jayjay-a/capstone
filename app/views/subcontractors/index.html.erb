@@ -56,7 +56,7 @@
 
   <tbody>
     <% @subcontractors.each do |subcontractor| %>
-      <tr>
+      <tr data-link=" <%= subcontractor_path(subcontractor) %>" tr>
         <td><%= subcontractor.subcontractor_name %></td>
         <td><%= number_to_phone(subcontractor.subcontractor_phone, area_code: true) %></td>
         <td><%= subcontractor.subcontractor_email %></td>
@@ -72,6 +72,14 @@
 
 <br>
 
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
 <script>
     $('select').formSelect();
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
 </script>

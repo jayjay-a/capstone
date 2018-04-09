@@ -81,7 +81,7 @@
 
   <tbody>
     <% @material_lists.each do |material_list| %>
-      <tr>
+      <tr data-link=" <%= material_list_path(material_list) %>" >
         <td><%= material_list.project_id %></td>
         <td><%= material_list.material.material_description %></td>
         <td><%= number_to_currency(material_list.unit_price) %></td>
@@ -96,3 +96,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

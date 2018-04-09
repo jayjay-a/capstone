@@ -16,7 +16,7 @@
 
   <tbody>
     <% @task_notes.each do |task_note| %>
-      <tr>
+      <tr data-link=" <%= task_note_path(task_note) %>" >
         <td><%= task_note.task_id %></td>
         <td><%= task_note.task_notes %></td>
         <td><%= task_note.task_note_owner %></td>
@@ -30,3 +30,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

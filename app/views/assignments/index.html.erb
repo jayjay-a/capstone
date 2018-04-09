@@ -59,7 +59,7 @@
 
   <tbody>
     <% @assignments.each do |assignment| %>
-      <tr>
+      <tr data-link=" <%= assignment_path(assignment) %>" >
         <td><%= assignment.subcontractor.subcontractor_name %></td>
         <td><%= assignment.employee.try(:first_and_last_name) %></td>
         <td><%= assignment.task.task_description %></td>
@@ -73,3 +73,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

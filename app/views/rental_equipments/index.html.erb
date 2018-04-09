@@ -33,7 +33,7 @@
 
   <tbody>
     <% @rental_equipments.each do |rental_equipment| %>
-      <tr>
+      <tr data-link=" <%= rental_equipment_path(rental_equipment) %>" >
         <td><%= rental_equipment.rental_description %></td>
         <td><%= link_to 'Show', rental_equipment %></td>
         <td><%= link_to 'Edit', edit_rental_equipment_path(rental_equipment) %></td>
@@ -44,3 +44,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

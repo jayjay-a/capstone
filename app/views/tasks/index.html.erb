@@ -17,7 +17,7 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr data-link=" <%= task_path(task) %>" >
         <td><%= task.job_id %></td>
         <td><%= task.task_start_date %></td>
         <td><%= task.task_end_date %></td>
@@ -32,3 +32,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

@@ -13,7 +13,7 @@
 
   <tbody>
     <% @job_statuses.each do |job_status| %>
-      <tr>
+      <tr data-link=" <%= job_status_path(job_status) %>" tr>
         <td><%= job_status.job_status_description %></td>
         <td><%= link_to 'Show', job_status %></td>
         <td><%= link_to 'Edit', edit_job_status_path(job_status) %></td>
@@ -24,3 +24,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

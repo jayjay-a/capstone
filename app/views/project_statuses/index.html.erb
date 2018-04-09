@@ -13,7 +13,7 @@
 
   <tbody>
     <% @project_statuses.each do |project_status| %>
-      <tr>
+      <tr data-link=" <%= project_status_path(project_status) %>" >
         <td><%= project_status.project_status_description %></td>
         <td><%= link_to 'Show', project_status %></td>
         <td><%= link_to 'Edit', edit_project_status_path(project_status) %></td>
@@ -24,3 +24,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>
