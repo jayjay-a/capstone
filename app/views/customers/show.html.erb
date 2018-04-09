@@ -30,7 +30,7 @@
 
 <p>
   <strong>State:</strong>
-  <%= @customer.state.state_name %>
+  <%= @customer.state.try(:state_name) %>
 </p>
 
 <p>
