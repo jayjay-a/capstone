@@ -1,6 +1,5 @@
 
 
-<body>
 <div>
   <h1>Projects</h1>
 </div>
@@ -17,11 +16,11 @@
         <div class="row">
           <div class="field col s2">
             <%= f.label :project_status_id %>
-            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a Status' }%>
+            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a Status' }%>
           </div>
           <div class="field col s2">
             <%= f.label :project_type_id %>
-            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :selected => 1, "data-placeholder" => 'Select a Type' } %>
+            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a Type' } %>
           </div>
           <div class="field col s2">
             <%= f.label :bid_amount_gteq, "Minimum bid amount" %>
@@ -135,5 +134,13 @@
 <br>
 
 <script>
-    $('select').formSelect();
+  $(document).ready(function(){ //loads
+      $('.select2').select2({     //select2
+          placeholder: function(){ //sets placeholder based on data-placeholder in the field
+              $(this).data('placeholder');
+          },
+          allowClear: true,
+          dropdownParent: $('#filter') //fixes select2 on modals cause technically modals aren't part of the body element
+      });
+  });
 </script>
