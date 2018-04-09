@@ -136,7 +136,8 @@
   <p>
     <strong>Notes:</strong></br>
       <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
-      <li><%= simple_format(project_note.project_notes) %></li>
+      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.project_note_date %></strong>
+      <%= simple_format(project_note.project_notes) %></br>
     <% end %>
   </p>
 </div>
