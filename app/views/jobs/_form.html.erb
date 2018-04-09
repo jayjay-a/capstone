@@ -24,8 +24,6 @@
           <%= form.label :project_id  %>
           <%= form.collection_select :project_id, Project.all, :project_id, :project_and_customer_and_branch, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
         </div>
-
-
       </div> <%# row 1 end %>
 
       <div class="row"><%# row 2 %>
@@ -54,8 +52,6 @@
     </p>
   </div>
 
-  
-
   <%# adding tasks to job%>
   <div id="task">
     <p>
@@ -68,7 +64,7 @@
     <p>
   </div>
 
-  <%# adding notes to project%>
+  <%# adding notes to job%>
   <div id="notes">
     <p>
     <%= form.fields_for :job_notes do |notes| %>

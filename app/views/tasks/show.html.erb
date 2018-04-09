@@ -34,9 +34,9 @@
 <div id="assignments">
   <p>
     <strong>Assignments:</strong></br>
-    <% @task.assignments.each do |assignment| %> <%# iterates through each related job to this project%>
+    <% @task.assignments.each do |assignment| %>
       <li><%= link_to assignment.subcontractor.subcontractor_name, assignment %></li>
-      <% unless assignment.employee.blank? %>
+      <% unless assignment.employee.blank? %><%#%>
         <li><%= link_to assignment.employee.first_and_last_name, assignment %></li>
       <% end %>
     <% end %>
