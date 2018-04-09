@@ -29,10 +29,10 @@
       <%= render 'task_fields', f: task %>
     <% end %>
     <p>
-      <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add task"), f, :tasks, class: "btn waves-effect waves-light" %> </br>
+      <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add task"), f, :tasks, class: "btn waves-effect waves-light blue" %> </br>
     </p>
   </div>
-    <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Job"), f, class: "btn waves-effect waves-light" %> 
+    <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Job"), f, class: "btn waves-effect waves-light red" %> 
   </p>
   <hr>
 </div>
