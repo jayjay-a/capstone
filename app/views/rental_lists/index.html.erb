@@ -12,17 +12,17 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_rental_lists_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :rental_price_gteq %>
             <%= f.text_field :rental_price_gteq %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :rental_price_lteq %>
             <%= f.text_field :rental_price_lteq %>
           </div>
         </div>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :cost_frequency %>
             <%= f.text_field :cost_frequency_cont %>
          </div>
@@ -42,7 +42,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_rental_lists_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.text_field :rental_equipment_rental_description_or_cost_frequency_cont %>
           </div>
         </div>

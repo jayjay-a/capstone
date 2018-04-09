@@ -2,19 +2,19 @@
 <div id = nested-fields class="nested-fields">
   <p>
   <div class="row">
-    <div class="field col s12">
+    <div class="field col l12">
       <%= f.label :rental_equipment_id  %>
       <%= f.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
     </div>
   </div>
   
   <div class="row">
-    <div class="field col s2">
+    <div class="field col l2">
       <%= f.label :rental_price %>
       <%= f.text_field :rental_price, id: :rental_list_rental_price %>
     </div>
   
-    <div class="field col s2">
+    <div class="field col l2">
       <%= f.label :cost_frequency %>
       <%= f.text_field :cost_frequency, id: :rental_list_cost_frequency %>
     </div>

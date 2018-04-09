@@ -20,32 +20,32 @@
   </ul>
 
 <%# Project Tab%>
-  <div id="project" class="col s12">
+  <div id="project">
     <p>
     <div class="row">
-      <div class="field col s3">
+      <div class="field col l3">
         <%= form.label :project_status_id %>
         <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'} %>
       </div>
-      <div class="field col s3">
+      <div class="field col l3">
         <%= form.label :project_type_id %>
         <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type'} %>
       </div>
-      <div class="field col s4">
+      <div class="field col l4">
         <%= form.label :customer_id %>
         <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_name, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Customer'} %>
       </div>
     </div>
     <div class="row">
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :project_start_date %>
         <%= form.text_field :project_start_date, id: :project_project_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :project_end_date %>
         <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_submit_date %>
         <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => project.bid_submit_date || Date.today.strftime('%Y-%m-%d') %>
       </div>
@@ -54,46 +54,46 @@
   </div>
 
 <%# Cost Tab%>
-  <div id="cost" class="col s12">
+  <div id="cost">
     <p>
     <div class="row">
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_material_cost %>
         <%= form.text_field :bid_material_cost, id: :project_bid_material_cost %>
       </div>
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_cost_of_labor %>
         <%= form.text_field :bid_cost_of_labor, id: :project_bid_cost_of_labor %>
       </div>
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_cost_of_permits %>
         <%= form.text_field :bid_cost_of_permits, id: :project_bid_cost_of_permits %>
       </div>
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_equipment_rental %>
         <%= form.text_field :bid_equipment_rental, id: :project_bid_equipment_rental %>
       </div>
     </div>
     <div class="row">
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_freight %>
         <%= form.text_field :bid_freight, id: :project_bid_freight %>
       </div>
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_fuel_cost %>
         <%= form.text_field :bid_fuel_cost, id: :project_bid_fuel_cost %>
       </div>
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_lodging_cost %>
         <%= form.text_field :bid_lodging_cost, id: :project_bid_lodging_cost%>
       </div>
-      <div class="field col s1">
+      <div class="field col l1">
         <%= form.label :tax_rate %>
         <%= form.text_field :tax_rate, id: :project_tax_rate %>
       </div>
     </div>
     <div class="row">
-      <div class="field col s2">
+      <div class="field col l2">
         <%= form.label :bid_amount %>
         <%= form.text_field :bid_amount, id: :project_bid_amount %>
       </div>
@@ -102,7 +102,7 @@
   </div>
 
 <%# Job Tab%> <%# adding jobs to project%>
-  <div id="job" class="col s12">
+  <div id="job">
     <%= form.fields_for :jobs do |job| %>
       <%= render 'job_fields', f: job %>
     <% end %>
@@ -112,7 +112,7 @@
   </div>
 
 <%# Material List Tab%><%# adding materials to project%>
-  <div id="material_list" class="col s12">
+  <div id="material_list" class="col l12">
     <%= form.fields_for :material_lists do |material_list| %>
       <%= render 'material_list_fields', f: material_list %>
     <% end %>
@@ -123,7 +123,7 @@
 
 
 <%# Rental List Tab%><%# adding rental equipment to project%>
-  <div id="rental_list" class="col s12">
+  <div id="rental_list">
     <%= form.fields_for :rental_lists do |rental_list| %>
       <%= render 'rental_list_fields', f: rental_list %>
     <% end %>
@@ -134,7 +134,7 @@
   </div>
 
   <%# Notes Tab%> <%# adding notes to project%>
-  <div id="notes" class="col s12">
+  <div id="notes">
     <%= form.fields_for :project_notes do |notes| %>
       <%= render 'project_note_fields', f: notes %>
     <% end %>

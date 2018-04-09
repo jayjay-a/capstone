@@ -9,7 +9,7 @@
 </ul>
 
 <%# Project Tab%>
-<div id="project" class="col s12">
+<div id="project">
   <p>
     <p>
       <strong>Project status:</strong>
@@ -44,7 +44,7 @@
 </div>
 
 <%# Cost Tab%>
-<div id="cost" class="col s12">
+<div id="cost">
   <p>
     <p>
       <strong>Bid material cost:</strong>
@@ -95,7 +95,7 @@
 </div>
 
 <%# Job Tab%>
-<div id="job" class="col s12">
+<div id="job">
   <p>
     <strong>Jobs:</strong></br>
     <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
@@ -112,7 +112,7 @@
 </div>
 
 <%# Material List Tab%>
-<div id="material_list" class="col s12">
+<div id="material_list">
   <p>
     <strong>Materials:</strong></br>
       <% @project.material_lists.each do |material_list| %> <%# iterates through each related job to this project%>
@@ -122,7 +122,7 @@
 </div>
 
 <%# Rental List Tab%>
-<div id="rental_list" class="col s12">
+<div id="rental_list">
   <p>
     <strong>Renal Equipment:</strong></br>
       <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
@@ -132,7 +132,7 @@
 </div>
 
 <%# Notes Tab%> 
-<div id="notes" class="col s12">
+<div id="notes">
   <p>
     <strong>Notes:</strong></br>
       <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>

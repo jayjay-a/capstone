@@ -12,7 +12,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_rental_equipments_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.label :rental_equipment_id %>
             <%= f.text_field :rental_description_cont %>
           </div>

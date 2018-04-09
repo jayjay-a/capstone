@@ -12,11 +12,11 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_assignments_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :assignment_date_gteq, "Minimum assignment date" %>
             <%= f.text_field :assignment_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :assignment_date_lteq, "Maximum assignment date" %>
             <%= f.text_field :assignment_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
@@ -36,7 +36,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_assignments_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.text_field :subcontractor_subcontractor_name_or_employee_first_name_or_employee_last_name_or_task_task_description_cont %>
           </div>
         </div>

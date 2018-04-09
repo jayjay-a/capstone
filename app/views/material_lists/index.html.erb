@@ -12,31 +12,31 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_material_lists_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :unit_price_gteq %>
             <%= f.text_field :unit_price_gteq %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :unit_price_lteq %>
             <%= f.text_field :unit_price_lteq %>
           </div>
         </div>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :quantity_gteq %>
             <%= f.text_field :quantity_gteq %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :unit_price_lteq %>
             <%= f.text_field :unit_price_lteq %>
           </div>
         </div>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :total_gteq %>
             <%= f.text_field :total_gteq %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :total_lteq %>
             <%= f.text_field :total_lteq %>
           </div>
@@ -56,7 +56,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_material_lists_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.label :material_id %>
             <%= f.text_field :material_material_description_cont %>
           </div>

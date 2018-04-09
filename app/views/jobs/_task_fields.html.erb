@@ -1,24 +1,24 @@
 <%# these fields are added as a nested form to job form%>
 <div id = nested-fields class="nested-fields" >
   <div class="row">
-    <div class="field col s3">
+    <div class="field col l3">
       <%= f.label :task_status_id %>
       <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'}%>
     </div>
 
-    <div class="field col s3">
+    <div class="field col l3">
       <%= f.label :task_start_date %>
       <%= f.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
     </div>
 
-    <div class="field col s3">
+    <div class="field col l3">
       <%= f.label :task_end_date %>
       <%= f.text_field :task_end_date, id: :task_task_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
     </div>
   </div>
 
   <div class="row">
-    <div class="field col s9">
+    <div class="field col l9">
       <%= f.label :task_description %>
       <%= f.text_area :task_description, id: :task_task_description%>
     </div>

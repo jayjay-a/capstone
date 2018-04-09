@@ -12,11 +12,11 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_customers_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :customer_status_id %>
             <%= f.collection_select :customer_status_id_eq, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a Status' } %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :state_id %>
             <%= f.collection_select :state_id_eq, State.all, :state_id, :state_name, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a State' } %>
           </div>
@@ -36,7 +36,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_customers_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.label :customer_id %>
             <%= f.text_field :customer_name_cont %>
           </div>

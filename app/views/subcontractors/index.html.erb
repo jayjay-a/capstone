@@ -12,7 +12,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_subcontractors_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :subcontractor_status_id %>
             <%= f.collection_select :subcontractor_status_id_eq, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a Type' } %>
           </div>
@@ -32,7 +32,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_subcontractors_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.text_field :subcontractor_name_or_subcontractor_phone_or_subcontractor_email_or_company_cont %>
           </div>
         </div>

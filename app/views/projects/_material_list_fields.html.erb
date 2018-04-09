@@ -2,19 +2,19 @@
 <div id = nested-fields class="nested-fields">
   <p>
   <div class="row">
-    <div class="field col s12">
+    <div class="field col l12">
       <%= f.label :material_id  %>
       <%= f.collection_select :material_id, Material.all, :material_id, :material_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Material' } %>
     </div>
   </div>
 
   <div class="row">
-    <div class="field col s2">
+    <div class="field col l2">
       <%= f.label :unit_price %>
       <%= f.text_field :unit_price, id: :material_list_unit_price %>
     </div>
 
-    <div class="field col s2">
+    <div class="field col l2">
       <%= f.label :quantity %>
       <%= f.text_field :quantity, id: :material_list_quantity %>
     </div>

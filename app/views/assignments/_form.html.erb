@@ -12,24 +12,24 @@
   <% end %>
 
   <div class="row"> <%# row 1 %>
-    <div class="field col s3">
+    <div class="field col l3">
       <%= form.label :subcontractor_id %>
       <%= form.collection_select :subcontractor_id, Subcontractor.all, :subcontractor_id, :subcontractor_name ,{:prompt => true}, {:class=> 'select2', :id => 'subbies', :selected => 1, "data-placeholder" => 'Select a Subcontractor'}%>
     </div>
 
-    <div class="field col s3">
+    <div class="field col l3">
       <%= form.label :employee_id %>
       <%= form.collection_select :employee_id, Employee.all, :employee_id, :first_and_last_name , {:prompt => true}, {:class=> 'select2', :id => 'empies', :selected => 1, "data-placeholder" => 'Select an Employee' }%>
     </div> 
 
-    <div class="field col s3">
+    <div class="field col l3">
       <%= form.label :assignment_date %>
       <%= form.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => assignment.assignment_date || Date.today.strftime('%Y-%m-%d') %>
     </div>
   </div><%# end row 1 %>
 
   <div class="row"> <%# row 2 %>
-    <div class="field col s9">
+    <div class="field col l9">
       <%= form.label :task_id %>
       <%= form.collection_select :task_id, Task.all, :task_id, :task_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Task' } %>
     </div>

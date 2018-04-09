@@ -1,17 +1,17 @@
 <%# these fields are added as a nested form to task form%>
 <div id = nested-fields class="nested-fields">
   <div class="row"> <%# row 1 %>
-    <div class="field col s3">
+    <div class="field col l3">
       <%= f.label :subcontractor_id %>
       <%= f.collection_select :subcontractor_id, Subcontractor.all, :subcontractor_id, :subcontractor_name, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Subcontractor' }%>
     </div>
 
-    <div class="field col s3">
+    <div class="field col l3">
       <%= f.label :employee_id %>
       <%= f.collection_select :employee_id, Employee.all, :employee_id, :first_and_last_name , {:prompt => true}, {:class=> 'select2', :id => 'empies', :selected => 1, "data-placeholder" => 'Select an Employee' }%>
     </div> 
 
-    <div class="field col s3">
+    <div class="field col l3">
       <%= f.label :assignment_date %>
       <%= f.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
     </div>
