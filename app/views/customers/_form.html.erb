@@ -45,7 +45,7 @@
       </div>
       <div class="input col l2">
         <%= form.label :customer_zipcode, "Zipcode" %>
-        <%= form.text_field :customer_zipcode, id: :customer_customer_zipcode %>
+        <%= form.text_field :customer_zipcode, id: :customer_customer_zipcode, :pattern => "{5}(-{4})?/", :message => 'Zip Codes should be in 12345 or 12345-1234 format' %>
       </div>
     </div><%# row 2 end%>
 
