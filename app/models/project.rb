@@ -10,9 +10,7 @@ class Project < ApplicationRecord
   belongs_to :project_status
   belongs_to :project_type
 
-  validates :customer_id, presence: true
-  validates :project_status_id, presence: true
-  validates :project_type_id, presence: true
+  #removed validation for presence  cause the belongs_to for the models already validates
   validates :bid_submit_date, presence: true
   validates :bid_material_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_cost_of_labor, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
