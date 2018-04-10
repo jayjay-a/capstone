@@ -2,4 +2,5 @@
 
 <%= render 'form', customer: @customer %>
 
-<%= link_to 'Back', customers_path %>
+
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  customers_path, class: "btn waves-effect waves-light grey" %> 
