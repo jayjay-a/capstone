@@ -1,11 +1,11 @@
-<!--<h1>Report14</h1>-->
+<!--<h1>Report15</h1>-->
 <p id="notice"><%= notice %></p>
 
-<h2>Project Duration</h2>
+<h2>Job Duration</h2>
 <h6>
-Download:
-<%= link_to "Excel", reports_report14_path(format: "xlsx") %> |
-<%= link_to "PDF", reports_report14_path(format: "pdf") %>
+  Download:
+  <%= link_to "Excel", reports_job_duration_path(format: "xlsx") %> |
+  <%= link_to "PDF", reports_job_duration_path(format: "pdf") %>
 </h6>
 
 <table class="table">
@@ -14,23 +14,23 @@ Download:
     <th>Project ID</th>
     <th>Customer Name</th>
     <th>Customer Branch</th>
-    <th>Project Type</th>
-    <th>Project Start Date</th>
-    <th>Project End Date</th>
+    <th>Job Type</th>
+    <th>Job Start Date</th>
+    <th>Job End Date</th>
     <th># of Days</th>
     <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
-  <% @duration_proj.each do |duration| %>
+  <% @duration_job.each do |duration| %>
       <tr>
         <td><%= duration['project_id'] %></td>
         <td><%= duration['customer_name'] %></td>
         <td><%= duration['customer_branch'] %></td>
-        <td><%= duration['project_type_description'] %></td>
-        <td><%= duration['project_start_date'] %></td>
-        <td><%= duration['project_end_date'] %></td>
+        <td><%= duration['job_type_description'] %></td>
+        <td><%= duration['job_start_date'] %></td>
+        <td><%= duration['job_end_date'] %></td>
         <td><%= duration['days'] %></td>
       </tr>
   <% end %>

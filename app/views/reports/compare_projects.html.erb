@@ -5,10 +5,10 @@
 
 
 
-<%= form_tag reports_report2_path, method: :get do %>
+<%= form_tag reports_compare_projects_path, method: :get do %>
     <h6>Download:
-      <%= link_to "Excel", reports_report2_path(format: "xlsx", :q => params[:q], :t => params[:t]) %> |
-      <%= link_to "PDF", reports_report2_path(format: "pdf",  :q => params[:q], :t => params[:t]) %>
+      <%= link_to "Excel", reports_compare_projects_path(format: "xlsx", :q => params[:q], :t => params[:t]) %> |
+      <%= link_to "PDF", reports_compare_projects_path(format: "pdf",  :q => params[:q], :t => params[:t]) %>
     </h6>
 
     <div class="row">
@@ -16,7 +16,7 @@
         <%= label_tag(:t, "Job Type") %>
         <%= select_tag(:t, options_from_collection_for_select(JobType.all, "id", "job_type_description",params[:t]),:prompt => "Select a Job Type") %>
         <%= submit_tag("Submit") %>
-        <%= link_to ("Clear"), reports_report2_path %>
+        <%= link_to ("Clear"), reports_compare_projects_path %>
       </div>
       <div class="input-field col s2">
         <%= text_field_tag :q, @bid_amount_in , :placeholder => "Bid Amount >" %>

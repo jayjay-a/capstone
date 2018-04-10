@@ -2,65 +2,26 @@ Rails.application.routes.draw do
 
   get 'reports/index' => 'reports#index'
 
-  get 'reports/report30'
+  get 'reports/subcontractors_status'
 
-  get 'reports/report29'
+  get 'reports/compare_projects'
 
-  get 'reports/report28'
+  get 'reports/bid_info'
 
-  get 'reports/report27'
+  get 'reports/project_duration'
 
-  get 'reports/report23'
+  get 'reports/job_duration'
 
-  get 'reports/report24'
+  get 'reports/task_duration'
 
-  get 'reports/report25'
+  get 'reports/subcontractor_freq'
 
-  get 'reports/report26'
+  get 'reports/tasks_status'
 
-  get 'reports/report18'
+  get 'reports/rental_freq'
 
-  get 'reports/report19'
+  get 'reports/project_notes'
 
-  get 'reports/report20'
-
-  get 'reports/report21'
-
-  get 'reports/report22'
-
-  get 'reports/report15'
-
-  get 'reports/report16'
-
-  get 'reports/report17'
-
-  get 'reports/report12'
-
-  get 'reports/report13'
-
-  get 'reports/report14'
-
-  get 'reports/report9'
-
-  get 'reports/report10'
-
-  get 'reports/report11'
-
-  get 'reports/report7'
-
-  get 'reports/report8'
-
-  get 'reports/report5'
-
-  get 'reports/report6'
-
-  get 'reports/report1'
-
-  get 'reports/report2'
-
-  get 'reports/report3'
-
-  get 'reports/report4'
 
   resources :task_statuses
   resources :task_notes

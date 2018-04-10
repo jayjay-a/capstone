@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
 
 
   #subcontractors by activity status
-  def report1
+  def subcontractors_status
     @status_desc = nil
     @sub_status = nil
     @sub_status ||= params[:q]
@@ -38,8 +38,8 @@ class ReportsController < ApplicationController
   end
 
 
-  #projects with bid greater than x dollars
-  def report2
+  #compare projects by job type and bid amount
+  def compare_projects
     @bid_amount_in = nil
     @job_type_in = nil
     @bid_amount_in ||= params[:q]
@@ -79,7 +79,7 @@ end
   end
 
   #show bid information from a project - kristina
-  def report11
+  def bid_info
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
           p.bid_submit_date, p.bid_amount, ps.project_status_description
           FROM projects p
@@ -102,7 +102,7 @@ end
   end
 
   # show duration of project - kristina
-  def report14
+  def project_duration
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
             p.project_start_date, p.project_end_date, p.project_end_date - p.project_start_date AS days
             FROM projects p
@@ -124,7 +124,7 @@ end
   end
  
   #show duration of job in project - kristina
-  def report15
+  def job_duration
     sql = "SELECT p.project_id, customer_name, customer_branch, jt.job_type_description, job_start_date,
            job_end_date, job_end_date - job_start_date AS days
            FROM projects p
@@ -147,7 +147,7 @@ end
   end
   
   # show duration of task in project
-  def report16
+  def task_duration
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, job_type_description, task_description,
            task_start_date, task_end_date, task_end_date - task_start_date AS days, ts.task_status_description
            FROM projects p
@@ -171,7 +171,7 @@ end
   end
 
   #show frequency of subcontractor being hired - kristina
-  def report17
+  def subcontractor_freq
     sql = "SELECT s.SUBCONTRACTOR_NAME, jt.job_type_description, COUNT(a.SUBCONTRACTOR_ID) AS frequency,
            s.SUBCONTRACTOR_PHONE, s.SUBCONTRACTOR_EMAIL, MAX(a.assignment_date) AS last_date
            FROM ASSIGNMENTS a
@@ -195,7 +195,7 @@ end
   end
 
   #show tasks by activity status
-  def report22
+  def tasks_status
     @status_desc = nil
     @task_status = nil
     @task_status ||= params[:q]
@@ -233,7 +233,7 @@ end
   end
 
   #rental equip freq
-  def report27
+  def rental_freq
     sql ="SELECT re.rental_description, jt.job_type_description, COUNT(rl.rental_equipment_id) AS frequency
           FROM rental_equipments re
           JOIN rental_lists rl ON re.rental_equipment_id = rl.rental_equipment_id
@@ -255,7 +255,7 @@ end
   end
 
   #show project notes
-  def report28
+  def project_notes
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
           ps.project_status_description, p.bid_submit_date, p.project_start_date, pn.project_notes
           FROM projects p

@@ -4,17 +4,17 @@
 <h2>Tasks by Activity Status</h2>
 <h4><%= @status_desc %> Tasks</h4>
 
-<%= form_tag reports_report22_path, method: :get do %>
+<%= form_tag reports_tasks_status_path, method: :get do %>
     <h6>Download:
-      <%= link_to "Excel", reports_report22_path(format: "xlsx", :q => params[:q]) %> |
-      <%= link_to "PDF", reports_report22_path(format: "pdf", :q => params[:q]) %></h6>
+      <%= link_to "Excel", reports_tasks_status_path(format: "xlsx", :q => params[:q]) %> |
+      <%= link_to "PDF", reports_tasks_status_path(format: "pdf", :q => params[:q]) %></h6>
     <br>
     <div class="row">
       <div class="col s3">
         <%= label_tag(:q, "Task Status") %>
         <%= select_tag(:q, options_from_collection_for_select(TaskStatus.all, "id", "task_status_description",params[:q]),:prompt => "Select a Status") %>
         <%= submit_tag("Submit") %>
-        <%= link_to ("Clear"), reports_report22_path %>
+        <%= link_to ("Clear"), reports_tasks_status_path %>
       </div>
     </div>
 
