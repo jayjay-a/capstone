@@ -1,24 +1,30 @@
 
 
 <p>
+  <strong>Project:</strong>
+  #<%= @job_note.job.project.project_and_customer_and_branch %>
+</p>
+
+<p>
   <strong>Job:</strong>
-  <%= @job_note.job_id %>
+  <%= @job_note.job.job_type.job_type_description %>
 </p>
 
 <p>
-  <strong>Job notes:</strong>
-  <%= @job_note.job_notes %>
-</p>
-
-<p>
-  <strong>Job notes owner:</strong>
+  <strong>Job Note Owner:</strong>
   <%= @job_note.job_note_owner %>
 </p>
 
 <p>
-  <strong>Job notes date:</strong>
+  <strong>Job Note Date:</strong>
   <%= @job_note.job_note_date %>
 </p>
 
-<%= link_to 'Edit', edit_job_note_path(@job_note) %> |
-<%= link_to 'Back', job_notes_path %>
+<p>
+  <strong>Job Notes:</strong>
+  <%= @job_note.job_notes %>
+</p>
+
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  job_notes_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_job_note_path(@job_note), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @job_note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

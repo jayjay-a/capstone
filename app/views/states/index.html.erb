@@ -3,7 +3,7 @@
 <h1>States</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New State"), new_state_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :state_name) %></th>
@@ -14,15 +14,24 @@
 
   <tbody>
     <% @states.each do |state| %>
-      <tr>
+      <tr data-link=" <%= state_path(state) %>" >
         <td><%= state.state_name %></td>
         <td><%= state.state_abbrev %></td>
-        <td><%= link_to 'Show', state %></td>
         <td><%= link_to 'Edit', edit_state_path(state) %></td>
-        <td><%= link_to 'Delete', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

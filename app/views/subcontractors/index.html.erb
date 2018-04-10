@@ -12,7 +12,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_subcontractors_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :subcontractor_status_id %>
             <%= f.collection_select :subcontractor_status_id_eq, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a Type' } %>
           </div>
@@ -32,7 +32,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_subcontractors_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.text_field :subcontractor_name_or_subcontractor_phone_or_subcontractor_email_or_company_cont %>
           </div>
         </div>
@@ -42,7 +42,7 @@
   </div> <%# end search modal %>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Subcontractor"), new_subcontractor_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :subcontractor_name, "Name") %></th>
@@ -56,15 +56,13 @@
 
   <tbody>
     <% @subcontractors.each do |subcontractor| %>
-      <tr>
+      <tr data-link=" <%= subcontractor_path(subcontractor) %>" tr>
         <td><%= subcontractor.subcontractor_name %></td>
         <td><%= number_to_phone(subcontractor.subcontractor_phone, area_code: true) %></td>
         <td><%= subcontractor.subcontractor_email %></td>
         <td><%= subcontractor.company %></td>
         <td><%= subcontractor.subcontractor_status.subcontractor_status_description %></td>
-        <td><%= link_to 'Show', subcontractor %></td>
         <td><%= link_to 'Edit', edit_subcontractor_path(subcontractor) %></td>
-        <td><%= link_to 'Delete', subcontractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -72,7 +70,15 @@
 
 <br>
 
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
 <script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
   $(document).ready(function(){ //loads
       $('.select2').select2({     //select2
           placeholder: function(){ //sets placeholder based on data-placeholder in the field

@@ -12,11 +12,11 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_customers_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :customer_status_id %>
             <%= f.collection_select :customer_status_id_eq, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a Status' } %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :state_id %>
             <%= f.collection_select :state_id_eq, State.all, :state_id, :state_name, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a State' } %>
           </div>
@@ -36,8 +36,14 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_customers_path, html: { method: :post } do |f| %>
         <div class="row">
+<<<<<<< HEAD
+          <div class="field col l6">
+            <%= f.label :customer_id %>
+            <%= f.text_field :customer_name_cont %>
+=======
           <div class="field col s6">
             <%= f.text_field :customer_name_or_customer_branch_or_customer_address_1_or_customer_status_customer_status_description_cont %>
+>>>>>>> master
           </div>
         </div>
         <%= f.submit 'Search', class: "btn" %>
@@ -46,7 +52,7 @@
   </div> <%# end search modal %>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Customer"), new_customer_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :customer_name, "Name") %></th>
@@ -70,7 +76,7 @@
 
   <tbody>
     <% @customers.each do |customer| %>
-      <tr>
+      <tr data-link=" <%= customer_path(customer) %>" >
         <td><%= customer.customer_name %></td>
         <td><%= customer.customer_branch %></td>
         <td><%= customer.customer_address_1 %></td>
@@ -93,9 +99,7 @@
 
         <% comment end %>
 
-        <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -103,7 +107,15 @@
 
 <br>
 
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
 <script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
   $(document).ready(function(){ //loads
       $('.select2').select2({     //select2
           placeholder: function(){ //sets placeholder based on data-placeholder in the field

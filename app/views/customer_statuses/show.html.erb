@@ -1,9 +1,10 @@
 
 
 <p>
-  <strong>Customer status description:</strong>
+  <strong>Customer Status Description:</strong>
   <%= @customer_status.customer_status_description %>
 </p>
 
-<%= link_to 'Edit', edit_customer_status_path(@customer_status) %> |
-<%= link_to 'Back', customer_statuses_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  customer_statuses_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_customer_status_path(@customer_status), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @customer_status, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

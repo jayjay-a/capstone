@@ -3,7 +3,7 @@
 <h1>Employee Statuses</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Employee Status"), new_employee_status_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :employee_status_description) %></th>
@@ -13,14 +13,23 @@
 
   <tbody>
     <% @employee_statuses.each do |employee_status| %>
-      <tr>
+      <tr data-link=" <%= employee_status_path(employee_status) %>" >
         <td><%= employee_status.employee_status_description %></td>
-        <td><%= link_to 'Show', employee_status %></td>
         <td><%= link_to 'Edit', edit_employee_status_path(employee_status) %></td>
-        <td><%= link_to 'Delete', employee_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

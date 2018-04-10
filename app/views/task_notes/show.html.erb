@@ -1,24 +1,35 @@
 
 
 <p>
+  <strong>Project:</strong>
+  #<%= @task_note.task.job.project.project_and_customer_and_branch %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @task_note.task.job.job_type.job_type_description %>
+</p>
+
+<p>
   <strong>Task:</strong>
-  <%= @task_note.task_id %>
+  <%= @task_note.task.task_description %> <%= @task_note.task.job.job_type.job_type_description %>
 </p>
 
 <p>
-  <strong>Task notes:</strong>
-  <%= @task_note.task_notes %>
-</p>
-
-<p>
-  <strong>Task note owner:</strong>
+  <strong>Task Note Owner:</strong>
   <%= @task_note.task_note_owner %>
 </p>
 
 <p>
-  <strong>Task note date:</strong>
+  <strong>Task Note Date:</strong>
   <%= @task_note.task_note_date %>
 </p>
 
-<%= link_to 'Edit', edit_task_note_path(@task_note) %> |
-<%= link_to 'Back', task_notes_path %>
+<p>
+  <strong>Task Notes:</strong>
+  <%= @task_note.task_notes %>
+</p>
+
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  task_notes_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_task_note_path(@task_note), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @task_note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

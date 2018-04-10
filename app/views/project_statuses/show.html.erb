@@ -1,9 +1,10 @@
 
 
 <p>
-  <strong>Project status description:</strong>
+  <strong>Project Status Description:</strong>
   <%= @project_status.project_status_description %>
 </p>
 
-<%= link_to 'Edit', edit_project_status_path(@project_status) %> |
-<%= link_to 'Back', project_statuses_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  project_statuses_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_project_status_path(@project_status), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @project_status, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

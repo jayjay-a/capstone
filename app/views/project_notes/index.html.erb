@@ -3,7 +3,7 @@
 <h1>Project Notes</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Project Note"), new_project_note_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :project_id) %></th>
@@ -16,17 +16,26 @@
 
   <tbody>
     <% @project_notes.each do |project_note| %>
-      <tr>
+      <tr data-link=" <%= project_note_path(project_note) %>" >
         <td><%= project_note.project_id %></td>
         <td><%= project_note.project_notes %></td>
         <td><%= project_note.project_note_date %></td>
-        <td><%= project_note.note_owner %></td>
-        <td><%= link_to 'Show', project_note %></td>
+        <td><%= project_note.project_note_owner %></td>
         <td><%= link_to 'Edit', edit_project_note_path(project_note) %></td>
-        <td><%= link_to 'Delete', project_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>
