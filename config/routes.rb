@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'reports/index' => 'reports#index'
+  get 'reports/index', :as => 'reports'
   get 'reports/subcontractors_status'
   get 'reports/compare_projects'
   get 'reports/bid_info'
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'reports/tasks_status'
   get 'reports/rental_freq'
   get 'reports/project_notes'
+  resources :reports
 
   resources :task_statuses
   resources :task_notes
