@@ -13,7 +13,9 @@
       <div class="col s3">
         <%= label_tag(:q, "Task Status") %>
         <%= select_tag(:q, options_from_collection_for_select(TaskStatus.all, "id", "task_status_description",params[:q]),:prompt => "Select a Status", class: "select2") %>
-        <%= submit_tag("Submit") %>
+        <%= button_tag( :class => "btn waves-effect waves-light") do %>
+          Submit<i class="material-icons right">send</i>
+        <% end %>
         <%= link_to ("Clear"), reports_tasks_status_path %>
       </div>
     </div>
