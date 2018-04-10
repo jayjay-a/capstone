@@ -1,0 +1,49 @@
+<!--<h1>Report1</h1>-->
+<p id="notice"><%= notice %></p>
+
+<h2>Subcontractors by Activity Status</h2>
+
+<h4><%= @status_desc %> Subcontractors</h4>
+
+<%= form_tag reports_subcontractors_status_path, method: :get do %>
+<h6>Download:
+<%= link_to "Excel", reports_subcontractors_status_path(format: "xlsx", :q => params[:q]) %> |
+  <%= link_to "PDF", reports_subcontractors_status_path(format: "pdf", :q => params[:q]) %></h6>
+    <br>
+    <div class="row">
+      <div class="col s3">
+        <%= label_tag(:q, "Subcontractor Status") %>
+        <%= select_tag(:q, options_from_collection_for_select(SubcontractorStatus.all, "id", "subcontractor_status_description",params[:q]),:prompt => "Select a Status", class: "select2") %>
+        <%= button_tag( :class => "btn waves-effect waves-light") do %>
+          Submit<i class="material-icons right">send</i>
+        <% end %>
+        <%= link_to ("Clear"), reports_subcontractors_status_path %>
+      </div>
+    </div>
+<% end %>
+
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>Subcontractor Name</th>
+      <th>Company</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Last Assignment Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @subcontractors.each do |subcontractor| %>
+    <tr>
+      <td><%= subcontractor['subcontractor_name'] %></td>
+      <td><%= subcontractor['company'] %></td>
+      <td><%= subcontractor['subcontractor_phone'] %></td>
+      <td><%= subcontractor['subcontractor_email'] %></td>
+      <td><%= subcontractor['last_date'] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

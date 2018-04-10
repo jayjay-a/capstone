@@ -22,11 +22,11 @@
       </li>
 
       <%# drop down(resources) trigger on navbar%>
+      <li><a class="dropdown-trigger" href="#!" data-target="resources">Resources ⏷</a></li> <%# contains subcontractors, materials, rental equipment%>
 
-      <li><a class="dropdown-trigger" href="#!" data-target="resources">Resources ⏷</a></li>
-      <%# <i class="material-icons right" style="position:relative;left:-13px;">arrow_drop_down</i> %>
-
-      <li><a href="#">Reports</a></li> <%#placeolder%>
+      <li class="<%= 'active' if params[:controller] == 'reports' %>">
+        <a class="nav-link" <%= link_to 'Reports', reports_path %></a>
+      </li>
 
       <li class="<%= 'active' if params[:controller] == 'pages' %>">
         <a <%= link_to "Admin Panel", admin_panel_path %></a>

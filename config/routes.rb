@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'reports/index', :as => 'reports'
+  get 'reports/subcontractors_status'
+  get 'reports/compare_projects'
+  get 'reports/bid_info'
+  get 'reports/project_duration'
+  get 'reports/job_duration'
+  get 'reports/task_duration'
+  get 'reports/subcontractor_freq'
+  get 'reports/tasks_status'
+  get 'reports/rental_freq'
+  get 'reports/project_notes'
+  resources :reports
+
   resources :task_statuses
   resources :task_notes
   resources :tasks
@@ -60,6 +73,7 @@ Rails.application.routes.draw do
       match 'search' => 'assignments#search', via: [:get, :post], as: :search #for ransack
      end
   end
+  
   get '/pages/admin_panel', :as => 'admin_panel'
   resources :pages
 
