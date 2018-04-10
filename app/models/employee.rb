@@ -7,8 +7,8 @@ class Employee < ApplicationRecord
   validates :employee_status_id, presence: true
   validates :employee_type_id, presence: true
   validates :state_id, presence: true
-  validates :first_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z\d\s]*\z/, message: 'can only be letters' }
-  validates :last_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z\d\s]*\z/, message: 'can only be letters' }
+  validates :first_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z'\-.\s]*\z/, message: 'can only be letters' }
+  validates :last_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z'\-.\s]*\z/, message: 'can only be letters' }
   validates :join_date, presence: true
   validate :dismiss_date_cannot_be_before_join_date, unless: -> { dismiss_date.blank? }
 
