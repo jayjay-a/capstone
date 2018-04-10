@@ -63,7 +63,7 @@ class JobTypesController < ApplicationController
   def destroy
     @job_type.destroy
     respond_to do |format|
-      format.html { redirect_to job_types_url, notice: 'Job type was successfully destroyed.' }
+      format.html { redirect_to job_types_url, notice: 'Job type was successfully deleted.' }
       format.json { head :no_content }
     end
   end

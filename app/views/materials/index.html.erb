@@ -27,7 +27,7 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :material_description) %></th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
@@ -35,7 +35,7 @@
     <% @materials.each do |material| %>
       <tr data-link=" <%= material_path(material) %>" >
         <td><%= material.material_description %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        
       </tr>
     <% end %>
   </tbody>

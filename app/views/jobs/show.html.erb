@@ -35,9 +35,11 @@
 <div id="task">
   <p>
     <strong>Tasks:</strong> </br>
+    <ol>
     <% @job.tasks.each do |task| %> <%# iterates through each related task to this job%>
       <li><%= link_to task.task_description, task %></li>
     <% end %>
+    </ol>
   <p>
 </div>
 <%# notes of job %>

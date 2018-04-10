@@ -62,7 +62,7 @@ class SubcontractorsController < ApplicationController
   def destroy
     @subcontractor.destroy
     respond_to do |format|
-      format.html { redirect_to subcontractors_url, notice: 'Subcontractor was successfully destroyed.' }
+      format.html { redirect_to subcontractors_url, notice: 'Subcontractor was successfully deleted.' }
       format.json { head :no_content }
     end
   end

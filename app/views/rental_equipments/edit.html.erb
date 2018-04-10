@@ -2,5 +2,4 @@
 
 <%= render 'form', rental_equipment: @rental_equipment %>
 
-<%= link_to 'Show', @rental_equipment %> |
-<%= link_to 'Back', rental_equipments_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @rental_equipment, class: "btn waves-effect waves-light grey" %> 

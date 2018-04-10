@@ -2,5 +2,4 @@
 
 <%= render 'form', job_type: @job_type %>
 
-<%= link_to 'Show', @job_type %> |
-<%= link_to 'Back', job_types_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @job_type, class: "btn waves-effect waves-light grey" %> 

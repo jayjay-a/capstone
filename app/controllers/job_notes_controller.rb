@@ -62,7 +62,7 @@ class JobNotesController < ApplicationController
   def destroy
     @job_note.destroy
     respond_to do |format|
-      format.html { redirect_to job_notes_url, notice: 'Job note was successfully destroyed.' }
+      format.html { redirect_to job_notes_url, notice: 'Job note was successfully deleted.' }
       format.json { head :no_content }
     end
   end

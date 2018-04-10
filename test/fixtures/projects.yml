@@ -13,7 +13,7 @@ one:
   bid_cost_of_permits: 9.99
   bid_equipment_rental: 9.99
   bid_freight_decimal: MyString
-  tax_rate: 9.99
+  applicable_tax: 9.99
   bid_amount: 9.99
 
 two:
@@ -29,5 +29,5 @@ two:
   bid_cost_of_permits: 9.99
   bid_equipment_rental: 9.99
   bid_freight_decimal: MyString
-  tax_rate: 9.99
+  applicable_tax: 9.99
   bid_amount: 9.99

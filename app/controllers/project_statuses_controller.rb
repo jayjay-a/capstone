@@ -62,7 +62,7 @@ class ProjectStatusesController < ApplicationController
   def destroy
     @project_status.destroy
     respond_to do |format|
-      format.html { redirect_to project_statuses_url, notice: 'Project status was successfully destroyed.' }
+      format.html { redirect_to project_statuses_url, notice: 'Project status was successfully deleted.' }
       format.json { head :no_content }
     end
   end
