@@ -4,7 +4,13 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @search = Task.ransack(params[:q]) #for ransack
+    @tasks = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /tasks/1

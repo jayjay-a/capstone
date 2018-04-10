@@ -11,27 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :project_id  %>
-    <%= form.collection_select :project_id, Project.all, :project_id, :project_id ,{prompt: "Select a project"}%>
+  <div class="row">
+    <div class="field col s3">
+      <%= form.label :project_id  %>
+      <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :rental_equipment_id  %>
-    <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
+  <div class="row">
+    <div class="field col s12">
+      <%= form.label :rental_equipment_id  %>
+      <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="field col s2">
+      <%= form.label :rental_price %>
+      <%= form.text_field :rental_price, id: :rental_list_rental_price %>
+    </div>
+  
+    <div class="field col s2">
+      <%= form.label :cost_frequency %>
+      <%= form.text_field :cost_frequency, id: :rental_list_cost_frequency %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :rental_price %>
-    <%= form.text_field :rental_price, id: :rental_list_rental_price %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :cost_frequency %>
-    <%= form.text_field :cost_frequency, id: :rental_list_cost_frequency %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

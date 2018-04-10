@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Subcontractor status:</strong>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Subcontractor phone:</strong>
-  <%= @subcontractor.subcontractor_phone %>
+  <%= number_to_phone(@subcontractor.subcontractor_phone, area_code: true) %>
 </p>
 
 <p>

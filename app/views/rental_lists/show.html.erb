@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Project:</strong>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Rental price:</strong>
-  <%= @rental_list.rental_price %>
+  <%= number_to_currency(@rental_list.rental_price) %>
 </p>
 
 <p>

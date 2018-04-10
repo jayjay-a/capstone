@@ -11,17 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :state_name %>
-    <%= form.text_field :state_name, id: :state_state_name %>
+  <div class="row">
+    <div class="field col s5" style="min-width: 200px;">
+      <%= form.label :state_name %>
+      <%= form.text_field :state_name, id: :state_state_name, required: true %>
+    </div>
+
+    <div class="field col s2">
+      <%= form.label :state_abbrev, "Abbreviation" %>
+      <%= form.text_field :state_abbrev, id: :state_state_abbrev, required: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :state_abbrev %>
-    <%= form.text_field :state_abbrev, id: :state_state_abbrev %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

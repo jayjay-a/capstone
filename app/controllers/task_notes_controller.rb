@@ -4,7 +4,18 @@ class TaskNotesController < ApplicationController
   # GET /task_notes
   # GET /task_notes.json
   def index
-    @task_notes = TaskNote.all
+    @search = TaskNote.ransack(params[:q]) #for ransack
+    @task_notes = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /task_notes/1

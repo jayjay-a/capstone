@@ -1,20 +1,26 @@
 <%# these fields are added as a nested form to project form%>
-<div id = nested-fields class="nested-fields" style="width:400px">
-
-  <div class="field">
-    <%= f.label :rental_equipment_id  %>
-    <%= f.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
+<div id = nested-fields class="nested-fields">
+  <p>
+  <div class="row">
+    <div class="field col s12">
+      <%= f.label :rental_equipment_id  %>
+      <%= f.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="field col s2">
+      <%= f.label :rental_price %>
+      <%= f.text_field :rental_price, id: :rental_list_rental_price %>
+    </div>
+  
+    <div class="field col s2">
+      <%= f.label :cost_frequency %>
+      <%= f.text_field :cost_frequency, id: :rental_list_cost_frequency %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :rental_price %>
-    <%= f.text_field :rental_price, id: :rental_list_rental_price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cost_frequency %>
-    <%= f.text_field :cost_frequency, id: :rental_list_cost_frequency %>
-  </div>
-
-  <%= link_to_remove_association "Remove Equipment", f %>
+  <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Equipment"), f, class: "btn waves-effect waves-light" %> 
+  </p>
+  <hr>
 </div>

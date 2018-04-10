@@ -13,10 +13,11 @@
 
   <div class="field">
     <%= form.label :rental_description %>
-    <%= form.text_field :rental_description, id: :rental_equipment_rental_description %>
+    <%= form.text_field :rental_description, id: :rental_equipment_rental_description, required: true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

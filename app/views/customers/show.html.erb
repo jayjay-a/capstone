@@ -1,10 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>State:</strong>
-  <%= @customer.state.state_name %>
-</p>
-
 <p>
   <strong>Customer status:</strong>
   <%= @customer.customer_status.customer_status_description %>
@@ -31,6 +24,21 @@
 </p>
 
 <p>
+  <strong>Customer city:</strong>
+  <%= @customer.customer_city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @customer.state.state_name %>
+</p>
+
+<p>
+  <strong>Customer zipcode:</strong>
+  <%= @customer.customer_zipcode %>
+</p>
+
+<p>
   <strong>Customer rep name 1:</strong>
   <%= @customer.customer_rep_name_1 %>
 </p>
@@ -42,12 +50,12 @@
 
 <p>
   <strong>Customer rep phone 1:</strong>
-  <%= @customer.customer_rep_phone_1 %>
+  <%= number_to_phone(@customer.customer_rep_phone_1, area_code: true) %>
 </p>
 
 <p>
   <strong>Customer rep phone 2:</strong>
-  <%= @customer.customer_rep_phone_2 %>
+  <%= number_to_phone(@customer.customer_rep_phone_2, area_code: true) %>
 </p>
 
 <p>

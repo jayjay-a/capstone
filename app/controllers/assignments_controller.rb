@@ -4,7 +4,13 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    @search = Assignment.ransack(params[:q]) #for ransack
+    @assignments = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /assignments/1

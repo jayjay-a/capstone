@@ -4,7 +4,13 @@ class JobNotesController < ApplicationController
   # GET /job_notes
   # GET /job_notes.json
   def index
-    @job_notes = JobNote.all
+    @search = JobNote.ransack(params[:q]) #for ransack
+    @job_notes = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /job_notes/1
@@ -69,6 +75,6 @@ class JobNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_note_params
-      params.require(:job_note).permit(:job_id, :job_notes, :job_notes_owner, :job_notes_date)
+      params.require(:job_note).permit(:job_id, :job_notes, :job_note_owner, :job_note_date)
     end
 end

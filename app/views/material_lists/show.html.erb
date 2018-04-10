@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Project:</strong>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Unit price:</strong>
-  <%= @material_list.unit_price %>
+  <%= number_to_currency(@material_list.unit_price) %>
 </p>
 
 <p>

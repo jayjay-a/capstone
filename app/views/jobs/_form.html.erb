@@ -11,52 +11,77 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :project_id  %>
-    <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Project' } %>
+  <ul class="tabs tabs-fixed-width z-depth-1">
+    <li class="tab"><a class="active" href="#job">Job</a></li>
+    <li class="tab"><a href="#task">Tasks</a></li>
+    <li class="tab"><a href="#notes">Notes</a></li>
+  </ul>
+
+  <div id="job">
+    <p>
+      <div class="row"><%# row 1 %>
+        <div class="field col s6">
+          <%= form.label :project_id  %>
+          <%= form.collection_select :project_id, Project.all, :project_id, :project_and_customer_and_branch, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
+        </div>
+
+
+      </div> <%# row 1 end %>
+
+      <div class="row"><%# row 2 %>
+        <div class="field col s3">
+          <%= form.label :job_type_id %>
+          <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
+        </div>
+
+        <div class="field col s3">
+          <%= form.label :job_status_id %>
+          <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
+        </div>
+      </div> <%# row 2 end%>
+
+      <div class="row"><%# row 3 %>
+        <div class="field col s3">
+          <%= form.label :job_start_date %>
+          <%= form.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+        </div>
+
+        <div class="field col s3">
+          <%= form.label :job_end_date %>
+          <%= form.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+        </div>
+      </div> <%# row 3 end%>
+    </p>
   </div>
 
-  <div class="field">
-    <%= form.label :job_type_id %>
-    <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Type' } %>
-  </div>
-
-  <div class="field">
-    <%= form.label :job_status_id %>
-    <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'browser-default', :selected => 1, "data-placeholder" => 'Select a Status' } %>
-  </div>
-
-  <div class="field">
-    <%= form.label :job_start_date %>
-    <%= form.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :job_end_date %>
-    <%= form.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-  </div>
+  
 
   <%# adding tasks to job%>
   <div id="task">
+    <p>
     <%= form.fields_for :tasks do |task| %>
       <%= render 'task_fields', f: task %>
     <% end %>
     <div class="link">
-      <%= link_to_add_association "Add task", form, :tasks %>
+      <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add task"), form, :tasks, class: "btn waves-effect waves-light" %> </br>
     </div>
+    <p>
   </div>
 
   <%# adding notes to project%>
   <div id="notes">
+    <p>
     <%= form.fields_for :job_notes do |notes| %>
       <%= render 'job_note_fields', f: notes %>
     <% end %>
     <div class="link">
-      <%= link_to_add_association "Add Note", form, :job_notes %>
+      <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Note"), form, :job_notes, class: "btn waves-effect waves-light" %> </br>
     </div>
+    </p>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>

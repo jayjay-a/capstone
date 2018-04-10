@@ -11,46 +11,40 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require materialize-sprockets
 //= require select2
 //= require cocoon
 
+$(document).ready(function(){ //loads
+    $('.select2').select2({     //select2
+        placeholder: function(){ //sets placeholder based on data-placeholder in the field
+            $(this).data('placeholder');
+        },
+        allowClear: true
+    });
+
+    $('.datepicker').datepicker({ //datepicker
+        format: 'yyyy-mm-dd',
+        showDaysInNextAndPreviousMonths: true,
+        showClearBtn: true,
+    });
+    $(".datepicker").datepicker('setDate', new Date()); //defaults current date as default selected
+
+    $(".dropdown-trigger").dropdown({ //dropdown on the navbar
+        constrainWidth: false
+    }); 
+
+    $('.sidenav').sidenav(); //show side navbar on mobile
+
+    $('.modal').modal(); //display modals
+
+    $('.tabs').tabs();
+});
+
 document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   
-    $(document).ready(function(){ //loads
-        $('select').select2({     //select2
-            placeholder: function(){ //sets placeholder based on data-placeholder in the field
-                $(this).data('placeholder');
-            },
-            allowClear: true
-        });
-
-        $('.datepicker').datepicker({ //datepicker
-            format: 'yyyy-mm-dd',
-            showDaysInNextAndPreviousMonths: true,
-            showClearBtn: true,
-        });
-        $(".datepicker").datepicker('setDate', new Date()); //defaults current date as default selected
-
-        $(".dropdown-trigger").dropdown(); //dropdown on the navbar
-
-        UnobtrusiveFlash.flashOptions['timeout'] = 5000; //shows and hides flash messagetimeout in milliseconds
-
-        $('.sidenav').sidenav(); //show side navbar on mobile
-
-        $('.modal').modal(); //display modals
-    });
-
-    $("input[name='suboremp']:radio") //shows/hide divs on assignments for subcontracors or employees
-        .change(function() {
-            $("#sub").toggle($(this).val() == "button_one");
-            $("#emp").toggle($(this).val() == "button_two");
-            $("#subbies").select2('val', 'All'); //clears based on radio button pressing
-            $("#empies").select2('val', 'All');
-    });
-
+    //currently unused cause we dont got turbolink no mo
 })
 
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields

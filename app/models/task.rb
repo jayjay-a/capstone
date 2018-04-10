@@ -5,7 +5,19 @@ class Task < ApplicationRecord
   belongs_to :job
   belongs_to :project, optional: true
 
+  validates :task_status_id, presence: true
+  validates :task_start_date, presence: true
+  validates :task_description, presence: true, length: { maximum: 200 }
+  validate :task_end_date_cannot_be_before_task_start_date, unless: -> { task_end_date.blank? }
+
   #nested form
   accepts_nested_attributes_for :task_notes, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :assignments, allow_destroy: true, reject_if: :all_blank
+
+  def task_end_date_cannot_be_before_task_start_date
+    errors.add(:task_end_date, "can't be before the task starts") if
+        task_end_date < task_start_date
+  end
 end
+
+

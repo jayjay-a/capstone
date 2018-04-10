@@ -4,20 +4,18 @@ class SubcontractorsController < ApplicationController
   # GET /subcontractors
   # GET /subcontractors.json
   def index
-    @subcontractors = Subcontractor.all
-    respond_to do |format|
-      format.html
-      format.pdf
-    end
+    @search = Subcontractor.ransack(params[:q]) #for ransack
+    @subcontractors = @search.result
+  end
+
+  def search #for ransack
+    index
+    render :index
   end
 
   # GET /subcontractors/1
   # GET /subcontractors/1.json
   def show
-    respond_to do |format|
-      format.html
-      format.pdf
-    end
   end
 
   # GET /subcontractors/new
