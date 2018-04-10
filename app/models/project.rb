@@ -39,7 +39,7 @@ class Project < ApplicationRecord
 
   def project_start_date_cannot_be_before_bid_submit_date
     errors.add(:project_start_date, "can't be before the bid submit date") if
-       bid_submit_date &&  project_start_date < bid_submit_date
+       bid_submit_date.blank? &&  project_start_date < bid_submit_date
   end
 
   def project_end_date_cannot_be_before_project_start_date
