@@ -15,20 +15,19 @@
     <%= form.label :project_id %>
     <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
   </div>
-
   <div class="field">
-    <%= form.label :project_notes %>
-    <%= form.text_area :project_notes, id: :project_note_project_notes, required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :project_note_date %>
+    <%= form.label :project_note_date, "Note Date" %>
     <%= form.text_field :project_note_date, id: :project_note_project_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => project_note.project_note_date || Date.today.strftime('%Y-%m-%d'), required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :project_note_owner %>
+    <%= form.label :project_note_owner, "Note Owner" %>
     <%= form.text_field :project_note_owner, id: :project_note_project_note_owner, required: true %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :project_notes, "Project Notes" %>
+    <%= form.text_area :project_notes, id: :project_note_project_notes, required: true %>
   </div>
 
   <%= button_tag( :class => "btn waves-effect waves-light right") do %>

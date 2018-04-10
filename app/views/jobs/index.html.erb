@@ -19,7 +19,7 @@
 
   <tbody>
     <% @jobs.each do |job| %>
-      <tr data-link=" <%= jobpath(job) %>" >
+      <tr data-link=" <%= job_path(job) %>" >
         <td><%= job.project_id %></td>
         <td><%= job.project.customer.customer_name %></td>
         <td><%= job.project.customer.customer_branch %></td>

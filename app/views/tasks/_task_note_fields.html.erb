@@ -1,20 +1,20 @@
 <%# these fields are added as a nested form to task form%>
 <div id = nested-fields class="nested-fields">
   <div class="row">
-    <div class="field col l12">
-      <%= f.label :task_notes %>
-      <%= f.text_area :task_notes, id: :task_note_task_notes %>
+    <div class="field col l2">
+      <%= f.label :task_note_owner, "Note Owner" %>
+      <%= f.text_field :task_note_owner, id: :task_note_task_note_owner %>
+    </div>
+    <div class="field col l2">
+      <%= f.label :task_note_date, "Note Date" %>
+    <%= f.text_field :task_note_date, id: :task_note_task_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
     </div>
   </div>
 
   <div class="row">
-    <div class="field col l2">
-      <%= f.label :task_note_owner %>
-      <%= f.text_field :task_note_owner, id: :task_note_task_note_owner %>
-    </div>
-    <div class="field col l2">
-      <%= f.label :task_note_date %>
-    <%= f.text_field :task_note_date, id: :task_note_task_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+    <div class="field col l12 m12 s12">
+      <%= f.label :task_notes, "Task Notes" %>
+      <%= f.text_area :task_notes, id: :task_note_task_notes %>
     </div>
   </div>
 

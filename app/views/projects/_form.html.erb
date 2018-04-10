@@ -28,26 +28,26 @@
         <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_and_branch, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Customer'} %>
       </div>
       <div class="field col l3">
-        <%= form.label :project_type_id %>
+        <%= form.label :project_type_id, "Type" %>
         <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type'} %>
       </div>
       <div class="field col l3">
-        <%= form.label :project_status_id %>
+        <%= form.label :project_status_id, "Status" %>
         <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'} %>
       </div>
     </div>
 
     <div class="row">
       <div class="field col l2">
-        <%= form.label :project_start_date %>
+        <%= form.label :project_start_date, "Start Date" %>
         <%= form.text_field :project_start_date, id: :project_project_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
       <div class="field col l2">
-        <%= form.label :project_end_date %>
+        <%= form.label :project_end_date, "End Date" %>
         <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
       <div class="field col l2">
-        <%= form.label :bid_submit_date %>
+        <%= form.label :bid_submit_date, "Bid Submit Date" %>
         <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => project.bid_submit_date || Date.today.strftime('%Y-%m-%d') %>
       </div>
     </div>
@@ -59,45 +59,45 @@
     <p>
     <div class="row">
       <div class="field col l2">
-        <%= form.label :bid_material_cost %>
+        <%= form.label :bid_material_cost, "Material Cost" %>
         <%= form.text_field :bid_material_cost, id: :project_bid_material_cost %>
       </div>
       <div class="field col l2">
-        <%= form.label :bid_cost_of_labor %>
+        <%= form.label :bid_cost_of_labor, "Labor Cost" %>
         <%= form.text_field :bid_cost_of_labor, id: :project_bid_cost_of_labor %>
       </div>
       <div class="field col l2">
-        <%= form.label :bid_cost_of_permits %>
+        <%= form.label :bid_cost_of_permits, "Permits Cost" %>
         <%= form.text_field :bid_cost_of_permits, id: :project_bid_cost_of_permits %>
       </div>
       <div class="field col l2">
-        <%= form.label :bid_equipment_rental %>
+        <%= form.label :bid_equipment_rental, "Rental Equipment Cost" %>
         <%= form.text_field :bid_equipment_rental, id: :project_bid_equipment_rental %>
       </div>
     </div>
 
     <div class="row">
       <div class="field col l2">
-        <%= form.label :bid_freight %>
+        <%= form.label :bid_freight, "Freight Cost" %>
         <%= form.text_field :bid_freight, id: :project_bid_freight %>
       </div>
       <div class="field col l2">
-        <%= form.label :bid_fuel_cost %>
+        <%= form.label :bid_fuel_cost, "Fuel Cost" %>
         <%= form.text_field :bid_fuel_cost, id: :project_bid_fuel_cost %>
       </div>
       <div class="field col l2">
-        <%= form.label :bid_lodging_cost %>
+        <%= form.label :bid_lodging_cost, "Lodging Cost" %>
         <%= form.text_field :bid_lodging_cost, id: :project_bid_lodging_cost%>
       </div>
       <div class="field col l1">
-        <%= form.label :tax_rate %>
+        <%= form.label :tax_rate, "Tax Rate" %>
         <%= form.text_field :tax_rate, id: :project_tax_rate %>
       </div>
     </div>
     
     <div class="row">
       <div class="field col l2">
-        <%= form.label :bid_amount %>
+        <%= form.label :bid_amount, "Total Bid Amount" %>
         <%= form.text_field :bid_amount, id: :project_bid_amount %>
       </div>
     </div>
@@ -138,11 +138,13 @@
 
   <%# Notes Tab%> <%# adding notes to project%>
   <div id="notes">
+    <p>
     <%= form.fields_for :project_notes do |notes| %>
       <%= render 'project_note_fields', f: notes %>
     <% end %>
     <p>
         <%= link_to_add_association raw("<i class=\"material-icons right\">add_circle</i>Add Note"), form, :project_notes, class: "btn waves-effect waves-light blue" %> 
+    </p>
     </p>
   </div>
 

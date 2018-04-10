@@ -21,8 +21,8 @@
         <%= form.text_field :customer_branch, id: :customer_customer_branch %>
       </div>
       <div class="input col l4">
-        <%= form.label :customer_status_id %>
-        <%= form.collection_select :customer_status_id, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Status'} %>
+        <%= form.label :customer_status_id, "Status" %>
+        <%= form.collection_select :customer_status_id, CustomerStatus.all, :customer_status_id, :customer_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'} %>
       </div>
     </div><%# row 1 end%>
 
@@ -41,7 +41,7 @@
       </div>
       <div class="input col l2">
         <%= form.label :state_id %>
-        <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'State'} %>
+        <%= form.collection_select :state_id, State.all, :state_id, :state_name, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a State'} %>
       </div>
       <div class="input col l2">
         <%= form.label :customer_zipcode, "Zipcode" %>

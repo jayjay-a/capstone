@@ -20,35 +20,28 @@
   <div id="job">
     <p>
       <div class="row"><%# row 1 %>
-        <div class="field col l6">
-          <%= form.label :project_id  %>
-          <%= form.collection_select :project_id, Project.all, :project_id, :project_and_customer_and_branch, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
-        </div>
-      </div> <%# row 1 end %>
-
-      <div class="row"><%# row 2 %>
         <div class="field col l3">
-          <%= form.label :job_type_id %>
+          <%= form.label :job_type_id, "Type" %>
           <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
         </div>
 
         <div class="field col l3">
-          <%= form.label :job_status_id %>
+          <%= form.label :job_status_id, "Status" %>
           <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
         </div>
-      </div> <%# row 2 end%>
+      </div> <%# row 1 end%>
 
-      <div class="row"><%# row 3 %>
+      <div class="row"><%# row 2 %>
         <div class="field col l3">
-          <%= form.label :job_start_date %>
+          <%= form.label :job_start_date, "Start Date" %>
           <%= form.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
         </div>
 
         <div class="field col l3">
-          <%= form.label :job_end_date %>
+          <%= form.label :job_end_date, "End Date" %>
           <%= form.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
         </div>
-      </div> <%# row 3 end%>
+      </div> <%# row 2 end%>
     </p>
   </div>
 
