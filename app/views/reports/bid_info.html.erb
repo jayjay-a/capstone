@@ -29,7 +29,7 @@
         <td><%= bids['customer_branch'] %></td>
         <td><%= bids['job_type_description'] %></td>
         <td><%= bids['bid_submit_date'] %></td>
-        <td><%= bids['bid_amount'] %></td>
+        <td><%= number_to_currency(bids['bid_amount']) %></td>
         <td><%= bids['project_status_description'] %></td>
       </tr>
   <% end %>

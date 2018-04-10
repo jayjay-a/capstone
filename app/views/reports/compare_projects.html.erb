@@ -48,7 +48,7 @@
         <td><%= item['job_type_description'] %></td>
         <td><%= item['project_start_date'] %></td>
         <td><%= item['project_end_date'] %></td>
-        <td><%= item['bid_amount'] %></td>
+        <td><%= number_to_currency(item['bid_amount']) %></td>
       </tr>
   <% end %>
   </tbody>
