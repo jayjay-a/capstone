@@ -17,7 +17,7 @@ class Project < ApplicationRecord
   validates :bid_cost_of_permits, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_equipment_rental, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_freight, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :tax_rate, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :applicable_tax, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_fuel_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_lodging_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_amount, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }

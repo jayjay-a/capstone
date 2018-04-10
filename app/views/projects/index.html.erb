@@ -118,7 +118,7 @@
         <td><%= number_to_currency(project.bid_freight) %></td>
         <td><%= number_to_currency(project.bid_fuel_cost) %></td>
         <td><%= number_to_currency(project.bid_lodging_cost) %></td> %>
-        <td><%= number_to_currency(project.tax_rate) %></td>
+        <td><%= number_to_currency(project.applicable_tax) %></td>
         <td><%= number_to_currency(project.bid_amount) %></td> %>
         <% comment end %>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
