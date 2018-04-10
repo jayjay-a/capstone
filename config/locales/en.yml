@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+
+en:
+  activerecord:
+    attributes:
+      project:
+        tax_rate: Tax
+      customer:
+        customer_rep_phone_1: First representative's phone
+        customer_rep_phone_2: Second representative's phone
+        customer_rep_email_1: First representative's email
+        customer_rep_email_2: Second representative's email
