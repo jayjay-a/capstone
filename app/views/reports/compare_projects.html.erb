@@ -3,8 +3,6 @@
 
 <h2>Compare Projects by Job Type and Bid Amount</h2>
 
-
-
 <%= form_tag reports_compare_projects_path, method: :get do %>
     <h6>Download:
       <%= link_to "Excel", reports_compare_projects_path(format: "xlsx", :q => params[:q], :t => params[:t]) %> |
@@ -35,7 +33,6 @@
     <th>Project Start Date</th>
     <th>Project End Date</th>
     <th>Bid Amount</th>
-    <th colspan="6"></th>
   </tr>
   </thead>
 

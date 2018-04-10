@@ -3,9 +3,7 @@
 
 <h2>Subcontractors by Activity Status</h2>
 
-
 <h4><%= @status_desc %> Subcontractors</h4>
-
 
 <%= form_tag reports_subcontractors_status_path, method: :get do %>
 <h6>Download:
@@ -20,31 +18,28 @@
         <%= link_to ("Clear"), reports_subcontractors_status_path %>
       </div>
     </div>
-
-
 <% end %>
 
 <table class="responsive-table">
   <thead>
-  <tr>
-    <th>Subcontractor Name</th>
-    <th>Company</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th>Last Assignment Date</th>
-    <th colspan="1"></th>
-  </tr>
+    <tr>
+      <th>Subcontractor Name</th>
+      <th>Company</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Last Assignment Date</th>
+    </tr>
   </thead>
 
   <tbody>
   <% @subcontractors.each do |subcontractor| %>
-      <tr>
-        <td><%= subcontractor['subcontractor_name'] %></td>
-        <td><%= subcontractor['company'] %></td>
-        <td><%= subcontractor['subcontractor_phone'] %></td>
-        <td><%= subcontractor['subcontractor_email'] %></td>
-        <td><%= subcontractor['last_date'] %></td>
-      </tr>
+    <tr>
+      <td><%= subcontractor['subcontractor_name'] %></td>
+      <td><%= subcontractor['company'] %></td>
+      <td><%= subcontractor['subcontractor_phone'] %></td>
+      <td><%= subcontractor['subcontractor_email'] %></td>
+      <td><%= subcontractor['last_date'] %></td>
+    </tr>
   <% end %>
   </tbody>
 </table>
