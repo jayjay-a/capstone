@@ -18,6 +18,6 @@ class Customer < ApplicationRecord
   validates_format_of :customer_zipcode, allow_nil: true, length: { maximum: 16 }, with: /\A\d{5}(-\d{4})?\z/, message: 'should be in the form 12345 or 12345-1234'
 
   def customer_and_branch
-    "#{customer_name} - #{customer_branch}"
+    "#{customer_name} #{customer_branch}"
   end
 end

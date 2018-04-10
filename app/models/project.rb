@@ -34,7 +34,7 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :rental_lists, allow_destroy: true, reject_if: :all_blank
 
   def project_and_customer_and_branch
-    "#{project_id} - #{customer.customer_name}, Branch: #{customer.customer_branch}"
+    "#{project_id} - #{customer.customer_name} #{customer.customer_branch}"
   end
 
   def project_start_date_cannot_be_before_bid_submit_date
