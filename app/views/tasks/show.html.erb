@@ -6,28 +6,33 @@
 </ul>
 <div id="task">
   <p>
+    <strong>Project:</strong>
+    #<%= @task.job.project.project_and_customer_and_branch %>
+  </p>
+
+  <p>
     <strong>Job:</strong>
-    <%= @task.job_id %>
+    <%= @task.job.job_type.job_type_description %>
   </p>
 
   <p>
-    <strong>Task status:</strong>
-    <%= @task.task_status_id %>
+    <strong>Task:</strong>
+    <%= @task.task_description %>
   </p>
 
   <p>
-    <strong>Task start date:</strong>
+    <strong>Task Status:</strong>
+    <%= @task.task_status.task_status_description %>
+  </p>
+
+  <p>
+    <strong>Task Start Date:</strong>
     <%= @task.task_start_date %>
   </p>
 
   <p>
-    <strong>Task end date:</strong>
+    <strong>Task End Date:</strong>
     <%= @task.task_end_date %>
-  </p>
-
-  <p>
-    <strong>Task description:</strong>
-    <%= @task.task_description %>
   </p>
 </div>
 
@@ -47,8 +52,8 @@
   <p>
   <strong>Notes:</strong></br>
     <% @task.task_notes.each do |task_note| %> 
-      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.task_note_date %></strong>
-      <%= simple_format(task_note.task_notes) %></br>
+      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.task_note_date %>:</strong>
+      <%= simple_format(task_note.task_notes) %></br></br>
     <% end %>
   </p>
 </div>

@@ -2,21 +2,21 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @rental_list.project.project_and_customer_and_branch %>
+  #<%= @rental_list.project.project_and_customer_and_branch %>
 </p>
 
 <p>
-  <strong>Rental equipment:</strong>
+  <strong>Rental Equipment:</strong>
   <%= @rental_list.rental_equipment.rental_description %>
 </p>
 
 <p>
-  <strong>Rental price:</strong>
+  <strong>Rental Price:</strong>
   <%= number_to_currency(@rental_list.rental_price) %>
 </p>
 
 <p>
-  <strong>Cost frequency:</strong>
+  <strong>Cost Frequency:</strong>
   <%= @rental_list.cost_frequency %>
 </p>
 

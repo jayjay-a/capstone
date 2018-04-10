@@ -1,38 +1,38 @@
 
 
 <p>
-  <strong>Employee status:</strong>
-  <%= @employee.employee_status.employee_status_description %>
-</p>
-
-<p>
-  <strong>Employee type:</strong>
-  <%= @employee.employee_type.employee_type_description %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @employee.state.state_name %>
-</p>
-
-<p>
-  <strong>First name:</strong>
+  <strong>First Name:</strong>
   <%= @employee.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong>Last Lame:</strong>
   <%= @employee.last_name %>
 </p>
 
 <p>
-  <strong>Join date:</strong>
+  <strong>Employee Status:</strong>
+  <%= @employee.employee_status.employee_status_description %>
+</p>
+
+<p>
+  <strong>Employee Type:</strong>
+  <%= @employee.employee_type.employee_type_description %>
+</p>
+
+<p>
+  <strong>Join Date:</strong>
   <%= @employee.join_date %>
 </p>
 
 <p>
   <strong>Dismiss date:</strong>
   <%= @employee.dismiss_date %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @employee.state.state_name %>
 </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |

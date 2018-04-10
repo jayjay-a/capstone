@@ -8,7 +8,7 @@
 <div id="job">
   <p>
     <strong>Customer:</strong>
-    <%= @job.project.project_and_customer_and_branch %>
+    #<%= @job.project.project_and_customer_and_branch %>
   </p>
 
   <p>
@@ -45,8 +45,8 @@
   <p>
     <strong>Notes:</strong></br>
     <% @job.job_notes.each do |job_note| %> 
-        <strong>Made by <%= job_note.job_note_owner %> on <%= job_note.job_note_date %></strong>
-        <%= simple_format(job_note.job_notes) %></br>
+        <strong>Made by <%= job_note.job_note_owner %> on <%= job_note.job_note_date %>:</strong>
+        <%= simple_format(job_note.job_notes) %></br></br>
     <% end %>
   </p>
 </div>

@@ -1,28 +1,28 @@
 
 
 <p>
-  <strong>Subcontractor status:</strong>
-  <%= @subcontractor.subcontractor_status.subcontractor_status_description %>
-</p>
-
-<p>
-  <strong>Subcontractor name:</strong>
+  <strong>Subcontractor Name:</strong>
   <%= @subcontractor.subcontractor_name %>
 </p>
 
 <p>
-  <strong>Subcontractor phone:</strong>
+  <strong>Subcontractor Phone:</strong>
   <%= number_to_phone(@subcontractor.subcontractor_phone, area_code: true) %>
 </p>
 
 <p>
-  <strong>Subcontractor email:</strong>
+  <strong>Subcontractor Email:</strong>
   <%= @subcontractor.subcontractor_email %>
 </p>
 
 <p>
   <strong>Company:</strong>
   <%= @subcontractor.company %>
+</p>
+
+<p>
+  <strong>Subcontractor Status:</strong>
+  <%= @subcontractor.subcontractor_status.subcontractor_status_description %>
 </p>
 
 <%= link_to 'Edit', edit_subcontractor_path(@subcontractor) %> |

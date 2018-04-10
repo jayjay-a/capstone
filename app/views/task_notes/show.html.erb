@@ -1,23 +1,33 @@
 
 
 <p>
+  <strong>Project:</strong>
+  #<%= @task_note.task.job.project.project_and_customer_and_branch %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @task_note.task.job.job_type.job_type_description %>
+</p>
+
+<p>
   <strong>Task:</strong>
-  <%= @task_note.task_id %>
+  <%= @task_note.task.task_description %> <%= @task_note.task.job.job_type.job_type_description %>
 </p>
 
 <p>
-  <strong>Task notes:</strong>
-  <%= @task_note.task_notes %>
-</p>
-
-<p>
-  <strong>Task note owner:</strong>
+  <strong>Task Note Owner:</strong>
   <%= @task_note.task_note_owner %>
 </p>
 
 <p>
-  <strong>Task note date:</strong>
+  <strong>Task Note Date:</strong>
   <%= @task_note.task_note_date %>
+</p>
+
+<p>
+  <strong>Task Notes:</strong>
+  <%= @task_note.task_notes %>
 </p>
 
 <%= link_to 'Edit', edit_task_note_path(@task_note) %> |

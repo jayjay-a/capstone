@@ -12,18 +12,18 @@
 <div id="project">
   <p>
     <p>
-      <strong>Project status:</strong>
-      <%= @project.project_status.project_status_description %>
+      <strong>Customer:</strong>
+      <%= @project.customer.customer_and_branch %>
     </p>
 
     <p>
       <strong>Project type:</strong>
       <%= @project.project_type.project_type_description %>
     </p>
-
+    
     <p>
-      <strong>Customer:</strong>
-      <%= @project.customer.customer_name %>
+      <strong>Project status:</strong>
+      <%= @project.project_status.project_status_description %>
     </p>
 
     <p>
@@ -136,8 +136,8 @@
   <p>
     <strong>Notes:</strong></br>
       <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
-      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.project_note_date %></strong>
-      <%= simple_format(project_note.project_notes) %></br>
+      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.project_note_date %>:</strong>
+      <%= simple_format(project_note.project_notes) %></br></br>
     <% end %>
   </p>
 </div>
