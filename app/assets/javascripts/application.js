@@ -38,7 +38,9 @@ $(document).ready(function(){ //loads
 
     $('.sidenav').sidenav(); //show side navbar on mobile
 
-    $('.modal').modal(); //display modals
+    $('.modal').modal({
+        preventScrolling: false
+    }); //display modals
 
     $('.tabs').tabs();
 });
