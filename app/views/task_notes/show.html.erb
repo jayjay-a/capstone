@@ -32,3 +32,4 @@
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  task_notes_path, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_task_note_path(@task_note), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @task_note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>
