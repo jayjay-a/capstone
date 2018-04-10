@@ -511,7 +511,11 @@ RentalList.create!([
                      { project_id: 33, rental_equipment_id: 22, rental_price: '295', cost_frequency: 'by week' },
                      { project_id: 36, rental_equipment_id: 23, rental_price: '49.95', cost_frequency: 'by day' },
                      { project_id: 47, rental_equipment_id: 24, rental_price: '15.95', cost_frequency: 'by hour' },
-                     { project_id: 47, rental_equipment_id: 25, rental_price: '2.95', cost_frequency: 'by hour' }
+                     { project_id: 47, rental_equipment_id: 25, rental_price: '2.95', cost_frequency: 'by hour' },
+                     { project_id: 15, rental_equipment_id: 25, rental_price: '2.95', cost_frequency: 'by hour' },
+                     { project_id: 47, rental_equipment_id: 5, rental_price: '85', cost_frequency: 'by hour' },
+                     { project_id: 33, rental_equipment_id: 3, rental_price: '350', cost_frequency: 'by week' },
+                     { project_id: 30, rental_equipment_id: 3, rental_price: '350', cost_frequency: 'by week' },
                    ])
 
 # Subcontractors
