@@ -1,29 +1,29 @@
 <%# these fields are added as a nested form to job form%>
 <div id = nested-fields class="nested-fields" >
   <div class="row">
-    <div class="field col s3">
-      <%= f.label :task_status_id %>
+    <div class="field col l3">
+      <%= f.label :task_status_id, "Status" %>
       <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'}%>
     </div>
 
-    <div class="field col s3">
-      <%= f.label :task_start_date %>
+    <div class="field col l3">
+      <%= f.label :task_start_date, "Start Date" %>
       <%= f.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
     </div>
 
-    <div class="field col s3">
-      <%= f.label :task_end_date %>
+    <div class="field col l3">
+      <%= f.label :task_end_date, "End" %>
       <%= f.text_field :task_end_date, id: :task_task_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
     </div>
   </div>
 
   <div class="row">
-    <div class="field col s9">
-      <%= f.label :task_description %>
+    <div class="field col l9">
+      <%= f.label :task_description, "Task Description" %>
       <%= f.text_area :task_description, id: :task_task_description%>
     </div>
   </div>
 
-  <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Task"), f, class: "btn waves-effect waves-light" %> 
+  <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Task"), f, class: "btn waves-effect waves-light red" %> 
   <hr>
 </div>

@@ -12,27 +12,20 @@
   <% end %>
 
   <div class="row">
-    <div class="field col s3">
-      <%= form.label :project_id  %>
-      <%= form.collection_select :project_id, Project.all, :project_id, :project_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Project' } %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="field col s12">
-      <%= form.label :rental_equipment_id  %>
+    <div class="field col l12">
+      <%= form.label :rental_equipment_id, "Rental Equipment"  %>
       <%= form.collection_select :rental_equipment_id, RentalEquipment.all, :rental_equipment_id, :rental_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Rental Equipment' } %>
     </div>
   </div>
   
   <div class="row">
-    <div class="field col s2">
-      <%= form.label :rental_price %>
+    <div class="field col l2">
+      <%= form.label :rental_price, "Rental Price" %>
       <%= form.text_field :rental_price, id: :rental_list_rental_price %>
     </div>
   
-    <div class="field col s2">
-      <%= form.label :cost_frequency %>
+    <div class="field col l2">
+      <%= form.label :cost_frequency, "Cost Frequency" %>
       <%= form.text_field :cost_frequency, id: :rental_list_cost_frequency %>
     </div>
   </div>

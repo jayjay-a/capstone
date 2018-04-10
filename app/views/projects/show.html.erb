@@ -1,81 +1,103 @@
-<p>
-  <strong>Customer:</strong>
-  <%= @project.customer.customer_name %>
-</p>
+</br>
+<ul class="tabs tabs-fixed-width z-depth-1">
+  <li class="tab"><a class="active" href="#project">Project</a></li>
+  <li class="tab"><a href="#cost">Costs</a></li>
+  <li class="tab"><a href="#job">Job</a></li>
+  <li class="tab"><a href="#material_list">Materials</a></li>
+  <li class="tab"><a href="#rental_list">Rental</a></li>
+  <li class="tab"><a href="#notes">Notes</a></li>
+</ul>
 
-<p>
-  <strong>Project type:</strong>
-  <%= @project.project_type.project_type_description %>
-</p>
+<%# Project Tab%>
+<div id="project">
+  <p>
+    <p>
+      <strong>Customer:</strong>
+      <%= @project.customer.customer_and_branch %>
+    </p>
 
-<p>
-  <strong>Project status:</strong>
-  <%= @project.project_status.project_status_description %>
-</p>
+    <p>
+      <strong>Project Type:</strong>
+      <%= @project.project_type.project_type_description %>
+    </p>
+    
+    <p>
+      <strong>Project Status:</strong>
+      <%= @project.project_status.project_status_description %>
+    </p>
 
-<p>
-  <strong>Project start date:</strong>
-  <%= @project.project_start_date %>
-</p>
+    <p>
+      <strong>Project Start Date:</strong>
+      <%= @project.project_start_date %>
+    </p>
 
-<p>
-  <strong>Project end date:</strong>
-  <%= @project.project_end_date %>
-</p>
+    <p>
+      <strong>Project End Date:</strong>
+      <%= @project.project_end_date %>
+    </p>
 
-<p>
-  <strong>Bid submit date:</strong>
-  <%= @project.bid_submit_date %>
-</p>
+    <p>
+      <strong>Bid submit date:</strong>
+      <%= @project.bid_submit_date %>
+    </p>
+  </p>
+</div>
 
-<p>
-  <strong>Bid material cost:</strong>
-  <%= number_to_currency(@project.bid_material_cost) %>
-</p>
+<%# Cost Tab%>
+<div id="cost">
+  <p>
+    <p>
+      <strong>Bid material cost:</strong>
+      <%= number_to_currency(@project.bid_material_cost) %>
+    </p>
+    
+    <p>
+      <strong>Bid cost of labor:</strong>
+      <%= number_to_currency(@project.bid_cost_of_labor) %>
+    </p>
+    
+    <p>
+      <strong>Bid cost of permits:</strong>
+      <%= number_to_currency(@project.bid_cost_of_permits) %>
+    </p>
+    
+    <p>
+      <strong>Bid equipment rental:</strong>
+      <%= number_to_currency(@project.bid_equipment_rental) %>
+    </p>
+    
+    <p>
+      <strong>Bid freight:</strong>
+      <%= number_to_currency(@project.bid_freight) %>
+    </p>
+    
+    <p>
+      <strong>Bid fuel cost:</strong>
+      <%= number_to_currency(@project.bid_fuel_cost) %>
+    </p>
+    
+    <p>
+      <strong>Bid lodging cost:</strong>
+      <%= number_to_currency(@project.bid_lodging_cost) %>
+    </p>
+    
+    <p>
+      <strong>Tax:</strong>
+      <%= number_to_percentage(@project.tax_rate, precision: 2 ) %>
+    </p>
+    
+    <p>
+      <strong>Bid amount:</strong>
+      <%= number_to_currency(@project.bid_amount) %>
+    </p>
 
-<p>
-  <strong>Bid cost of labor:</strong>
-  <%= number_to_currency(@project.bid_cost_of_labor) %>
-</p>
+  </p>
+</div>
 
-<p>
-  <strong>Bid cost of permits:</strong>
-  <%= number_to_currency(@project.bid_cost_of_permits) %>
-</p>
-
-<p>
-  <strong>Bid equipment rental:</strong>
-  <%= number_to_currency(@project.bid_equipment_rental) %>
-</p>
-
-<p>
-  <strong>Bid freight:</strong>
-  <%= number_to_currency(@project.bid_freight) %>
-</p>
-
-<p>
-  <strong>Bid fuel cost:</strong>
-  <%= number_to_currency(@project.bid_fuel_cost) %>
-</p>
-
-<p>
-  <strong>Bid lodging cost:</strong>
-  <%= number_to_currency(@project.bid_lodging_cost) %>
-</p>
-
-<p>
-  <strong>Applicable tax:</strong>
-  <%= number_to_currency(@project.tax_rate) %>
-</p>
-
-<p>
-  <strong>Bid amount:</strong>
-  <%= number_to_currency(@project.bid_amount) %>
-</p>
-
-
-<%# jobs of a project%>
-  <strong>Jobs:</strong></br>
+<%# Job Tab%>
+<div id="job">
+  <p>
+    <strong>Jobs:</strong></br>
     <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
       <li><%= link_to job.job_type.job_type_description, job %></li>
       <% comment do %>if you want task on the jobs for the show, uncomment this
@@ -85,14 +107,43 @@
         <% end %> 
       <% comment end %>
       </ul>
-  <% end %>
-</br>
+    <% end %>
+  </p>
+</div>
 
-<%# notes of a project%>
-  <strong>Notes:</strong></br>
-    <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
-      <%= simple_format(project_note.project_notes) %>
-  <% end %>
+<%# Material List Tab%>
+<div id="material_list">
+  <p>
+    <strong>Materials:</strong></br>
+      <% @project.material_lists.each do |material_list| %> <%# iterates through each related job to this project%>
+      <li><%= link_to material_list.material.material_description, material_list %></li>
+      <% end %>
+  </p>
+</div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%# Rental List Tab%>
+<div id="rental_list">
+  <p>
+    <strong>Renal Equipment:</strong></br>
+      <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
+      <li><%= link_to rental_list.rental_equipment.rental_description, rental_list %></li>
+      <% end %>
+  </p>
+</div>
+
+<%# Notes Tab%> 
+<div id="notes">
+  <p>
+    <strong>Notes:</strong></br>
+      <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
+      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.project_note_date %>:</strong>
+      <%= simple_format(project_note.project_notes) %></br></br>
+    <% end %>
+  </p>
+</div>
+  
+</br>  
+
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  projects_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_project_path(@project), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

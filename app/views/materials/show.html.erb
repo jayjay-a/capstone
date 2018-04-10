@@ -1,9 +1,10 @@
 
 
 <p>
-  <strong>Material description:</strong>
+  <strong>Material Description:</strong>
   <%= @material.material_description %>
 </p>
 
-<%= link_to 'Edit', edit_material_path(@material) %> |
-<%= link_to 'Back', materials_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  materials_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_material_path(@material), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @material, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

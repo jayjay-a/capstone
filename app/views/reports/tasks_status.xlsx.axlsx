@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "#{@status_desc} Tasks") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Job_Type Task Task_Status Task_Start_Date Task_End_Date)
+
+  # each user is a row on your spreadsheet
+  @tasks.each do |p|
+    sheet.add_row [ p['project_id'], p['customer_name'], p['customer_branch'],
+                       p['job_type_description'], p['task_description'], p['task_status_description'], p['task_start_date'], p['task_end_date']]
+  end
+end
