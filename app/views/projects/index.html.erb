@@ -36,19 +36,7 @@
             <%= f.label :project_start_date_gteq, "Minimum start date" %>
             <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
-<<<<<<< HEAD
-          <div class="field col l2">
-            <%= f.label :project_start_date_lteq, "Maximum start date" %>
-            <%= f.text_field :project_start_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-          </div>
-          <div class="field col l2">
-            <%= f.label :project_end_date_gteq, "Minimum end date" %>
-            <%= f.text_field :project_end_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-          </div>
-          <div class="field col l2">
-=======
           <div class="field col s2">
->>>>>>> master
             <%= f.label :project_end_date_lteq, "Maximum end date" %>
             <%= f.text_field :project_end_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
@@ -69,14 +57,8 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
         <div class="row">
-<<<<<<< HEAD
-          <div class="field col l6">
-            <%= f.label :customer_id %>
-            <%= f.text_field :customer_customer_name_cont %>
-=======
           <div class="field col s6">
             <%= f.text_field :customer_customer_name_or_customer_customer_branch_or_project_type_project_type_description_or_project_status_project_status_description_cont %>
->>>>>>> master
           </div>
         </div>
         <%= f.submit 'Search', class: "btn" %>

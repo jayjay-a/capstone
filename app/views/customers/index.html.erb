@@ -36,14 +36,8 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_customers_path, html: { method: :post } do |f| %>
         <div class="row">
-<<<<<<< HEAD
-          <div class="field col l6">
-            <%= f.label :customer_id %>
-            <%= f.text_field :customer_name_cont %>
-=======
           <div class="field col s6">
             <%= f.text_field :customer_name_or_customer_branch_or_customer_address_1_or_customer_status_customer_status_description_cont %>
->>>>>>> master
           </div>
         </div>
         <%= f.submit 'Search', class: "btn" %>
