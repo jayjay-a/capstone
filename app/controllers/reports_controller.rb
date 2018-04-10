@@ -3,7 +3,6 @@ class ReportsController < ApplicationController
 
   end
 
-
   #subcontractors by activity status
   def subcontractors_status
     @status_desc = nil
@@ -44,30 +43,53 @@ class ReportsController < ApplicationController
     @job_type_in = nil
     @bid_amount_in ||= params[:q]
     @job_type_in ||= params[:t] #when text field is empty or wrong data type, need an error exception handling
-      if @job_type_in == nil && @bid_amount_in == nil
-          sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                  p.bid_amount, p.project_start_date, p.project_end_date
+    if @job_type_in == nil && @bid_amount_in == nil
+      sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
+                  pt.project_status_description, p.bid_amount
 	                FROM projects p
 	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                 	JOIN customers c ON p.customer_id = c.customer_id
 	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
 	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
-                  WHERE pt.project_status_description = 'Project Completed'
-	                ORDER BY p.project_end_date desc;"
-        elsif @job_type_in != nil || @bid_amount_in != nil
-          sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                  p.bid_amount, p.project_start_date, p.project_end_date
+	                ORDER BY p.project_id, p.bid_amount desc"
+      @great_bids = ActiveRecord::Base.connection.execute(sql)
+    elsif @job_type_in == "" && @bid_amount_in != nil
+      sql2 = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
+                  pt.project_status_description, p.bid_amount
+	                FROM projects p
+	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
+                	JOIN customers c ON p.customer_id = c.customer_id
+	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
+	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
+	                WHERE  p.bid_amount > #{@bid_amount_in}
+	                ORDER BY p.bid_amount desc;"
+      @great_bids = ActiveRecord::Base.connection.execute(sql2)
+
+    elsif @job_type_in != nil && @bid_amount_in == ""
+      sql2 = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
+                  pt.project_status_description, p.bid_amount
+	                FROM projects p
+	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
+                	JOIN customers c ON p.customer_id = c.customer_id
+	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
+	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
+	                WHERE jt.job_type_id = #{@job_type_in}
+	                ORDER BY p.bid_amount desc;"
+      @great_bids = ActiveRecord::Base.connection.execute(sql2)
+
+
+    elsif @job_type_in != nil && @bid_amount_in != nil
+      sql2 = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
+                  pt.project_status_description, p.bid_amount
 	                FROM projects p
 	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                 	JOIN customers c ON p.customer_id = c.customer_id
 	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
 	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
 	                WHERE jt.job_type_id = #{@job_type_in} AND p.bid_amount > #{@bid_amount_in}
-                  AND pt.project_status_description = 'Project Completed'
-	                ORDER BY p.project_end_date desc;"
+	                ORDER BY p.bid_amount desc;"
+      @great_bids = ActiveRecord::Base.connection.execute(sql2)
 end
-    @great_bids = ActiveRecord::Base.connection.execute(sql)
-    #@test_bids = Project.where("bid_amount > #{@bid_amount_in}")
     @filename = 'Compare_Projects.pdf'
     respond_to do |format|
       format.html
