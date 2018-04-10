@@ -13,7 +13,7 @@
       <th><%= sort_link(@search, :job_start_date) %></th>
       <th><%= sort_link(@search, :job_end_date) %></th>
       <th><%= sort_link(@search, :job_status_id) %></th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
@@ -27,7 +27,7 @@
         <td><%= job.job_start_date %></td>
         <td><%= job.job_end_date %></td>
         <td><%= job.job_status.job_status_description %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        
       </tr>
     <% end %>
   </tbody>

@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :employee_type_description) %></th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
@@ -15,7 +15,6 @@
     <% @employee_types.each do |employee_type| %>
       <tr data-link=" <%= employee_type_path(employee_type) %>" >
         <td><%= employee_type.employee_type_description %></td>
-        <td><%= link_to 'Edit', edit_employee_type_path(employee_type) %></td>
       </tr>
     <% end %>
   </tbody>

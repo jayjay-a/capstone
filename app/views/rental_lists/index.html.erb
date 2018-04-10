@@ -59,7 +59,7 @@
       <th><%= sort_link(@search, :rental_equipment, "Rentail Equipment") %></th>
       <th><%= sort_link(@search, :rental_price, "Rental Price") %></th>
       <th><%= sort_link(@search, :cost_frequency, "Cost Frequency") %></th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
@@ -70,7 +70,7 @@
         <td><%= rental_list.rental_equipment.rental_description %></td>
         <td><%= number_to_currency(rental_list.rental_price) %></td>
         <td><%= rental_list.cost_frequency %></td>
-        <td><%= link_to 'Edit', edit_rental_list_path(rental_list) %></td>
+        
       </tr>
     <% end %>
   </tbody>

@@ -64,7 +64,7 @@
       <th>Customer rep email 1</th>
       <th>Customer rep email 2</th>
       <% comment end %>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
@@ -90,10 +90,7 @@
         <td><%= customer.customer_rep_name_2 %></td>
         <td><%= customer.customer_rep_phone_2 %></td>
         <td><%= customer.customer_rep_email_2 %></td>
-
         <% comment end %>
-
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -93,7 +93,7 @@
       <th>Bid amount</th>
       <% comment end %>
 
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
@@ -121,7 +121,7 @@
         <td><%= number_to_currency(project.applicable_tax) %></td>
         <td><%= number_to_currency(project.bid_amount) %></td> %>
         <% comment end %>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        
       </tr>
     <% end %>
   </tbody>
