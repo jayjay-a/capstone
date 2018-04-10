@@ -15,8 +15,11 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :assignments, allow_destroy: true, reject_if: :all_blank
 
   def task_end_date_cannot_be_before_task_start_date
-    errors.add(:task_end_date, "can't be before the task starts") if
-        task_end_date < task_start_date
+     if task_end_date < task_start_date
+       errors.add(:task_end_date, "can't be before the task start date")
+     else
+       errors.add(:task_end_date, "can't exist without a task start date")
+     end
   end
 end
 
