@@ -35,9 +35,7 @@
     <% @rental_equipments.each do |rental_equipment| %>
       <tr data-link=" <%= rental_equipment_path(rental_equipment) %>" >
         <td><%= rental_equipment.rental_description %></td>
-        <td><%= link_to 'Show', rental_equipment %></td>
         <td><%= link_to 'Edit', edit_rental_equipment_path(rental_equipment) %></td>
-        <td><%= link_to 'Delete', rental_equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

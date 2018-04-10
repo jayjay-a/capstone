@@ -25,9 +25,7 @@
         <td><%= employee.join_date %></td>
         <td><%= employee.dismiss_date %></td>
         <td><%= employee.employee_status.employee_status_description %></td>
-        <td><%= link_to 'Show', employee %></td>
         <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Delete', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

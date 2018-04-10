@@ -15,9 +15,7 @@
     <% @project_types.each do |project_type| %>
       <tr data-link=" <%= project_type_path(project_type) %>" tr>
         <td><%= project_type.project_type_description %></td>
-        <td><%= link_to 'Show', project_type %></td>
         <td><%= link_to 'Edit', edit_project_type_path(project_type) %></td>
-        <td><%= link_to 'Delete', project_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

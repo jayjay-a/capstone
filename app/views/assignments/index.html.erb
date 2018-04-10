@@ -64,9 +64,7 @@
         <td><%= assignment.employee.try(:first_and_last_name) %></td>
         <td><%= assignment.task.task_description %></td>
         <td><%= assignment.assignment_date %></td>
-        <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

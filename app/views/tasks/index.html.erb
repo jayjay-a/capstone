@@ -23,9 +23,7 @@
         <td><%= task.task_end_date %></td>
         <td><%= task.task_description %></td>
         <td><%= task.task_status.task_status_description %></td>
-        <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -21,9 +21,7 @@
         <td><%= task_note.task_notes %></td>
         <td><%= task_note.task_note_owner %></td>
         <td><%= task_note.task_note_date %></td>
-        <td><%= link_to 'Show', task_note %></td>
         <td><%= link_to 'Edit', edit_task_note_path(task_note) %></td>
-        <td><%= link_to 'Delete', task_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

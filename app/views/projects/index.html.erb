@@ -131,11 +131,7 @@
         <td><%= number_to_percentage(project.tax_rate) %></td>
         <td><%= number_to_currency(project.bid_amount) %></td> %>
         <% comment end %>
-  
-
-        <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

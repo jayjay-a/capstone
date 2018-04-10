@@ -15,9 +15,7 @@
     <% @job_types.each do |job_type| %>
       <tr data-link=" <%= job_type_path(job_type) %>" tr>
         <td><%= job_type.job_type_description %></td>
-        <td><%= link_to 'Show', job_type %></td>
         <td><%= link_to 'Edit', edit_job_type_path(job_type) %></td>
-        <td><%= link_to 'Delete', job_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

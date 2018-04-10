@@ -21,9 +21,7 @@
         <td><%= project_note.project_notes %></td>
         <td><%= project_note.project_note_date %></td>
         <td><%= project_note.project_note_owner %></td>
-        <td><%= link_to 'Show', project_note %></td>
         <td><%= link_to 'Edit', edit_project_note_path(project_note) %></td>
-        <td><%= link_to 'Delete', project_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

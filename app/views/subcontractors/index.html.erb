@@ -62,9 +62,7 @@
         <td><%= subcontractor.subcontractor_email %></td>
         <td><%= subcontractor.company %></td>
         <td><%= subcontractor.subcontractor_status.subcontractor_status_description %></td>
-        <td><%= link_to 'Show', subcontractor %></td>
         <td><%= link_to 'Edit', edit_subcontractor_path(subcontractor) %></td>
-        <td><%= link_to 'Delete', subcontractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
