@@ -7,10 +7,10 @@ class Employee < ApplicationRecord
   validates :employee_status_id, presence: true
   validates :employee_type_id, presence: true
   validates :state_id, presence: true
-  validates :first_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/, message: 'can only be letters' }
-  validates :last_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/, message: 'can only be letters' }
+  validates :first_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z\d\s]*\z/, message: 'can only be letters' }
+  validates :last_name, length: { maximum: 35 }, format: { with: /\A[a-zA-Z\d\s]*\z/, message: 'can only be letters' }
   validates :join_date, presence: true
-  validate :dismiss_date_cannot_be_before_join_date, unless: -> { dissmis_date.blank? }
+  validate :dismiss_date_cannot_be_before_join_date, unless: -> { dismiss_date.blank? }
 
   def first_and_last_name
     "#{first_name} #{last_name}"
