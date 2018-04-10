@@ -5,5 +5,5 @@
   <%= @employee_status.employee_status_description %>
 </p>
 
-<%= link_to 'Edit', edit_employee_status_path(@employee_status) %> |
-<%= link_to 'Back', employee_statuses_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  employee_statuses_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_employee_status_path(@employee_status), class: "btn waves-effect waves-light" %> 

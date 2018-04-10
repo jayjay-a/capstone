@@ -70,5 +70,5 @@
   <%= @customer.customer_rep_email_2 %>
 </p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  customers_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_customer_path(@customer), class: "btn waves-effect waves-light" %> 

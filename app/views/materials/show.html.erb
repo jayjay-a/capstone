@@ -5,5 +5,5 @@
   <%= @material.material_description %>
 </p>
 
-<%= link_to 'Edit', edit_material_path(@material) %> |
-<%= link_to 'Back', materials_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  materials_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_material_path(@material), class: "btn waves-effect waves-light" %> 

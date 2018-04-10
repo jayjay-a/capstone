@@ -58,5 +58,5 @@
   </p>
 </div>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', @task.job %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @task.job, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_task_path(@task), class: "btn waves-effect waves-light" %> 

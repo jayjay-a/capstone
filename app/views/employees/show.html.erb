@@ -35,5 +35,5 @@
   <%= @employee.state.state_name %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  employees_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_employee_path(@employee), class: "btn waves-effect waves-light" %> 

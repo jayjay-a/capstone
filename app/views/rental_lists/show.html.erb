@@ -20,5 +20,5 @@
   <%= @rental_list.cost_frequency %>
 </p>
 
-<%= link_to 'Edit', edit_rental_list_path(@rental_list) %> |
-<%= link_to 'Back', @rental_list.project %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @rental_list.project, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_rental_list_path(@rental_list), class: "btn waves-effect waves-light" %> 

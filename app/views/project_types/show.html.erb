@@ -7,3 +7,6 @@
 
 <%= link_to 'Edit', edit_project_type_path(@project_type) %> |
 <%= link_to 'Back', project_types_path %>
+
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  project_types_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_project_type_path(@project_type), class: "btn waves-effect waves-light" %> 

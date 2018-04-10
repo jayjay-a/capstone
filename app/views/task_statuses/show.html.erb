@@ -7,3 +7,6 @@
 
 <%= link_to 'Edit', edit_task_status_path(@task_status) %> |
 <%= link_to 'Back', task_statuses_path %>
+
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  task_statuses_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_task_status_path(@task_status), class: "btn waves-effect waves-light" %> 

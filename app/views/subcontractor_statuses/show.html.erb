@@ -5,5 +5,5 @@
   <%= @subcontractor_status.subcontractor_status_description %>
 </p>
 
-<%= link_to 'Edit', edit_subcontractor_status_path(@subcontractor_status) %> |
-<%= link_to 'Back', subcontractor_statuses_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  subcontractor_statuses_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_subcontractor_status_path(@subcontractor_status), class: "btn waves-effect waves-light" %> 

@@ -53,5 +53,5 @@
 
 </br>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', @job.project %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @job.project, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_job_path(@job), class: "btn waves-effect waves-light" %> 

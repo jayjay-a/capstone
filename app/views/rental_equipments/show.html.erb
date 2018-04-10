@@ -5,5 +5,5 @@
   <%= @rental_equipment.rental_description %>
 </p>
 
-<%= link_to 'Edit', edit_rental_equipment_path(@rental_equipment) %> |
-<%= link_to 'Back', rental_equipments_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  rental_equipments_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_rental_equipment_path(@rental_equipment), class: "btn waves-effect waves-light" %> 

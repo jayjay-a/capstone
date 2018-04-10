@@ -20,5 +20,5 @@
   <%= @material_list.quantity %>
 </p>
 
-<%= link_to 'Edit', edit_material_list_path(@material_list) %> |
-<%= link_to 'Back', @material_list.project %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @material_list.project, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_material_list_path(@material_list), class: "btn waves-effect waves-light" %> 

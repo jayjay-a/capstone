@@ -25,6 +25,5 @@
   <%= @job_note.job_notes %>
 </p>
 
-
-<%= link_to 'Edit', edit_job_note_path(@job_note) %> |
-<%= link_to 'Back', job_notes_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  job_notes_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_job_note_path(@job_note), class: "btn waves-effect waves-light" %> 
