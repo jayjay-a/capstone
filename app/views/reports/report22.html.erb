@@ -1,29 +1,54 @@
-<h1>Report22</h1>
+<!--<h1>Report22</h1>-->
 <p id="notice"><%= notice %></p>
 
-<h2>Show Active Tasks</h2>
+<h2>Tasks by Activity Status</h2>
+<h4><%= @status_desc %> Tasks</h4>
+
+<%= form_tag reports_report22_path, method: :get do %>
+    <h6>Download:
+      <%= link_to "Excel", reports_report22_path(format: "xlsx", :q => params[:q]) %> |
+      <%= link_to "PDF", reports_report22_path(format: "pdf", :q => params[:q]) %></h6>
+    <br>
+    <div class="row">
+      <div class="col s3">
+        <%= label_tag(:q, "Task Status") %>
+        <%= select_tag(:q, options_from_collection_for_select(TaskStatus.all, "id", "task_status_description",params[:q]),:prompt => "Select a Status") %>
+        <%= submit_tag("Submit") %>
+        <%= link_to ("Clear"), reports_report22_path %>
+      </div>
+    </div>
+
+
+<% end %>
+
+
+
 <table class="table">
   <thead>
   <tr>
-    <th>Job ID</th>
-    <th>Task ID</th>
-    <th>Task Status ID</th>
+    <th>Project ID</th>
+    <th>Customer Name</th>
+    <th>Customer Branch</th>
+    <th>Job Type</th>
+    <th>Task</th>
+    <th>Task Status</th>
     <th>Task Start Date</th>
     <th>Task End Date</th>
-    <th>Task Description</th>
     <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
-  <% @active_tasks.each do |a| %>
+  <% @tasks.each do |a| %>
       <tr>
-        <td><%= a['job_id'] %></td>
-        <td><%= a['task_id'] %></td>
-        <td><%= a['task_status_id'] %></td>
+        <td><%= a['project_id'] %></td>
+        <td><%= a['customer_name'] %></td>
+        <td><%= a['customer_branch'] %></td>
+        <td><%= a['job_type_description'] %></td>
+        <td><%= a['task_description'] %></td>
+        <td><%= a['task_status_description'] %></td>
         <td><%= a['task_start_date'] %></td>
         <td><%= a['task_end_date'] %></td>
-        <td><%= a['task_description'] %></td>
       </tr>
   <% end %>
   </tbody>

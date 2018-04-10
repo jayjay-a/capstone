@@ -46,104 +46,108 @@ class ReportsController < ApplicationController
     @job_type_in ||= params[:t] #when text field is empty or wrong data type, need an error exception handling
       if @job_type_in == nil && @bid_amount_in == nil
           sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                  pt.project_status_description, p.bid_amount
+                  p.bid_amount, p.project_start_date, p.project_end_date
 	                FROM projects p
 	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                 	JOIN customers c ON p.customer_id = c.customer_id
 	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
 	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
-	                ORDER BY p.project_id, p.bid_amount desc"
+                  WHERE pt.project_status_description = 'Project Completed'
+	                ORDER BY p.project_end_date desc;"
         elsif @job_type_in != nil || @bid_amount_in != nil
           sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                  pt.project_status_description, p.bid_amount
+                  p.bid_amount, p.project_start_date, p.project_end_date
 	                FROM projects p
 	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                 	JOIN customers c ON p.customer_id = c.customer_id
 	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
 	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
 	                WHERE jt.job_type_id = #{@job_type_in} AND p.bid_amount > #{@bid_amount_in}
-	                ORDER BY p.bid_amount desc;"
+                  AND pt.project_status_description = 'Project Completed'
+	                ORDER BY p.project_end_date desc;"
 end
     @great_bids = ActiveRecord::Base.connection.execute(sql)
     #@test_bids = Project.where("bid_amount > #{@bid_amount_in}")
-    @filename = 'compare_projects.xlsx'
+    @filename = 'Compare_Projects.pdf'
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Compare_Projects.xlsx"'
+      }
       format.pdf
     end
   end
 
   #completed projects
-  def report3
-    sql = "SELECT
-           projects.project_id,
-           customers.customer_name,
-		       customers.customer_branch,
-           project_types.project_type_description,
-           projects.project_start_date,
-           projects.project_end_date
-           FROM projects
-			     INNER JOIN project_statuses ON projects.project_status_id = project_statuses.project_status_id
-           INNER JOIN Project_types ON Projects.project_type_id=Project_types.project_type_id
-           INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           WHERE project_statuses.project_status_description = 'Project Completed'
-           ORDER BY project_end_date;"
-
-    @complete_projects = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report3
+  #   sql = "SELECT
+  #          projects.project_id,
+  #          customers.customer_name,
+		#        customers.customer_branch,
+  #          project_types.project_type_description,
+  #          projects.project_start_date,
+  #          projects.project_end_date
+  #          FROM projects
+		# 	     INNER JOIN project_statuses ON projects.project_status_id = project_statuses.project_status_id
+  #          INNER JOIN Project_types ON Projects.project_type_id=Project_types.project_type_id
+  #          INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
+  #          WHERE project_statuses.project_status_description = 'Project Completed'
+  #          ORDER BY project_end_date;"
+  #
+  #   @complete_projects = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show active projects
-  def report4
-    sql = "SELECT
-           projects.project_id,
-           customers.customer_name,
-		       customers.customer_branch,
-           project_types.project_type_description,
-           projects.project_start_date,
-           projects.bid_submit_date
-           FROM projects
-			     INNER JOIN project_statuses ON projects.project_status_id = project_statuses.project_status_id
-           INNER JOIN Project_types ON Projects.project_type_id=Project_types.project_type_id
-           INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           WHERE project_statuses.project_status_description = 'Project Active'
-           ORDER BY project_start_date;"
-
-    @active_projects = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report4
+  #   sql = "SELECT
+  #          projects.project_id,
+  #          customers.customer_name,
+		#        customers.customer_branch,
+  #          project_types.project_type_description,
+  #          projects.project_start_date,
+  #          projects.bid_submit_date
+  #          FROM projects
+		# 	     INNER JOIN project_statuses ON projects.project_status_id = project_statuses.project_status_id
+  #          INNER JOIN Project_types ON Projects.project_type_id=Project_types.project_type_id
+  #          INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
+  #          WHERE project_statuses.project_status_description = 'Project Active'
+  #          ORDER BY project_start_date;"
+  #
+  #   @active_projects = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #awaiting bid response -anil
-  def report5
-    sql = "SELECT
-           projects.project_id,
-           Customers.customer_name,
-		       Customers.customer_branch,
-           project_types.project_type_description,
-           projects.bid_submit_Date
-           From projects
-		       INNER JOIN project_types ON projects.project_type_id = project_types.project_type_id
-           INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
-           INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           Where project_statuses.project_status_description = 'Awaiting Bid Response'
-		       ORDER BY bid_submit_date;"
-
-    @waiting_bid = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report5
+  #   sql = "SELECT
+  #          projects.project_id,
+  #          Customers.customer_name,
+		#        Customers.customer_branch,
+  #          project_types.project_type_description,
+  #          projects.bid_submit_Date
+  #          From projects
+		#        INNER JOIN project_types ON projects.project_type_id = project_types.project_type_id
+  #          INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
+  #          INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
+  #          Where project_statuses.project_status_description = 'Awaiting Bid Response'
+		#        ORDER BY bid_submit_date;"
+  #
+  #   @waiting_bid = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #notes today -anil
   # def report6
@@ -171,80 +175,80 @@ end
   # end
 
   #show denied bids - anil
-  def report7
-    sql = "SELECT
-           projects.project_id,
-           Customers.customer_name,
-			     customers.customer_branch,
-           project_types.project_type_description,
-           projects.bid_submit_Date
-           FROM projects
-		       INNER JOIN project_types ON projects.project_type_id = project_types.project_type_id
-           INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
-           INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
-           WHERE project_statuses.project_status_description = 'Bid Denied'
-		       ORDER BY bid_submit_date;"
-
-    @bid_denied = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report7
+  #   sql = "SELECT
+  #          projects.project_id,
+  #          Customers.customer_name,
+		# 	     customers.customer_branch,
+  #          project_types.project_type_description,
+  #          projects.bid_submit_Date
+  #          FROM projects
+		#        INNER JOIN project_types ON projects.project_type_id = project_types.project_type_id
+  #          INNER JOIN Project_statuses ON Projects.project_status_id=Project_statuses.project_Status_id
+  #          INNER JOIN Customers ON Customers.Customer_id = Projects.Customer_id
+  #          WHERE project_statuses.project_status_description = 'Bid Denied'
+		#        ORDER BY bid_submit_date;"
+  #
+  #   @bid_denied = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show bids debued - anil
-  def report8
-    sql = "SELECT
-           material_lists.project_id,
-           customers.customer_name,
-           customers.customer_branch,
-           materials.material_description,
-           material_lists.quantity
-           FROM material_lists
-           INNER JOIN materials on materials.material_id = material_lists.material_id
-           INNER JOIN projects on projects.project_id = material_lists.project_id
-           INNER JOIN customers on customers.customer_id = projects.customer_id
-           WHERE project_statuses.project_status_description = 'Bid Denied';"
-
-    @specific_matlist = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report8
+  #   sql = "SELECT
+  #          material_lists.project_id,
+  #          customers.customer_name,
+  #          customers.customer_branch,
+  #          materials.material_description,
+  #          material_lists.quantity
+  #          FROM material_lists
+  #          INNER JOIN materials on materials.material_id = material_lists.material_id
+  #          INNER JOIN projects on projects.project_id = material_lists.project_id
+  #          INNER JOIN customers on customers.customer_id = projects.customer_id
+  #          WHERE project_statuses.project_status_description = 'Bid Denied';"
+  #
+  #   @specific_matlist = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show certain customer 
-  def report9
-    sql = "SELECT c.customer_name, c.customer_branch, p.project_id, p.bid_amount
-           FROM customers c
-           JOIN projects p ON c.customer_id = p.customer_id
-           WHERE c.customer_id = 1;"
-    @specific_custproj = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report9
+  #   sql = "SELECT c.customer_name, c.customer_branch, p.project_id, p.bid_amount
+  #          FROM customers c
+  #          JOIN projects p ON c.customer_id = p.customer_id
+  #          WHERE c.customer_id = 1;"
+  #   @specific_custproj = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show all projects and all job types - kristina
-  def report10
-    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description
-           FROM projects p
-		       JOIN customers c ON p.customer_id = c.customer_id
-           JOIN jobs j ON p.project_id = j.project_id
-           JOIN job_types jt ON j.job_type_id = jt.job_type_id
-           ORDER BY project_start_date, job_start_date;"
-
-    @specific_jobproj = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report10
+  #   sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description
+  #          FROM projects p
+		#        JOIN customers c ON p.customer_id = c.customer_id
+  #          JOIN jobs j ON p.project_id = j.project_id
+  #          JOIN job_types jt ON j.job_type_id = jt.job_type_id
+  #          ORDER BY project_start_date, job_start_date;"
+  #
+  #   @specific_jobproj = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show bid information from a project - kristina
   def report11
@@ -257,7 +261,7 @@ end
           JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
           WHERE ps.project_status_description != 'Project Completed'
           AND ps.project_status_description != 'Project Active'
-          ORDER BY bid_submit_date;"
+          ORDER BY ps.updated_at desc;"
     @bidinfo = ActiveRecord::Base.connection.execute(sql)
     @filename = "Bid Information"
     respond_to do |format|
@@ -270,20 +274,20 @@ end
   end
   
   #show projects and their job types and their job tasks - kristina
-  def report12
-    sql = "SELECT p.project_id, jt.job_type_description, t.task_description
-           FROM projects p
-           JOIN jobs j ON p.project_id = j.project_id
-           JOIN job_types jt ON j.job_type_id = jt.job_type_id
-           JOIN tasks t ON j.job_id = t.job_id;"
-
-    @alltask_job = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report12
+  #   sql = "SELECT p.project_id, jt.job_type_description, t.task_description
+  #          FROM projects p
+  #          JOIN jobs j ON p.project_id = j.project_id
+  #          JOIN job_types jt ON j.job_type_id = jt.job_type_id
+  #          JOIN tasks t ON j.job_id = t.job_id;"
+  #
+  #   @alltask_job = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show all projects and their project type
   # def report13
@@ -301,12 +305,14 @@ end
 
   # show duration of project - kristina
   def report14
-    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, p.project_start_date, p.project_end_date, p.project_end_date - p.project_start_date AS days
+    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
+            p.project_start_date, p.project_end_date, p.project_end_date - p.project_start_date AS days
             FROM projects p
+            JOIN project_types pt ON p.project_type_id = pt.project_type_id
             JOIN customers c ON p.customer_id = c.customer_id
-			      JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
+			      JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
 			      WHERE project_status_description = 'Project Completed'
-			      ORDER BY project_start_date, days desc;"
+			      ORDER BY project_end_date desc, days desc;"
 
     @duration_proj = ActiveRecord::Base.connection.execute(sql)
     @filename = "Project_Duration.pdf"
@@ -321,33 +327,47 @@ end
  
   #show duration of job in project - kristina
   def report15
-    sql = "SELECT p.project_id, customer_name, customer_branch, jt.job_type_description, job_end_date - job_start_date AS days
+    sql = "SELECT p.project_id, customer_name, customer_branch, jt.job_type_description, job_start_date,
+           job_end_date, job_end_date - job_start_date AS days
            FROM projects p
            JOIN customers c ON p.customer_id = c.customer_id
            JOIN jobs j ON p.project_id = j.project_id
-           JOIN job_types jt ON j.job_type_id = jt.job_type_id;"
+           JOIN job_types jt ON j.job_type_id = jt.job_type_id
+           JOIN job_statuses js ON j.job_status_id = js.job_status_id
+           WHERE js.job_status_description = 'Completed'
+           ORDER BY job_end_date desc, days desc;"
 
     @duration_job = ActiveRecord::Base.connection.execute(sql)
+    @filename = "Job_Duration.pdf"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Job_Duration.xlsx"'
+      }
       format.pdf
     end
   end
   
   # show duration of task in project
   def report16
-    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, job_type_description, task_description, task_end_date - task_start_date AS days
+    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, job_type_description, task_description,
+           task_start_date, task_end_date, task_end_date - task_start_date AS days, ts.task_status_description
            FROM projects p
            JOIN customers c ON p.customer_id = c.customer_id
            JOIN jobs j ON p.project_id = j.project_id
            JOIN job_types jt ON j.job_type_id = jt.job_type_id
-           JOIN tasks t ON t.job_id = j.job_id;"
+           JOIN tasks t ON t.job_id = j.job_id
+           JOIN task_statuses ts ON t.task_id = ts.task_status_id
+           WHERE ts.task_status_description = 'Completed'
+           ORDER BY task_end_date desc, days desc;"
 
     @duration_task = ActiveRecord::Base.connection.execute(sql)
+    @filename = "Task_Duration.pdf"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename= "Task_Duration.xlsx"'
+      }
       format.pdf
     end
   end
@@ -355,14 +375,16 @@ end
   #show frequency of subcontractor being hired - kristina
   def report17
     sql = "SELECT s.SUBCONTRACTOR_NAME, jt.job_type_description, COUNT(a.SUBCONTRACTOR_ID) AS frequency,
-           s.SUBCONTRACTOR_PHONE, s.SUBCONTRACTOR_EMAIL
+           s.SUBCONTRACTOR_PHONE, s.SUBCONTRACTOR_EMAIL, MAX(a.assignment_date) AS last_date
            FROM ASSIGNMENTS a
            JOIN SUBCONTRACTORS s ON a.subcontractor_id = s.subcontractor_id
+           JOIN subcontractor_statuses ss ON ss.subcontractor_status_id = s.subcontractor_status_id
            JOIN tasks t ON t.task_id = a.task_id
            JOIN jobs j ON t.job_id = j.job_id
            JOIN job_types jt ON j.job_type_id = jt.job_type_id
-           GROUP BY subcontractor_name, job_type_description, subcontractor_phone, subcontractor_email
-		       ORDER BY frequency desc, job_type_description;"
+           WHERE ss.subcontractor_status_description = 'Inactive'
+           GROUP BY subcontractor_name, job_type_description, subcontractor_phone, subcontractor_email, assignment_date
+		       ORDER BY frequency desc, last_date;"
     @sub_freq = ActiveRecord::Base.connection.execute(sql)
     @filename = "Subcontractor_Hiring_Frequency.pdf"
     respond_to do |format|
@@ -409,96 +431,136 @@ end
   # end
 
   #show rental list for this project -kunle
-  def report20
-    sql = "SELECT Projects.project_ID, Rental_Lists.rental_list_id,
-           Rental_Lists.rental_price, Rental_Lists.cost_frequency,
-           Rental_Equipments.rental_equipment_id, Rental_Equipments.rental_description
-           FROM Rental_Lists
-           INNER Join Projects on Projects.project_id = Rental_Lists.project_id
-           INNER Join Rental_Equipments
-           on Rental_Equipments.rental_equipment_id = Rental_Lists.rental_equipment_id
-           WHERE projects.Project_id = 7;"
-
-    @specific_rentlist = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report20
+  #   sql = "SELECT Projects.project_ID, Rental_Lists.rental_list_id,
+  #          Rental_Lists.rental_price, Rental_Lists.cost_frequency,
+  #          Rental_Equipments.rental_equipment_id, Rental_Equipments.rental_description
+  #          FROM Rental_Lists
+  #          INNER Join Projects on Projects.project_id = Rental_Lists.project_id
+  #          INNER Join Rental_Equipments
+  #          on Rental_Equipments.rental_equipment_id = Rental_Lists.rental_equipment_id
+  #          WHERE projects.Project_id = 7;"
+  #
+  #   @specific_rentlist = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show projects for this month-kunle
-  def report21
-    sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
-          FROM projects
-          WHERE Project_start_date between current_date and current_date + 7;"
-
-    @weekly_proj = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report21
+  #   sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
+  #         FROM projects
+  #         WHERE Project_start_date between current_date and current_date + 7;"
+  #
+  #   @weekly_proj = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
   #Kunle's SQL Report
 
-  #show active tasks
+  #show tasks by activity status
   def report22
-    sql = "SELECT task_id, job_id, task_status_id, task_start_date, task_end_date,
-           Task_description
-           FROM Tasks
-           WHERE task_status_id = 1;"
-
-    @active_tasks = ActiveRecord::Base.connection.execute(sql)
+    @status_desc = nil
+    @task_status = nil
+    @task_status ||= params[:q]
+    if @task_status == nil
+    sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description, t.task_description,
+           ts.task_status_description, t.task_start_date, t.task_end_date
+           FROM Tasks t
+           JOIN task_statuses ts ON t.task_status_id = ts.task_status_id
+			     JOIN jobs j ON t.job_id = j.job_id
+			     JOIN job_types jt ON j.job_type_id = jt.job_type_id
+			     JOIN projects p ON p.project_id = j.project_id
+			     JOIN customers c ON c.customer_id = p.customer_id;"
+    elsif @task_status != nil
+      sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description, t.task_description,
+           ts.task_status_description, t.task_start_date, t.task_end_date
+           FROM Tasks t
+           JOIN task_statuses ts ON t.task_status_id = ts.task_status_id
+			     JOIN jobs j ON t.job_id = j.job_id
+			     JOIN job_types jt ON j.job_type_id = jt.job_type_id
+			     JOIN projects p ON p.project_id = j.project_id
+			     JOIN customers c ON c.customer_id = p.customer_id
+           WHERE ts.task_status_id = #{@task_status}
+           ORDER BY ts.updated_at desc;"
+    end
+    @status_desc = TaskStatus.where(task_status_id: @task_status).pluck(:task_status_description).to_sentence
+    @tasks = ActiveRecord::Base.connection.execute(sql)
+    @filename = "#{@status_desc}Tasks.pdf"
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx{
+        response.headers['Content-Disposition'] = "attachment; filename= \"#{@status_desc}Tasks.xlsx\""
+      }
       format.pdf
     end
   end
 
   #show completed tasks
-  def report23
-    sql = "SELECT task_id, job_id, task_status_id, task_start_date, task_end_date,
-           Task_description
-           FROM Tasks
-           WHERE task_status_id = 2;"
-
-    @complete_tasks = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report23
+  #   sql = "SELECT task_id, job_id, task_status_id, task_start_date, task_end_date,
+  #          Task_description
+  #          FROM Tasks
+  #          WHERE task_status_id = 2;"
+  #
+  #   @complete_tasks = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show projects for this week
-  def report24
-    sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
-           FROM projects
-           WHERE Project_start_date between current_date and current_date + 30;"
-
-    @monthly_proj = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report24
+  #   sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
+  #          FROM projects
+  #          WHERE Project_start_date between current_date and current_date + 30;"
+  #
+  #   @monthly_proj = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show projects for this year
-  def report25
-    sql = "SELECT Project_id, customer_id, project_type_id, project_status_id, project_start_date, project_end_date, bid_submit_date, bid_amount
-           FROM projects
-           WHERE Project_start_date between current_date and current_date + 365;"
-
-    @yearly_proj = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-    end
-  end
+  # def report25
+  #   @first = nil
+  #   @last = nil
+  #   @first ||= params[:f]
+  #   @last ||= params[:l] #when text field is empty or wrong data type, need an error exception handling
+  #   if @first == nil && @last == nil
+  #   sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
+  #           ps.project_status_description, p.project_start_date, p.project_end_date, p.bid_amount
+  #           FROM projects p
+  #           JOIN customers c ON p.customer_id = c.customer_id
+  #           JOIN project_types pt ON p.project_type_id = pt.project_type_id
+  #           JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
+  #           ORDER BY ps.updated_at desc;"
+  #   elsif @first != nil || @last != nil
+  #     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
+  #           ps.project_status_description, p.project_start_date, p.project_end_date, p.bid_amount
+  #           FROM projects p
+  #           JOIN customers c ON p.customer_id = c.customer_id
+  #           JOIN project_types pt ON p.project_type_id = pt.project_type_id
+  #           JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
+  #           ORDER BY ps.updated_at desc;"
+  #     end
+  #   @yearly_proj = ActiveRecord::Base.connection.execute(sql)
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx
+  #     format.pdf
+  #   end
+  # end
 
   #show active subcontractors
   # def report26
@@ -522,8 +584,8 @@ end
           JOIN projects p ON p.project_id = rl.project_id
           JOIN jobs j ON j.project_id = p.project_id
           JOIN job_types jt ON jt.job_type_id = j.job_type_id
-          GROUP BY re.rental_description, jt.job_type_description
-          ORDER BY jt.job_type_description;"
+          GROUP BY re.rental_description, jt.job_type_description, p.project_end_date
+          ORDER BY frequency desc, p.project_end_date desc;"
     @rent_freq = ActiveRecord::Base.connection.execute(sql)
     @filename = "Rental_Frequency.pdf"
     respond_to do |format|
@@ -547,7 +609,7 @@ end
           JOIN project_notes pn ON p.project_id = pn.project_id
           WHERE project_status_description = 'Bid Accepted' OR project_status_description = 'Awaiting Bid Response'
           OR project_status_description = 'Project Active'
-          ORDER BY bid_submit_date, project_start_date;"
+          ORDER BY pn.updated_at desc;"
     @proj_notes = ActiveRecord::Base.connection.execute(sql)
     @filename = "Project Notes"
     respond_to do |format|
@@ -560,20 +622,20 @@ end
     end
   end
 
-  def report29
-    sql = "SELECT Subcontractors.subcontractor_name, Tasks.task_description FROM Assignments
-JOIN Subcontractors ON Assignments.subcontractor_id = Subcontractors.subcontractor_id
-JOIN Tasks ON Assignments.task_id = Tasks.task_id
-WHERE Subcontractors.subcontractor_name = 'Philmon Tanuri'; "
-
-    @assi_task = ActiveRecord::Base.connection.execute(sql)
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.pdf
-      #Aaron's SQL Report
-    end
-  end
+#   def report29
+#     sql = "SELECT Subcontractors.subcontractor_name, Tasks.task_description FROM Assignments
+# JOIN Subcontractors ON Assignments.subcontractor_id = Subcontractors.subcontractor_id
+# JOIN Tasks ON Assignments.task_id = Tasks.task_id
+# WHERE Subcontractors.subcontractor_name = 'Philmon Tanuri'; "
+#
+#     @assi_task = ActiveRecord::Base.connection.execute(sql)
+#     respond_to do |format|
+#       format.html
+#       format.xlsx
+#       format.pdf
+#       #Aaron's SQL Report
+#     end
+#   end
 
   #terminated subcontractors
 #   def report30

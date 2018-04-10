@@ -2,11 +2,11 @@ wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Compare Projects") do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Job_Type Project_Status Bid_Amount)
+  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Job_Type Project_Start_Date Project_End_Date Bid_Amount)
   
   # each user is a row on your spreadsheet
-  @great_bids.each do |item|
-    sheet.add_row [item['project_id'], item['customer_name'], item['customer_branch'],
-    item['job_type_description'], item['project_status_description'], item['bid_amount']]
+  @great_bids.each do |p|
+    sheet.add_row [p['project_id'], p['customer_name'], p['customer_branch'],
+                        p['job_type_description'], p['project_start_date'], p['project_end_date'], p['bid_amount']]
   end
 end
