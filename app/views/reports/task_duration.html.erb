@@ -1,0 +1,43 @@
+<!--<h1>Report16</h1>-->
+<p id="notice"><%= notice %></p>
+
+<h2>Task Duration</h2>
+<h6>
+  Download:
+  <%= link_to "Excel", reports_task_duration_path(format: "xlsx") %> |
+  <%= link_to "PDF", reports_task_duration_path(format: "pdf") %>
+</h6>
+
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>Project ID</th>
+      <th>Customer Name</th>
+      <th>Customer Branch</th>
+      <th>Job Type Description</th>
+      <th>Task Description</th>
+      <th>Task Start Date</th>
+      <th>Task End Date</th>
+      <th>Days Duration</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @duration_task.each do |duration| %>
+        <tr>
+          <td><%= duration['project_id'] %></td>
+          <td><%= duration['customer_name'] %></td>
+          <td><%= duration['customer_branch'] %></td>
+          <td><%= duration['job_type_description'] %></td>
+          <td><%= duration['task_description'] %></td>
+          <td><%= duration['task_start_date'] %></td>
+          <td><%= duration['task_end_date'] %></td>
+          <td><%= duration['days'] %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

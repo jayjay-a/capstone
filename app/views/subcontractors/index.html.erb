@@ -14,7 +14,7 @@
         <div class="row">
           <div class="field col l2">
             <%= f.label :subcontractor_status_id %>
-            <%= f.collection_select :subcontractor_status_id_eq, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a Type' } %>
+            <%= f.collection_select :subcontractor_status_id_eq, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a Type' } %>
           </div>
         </div>
         <%= f.submit 'Apply', class: "btn" %>
@@ -76,8 +76,16 @@
     }
 </style>
 <script>
-    $('select').formSelect();
     $("tr[data-link]").click(function() {
       window.location = $(this).data("link")
     })
+  $(document).ready(function(){ //loads
+      $('.select2').select2({     //select2
+          placeholder: function(){ //sets placeholder based on data-placeholder in the field
+              $(this).data('placeholder');
+          },
+          allowClear: true,
+          dropdownParent: $('#filter') //fixes select2 on modals cause technically modals aren't part of the body element
+      });
+  });
 </script>

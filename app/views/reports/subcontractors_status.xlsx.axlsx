@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "#{@status_desc} Subcontractors") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Subcontractor_Name Company Phone Email Last_Assignment_Date)
+  
+  # each user is a row on your spreadsheet
+  @subcontractors.each do |subcontractor|
+    sheet.add_row [subcontractor['subcontractor_name'], subcontractor['company'], subcontractor['subcontractor_phone'],
+    subcontractor['subcontractor_email'], subcontractor['last_date']]
+  end
+end

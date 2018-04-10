@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Rental Frequency") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Rental_Equipment Job_Type Frequency)
+
+  # each user is a row on your spreadsheet
+  @rent_freq.each do |p|
+    sheet.add_row [p['rental_description'], p['job_type_description'],
+                    p['frequency']]
+  end
+end

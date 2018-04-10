@@ -14,13 +14,13 @@ class Project < ApplicationRecord
   validates :project_status_id, presence: true
   validates :project_type_id, presence: true
   validates :bid_submit_date, presence: true
-  validates :bid_material_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :bid_cost_of_labor, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :bid_cost_of_permits, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :bid_equipment_rental, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :bid_freight, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :tax_rate, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
-  validates :bid_fuel_cost, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_material_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_cost_of_labor, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_cost_of_permits, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_equipment_rental, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_freight, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :tax_rate, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
+  validates :bid_fuel_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_lodging_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_amount, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validate :project_start_date_cannot_be_before_bid_submit_date, unless: -> { project_start_date.blank? }

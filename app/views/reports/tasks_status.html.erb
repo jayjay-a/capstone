@@ -1,0 +1,54 @@
+<!--<h1>Report22</h1>-->
+<p id="notice"><%= notice %></p>
+
+<h2>Tasks by Activity Status</h2>
+<h4><%= @status_desc %> Tasks</h4>
+
+<%= form_tag reports_tasks_status_path, method: :get do %>
+    <h6>Download:
+      <%= link_to "Excel", reports_tasks_status_path(format: "xlsx", :q => params[:q]) %> |
+      <%= link_to "PDF", reports_tasks_status_path(format: "pdf", :q => params[:q]) %></h6>
+    <br>
+    <div class="row">
+      <div class="col s3">
+        <%= label_tag(:q, "Task Status") %>
+        <%= select_tag(:q, options_from_collection_for_select(TaskStatus.all, "id", "task_status_description",params[:q]),:prompt => "Select a Status", class: "select2") %>
+        <%= button_tag( :class => "btn waves-effect waves-light") do %>
+          Submit<i class="material-icons right">send</i>
+        <% end %>
+        <%= link_to ("Clear"), reports_tasks_status_path %>
+      </div>
+    </div>
+<% end %>
+
+<table class="responsive-table">
+  <thead>
+  <tr>
+    <th>Project ID</th>
+    <th>Customer Name</th>
+    <th>Customer Branch</th>
+    <th>Job Type</th>
+    <th>Task</th>
+    <th>Task Status</th>
+    <th>Task Start Date</th>
+    <th>Task End Date</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tasks.each do |a| %>
+      <tr>
+        <td><%= a['project_id'] %></td>
+        <td><%= a['customer_name'] %></td>
+        <td><%= a['customer_branch'] %></td>
+        <td><%= a['job_type_description'] %></td>
+        <td><%= a['task_description'] %></td>
+        <td><%= a['task_status_description'] %></td>
+        <td><%= a['task_start_date'] %></td>
+        <td><%= a['task_end_date'] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

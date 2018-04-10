@@ -1,0 +1,32 @@
+<!--<h1>Report27</h1>-->
+<p id="notice"><%= notice %></p>
+
+<h2>Rental Equipment Frequency</h2>
+<h6>Download:
+  <%= link_to "Excel", reports_rental_freq_path(format: "xlsx") %> |
+  <%= link_to "PDF", reports_rental_freq_path(format: "pdf") %>
+</h6>
+
+<table class="responsive-table">
+  <thead>
+  <tr>
+    <th>Rental Equipment</th>
+    <th>Job Type</th>
+    <th>Frequency</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @rent_freq.each do |notes| %>
+      <tr>
+        <td><%= notes['rental_description'] %></td>
+        <td><%= notes['job_type_description'] %></td>
+        <td><%= notes['frequency'] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
