@@ -17,7 +17,7 @@ class Task < ApplicationRecord
   def task_end_date_cannot_be_before_task_start_date
      if task_end_date < task_start_date
        errors.add(:task_end_date, "can't be before the task start date")
-     else
+     elsif task_end_date.present? && task_start_date.blank?
        errors.add(:task_end_date, "can't exist without a task start date")
      end
   end

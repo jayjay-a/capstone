@@ -19,7 +19,7 @@ class Employee < ApplicationRecord
   def dismiss_date_cannot_be_before_join_date
     if join_date.present? &&  dismiss_date < join_date
       errors.add(:dismiss_date, "can't be before the join date")
-    else
+    elsif join_date.blank? && dismiss_date.present?
       errors.add(:dismiss_date, "can't exist without a join date")
     end
   end
