@@ -7,28 +7,18 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :customer_status_description) %></th>
-
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @customer_statuses.each do |customer_status| %>
-      <tr data-link=" <%= customer_status_path(customer_status) %>" >
+      <tr>
         <td><%= customer_status.customer_status_description %></td>
+        <td><%= link_to 'Edit', edit_customer_status_path(customer_status) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<style>
-  tr{
-    cursor: pointer;
-    }
-</style>
-<script>
-    $("tr[data-link]").click(function() {
-      window.location = $(this).data("link")
-    })
-</script>
