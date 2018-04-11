@@ -119,7 +119,7 @@
         <%= form.label :bid_lodging_cost, "Lodging Cost ($)" %>
         <%= form.number_field :bid_lodging_cost, id: :project_bid_lodging_cost, value: number_to_currency(form.object.bid_lodging_cost.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
-      <div class="field col l1">
+      <div class="field col l2">
         <%= form.label :applicable_tax, "Tax ($)" %>
         <%= form.number_field :applicable_tax, id: :project_applicable_tax, value: number_to_currency(form.object.applicable_tax.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
