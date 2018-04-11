@@ -28,17 +28,17 @@
 
     <p>
       <strong>Project Start Date:</strong>
-      <%= @project.project_start_date %>
+      <%= @project.try(:project_start_date).try(:strftime, ("%m/%d/%Y")) %>
     </p>
 
     <p>
       <strong>Project End Date:</strong>
-      <%= @project.project_end_date %>
+      <%= @project.try(:project_end_date).try(:strftime, ("%m/%d/%Y")) %>
     </p>
 
     <p>
       <strong>Bid Submit Date:</strong>
-      <%= @project.bid_submit_date %>
+      <%= @project.bid_submit_date.strftime("%m/%d/%Y") %>
     </p>
   </p>
 </div>
@@ -136,7 +136,7 @@
   <p>
     <strong>Notes:</strong></br>
       <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
-      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.project_note_date %>:</strong>
+      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.try(:project_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
       <%= simple_format(project_note.project_notes) %></br></br>
     <% end %>
   </p>

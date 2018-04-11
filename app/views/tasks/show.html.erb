@@ -27,12 +27,12 @@
 
   <p>
     <strong>Task Start Date:</strong>
-    <%= @task.task_start_date %>
+    <%= @task.try(:task_start_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 
   <p>
     <strong>Task End Date:</strong>
-    <%= @task.task_end_date %>
+    <%= @task.try(:task_end_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 </div>
 
@@ -41,7 +41,7 @@
     <strong>Assignments:</strong></br>
     <% @task.assignments.each do |assignment| %>
       <li><%= link_to assignment.subcontractor.subcontractor_name, assignment %></li>
-      <% unless assignment.employee.blank? %><%#%>
+      <% unless assignment.employee.blank? %>
         <li><%= link_to assignment.employee.first_and_last_name, assignment %></li>
       <% end %>
     <% end %>
@@ -52,7 +52,7 @@
   <p>
   <strong>Notes:</strong></br>
     <% @task.task_notes.each do |task_note| %> 
-      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.task_note_date %>:</strong>
+      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.try(:task_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
       <%= simple_format(task_note.task_notes) %></br></br>
     <% end %>
   </p>

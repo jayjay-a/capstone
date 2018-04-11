@@ -20,15 +20,15 @@
     <strong>Job Status:</strong>
     <%= @job.job_status.job_status_description %>
   </p>
-
+  
   <p>
     <strong>Job Start Date:</strong>
-    <%= @job.job_start_date %>
+    <%= @job.try(:job_start_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 
   <p>
     <strong>Job End Date:</strong>
-    <%= @job.job_end_date %>
+    <%= @job.try(:job_end_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 </div>
 <%# tasks of job %>
@@ -47,7 +47,7 @@
   <p>
     <strong>Notes:</strong></br>
     <% @job.job_notes.each do |job_note| %> 
-        <strong>Made by <%= job_note.job_note_owner %> on <%= job_note.job_note_date %>:</strong>
+        <strong>Made by <%= job_note.job_note_owner %> on <%= job_note.try(:job_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
         <%= simple_format(job_note.job_notes) %></br></br>
     <% end %>
   </p>
