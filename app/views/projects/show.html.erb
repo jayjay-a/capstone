@@ -1,10 +1,10 @@
 </br>
 <ul class="tabs tabs-fixed-width z-depth-1">
-  <li class="tab"><a class="active" href="#project">Project</a></li>
-  <li class="tab"><a href="#cost">Costs</a></li>
+  <li class="tab"><a href="#project">Project</a></li>
   <li class="tab"><a href="#job">Job</a></li>
   <li class="tab"><a href="#material_list">Materials</a></li>
   <li class="tab"><a href="#rental_list">Rental</a></li>
+  <li class="tab"><a href="#cost">Costs</a></li>
   <li class="tab"><a href="#notes">Notes</a></li>
 </ul>
 
@@ -43,6 +43,42 @@
   </p>
 </div>
 
+<%# Job Tab%>
+<div id="job">
+  <p>
+    <strong>Jobs:</strong></br>
+    <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
+      <li><%= link_to job.job_type.job_type_description, job %></li>
+      <% comment do %>if you want task on the jobs for the show, uncomment this
+      <ul>
+        <% job.tasks.each do |task| %> <%# iterates through each related task to this job%>
+         <li><%= task.task_description %></li>
+        <% end %> 
+      <% comment end %>
+      </ul>
+    <% end %>
+  </p>
+</div>
+
+<%# Material List Tab%>
+<div id="material_list">
+  <p>
+    <strong>Materials:</strong></br>
+      <% @project.material_lists.each do |material_list| %> <%# iterates through each related job to this project%>
+      <li><%= link_to material_list.material.material_description, material_list %></li>
+      <% end %>
+  </p>
+</div>
+
+<%# Rental List Tab%>
+<div id="rental_list">
+  <p>
+    <strong>Renal Equipment:</strong></br>
+      <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
+      <li><%= link_to rental_list.rental_equipment.rental_description, rental_list %></li>
+      <% end %>
+  </p>
+</div>
 <%# Cost Tab%>
 <div id="cost">
   <p>
@@ -91,43 +127,6 @@
       <%= number_to_currency(@project.bid_amount) %>
     </p>
 
-  </p>
-</div>
-
-<%# Job Tab%>
-<div id="job">
-  <p>
-    <strong>Jobs:</strong></br>
-    <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
-      <li><%= link_to job.job_type.job_type_description, job %></li>
-      <% comment do %>if you want task on the jobs for the show, uncomment this
-      <ul>
-        <% job.tasks.each do |task| %> <%# iterates through each related task to this job%>
-         <li><%= task.task_description %></li>
-        <% end %> 
-      <% comment end %>
-      </ul>
-    <% end %>
-  </p>
-</div>
-
-<%# Material List Tab%>
-<div id="material_list">
-  <p>
-    <strong>Materials:</strong></br>
-      <% @project.material_lists.each do |material_list| %> <%# iterates through each related job to this project%>
-      <li><%= link_to material_list.material.material_description, material_list %></li>
-      <% end %>
-  </p>
-</div>
-
-<%# Rental List Tab%>
-<div id="rental_list">
-  <p>
-    <strong>Renal Equipment:</strong></br>
-      <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
-      <li><%= link_to rental_list.rental_equipment.rental_description, rental_list %></li>
-      <% end %>
   </p>
 </div>
 
