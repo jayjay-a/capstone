@@ -74,7 +74,6 @@
     </p>
   </div>
 
-
 <%# Rental List Tab%><%# adding rental equipment to project%>
   <div id="rental_list">
     <%= form.fields_for :rental_lists do |rental_list| %>
@@ -91,45 +90,45 @@
     <div class="row">
       <div class="field col l2">
         <%= form.label :bid_material_cost, "Material Cost ($)" %>
-        <%= form.number_field :bid_material_cost, id: :project_bid_material_cost %>
+        <%= form.number_field :bid_material_cost, id: :project_bid_material_cost, value: number_to_currency(form.object.bid_material_cost.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
       <div class="field col l2">
         <%= form.label :bid_cost_of_labor, "Labor Cost ($)" %>
-        <%= form.number_field :bid_cost_of_labor, id: :project_bid_cost_of_labor %>
+        <%= form.number_field :bid_cost_of_labor, id: :project_bid_cost_of_labor, value: number_to_currency(form.object.bid_cost_of_labor.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
       <div class="field col l2">
         <%= form.label :bid_cost_of_permits, "Permits Cost ($)" %>
-        <%= form.number_field :bid_cost_of_permits, id: :project_bid_cost_of_permits %>
+        <%= form.number_field :bid_cost_of_permits, id: :project_bid_cost_of_permits, value: number_to_currency(form.object.bid_cost_of_permits.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
       <div class="field col l2">
         <%= form.label :bid_equipment_rental, "Rental Equipment Cost ($)" %>
-        <%= form.number_field :bid_equipment_rental, id: :project_bid_equipment_rental %>
+        <%= form.number_field :bid_equipment_rental, id: :project_bid_equipment_rental, value: number_to_currency(form.object.bid_equipment_rental.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
     </div>
 
     <div class="row">
       <div class="field col l2">
         <%= form.label :bid_freight, "Freight Cost ($)" %>
-        <%= form.number_field :bid_freight, id: :project_bid_freight %>
+        <%= form.number_field :bid_freight, id: :project_bid_freight, value: number_to_currency(form.object.bid_freight.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
       <div class="field col l2">
         <%= form.label :bid_fuel_cost, "Fuel Cost ($)" %>
-        <%= form.number_field :bid_fuel_cost, id: :project_bid_fuel_cost %>
+        <%= form.number_field :bid_fuel_cost, id: :project_bid_fuel_cost, value: number_to_currency(form.object.bid_fuel_cost.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
       <div class="field col l2">
         <%= form.label :bid_lodging_cost, "Lodging Cost ($)" %>
-        <%= form.number_field :bid_lodging_cost, id: :project_bid_lodging_cost%>
+        <%= form.number_field :bid_lodging_cost, id: :project_bid_lodging_cost, value: number_to_currency(form.object.bid_lodging_cost.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
       <div class="field col l1">
         <%= form.label :applicable_tax, "Tax ($)" %>
-        <%= form.number_field :applicable_tax, id: :project_applicable_tax %>
+        <%= form.number_field :applicable_tax, id: :project_applicable_tax, value: number_to_currency(form.object.applicable_tax.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
     </div>
     
     <div class="row">
       <div class="field col l2">
         <%= form.label :bid_amount, "Project Bid Amount ($)" %>
-        <%= form.number_field :bid_amount, id: :project_bid_amount %>
+        <%= form.number_field :bid_amount, id: :project_bid_amount, value: number_to_currency(form.object.bid_amount.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
     </div>
     </p>

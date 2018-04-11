@@ -73,7 +73,7 @@
 <%# Rental List Tab%>
 <div id="rental_list">
   <p>
-    <strong>Renal Equipment:</strong></br>
+    <strong>Rental Equipment:</strong></br>
       <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
       <li><%= link_to rental_list.rental_equipment.rental_description, rental_list %></li>
       <% end %>
