@@ -26,16 +26,18 @@ class Task < ApplicationRecord
   def task_start_date_has_to_be_between_job_start_and_end
     if task_start_date < job.job_start_date
       errors.add(:task_start_date, "can't be before job start date")
-    elsif task_start_date > job.job_end_date
+    elsif job.job_end_date.present? && task_start_date > job.job_end_date
       errors.add(:task_start_date, "can't be after job end date")
     end
   end
 
   def task_end_date_has_to_be_between_job_start_and_end
-    if task_end_date < job.job_start_date
-      errors.add(:task_end_date, "can't be before job start date")
-    elsif task_end_date > job.job_end_date
-      errors.add(:task_end_date, "can't be after job end date")
+    if task_end_date.present?
+      if task_end_date < job.job_start_date
+        errors.add(:task_end_date, "can't be before job start date")
+      elsif job.job_end_date.present? && task_end_date > job.job_end_date
+        errors.add(:task_end_date, "can't be after job end date")
+      end
     end
   end
 end
