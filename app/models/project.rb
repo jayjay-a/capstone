@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :project_notes, dependent: :destroy
   has_many :material_lists, dependent: :destroy
-  has_many :rental_lists
+  has_many :rental_lists, dependent: :destroy
   has_many :tasks, through: :jobs
   has_many :materials, through: :material_lists
   has_many :rental_equipments, through: :rental_lists
