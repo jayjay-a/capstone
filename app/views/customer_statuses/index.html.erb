@@ -16,6 +16,7 @@
       <tr>
         <td><%= customer_status.customer_status_description %></td>
         <td><%= link_to 'Edit', edit_customer_status_path(customer_status) %></td>
+        <td><%= link_to 'Delete', customer_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
