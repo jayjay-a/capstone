@@ -7,28 +7,19 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :employee_type_description) %></th>
-
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @employee_types.each do |employee_type| %>
-      <tr data-link=" <%= employee_type_path(employee_type) %>" >
+      <tr>
         <td><%= employee_type.employee_type_description %></td>
+        <td><%= link_to 'Edit', edit_employee_type_path(employee_type) %></td>
+        <% if user_signed_in? && current_user.admin? %><td><%= link_to 'Delete', employee_type,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<style>
-  tr{
-    cursor: pointer;
-    }
-</style>
-<script>
-    $("tr[data-link]").click(function() {
-      window.location = $(this).data("link")
-    })
-</script>

@@ -1,6 +1,6 @@
 </br>
 <ul class="tabs tabs-fixed-width z-depth-1">
-  <li class="tab"><a class="active" href="#task">Task</a></li>
+  <li class="tab"><a href="#task">Task</a></li>
   <li class="tab"><a href="#assignments">Assignments</a></li>
   <li class="tab"><a href="#notes">Notes</a></li>
 </ul>
@@ -27,12 +27,12 @@
 
   <p>
     <strong>Task Start Date:</strong>
-    <%= @task.task_start_date %>
+    <%= @task.try(:task_start_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 
   <p>
     <strong>Task End Date:</strong>
-    <%= @task.task_end_date %>
+    <%= @task.try(:task_end_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 </div>
 
@@ -41,7 +41,7 @@
     <strong>Assignments:</strong></br>
     <% @task.assignments.each do |assignment| %>
       <li><%= link_to assignment.subcontractor.subcontractor_name, assignment %></li>
-      <% unless assignment.employee.blank? %><%#%>
+      <% unless assignment.employee.blank? %>
         <li><%= link_to assignment.employee.first_and_last_name, assignment %></li>
       <% end %>
     <% end %>
@@ -52,7 +52,7 @@
   <p>
   <strong>Notes:</strong></br>
     <% @task.task_notes.each do |task_note| %> 
-      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.task_note_date %>:</strong>
+      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.try(:task_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
       <%= simple_format(task_note.task_notes) %></br></br>
     <% end %>
   </p>
@@ -60,4 +60,4 @@
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @task.job, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_task_path(@task), class: "btn waves-effect waves-light" %> 
-<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>
+<% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>

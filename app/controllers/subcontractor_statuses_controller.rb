@@ -1,11 +1,16 @@
 class SubcontractorStatusesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_subcontractor_status, only: [:show, :edit, :update, :destroy]
 
   # GET /subcontractor_statuses
   # GET /subcontractor_statuses.json
   def index
-    @search = SubcontractorStatus.ransack(params[:q]) #for ransack
-    @subcontractor_statuses = @search.result
+    if user_signed_in?
+      @search = SubcontractorStatus.ransack(params[:q]) #for ransack
+      @subcontractor_statuses = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

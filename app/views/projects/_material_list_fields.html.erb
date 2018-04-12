@@ -11,12 +11,12 @@
   <div class="row">
     <div class="field col l2">
       <%= f.label :unit_price, "Unit Price ($)" %>
-      <%= f.number_field :unit_price, id: :material_list_unit_price %>
+      <%= f.number_field :unit_price, id: :material_list_unit_price, value: number_to_currency(f.object.unit_price.to_f, delimiter: '', unit: ''), step: :any %>
     </div>
 
     <div class="field col l2">
       <%= f.label :quantity %>
-      <%= f.number_field :quantity, id: :material_list_quantity %>
+      <%= f.number_field :quantity, id: :material_list_quantity, step: :any %>
     </div>
   </div>
   <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Material"), f, class: "btn waves-effect waves-light red" %> 

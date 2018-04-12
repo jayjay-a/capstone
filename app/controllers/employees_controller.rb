@@ -1,11 +1,16 @@
 class EmployeesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   # GET /employees
   # GET /employees.json
   def index
-    @search = Employee.ransack(params[:q]) #for ransack
-    @employees = @search.result
+    if user_signed_in?
+      @search = Employee.ransack(params[:q]) #for ransack
+      @employees = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

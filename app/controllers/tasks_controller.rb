@@ -4,8 +4,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @search = Task.ransack(params[:q]) #for ransack
-    @tasks = @search.result
+    if user_signed_in?
+      @search = Task.ransack(params[:q]) #for ransack
+      @tasks = @search.result
+    else
+      redirect_to new_user_session_path
+    end  
   end
 
   def search #for ransack

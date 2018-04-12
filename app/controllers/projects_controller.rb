@@ -1,13 +1,16 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
-
-  
   def index
-    @search = Project.ransack(params[:q]) #for ransack
-    @projects = @search.result
+    if user_signed_in?
+      @search = Project.ransack(params[:q]) #for ransack
+      @projects = @search.result
+    else
+      redirect_to new_user_session_path
+    end       
   end
 
   def search #for ransack

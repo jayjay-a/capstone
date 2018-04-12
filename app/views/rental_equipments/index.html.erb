@@ -27,15 +27,16 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :rental_description) %></th>
-
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @rental_equipments.each do |rental_equipment| %>
-      <tr data-link=" <%= rental_equipment_path(rental_equipment) %>" >
+      <tr>
         <td><%= rental_equipment.rental_description %></td>
-        
+        <td><%= link_to 'Edit', edit_rental_equipment_path(rental_equipment) %></td>
+        <% if user_signed_in? && current_user.admin? %><td><%= link_to 'Delete', rental_equipment,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
     <% end %>
   </tbody>

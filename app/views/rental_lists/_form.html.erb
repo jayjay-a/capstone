@@ -21,7 +21,7 @@
   <div class="row">
     <div class="field col l2">
       <%= form.label :rental_price, "Rental Price($)" %>
-      <%= form.number_field :rental_price, id: :rental_list_rental_price %>
+      <%= form.number_field :rental_price, id: :rental_list_rental_price, value: number_to_currency(form.object.rental_price.to_f, delimiter: '', unit: ''), step: :any %>
     </div>
   
     <div class="field col l2">

@@ -1,11 +1,16 @@
 class TaskStatusesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_task_status, only: [:show, :edit, :update, :destroy]
 
   # GET /task_statuses
   # GET /task_statuses.json
   def index
-    @search = TaskStatus.ransack(params[:q]) #for ransack
-    @task_statuses = @search.result
+    if user_signed_in?
+      @search = TaskStatus.ransack(params[:q]) #for ransack
+      @task_statuses = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

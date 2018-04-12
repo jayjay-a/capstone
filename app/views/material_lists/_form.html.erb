@@ -21,12 +21,12 @@
   <div class="row">
     <div class="field col l2">
       <%= form.label :unit_price, "Unit Price ($)" %>
-      <%= form.number_field :unit_price, id: :material_list_unit_price %>
+      <%= form.number_field :unit_price, id: :material_list_unit_price, value: number_to_currency(form.object.unit_price.to_f, delimiter: '', unit: ''), step: :any %>
     </div>
 
     <div class="field col l2">
       <%= form.label :quantity %>
-      <%= form.number_field :quantity, id: :material_list_quantity %>
+      <%= form.number_field :quantity, id: :material_list_quantit, step: any %>
     </div>
   </div>
 

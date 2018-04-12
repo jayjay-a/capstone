@@ -1,7 +1,7 @@
 
 </br>
 <ul class="tabs tabs-fixed-width z-depth-1">
-  <li class="tab"><a class="active" href="#job">Job</a></li>
+  <li class="tab"><a href="#job">Job</a></li>
   <li class="tab"><a href="#task">Tasks</a></li>
   <li class="tab"><a href="#notes">Notes</a></li>
 </ul>
@@ -20,15 +20,15 @@
     <strong>Job Status:</strong>
     <%= @job.job_status.job_status_description %>
   </p>
-
+  
   <p>
     <strong>Job Start Date:</strong>
-    <%= @job.job_start_date %>
+    <%= @job.try(:job_start_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 
   <p>
     <strong>Job End Date:</strong>
-    <%= @job.job_end_date %>
+    <%= @job.try(:job_end_date).try(:strftime, ("%m/%d/%Y")) %>
   </p>
 </div>
 <%# tasks of job %>
@@ -47,7 +47,7 @@
   <p>
     <strong>Notes:</strong></br>
     <% @job.job_notes.each do |job_note| %> 
-        <strong>Made by <%= job_note.job_note_owner %> on <%= job_note.job_note_date %>:</strong>
+        <strong>Made by <%= job_note.job_note_owner %> on <%= job_note.try(:job_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
         <%= simple_format(job_note.job_notes) %></br></br>
     <% end %>
   </p>
@@ -57,4 +57,4 @@
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @job.project, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_job_path(@job), class: "btn waves-effect waves-light" %> 
-<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>
+<% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>

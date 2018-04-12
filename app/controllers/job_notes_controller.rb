@@ -1,11 +1,16 @@
 class JobNotesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_job_note, only: [:show, :edit, :update, :destroy]
 
   # GET /job_notes
   # GET /job_notes.json
   def index
-    @search = JobNote.ransack(params[:q]) #for ransack
-    @job_notes = @search.result
+    if user_signed_in?
+      @search = JobNote.ransack(params[:q]) #for ransack
+      @job_notes = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

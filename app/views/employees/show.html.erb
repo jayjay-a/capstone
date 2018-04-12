@@ -20,14 +20,15 @@
   <%= @employee.employee_type.employee_type_description %>
 </p>
 
+
 <p>
   <strong>Join Date:</strong>
-  <%= @employee.join_date %>
+  <%= @employee.join_date.strftime("%m/%d/%Y") %>
 </p>
 
 <p>
   <strong>Dismiss date:</strong>
-  <%= @employee.dismiss_date %>
+  <%= @employee.try(:dismiss_date).try(:strftime, ("%m/%d/%Y")) %>
 </p>
 
 <p>
@@ -37,4 +38,4 @@
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  employees_path, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_employee_path(@employee), class: "btn waves-effect waves-light" %> 
-<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @employee, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>
+<% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @employee, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>
