@@ -69,4 +69,3 @@ $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select
         });
     });
 });
-
