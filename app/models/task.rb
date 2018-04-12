@@ -1,12 +1,10 @@
 class Task < ApplicationRecord
   has_many :task_notes, dependent: :destroy
   has_many :assignments, dependent: :destroy
-  belongs_to :task_status, optional: true
+  belongs_to :task_status
   belongs_to :job
-  belongs_to :project, optional: true
-
-  validates :task_status_id, presence: true
-  validates :task_start_date, presence: true
+  belongs_to :project
+  
   validates :task_description, presence: true, length: { maximum: 200 }
   validate :task_end_date_cannot_be_before_task_start_date, unless: -> { task_end_date.blank? }
   validate :task_start_date_has_to_be_between_job_start_and_end, unless: -> { task_start_date.blank? }
