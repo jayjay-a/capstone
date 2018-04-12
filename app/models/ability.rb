@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    can :read, :all #set all indexes to redirect to login first
+    can :index, :all #set all indexes to redirect to login first
       if user.present?
         can :create, :all
         can :read, :all

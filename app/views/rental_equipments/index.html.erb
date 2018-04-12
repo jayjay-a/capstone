@@ -36,7 +36,7 @@
       <tr>
         <td><%= rental_equipment.rental_description %></td>
         <td><%= link_to 'Edit', edit_rental_equipment_path(rental_equipment) %></td>
-        <% if current_user.admin? %><td><%= link_to 'Delete', rental_equipment,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+        <% if user_signed_in? && current_user.admin? %><td><%= link_to 'Delete', rental_equipment,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
     <% end %>
   </tbody>

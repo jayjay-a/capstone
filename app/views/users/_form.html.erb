@@ -20,7 +20,7 @@
     <%= form.label :email %><br />
     <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-<% if current_user.admin? %>
+<% if user_signed_in? && current_user.admin? %>
   <div class="field">
     <%= form.label "admin" %>
     <%= form.select :admin, ['false', 'true'] %>

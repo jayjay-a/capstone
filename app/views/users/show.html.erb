@@ -10,7 +10,7 @@
   <%= @user.email %>
 </p>
 
-<% if current_user.admin? %>
+<% if user_signed_in? && current_user.admin? %>
 <p>
   <strong>admin:</strong>
   <%= @user.admin %>

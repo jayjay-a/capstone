@@ -22,11 +22,9 @@
       </li>
 
       <%# drop down(resources) trigger on navbar%>
-      <li><a class="dropdown-trigger" href="#!" data-target="resources">Resources ⏷</a></li>
-
       <li><a class="dropdown-trigger" href="#!" data-target="resources">Resources<i class="material-icons right">arrow_drop_down</i></a></li> <%# contains subcontractors, materials, rental equipment%>
 
-      <% if current_user.admin? %>
+      <% if current_user.present? && current_user.admin? %>
       <li class="<%= 'active' if params[:controller] == 'reports' %>">
         <a class="nav-link" <%= link_to 'Reports', reports_path %></a>
       </li>
@@ -36,7 +34,7 @@
         </li>
       <% end %>
 
-      <li><a class="dropdown-trigger" href="#!" data-target="user"><%= current_user.name %></a></li>
+      <li><a class="dropdown-trigger" href="#!" data-target="user"><% if user_signed_in? %> <%= current_user.name %> <% end %></a></li>
 
     </ul>
   </div>
@@ -89,7 +87,7 @@
     <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
   </li>
 
-  <% if current_user.admin? %>
+  <% if current_user.present? && current_user.admin? %>
     <li class="<%= 'active' if params[:controller] == 'reports' %>">
       <a class="nav-link" <%= link_to 'Reports', reports_path %></a>
     </li>
