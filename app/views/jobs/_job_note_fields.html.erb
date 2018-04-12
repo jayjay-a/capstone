@@ -7,7 +7,7 @@
     </div>
     <div class="field col l2">
       <%= f.label :job_note_date, "Note Date" %>
-      <%= f.text_field :job_note_date, id: :job_note_job_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+      <%= f.text_field :job_note_date, id: :job_note_job_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => f.object.job_note_date || Date.today.strftime('%Y-%m-%d') %>
     </div>
   </div>
 

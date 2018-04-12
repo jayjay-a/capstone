@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :subcontractor_status_description) %></th>
-
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -15,21 +15,11 @@
     <% @subcontractor_statuses.each do |subcontractor_status| %>
       <tr data-link=" <%= subcontractor_status_path(subcontractor_status) %>" >
         <td><%= subcontractor_status.subcontractor_status_description %></td>
-        
+        <td><%= link_to 'Edit', edit_subcontractor_status_path(subcontractor_status) %></td>
+        <td><%= link_to 'Delete', subcontractor_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<style>
-  tr{
-    cursor: pointer;
-    }
-</style>
-<script>
-    $("tr[data-link]").click(function() {
-      window.location = $(this).data("link")
-    })
-</script>

@@ -1,10 +1,10 @@
 </br>
 <ul class="tabs tabs-fixed-width z-depth-1">
-  <li class="tab"><a class="active" href="#project">Project</a></li>
-  <li class="tab"><a href="#cost">Costs</a></li>
+  <li class="tab"><a href="#project">Project</a></li>
   <li class="tab"><a href="#job">Job</a></li>
   <li class="tab"><a href="#material_list">Materials</a></li>
   <li class="tab"><a href="#rental_list">Rental</a></li>
+  <li class="tab"><a href="#cost">Costs</a></li>
   <li class="tab"><a href="#notes">Notes</a></li>
 </ul>
 
@@ -28,69 +28,18 @@
 
     <p>
       <strong>Project Start Date:</strong>
-      <%= @project.project_start_date %>
+      <%= @project.try(:project_start_date).try(:strftime, ("%m/%d/%Y")) %>
     </p>
 
     <p>
       <strong>Project End Date:</strong>
-      <%= @project.project_end_date %>
+      <%= @project.try(:project_end_date).try(:strftime, ("%m/%d/%Y")) %>
     </p>
 
     <p>
-      <strong>Bid submit date:</strong>
-      <%= @project.bid_submit_date %>
+      <strong>Bid Submit Date:</strong>
+      <%= @project.bid_submit_date.strftime("%m/%d/%Y") %>
     </p>
-  </p>
-</div>
-
-<%# Cost Tab%>
-<div id="cost">
-  <p>
-    <p>
-      <strong>Bid material cost:</strong>
-      <%= number_to_currency(@project.bid_material_cost) %>
-    </p>
-    
-    <p>
-      <strong>Bid cost of labor:</strong>
-      <%= number_to_currency(@project.bid_cost_of_labor) %>
-    </p>
-    
-    <p>
-      <strong>Bid cost of permits:</strong>
-      <%= number_to_currency(@project.bid_cost_of_permits) %>
-    </p>
-    
-    <p>
-      <strong>Bid equipment rental:</strong>
-      <%= number_to_currency(@project.bid_equipment_rental) %>
-    </p>
-    
-    <p>
-      <strong>Bid freight:</strong>
-      <%= number_to_currency(@project.bid_freight) %>
-    </p>
-    
-    <p>
-      <strong>Bid fuel cost:</strong>
-      <%= number_to_currency(@project.bid_fuel_cost) %>
-    </p>
-    
-    <p>
-      <strong>Bid lodging cost:</strong>
-      <%= number_to_currency(@project.bid_lodging_cost) %>
-    </p>
-    
-    <p>
-      <strong>Applicable Tax:</strong>
-      <%= number_to_percentage(@project.applicable_tax, precision: 2 ) %>
-    </p>
-    
-    <p>
-      <strong>Bid amount:</strong>
-      <%= number_to_currency(@project.bid_amount) %>
-    </p>
-
   </p>
 </div>
 
@@ -124,10 +73,61 @@
 <%# Rental List Tab%>
 <div id="rental_list">
   <p>
-    <strong>Renal Equipment:</strong></br>
+    <strong>Rental Equipment:</strong></br>
       <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
       <li><%= link_to rental_list.rental_equipment.rental_description, rental_list %></li>
       <% end %>
+  </p>
+</div>
+
+<%# Cost Tab%>
+<div id="cost">
+  <p>
+    <p>
+      <strong>Material Cost:</strong>
+      <%= number_to_currency(@project.bid_material_cost) %>
+    </p>
+    
+    <p>
+      <strong>Labor Cost:</strong>
+      <%= number_to_currency(@project.bid_cost_of_labor) %>
+    </p>
+    
+    <p>
+      <strong>Permits Cost:</strong>
+      <%= number_to_currency(@project.bid_cost_of_permits) %>
+    </p>
+    
+    <p>
+      <strong>Rental Equipment Cost:</strong>
+      <%= number_to_currency(@project.bid_equipment_rental) %>
+    </p>
+    
+    <p>
+      <strong>Freight Cost:</strong>
+      <%= number_to_currency(@project.bid_freight) %>
+    </p>
+    
+    <p>
+      <strong>Fuel Cost:</strong>
+      <%= number_to_currency(@project.bid_fuel_cost) %>
+    </p>
+    
+    <p>
+      <strong>Lodging Cost:</strong>
+      <%= number_to_currency(@project.bid_lodging_cost) %>
+    </p>
+    
+    <p>
+      <strong>Applicable Tax:</strong>
+      <%= number_to_currency(@project.applicable_tax) %>
+    </p>
+    
+    <p>
+      <strong>Project Bid Amount:</strong>
+      <%= number_to_currency(@project.bid_amount) %>
+    </p>
+
   </p>
 </div>
 
@@ -136,7 +136,7 @@
   <p>
     <strong>Notes:</strong></br>
       <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
-      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.project_note_date %>:</strong>
+      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.try(:project_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
       <%= simple_format(project_note.project_notes) %></br></br>
     <% end %>
   </p>

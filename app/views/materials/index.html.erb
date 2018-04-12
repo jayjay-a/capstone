@@ -27,29 +27,19 @@
   <thead>
     <tr>
       <th><%= sort_link(@search, :material_description) %></th>
-
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @materials.each do |material| %>
-      <tr data-link=" <%= material_path(material) %>" >
+      <tr>
         <td><%= material.material_description %></td>
-        
+        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Delete', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<style>
-  tr{
-    cursor: pointer;
-    }
-</style>
-<script>
-    $("tr[data-link]").click(function() {
-      window.location = $(this).data("link")
-    })
-</script>
