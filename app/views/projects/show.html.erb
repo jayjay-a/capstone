@@ -120,7 +120,7 @@
     
     <p>
       <strong>Applicable Tax:</strong>
-      <%= number_to_percentage(@project.applicable_tax, precision: 2 ) %>
+      <%= number_to_currency(@project.applicable_tax) %>
     </p>
     
     <p>
