@@ -816,8 +816,9 @@ Assignment.create!([
                    ])
 
 # Users
-User.create!([  { name: 'admin1', email: 'admin1@rsc.com', admin: true, password: '123456' },
-                { name: 'admin2', email: 'admin2@rsc.com', admin: true, password: '123456' },
-                { name: 'emp1', email: 'emp1@rsc.com', admin: false, password: '123456' },
-                { name: 'emp2', email: 'emp2@rsc.com', admin: false, password: '123456' }
+User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
+                { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
+                { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
+                { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
+                { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
             ])
