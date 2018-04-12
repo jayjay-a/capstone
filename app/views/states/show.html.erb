@@ -1,14 +1,15 @@
 
 
 <p>
-  <strong>State name:</strong>
+  <strong>State Name:</strong>
   <%= @state.state_name %>
 </p>
 
 <p>
-  <strong>State abbrev:</strong>
+  <strong>State Abbreviation:</strong>
   <%= @state.state_abbrev %>
 </p>
 
-<%= link_to 'Edit', edit_state_path(@state) %> |
-<%= link_to 'Back', states_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  states_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_state_path(@state), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @state, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

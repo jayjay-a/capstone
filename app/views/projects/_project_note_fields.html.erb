@@ -1,25 +1,23 @@
 <%# these fields are added as a nested thinform to project form%>
 <div id = nested-fields class="nested-fields">
-  <p>
   <div class="row">
-    <div class="field">
-      <%= f.label :project_notes %>
-      <%= f.text_area :project_notes, id: :project_note_project_notes %>
+    <div class="field col l2">
+      <%= f.label :project_note_owner, "Note Owner" %>
+      <%= f.text_field :project_note_owner, id: :project_note_project_note_owner %>
     </div>
+    <div class="field col l2">
+      <%= f.label :project_note_date, "Note Date" %>
+      <%= f.text_field :project_note_date, id: :project_note_project_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => f.object.project_note_date || Date.today.strftime('%Y-%m-%d') %>
+    </div>   
   </div>
 
   <div class="row">
-    <div class="field col s2">
-      <%= f.label :project_note_date %>
-      <%= f.text_field :project_note_date, id: :project_note_project_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-    </div>
-  
-    <div class="field col s2">
-      <%= f.label :project_note_owner %>
-      <%= f.text_field :project_note_owner, id: :project_note_project_note_owner %>
+    <div class="field col l12 m12 s12">
+      <%= f.label :project_notes, "Project Note" %>
+      <%= f.text_area :project_notes, id: :project_note_project_notes %>
     </div>
   </div>
-  <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Note"), f, class: "btn waves-effect waves-light" %> 
-  </p>
+  
+  <%= link_to_remove_association raw("<i class=\"material-icons right\">remove_circle</i>Remove Note"), f, class: "btn waves-effect waves-light red" %> 
   <hr>
 </div>

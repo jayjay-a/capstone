@@ -1,0 +1,13 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Bid Information") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Job_Type Bid_Submit_Date Bid_Amount Project_Status)
+
+  # each user is a row on your spreadsheet
+  @bidinfo.each do |p|
+    sheet.add_row [p['project_id'], p['customer_name'],
+                     p['customer_branch'], p['job_type_description'], p['bid_submit_date'],
+                      p['bid_amount'], p['project_status_description']]
+  end
+end

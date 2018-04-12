@@ -3,7 +3,7 @@
 <h1>Subcontractor Statuses</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Subcontractor Status"), new_subcontractor_status_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :subcontractor_status_description) %></th>
@@ -13,9 +13,8 @@
 
   <tbody>
     <% @subcontractor_statuses.each do |subcontractor_status| %>
-      <tr>
+      <tr data-link=" <%= subcontractor_status_path(subcontractor_status) %>" >
         <td><%= subcontractor_status.subcontractor_status_description %></td>
-        <td><%= link_to 'Show', subcontractor_status %></td>
         <td><%= link_to 'Edit', edit_subcontractor_status_path(subcontractor_status) %></td>
         <% if current_user.admin? %><td><%= link_to 'Delete', subcontractor_status,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>

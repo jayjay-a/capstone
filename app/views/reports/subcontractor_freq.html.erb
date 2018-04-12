@@ -1,0 +1,35 @@
+<!--<h1>Report17</h1>-->
+<p id="notice"><%= notice %></p>
+
+<h2>Subcontractor Hiring Frequency</h2>
+<h6>Download:
+  <%= link_to "Excel", reports_subcontractor_freq_path(format: "xlsx") %> |
+  <%= link_to "PDF", reports_subcontractor_freq_path(format: "pdf") %>
+</h6>
+
+<table class="responsive-table">
+  <thead>
+  <tr>
+    <th>Subcontractor Name</th>
+    <th>Job Type</th>
+    <th>Frequency</th>
+    <th>Phone</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sub_freq.each do |freq| %>
+      <tr>
+        <td><%= freq['subcontractor_name'] %></td>
+        <td><%= freq['job_type_description'] %></td>
+        <td><%= freq['frequency'] %></td>
+        <td><%= freq['subcontractor_phone'] %></td>
+        <td><%= freq['subcontractor_email'] %></td>
+        <td><%= freq['subcontractor_status_description'] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

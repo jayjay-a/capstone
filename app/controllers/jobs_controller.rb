@@ -22,6 +22,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @job = Job.find(params[:id])
   end
 
   # GET /jobs/new
@@ -68,7 +69,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
+      format.html { redirect_to jobs_url, notice: 'Job was successfully deleted.' }
       format.json { head :no_content }
     end
   end

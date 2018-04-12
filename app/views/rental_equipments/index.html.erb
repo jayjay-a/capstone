@@ -12,7 +12,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_rental_equipments_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.label :rental_equipment_id %>
             <%= f.text_field :rental_description_cont %>
           </div>
@@ -23,7 +23,7 @@
   </div> <%# end search modal %>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Rental Equipment"), new_rental_equipment_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :rental_description) %></th>
@@ -35,7 +35,6 @@
     <% @rental_equipments.each do |rental_equipment| %>
       <tr>
         <td><%= rental_equipment.rental_description %></td>
-        <td><%= link_to 'Show', rental_equipment %></td>
         <td><%= link_to 'Edit', edit_rental_equipment_path(rental_equipment) %></td>
         <% if current_user.admin? %><td><%= link_to 'Delete', rental_equipment,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
@@ -44,3 +43,14 @@
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

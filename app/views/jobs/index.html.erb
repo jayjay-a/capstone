@@ -3,7 +3,7 @@
 <h1>Jobs</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Job"), new_job_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :project_id) %></th>
@@ -13,13 +13,13 @@
       <th><%= sort_link(@search, :job_start_date) %></th>
       <th><%= sort_link(@search, :job_end_date) %></th>
       <th><%= sort_link(@search, :job_status_id) %></th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @jobs.each do |job| %>
-      <tr>
+      <tr data-link=" <%= job_path(job) %>" >
         <td><%= job.project_id %></td>
         <td><%= job.project.customer.customer_name %></td>
         <td><%= job.project.customer.customer_branch %></td>
@@ -27,12 +27,21 @@
         <td><%= job.job_start_date %></td>
         <td><%= job.job_end_date %></td>
         <td><%= job.job_status.job_status_description %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <% if current_user.admin? %><td><%= link_to 'Delete', job,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

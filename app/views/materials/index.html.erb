@@ -12,7 +12,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_materials_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.label :material_id %>
             <%= f.text_field :material_description_cont %>
           </div>
@@ -23,7 +23,7 @@
   </div> <%# end search modal %>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Material"), new_material_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :material_description) %></th>
@@ -35,7 +35,6 @@
     <% @materials.each do |material| %>
       <tr>
         <td><%= material.material_description %></td>
-        <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <% if current_user.admin? %><td><%= link_to 'Delete', material,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>

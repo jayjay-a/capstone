@@ -2,4 +2,5 @@
 
 <%= render 'form', task_status: @task_status %>
 
-<%= link_to 'Back', task_statuses_path %>
+
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  task_statuses_path, class: "btn waves-effect waves-light grey" %> 

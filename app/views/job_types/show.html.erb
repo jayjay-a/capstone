@@ -1,9 +1,10 @@
 
 
 <p>
-  <strong>Job type description:</strong>
+  <strong>Job Type Description:</strong>
   <%= @job_type.job_type_description %>
 </p>
 
-<%= link_to 'Edit', edit_job_type_path(@job_type) %> |
-<%= link_to 'Back', job_types_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  job_types_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_job_type_path(@job_type), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @job_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

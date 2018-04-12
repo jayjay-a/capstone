@@ -3,30 +3,39 @@
 <h1>Task Notes</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Task Note"), new_task_note_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :task_id) %></th>
       <th><%= sort_link(@search, :task_notes) %></th>
       <th><%= sort_link(@search, :task_note_owner) %></th>
       <th><%= sort_link(@search, :task_note_date) %></th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @task_notes.each do |task_note| %>
-      <tr>
+      <tr data-link=" <%= task_note_path(task_note) %>" >
         <td><%= task_note.task_id %></td>
         <td><%= task_note.task_notes %></td>
         <td><%= task_note.task_note_owner %></td>
         <td><%= task_note.task_note_date %></td>
-        <td><%= link_to 'Show', task_note %></td>
-        <td><%= link_to 'Edit', edit_task_note_path(task_note) %></td>
-        <% if current_user.admin? %><td><%= link_to 'Delete', task_note,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

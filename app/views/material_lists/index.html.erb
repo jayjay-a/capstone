@@ -12,31 +12,31 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_material_lists_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :unit_price_gteq %>
             <%= f.text_field :unit_price_gteq %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :unit_price_lteq %>
             <%= f.text_field :unit_price_lteq %>
           </div>
         </div>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :quantity_gteq %>
             <%= f.text_field :quantity_gteq %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :unit_price_lteq %>
             <%= f.text_field :unit_price_lteq %>
           </div>
         </div>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :total_gteq %>
             <%= f.text_field :total_gteq %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :total_lteq %>
             <%= f.text_field :total_lteq %>
           </div>
@@ -56,7 +56,7 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_material_lists_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s6">
+          <div class="field col l6">
             <%= f.label :material_id %>
             <%= f.text_field :material_material_description_cont %>
           </div>
@@ -67,7 +67,7 @@
   </div> <%# end search modal %>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Material List"), new_material_list_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :project_id) %></th>
@@ -75,24 +75,33 @@
       <th><%= sort_link(@search, :unit_price) %></th>
       <th><%= sort_link(@search, :quantity) %></th>
       <th><%= sort_link(@search, :total) %></th>
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @material_lists.each do |material_list| %>
-      <tr>
+      <tr data-link=" <%= material_list_path(material_list) %>" >
         <td><%= material_list.project_id %></td>
         <td><%= material_list.material.material_description %></td>
         <td><%= number_to_currency(material_list.unit_price) %></td>
         <td><%= material_list.quantity %></td>
         <td><%= number_to_currency(material_list.total) %></td>
-        <td><%= link_to 'Show', material_list %></td>
-        <td><%= link_to 'Edit', edit_material_list_path(material_list) %></td>
-        <% if current_user.admin? %><td><%= link_to 'Delete', material_list,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
+<script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+</script>

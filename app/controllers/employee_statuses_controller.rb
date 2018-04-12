@@ -68,7 +68,7 @@ class EmployeeStatusesController < ApplicationController
   def destroy
     @employee_status.destroy
     respond_to do |format|
-      format.html { redirect_to employee_statuses_url, notice: 'Employee status was successfully destroyed.' }
+      format.html { redirect_to employee_statuses_url, notice: 'Employee status was successfully deleted.' }
       format.json { head :no_content }
     end
   end

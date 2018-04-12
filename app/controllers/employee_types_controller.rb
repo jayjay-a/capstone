@@ -68,7 +68,7 @@ class EmployeeTypesController < ApplicationController
   def destroy
     @employee_type.destroy
     respond_to do |format|
-      format.html { redirect_to employee_types_url, notice: 'Employee type was successfully destroyed.' }
+      format.html { redirect_to employee_types_url, notice: 'Employee type was successfully deleted.' }
       format.json { head :no_content }
     end
   end

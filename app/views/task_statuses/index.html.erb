@@ -3,7 +3,7 @@
 <h1>Task Statuses</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Task Status"), new_task_status_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :task_status_description) %></th>
@@ -13,9 +13,8 @@
 
   <tbody>
     <% @task_statuses.each do |task_status| %>
-      <tr>
+      <tr data-link=" <%= task_status_path(task_status) %>" >
         <td><%= task_status.task_status_description %></td>
-        <td><%= link_to 'Show', task_status %></td>
         <td><%= link_to 'Edit', edit_task_status_path(task_status) %></td>
         <% if current_user.admin? %><td><%= link_to 'Delete', task_status,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
@@ -24,4 +23,3 @@
 </table>
 
 <br>
-

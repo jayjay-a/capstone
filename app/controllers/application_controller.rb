@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
     ## this render call should be:
     # render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
   end
+
+  rescue_from ActiveRecord::StatementInvalid, with: :catchthis
+  private
+  def catchthis
+    flash[:error] = "Please enter a field"
+    redirect_back(fallback_location: reports_compare_projects_path)
+  end
 end

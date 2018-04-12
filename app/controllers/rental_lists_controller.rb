@@ -21,6 +21,7 @@ class RentalListsController < ApplicationController
   # GET /rental_lists/1
   # GET /rental_lists/1.json
   def show
+    @rental_list = RentalList.find(params[:id])
   end
 
   # GET /rental_lists/new
@@ -67,7 +68,7 @@ class RentalListsController < ApplicationController
   def destroy
     @rental_list.destroy
     respond_to do |format|
-      format.html { redirect_to rental_lists_url, notice: 'Rental list was successfully destroyed.' }
+      format.html { redirect_to rental_lists_url, notice: 'Rental list was successfully deleted.' }
       format.json { head :no_content }
     end
   end

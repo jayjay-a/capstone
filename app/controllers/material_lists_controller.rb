@@ -21,6 +21,7 @@ class MaterialListsController < ApplicationController
   # GET /material_lists/1
   # GET /material_lists/1.json
   def show
+    @material_list = MaterialList.find(params[:id])
   end
 
   # GET /material_lists/new
@@ -67,7 +68,7 @@ class MaterialListsController < ApplicationController
   def destroy
     @material_list.destroy
     respond_to do |format|
-      format.html { redirect_to material_lists_url, notice: 'Material list was successfully destroyed.' }
+      format.html { redirect_to material_lists_url, notice: 'Material list was successfully deleted.' }
       format.json { head :no_content }
     end
   end

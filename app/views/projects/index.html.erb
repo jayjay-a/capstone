@@ -1,6 +1,5 @@
 
 
-<body>
 <div>
   <h1>Projects</h1>
 </div>
@@ -15,35 +14,27 @@
       <%# using ransack to search for these inputs%>
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :project_status_id %>
-            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:selected => 1, "data-placeholder" => 'Select a Status' }%>
+            <%= f.collection_select :project_status_id_eq, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a Status' }%>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :project_type_id %>
-            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, { :selected => 1, "data-placeholder" => 'Select a Type' } %>
+            <%= f.collection_select :project_type_id_eq, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => "select2", :selected => 1, "data-placeholder" => 'Select a Type' } %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :bid_amount_gteq, "Minimum bid amount" %>
             <%= f.text_field :bid_amount_gteq, id: :project_bid_amount %>
           </div>
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :bid_amount_lteq, "Maximum bid amount" %>
             <%= f.text_field :bid_amount_lteq, id: :project_bid_amount %>
           </div>
         </div>
         <div class="row">
-          <div class="field col s2">
+          <div class="field col l2">
             <%= f.label :project_start_date_gteq, "Minimum start date" %>
             <%= f.text_field :project_start_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-          </div>
-          <div class="field col s2">
-            <%= f.label :project_start_date_lteq, "Maximum start date" %>
-            <%= f.text_field :project_start_date_lteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
-          </div>
-          <div class="field col s2">
-            <%= f.label :project_end_date_gteq, "Minimum end date" %>
-            <%= f.text_field :project_end_date_gteq, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
           </div>
           <div class="field col s2">
             <%= f.label :project_end_date_lteq, "Maximum end date" %>
@@ -67,8 +58,7 @@
       <%= search_form_for @search, url: search_projects_path, html: { method: :post } do |f| %>
         <div class="row">
           <div class="field col s6">
-            <%= f.label :customer_id %>
-            <%= f.text_field :customer_customer_name_cont %>
+            <%= f.text_field :customer_customer_name_or_customer_customer_branch_or_project_type_project_type_description_or_project_status_project_status_description_cont %>
           </div>
         </div>
         <%= f.submit 'Search', class: "btn" %>
@@ -78,7 +68,7 @@
 
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Project"), new_project_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table">
+<table class="responsive-table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :project_id) %></th>
@@ -97,25 +87,25 @@
       <th>Bid cost of permits</th>
       <th>Bid equipment rental</th>
       <th>Bid freight</th>
-      <th>Tax rate</th>
+      <th>Applicable tax</th>
       <th>Bid fuel cost</th>
       <th>Bid lodging cost</th>
       <th>Bid amount</th>
       <% comment end %>
 
-      <th colspan="3"></th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @projects.each do |project| %>
-      <tr>
+      <tr data-link=" <%= project_path(project) %>" >
         <td><%= project.project_id %></td>
         <td><%= project.customer.customer_name %></td>
         <td><%= project.customer.customer_branch %></td>
         <td><%= project.project_type.project_type_description %></td>
-        <td><%= project.project_start_date %></td>
-        <td><%= project.project_end_date %></td>
+        <td><%= project.try(:project_start_date).try(:strftime, ("%m/%d/%Y")) %></td>
+        <td><%= project.try(:project_end_date).try(:strftime, ("%m/%d/%Y"))%></td>
         <td><%= number_to_currency(project.bid_amount) %></td>
         <td><%= project.project_status.project_status_description %></td>
 
@@ -128,14 +118,10 @@
         <td><%= number_to_currency(project.bid_freight) %></td>
         <td><%= number_to_currency(project.bid_fuel_cost) %></td>
         <td><%= number_to_currency(project.bid_lodging_cost) %></td> %>
-        <td><%= number_to_percentage(project.tax_rate) %></td>
+        <td><%= number_to_currency(project.applicable_tax) %></td>
         <td><%= number_to_currency(project.bid_amount) %></td> %>
         <% comment end %>
-  
-
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <% if current_user.admin? %><td><%= link_to 'Delete', project,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+        
       </tr>
     <% end %>
   </tbody>
@@ -143,6 +129,27 @@
 
 <br>
 
+<style>
+  tr{
+    cursor: pointer;
+    }
+</style>
 <script>
+<<<<<<< HEAD
     $('select').formSelect();
 </script>
+=======
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+  $(document).ready(function(){ //loads
+      $('.select2').select2({     //select2
+          placeholder: function(){ //sets placeholder based on data-placeholder in the field
+              $(this).data('placeholder');
+          },
+          allowClear: true,
+          dropdownParent: $('#filter') //fixes select2 on modals cause technically modals aren't part of the body element
+      });
+  });
+</script>
+>>>>>>> master

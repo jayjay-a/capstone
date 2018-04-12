@@ -1,74 +1,75 @@
 
 
 <p>
-  <strong>State:</strong>
-  <%= @customer.state.state_name %>
-</p>
-
-<p>
-  <strong>Customer status:</strong>
-  <%= @customer.customer_status.customer_status_description %>
-</p>
-
-<p>
   <strong>Customer name:</strong>
   <%= @customer.customer_name %>
 </p>
 
 <p>
-  <strong>Customer branch:</strong>
+  <strong>Branch:</strong>
   <%= @customer.customer_branch %>
 </p>
 
 <p>
-  <strong>Customer address 1:</strong>
+  <strong>Status:</strong>
+  <%= @customer.customer_status.customer_status_description %>
+</p>
+
+<p>
+  <strong>Street address:</strong>
   <%= @customer.customer_address_1 %>
 </p>
 
 <p>
-  <strong>Customer address 2:</strong>
+  <strong>Suite #:</strong>
   <%= @customer.customer_address_2 %>
 </p>
 
 <p>
-  <strong>Customer city:</strong>
+  <strong>City:</strong>
   <%= @customer.customer_city %>
 </p>
 
 <p>
-  <strong>Customer zipcode:</strong>
+  <strong>State:</strong>
+  <%= @customer.state.try(:state_name) %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
   <%= @customer.customer_zipcode %>
 </p>
 
 <p>
-  <strong>Customer rep name 1:</strong>
+  <strong>First Representative Name:</strong>
   <%= @customer.customer_rep_name_1 %>
 </p>
 
 <p>
-  <strong>Customer rep name 2:</strong>
-  <%= @customer.customer_rep_name_2 %>
-</p>
-
-<p>
-  <strong>Customer rep phone 1:</strong>
+  <strong>First Representative Phone:</strong>
   <%= number_to_phone(@customer.customer_rep_phone_1, area_code: true) %>
 </p>
 
 <p>
-  <strong>Customer rep phone 2:</strong>
-  <%= number_to_phone(@customer.customer_rep_phone_2, area_code: true) %>
-</p>
-
-<p>
-  <strong>Customer rep email 1:</strong>
+  <strong>First Representative Email:</strong>
   <%= @customer.customer_rep_email_1 %>
 </p>
 
 <p>
-  <strong>Customer rep email 2:</strong>
+  <strong>Second Representative Name:</strong>
+  <%= @customer.customer_rep_name_2 %>
+</p>
+
+<p>
+  <strong>Second Representative Phone:</strong>
+  <%= number_to_phone(@customer.customer_rep_phone_2, area_code: true) %>
+</p>
+
+<p>
+  <strong>Second Representative Email:</strong>
   <%= @customer.customer_rep_email_2 %>
 </p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  customers_path, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_customer_path(@customer), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

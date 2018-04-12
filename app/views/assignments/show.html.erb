@@ -1,9 +1,19 @@
 
 
 <p>
-  <strong>Assigned:</strong>
-  <%= @assignment.subcontractor.try(:subcontractor_name) %> <%# they will only fill in one or the other so this is if not nil show person (sub or emp) %>
+  <strong>Subcontractor Assigned:</strong>
+  <%= @assignment.subcontractor.subcontractor_name %>
+</p>
+
+<p>
+
+</p>
+  <strong>Employee Assigned:</strong>
   <%= @assignment.employee.try(:first_name) %>
+
+<p>
+  <strong>Assignment Date:</strong>
+  <%= @assignment.assignment_date.strftime("%m/%d/%Y") %>
 </p>
 
 <p>
@@ -11,10 +21,6 @@
   <%= @assignment.task.task_description %>
 </p>
 
-<p>
-  <strong>Assignment date:</strong>
-  <%= @assignment.assignment_date %>
-</p>
-
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @assignment.task, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_assignment_path(@assignment), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

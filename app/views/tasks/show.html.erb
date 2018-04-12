@@ -1,36 +1,63 @@
+</br>
+<ul class="tabs tabs-fixed-width z-depth-1">
+  <li class="tab"><a href="#task">Task</a></li>
+  <li class="tab"><a href="#assignments">Assignments</a></li>
+  <li class="tab"><a href="#notes">Notes</a></li>
+</ul>
+<div id="task">
+  <p>
+    <strong>Project:</strong>
+    #<%= @task.job.project.project_and_customer_and_branch %>
+  </p>
 
+  <p>
+    <strong>Job:</strong>
+    <%= @task.job.job_type.job_type_description %>
+  </p>
 
-<p>
-  <strong>Job:</strong>
-  <%= @task.job_id %>
-</p>
+  <p>
+    <strong>Task:</strong>
+    <%= @task.task_description %>
+  </p>
 
-<p>
-  <strong>Task status:</strong>
-  <%= @task.task_status_id %>
-</p>
+  <p>
+    <strong>Task Status:</strong>
+    <%= @task.task_status.task_status_description %>
+  </p>
 
-<p>
-  <strong>Task start date:</strong>
-  <%= @task.task_start_date %>
-</p>
+  <p>
+    <strong>Task Start Date:</strong>
+    <%= @task.try(:task_start_date).try(:strftime, ("%m/%d/%Y")) %>
+  </p>
 
-<p>
-  <strong>Task end date:</strong>
-  <%= @task.task_end_date %>
-</p>
+  <p>
+    <strong>Task End Date:</strong>
+    <%= @task.try(:task_end_date).try(:strftime, ("%m/%d/%Y")) %>
+  </p>
+</div>
 
-<p>
-  <strong>Task description:</strong>
-  <%= @task.task_description %>
-</p>
+<div id="assignments">
+  <p>
+    <strong>Assignments:</strong></br>
+    <% @task.assignments.each do |assignment| %>
+      <li><%= link_to assignment.subcontractor.subcontractor_name, assignment %></li>
+      <% unless assignment.employee.blank? %>
+        <li><%= link_to assignment.employee.first_and_last_name, assignment %></li>
+      <% end %>
+    <% end %>
+  </p>
+</div>
 
-<%# notes of a task%>
-<%# find a bettesr styling for this!!!%>
+<div id="notes">
+  <p>
   <strong>Notes:</strong></br>
     <% @task.task_notes.each do |task_note| %> 
-      <%= simple_format(task_note.task_notes) %>
-  <% end %>
+      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.try(:task_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
+      <%= simple_format(task_note.task_notes) %></br></br>
+    <% end %>
+  </p>
+</div>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @task.job, class: "btn waves-effect waves-light grey" %> 
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_task_path(@task), class: "btn waves-effect waves-light" %> 
+<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>

@@ -17,7 +17,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create project" do
     assert_difference('Project.count') do
-      post projects_url, params: { project: { bid_amount: @project.bid_amount, bid_cost_of_labor_decimal: @project.bid_cost_of_labor_decimal, bid_cost_of_permits: @project.bid_cost_of_permits, bid_equipment_rental: @project.bid_equipment_rental, bid_freight_decimal: @project.bid_freight_decimal, bid_material_cost: @project.bid_material_cost, bid_submit_date: @project.bid_submit_date, customer_id: @project.customer_id, er: @project.er, project_end_date: @project.project_end_date, project_start_date: @project.project_start_date, project_status_id: @project.project_status_id, project_type_id: @project.project_type_id, tax_rate: @project.tax_rate } }
+      post projects_url, params: { project: { bid_amount: @project.bid_amount, bid_cost_of_labor_decimal: @project.bid_cost_of_labor_decimal, bid_cost_of_permits: @project.bid_cost_of_permits, bid_equipment_rental: @project.bid_equipment_rental, bid_freight_decimal: @project.bid_freight_decimal, bid_material_cost: @project.bid_material_cost, bid_submit_date: @project.bid_submit_date, customer_id: @project.customer_id, er: @project.er, project_end_date: @project.project_end_date, project_start_date: @project.project_start_date, project_status_id: @project.project_status_id, project_type_id: @project.project_type_id, applicable_tax: @project.applicable_tax } }
     end
 
     assert_redirected_to project_url(Project.last)
@@ -34,7 +34,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update project" do
-    patch project_url(@project), params: { project: { bid_amount: @project.bid_amount, bid_cost_of_labor_decimal: @project.bid_cost_of_labor_decimal, bid_cost_of_permits: @project.bid_cost_of_permits, bid_equipment_rental: @project.bid_equipment_rental, bid_freight_decimal: @project.bid_freight_decimal, bid_material_cost: @project.bid_material_cost, bid_submit_date: @project.bid_submit_date, customer_id: @project.customer_id, er: @project.er, project_end_date: @project.project_end_date, project_start_date: @project.project_start_date, project_status_id: @project.project_status_id, project_type_id: @project.project_type_id, tax_rate: @project.tax_rate } }
+    patch project_url(@project), params: { project: { bid_amount: @project.bid_amount, bid_cost_of_labor_decimal: @project.bid_cost_of_labor_decimal, bid_cost_of_permits: @project.bid_cost_of_permits, bid_equipment_rental: @project.bid_equipment_rental, bid_freight_decimal: @project.bid_freight_decimal, bid_material_cost: @project.bid_material_cost, bid_submit_date: @project.bid_submit_date, customer_id: @project.customer_id, er: @project.er, project_end_date: @project.project_end_date, project_start_date: @project.project_start_date, project_status_id: @project.project_status_id, project_type_id: @project.project_type_id, applicable_tax: @project.applicable_tax } }
     assert_redirected_to project_url(@project)
   end
 

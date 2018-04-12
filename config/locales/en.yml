@@ -30,4 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      customer:
+        customer_rep_phone_1: First representative's phone
+        customer_rep_phone_2: Second representative's phone
+        customer_rep_email_1: First representative's email
+        customer_rep_email_2: Second representative's email
+        customer_address_1: Customer street address 
+        customer_address_2: Customer suite number

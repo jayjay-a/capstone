@@ -72,7 +72,7 @@ class TaskNotesController < ApplicationController
   def destroy
     @task_note.destroy
     respond_to do |format|
-      format.html { redirect_to task_notes_url, notice: 'Task note was successfully destroyed.' }
+      format.html { redirect_to task_notes_url, notice: 'Task note was successfully deleted.' }
       format.json { head :no_content }
     end
   end

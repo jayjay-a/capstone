@@ -68,7 +68,7 @@ class ProjectTypesController < ApplicationController
   def destroy
     @project_type.destroy
     respond_to do |format|
-      format.html { redirect_to project_types_url, notice: 'Project type was successfully destroyed.' }
+      format.html { redirect_to project_types_url, notice: 'Project type was successfully deleted.' }
       format.json { head :no_content }
     end
   end
