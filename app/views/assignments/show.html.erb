@@ -23,4 +23,4 @@
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @assignment.task, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_assignment_path(@assignment), class: "btn waves-effect waves-light" %> 
-<%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %>
+<% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>

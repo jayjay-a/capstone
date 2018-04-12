@@ -1,11 +1,16 @@
 class EmployeeStatusesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_employee_status, only: [:show, :edit, :update, :destroy]
 
   # GET /employee_statuses
   # GET /employee_statuses.json
   def index
-    @search = EmployeeStatus.ransack(params[:q]) #for ransack
-    @employee_statuses = @search.result
+    if user_signed_in?
+      @search = EmployeeStatus.ransack(params[:q]) #for ransack
+      @employee_statuses = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

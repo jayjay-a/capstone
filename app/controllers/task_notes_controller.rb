@@ -1,11 +1,16 @@
 class TaskNotesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_task_note, only: [:show, :edit, :update, :destroy]
 
   # GET /task_notes
   # GET /task_notes.json
   def index
-    @search = TaskNote.ransack(params[:q]) #for ransack
-    @task_notes = @search.result
+    if user_signed_in?
+      @search = TaskNote.ransack(params[:q]) #for ransack
+      @task_notes = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

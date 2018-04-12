@@ -1,4 +1,4 @@
-<% unless controller.controller_name == "sessions"%>
+<% unless controller.controller_name == "sessions" || controller.controller_name == "passwords"%>
 
 <nav>
   <div class="nav-wrapper">
@@ -24,15 +24,17 @@
       <%# drop down(resources) trigger on navbar%>
       <li><a class="dropdown-trigger" href="#!" data-target="resources">Resources<i class="material-icons right">arrow_drop_down</i></a></li> <%# contains subcontractors, materials, rental equipment%>
 
+      <% if current_user.present? && current_user.admin? %>
       <li class="<%= 'active' if params[:controller] == 'reports' %>">
         <a class="nav-link" <%= link_to 'Reports', reports_path %></a>
       </li>
 
-      <li class="<%= 'active' if params[:controller] == 'pages' %>">
-        <a <%= link_to "Admin Panel", admin_panel_path %></a>
-      </li>
+        <li class="<%= 'active' if params[:controller] == 'pages' %>">
+          <a <%= link_to "Admin Panel", admin_panel_path %></a>
+        </li>
+      <% end %>
 
-      <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
+      <li><a class="dropdown-trigger" href="#!" data-target="user"><% if user_signed_in? %> <%= current_user.name %> <% end %></a></li>
 
     </ul>
   </div>
@@ -50,6 +52,13 @@
   <li class="<%= 'active' if params[:controller] == 'rental_equipments' %>">
     <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
   </li>
+</ul>
+
+<%# dropdown1(user) contents on navbar %>
+<ul id="user" class="dropdown-content">
+  <li><%= link_to "Profile", current_user %></li>
+  <li class="divider"></li>
+  <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
 </ul>
 
 <%# side navbar for mobile %>
@@ -78,9 +87,15 @@
     <a class="nav-link" <%= link_to 'Rental Equipment', rental_equipments_path %></a>
   </li>
 
-  <li class="<%= 'active' if params[:controller] == 'pages' %>">
-    <a <%= link_to "Admin Panel", admin_panel_path %></a>
-  </li>
+  <% if current_user.present? && current_user.admin? %>
+    <li class="<%= 'active' if params[:controller] == 'reports' %>">
+      <a class="nav-link" <%= link_to 'Reports', reports_path %></a>
+    </li>
+
+    <li class="<%= 'active' if params[:controller] == 'pages' %>">
+      <a <%= link_to "Admin Panel", admin_panel_path %></a>
+    </li>
+  <% end %>
   
   <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
 </ul>

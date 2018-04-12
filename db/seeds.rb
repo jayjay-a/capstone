@@ -1,3 +1,11 @@
+# Users
+User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
+                { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
+                { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
+                { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
+                { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
+])
+
 # Customer Statuses
 CustomerStatus.create!([
                          { customer_status_description: 'Active Customer' },
@@ -820,7 +828,3 @@ Assignment.create!([
                      { subcontractor_id: 13, task_id: 49, employee_id: 1, assignment_date: '2017-10-30' },
                      { subcontractor_id: 18, task_id: 50, employee_id: 2, assignment_date: '2017-11-07' }
                    ])
-
-# Users
-# User.create!([
-#             ])

@@ -16,7 +16,7 @@
       <tr data-link=" <%= task_status_path(task_status) %>" >
         <td><%= task_status.task_status_description %></td>
         <td><%= link_to 'Edit', edit_task_status_path(task_status) %></td>
-        <td><%= link_to 'Delete', task_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? && current_user.admin? %><td><%= link_to 'Delete', task_status,  method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
       </tr>
     <% end %>
   </tbody>

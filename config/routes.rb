@@ -77,9 +77,10 @@ Rails.application.routes.draw do
   get '/pages/admin_panel', :as => 'admin_panel'
   resources :pages
 
-  root 'home#index'
+  root 'projects#index'
 
   devise_for :users, controllers: { registrations: "registrations"}
+  resources :users
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

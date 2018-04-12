@@ -1,11 +1,16 @@
 class EmployeeTypesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_employee_type, only: [:show, :edit, :update, :destroy]
 
   # GET /employee_types
   # GET /employee_types.json
   def index
-    @search = EmployeeType.ransack(params[:q]) #for ransack
-    @employee_types = @search.result
+    if user_signed_in?
+      @search = EmployeeType.ransack(params[:q]) #for ransack
+      @employee_types = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

@@ -1,11 +1,16 @@
 class JobsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @search = Job.ransack(params[:q]) #for ransack
-    @jobs = @search.result
+    if user_signed_in?
+      @search = Job.ransack(params[:q]) #for ransack
+      @jobs = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack

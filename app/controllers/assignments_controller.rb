@@ -1,11 +1,16 @@
 class AssignmentsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
   def index
-    @search = Assignment.ransack(params[:q]) #for ransack
-    @assignments = @search.result
+    if user_signed_in?
+      @search = Assignment.ransack(params[:q]) #for ransack
+      @assignments = @search.result
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def search #for ransack
