@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   has_many :assignments, dependent: :destroy
   belongs_to :task_status
   belongs_to :job
-  belongs_to :project
+  belongs_to :project, optional: true #fixes seeding. when tasks are added through nests, project_id is already passed
   
   validates :task_description, presence: true, length: { maximum: 200 }
   validate :task_end_date_cannot_be_before_task_start_date, unless: -> { task_end_date.blank? }
