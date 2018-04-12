@@ -19,9 +19,9 @@ class Job < ApplicationRecord
 
   def job_end_date_cannot_be_before_job_start_date
      if job_start_date.present? && job_end_date < job_start_date
-       errors.add(:job_end_date, "can't be before the job start date")
+       errors.add(:job_end_date, "can't be before the Job Start Date")
      elsif job_end_date.present? && job_start_date.blank?
-       errors.add(:job_end_date, "can't exist without a job start date")
+       errors.add(:job_end_date, "can't exist without a Job Start Date")
      end
   end
 
@@ -42,4 +42,5 @@ class Job < ApplicationRecord
         errors.add(:job_end_date, "can't be after project end date")
     end
   end
+
 end

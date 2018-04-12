@@ -13,6 +13,7 @@
       <div class="col s3">
         <%= label_tag(:t, "Job Type") %>
         <%= select_tag(:t, options_from_collection_for_select(JobType.all, "id", "job_type_description",params[:t]),:prompt => "Select a Job Type", class: "select2") %>
+        <br><br>
         <%= button_tag( :class => "btn waves-effect waves-light") do %>
           Submit<i class="material-icons right">send</i>
         <% end %>
@@ -34,7 +35,7 @@
     <th>Job Type</th>
     <th>Project Start Date</th>
     <th>Project End Date</th>
-    <th>Bid Amount</th>
+    <th>Project Bid Amount</th>
   </tr>
   </thead>
 

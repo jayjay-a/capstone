@@ -52,7 +52,7 @@ class ReportsController < ApplicationController
  	                FULL OUTER JOIN jobs j ON p.project_id = j.project_id
  	                FULL OUTER JOIN job_types jt ON j.job_type_id = jt.job_type_id
                   WHERE pt.project_status_description = 'Project Completed'
- 	                ORDER BY p.project_end_date desc;"
+ 	                ORDER BY jt.job_type_description, p.project_end_date desc, p.bid_amount;"
     elsif @job_type_in == "" && @bid_amount_in != nil
       sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
                   p.bid_amount, p.project_start_date, p.project_end_date
@@ -193,16 +193,16 @@ class ReportsController < ApplicationController
   #show frequency of subcontractor being hired - kristina
   def subcontractor_freq
     sql = "SELECT s.SUBCONTRACTOR_NAME, jt.job_type_description, COUNT(a.SUBCONTRACTOR_ID) AS frequency,
-           s.SUBCONTRACTOR_PHONE, s.SUBCONTRACTOR_EMAIL, MAX(a.assignment_date) AS last_date
+           s.SUBCONTRACTOR_PHONE, ss.subcontractor_status_description, s.SUBCONTRACTOR_EMAIL, MAX(a.assignment_date) AS last_date
            FROM ASSIGNMENTS a
            JOIN SUBCONTRACTORS s ON a.subcontractor_id = s.subcontractor_id
            JOIN subcontractor_statuses ss ON ss.subcontractor_status_id = s.subcontractor_status_id
            JOIN tasks t ON t.task_id = a.task_id
            JOIN jobs j ON t.job_id = j.job_id
            JOIN job_types jt ON j.job_type_id = jt.job_type_id
-           WHERE ss.subcontractor_status_description = 'Inactive'
-           GROUP BY subcontractor_name, job_type_description, subcontractor_phone, subcontractor_email, assignment_date
-		       ORDER BY frequency desc, last_date;"
+           WHERE ss.subcontractor_status_description != 'Terminated'
+           GROUP BY subcontractor_name, job_type_description, subcontractor_phone, subcontractor_email, assignment_date, ss.subcontractor_status_description
+		       ORDER BY ss.subcontractor_status_description desc, frequency desc, last_date;"
     @sub_freq = ActiveRecord::Base.connection.execute(sql)
     @filename = "Subcontractor_Hiring_Frequency.pdf"
     respond_to do |format|
@@ -277,7 +277,7 @@ class ReportsController < ApplicationController
   #show project notes
   def project_notes
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
-          ps.project_status_description, p.bid_submit_date, p.project_start_date, pn.project_notes
+          ps.project_status_description, p.bid_submit_date, p.project_start_date, pn.project_notes, pn.project_note_date
           FROM projects p
           JOIN customers c ON p.customer_id = c.customer_id
           JOIN project_types pt ON p.project_type_id = pt.project_type_id
@@ -285,7 +285,7 @@ class ReportsController < ApplicationController
           JOIN project_notes pn ON p.project_id = pn.project_id
           WHERE project_status_description = 'Bid Accepted' OR project_status_description = 'Awaiting Bid Response'
           OR project_status_description = 'Project Active'
-          ORDER BY pn.updated_at desc;"
+          ORDER BY pn.project_note_date desc;"
     @proj_notes = ActiveRecord::Base.connection.execute(sql)
     @filename = "Project Notes"
     respond_to do |format|

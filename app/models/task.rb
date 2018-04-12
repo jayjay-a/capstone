@@ -17,7 +17,7 @@ class Task < ApplicationRecord
      if task_end_date.present? && task_start_date.present? && task_end_date < task_start_date
        errors.add(:task_end_date, "can't be before the task start date")
      elsif task_end_date.present? && task_start_date.blank?
-       errors.add(:task_end_date, "can't exist without a task start date")
+       errors.add(:task_end_date, "can't exist without a Task Start Date")
      end
   end
 
