@@ -7,7 +7,6 @@ class Job < ApplicationRecord
 
   validates :job_type_id, presence: true
   validates :job_status_id, presence: true
-  validates :job_start_date, presence: true
   validate :job_end_date_cannot_be_before_job_start_date, unless: -> { job_end_date.blank? }
   validate :job_start_date_has_to_be_between_project_start_and_end, unless: -> { job_start_date.blank? }
   validate :job_end_date_has_to_be_between_project_start_and_end, unless: -> { job_end_date.blank? }
@@ -29,22 +28,20 @@ class Job < ApplicationRecord
   end
 
   def job_start_date_has_to_be_between_project_start_and_end
-    if job_start_date.present? && job_start_date < project.project_start_date
-      errors.add(:job_start_date, "can't be before the project start date")
-    elsif job_start_date.present? && project.project_end_date.present?
-      if job_start_date > project.project_end_date
+    if job_start_date.present? && project.project_start_date.present? && job_start_date < project.project_start_date
+        errors.add(:job_start_date, "can't be before the project start date")
+    elsif job_start_date.present? && project.project_end_date.present? && job_start_date > project.project_end_date
         errors.add(:job_start_date, "can't be after project end date")
-      end
+    elsif job_start_date.present? && project.project_start_date.blank?
+        errors.add(:job_start_date, "can't exist without a project start date")
     end
   end
 
   def job_end_date_has_to_be_between_project_start_and_end
-    if job_end_date.present? && job_end_date < project.project_start_date
+    if job_end_date.present? && project.project_start_date.present? && job_end_date < project.project_start_date
       errors.add(:job_end_date, "can't be before project start date")
-    elsif job_end_date.present? && project.project_end_date.present?
-      if job_end_date > project.project_end_date
+    elsif job_end_date.present? && project.project_end_date.present? && job_end_date > project.project_end_date
         errors.add(:job_end_date, "can't be after project end date")
-      end
     end
   end
 end
