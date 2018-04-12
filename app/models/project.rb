@@ -37,17 +37,17 @@ class Project < ApplicationRecord
 
   def project_start_date_cannot_be_before_bid_submit_date
     if bid_submit_date.present? && project_start_date < bid_submit_date
-      errors.add(:project_start_date, 'can\'t be before the bid submit date')
+      errors.add(:project_start_date, 'can\'t be before the Bid Submit Date')
     elsif bid_submit_date.blank? && project_start_date.present?
-      errors.add(:project_start_date, 'can\'t exist without a bid submit date')
+      errors.add(:project_start_date, 'can\'t exist without a Bid Submit Date')
     end
   end
 
   def project_end_date_cannot_be_before_project_start_date
       if project_start_date.present? && project_end_date < project_start_date
-        errors.add(:project_end_date, 'can\'t be before the project starts')
+        errors.add(:project_end_date, 'can\'t be before the Project Start Date')
       elsif project_start_date.blank? && project_end_date.present?
-        errors.add(:project_end_date, 'can\'t exist without a project start date')
+        errors.add(:project_end_date, 'can\'t exist without a Project Start Date')
       end
   end
 end

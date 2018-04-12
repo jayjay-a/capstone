@@ -33,9 +33,74 @@ en:
   activerecord:
     attributes:
       customer:
-        customer_rep_phone_1: First representative's phone
-        customer_rep_phone_2: Second representative's phone
-        customer_rep_email_1: First representative's email
-        customer_rep_email_2: Second representative's email
-        customer_address_1: Customer street address 
-        customer_address_2: Customer suite number
+        customer_rep_phone_1: First Representative's Phone
+        customer_rep_phone_2: Second Representative's Phone
+        customer_rep_email_1: First representative's Email
+        customer_rep_email_2: Second Representative's Email
+        customer_address_1: Customer Street Address
+        customer_address_2: Customer Suite Number
+        customer_status: Customer Status
+      project:
+        project_status: Project Status
+        project_type: Project Type
+        project_start_date: Project Start Date
+        project_end_date: Project End Date
+        bid_submit_date: Bid Submit Date
+        bid_material_cost: Material Cost
+        bid_cost_of_labor: Labor Cost
+        bid_cost_of_permits: Permits Cost
+        bid_equipment_rental: Rental Equipment Cost
+        bid_freight: Freight Cost
+        applicable_tax: Applicable Tax
+        bid_fuel_cost: Fuel Cost
+        bid_lodging_cost: Lodging Cost
+        bid_amount: Total Bid Amount
+      jobs:
+        job_status: Job Status
+        job_type: Job Type
+        job_start_date: Job Start Date
+        job_end_date: Job End Date
+      jobs/tasks:
+        task_status_id: Task Status
+        task_start_date: Task Start Date
+        task_end_date: Task End Date
+      tasks:
+        task_status_id: Task Status
+        task_start_date: Task Start Date
+        task_end_date: Task End Date
+        task_description: Task Description
+      material_lists:
+        material: Material
+        unit_price: Unit Price
+        quantity: Quantity
+      rental_lists:
+        rental_equipment: Rental Equipment
+        rental_price: Rental Price
+        cost_frequency: Cost Frequency
+      project_notes:
+        project_note_date: Project Note Date
+        project_note_owner: Project Note Owner
+        project_notes: Project Notes
+      job_notes:
+        job_note_date: Job Note Date
+        job_note_owner: Job Note Owner
+        job_notes: Job Notes
+      task_notes:
+        task_note_date: Task Note Date
+        task_note_owner: Task Note Owner
+        task_notes: Task Notes
+      assignments:
+        subcontractor_id: Subcontractor
+        assignment_date: Assignment Date
+        employee_id: Employee
+      subcontractor:
+        subcontractor_status: Subcontractor Status
+      employee:
+        employee_status: Employee Status
+        employee_type: Employee Type
+      state:
+        state_name: State Name
+        state_abbrev: State Abbreviation
+
+
+
