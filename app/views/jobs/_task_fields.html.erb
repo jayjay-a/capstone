@@ -8,7 +8,7 @@
 
     <div class="field col l3">
       <%= f.label :task_start_date, "Start Date" %>
-      <%= f.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
+      <%= f.text_field :task_start_date, id: :task_task_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => f.object.task_start_date || Date.today.strftime('%Y-%m-%d') %>
     </div>
 
     <div class="field col l3">
