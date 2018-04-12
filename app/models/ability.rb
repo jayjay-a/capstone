@@ -20,7 +20,7 @@ class Ability
                          ProjectType, JobType, SubcontractorStatus,
                          CustomerStatus, EmployeeStatus, EmployeeType,
                          Employee, State]
-        can :read, User, id: user.id
+        can :show, User, id: user.id
         can :update, User, id: user.id
         
         if user.admin?
