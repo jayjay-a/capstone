@@ -13,19 +13,19 @@
 
   <div class="row">
     <div class="field col l12">
-      <%= form.label :material_id  %>
+      <%= form.label :material_id, "Material ID *"  %>
       <%= form.collection_select :material_id, Material.all, :material_id, :material_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Material' } %>
     </div>
   </div>
 
   <div class="row">
     <div class="field col l2">
-      <%= form.label :unit_price, "Unit Price ($)" %>
+      <%= form.label :unit_price, "Unit Price ($) *" %>
       <%= form.number_field :unit_price, id: :material_list_unit_price, value: number_to_currency(form.object.unit_price.to_f, delimiter: '', unit: ''), step: :any %>
     </div>
 
     <div class="field col l2">
-      <%= form.label :quantity %>
+      <%= form.label :quantity, "Quantity *" %>
       <%= form.number_field :quantity, id: :material_list_quantit, step: any %>
     </div>
   </div>

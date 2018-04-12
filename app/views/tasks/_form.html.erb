@@ -21,7 +21,7 @@
     <p>
       <div class="row"><%# row 1 %>
         <div class="field col l3">
-          <%= form.label :task_status_id, "Status" %>
+          <%= form.label :task_status_id, "Status *" %>
           <%= form.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'}%>
         </div>
 
@@ -38,7 +38,7 @@
 
       <div class="row"><%# row 2 %>
         <div class="field col l9">
-          <%= form.label :task_description, "Task Description" %>
+          <%= form.label :task_description, "Task Description *" %>
           <%= form.text_area :task_description, id: :task_task_description%>
         </div>
       </div><%# row 2 end %>
