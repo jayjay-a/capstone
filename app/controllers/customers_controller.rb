@@ -6,8 +6,8 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     if user_signed_in?
-    @search = Customer.ransack(params[:q]) #for ransack
-    @customers = @search.result
+      @search = Customer.ransack(params[:q]) #for ransack
+      @customers = @search.result
     else
       redirect_to new_user_session_path
     end

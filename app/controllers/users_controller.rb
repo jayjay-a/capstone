@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    if user_signed_in?
+      @users = User.all
+    else
+      redirect_to new_user_session_path
+    end  
   end
 
    # GET /users/1
