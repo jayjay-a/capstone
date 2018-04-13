@@ -6,51 +6,69 @@
   <li class="tab"><a href="#notes">Notes</a></li>
 </ul>
 <div id="job">
-  <p>
-    <strong>Project:</strong>
-    #<%= @job.project.project_and_customer_and_branch %>
-  </p>
 
-  <p>
-    <strong>Job Type:</strong>
-    <%= @job.job_type.job_type_description  %>
-  </p>
+  <h4>Project #<%= @job.project.project_and_customer_and_branch %></h4>
 
-  <p>
-    <strong>Job Status:</strong>
-    <%= @job.job_status.job_status_description %>
-  </p>
-  
-  <p>
-    <strong>Job Start Date:</strong>
-    <%= @job.try(:job_start_date).try(:strftime, ("%m/%d/%Y")) %>
-  </p>
+  <table>
+    <col width="200">
 
-  <p>
-    <strong>Job End Date:</strong>
-    <%= @job.try(:job_end_date).try(:strftime, ("%m/%d/%Y")) %>
-  </p>
+    <tr>
+      <td><strong>Job Type:</strong></td>
+      <td><%= @job.job_type.job_type_description  %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Job Status:</strong></td>
+      <td><%= @job.job_status.job_status_description %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Job Start Date:</strong></td>
+      <td><%= @job.try(:job_start_date).try(:strftime, ("%m/%d/%Y")) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Job End Date:</strong></td>
+      <td><%= @job.try(:job_end_date).try(:strftime, ("%m/%d/%Y")) %></td>
+    </tr>
+
+  </table>
+
 </div>
+
 <%# tasks of job %>
 <div id="task">
-  <p>
-    <strong>Tasks:</strong> </br>
-    <ol>
+
+  <h4>Tasks:</h4>
+
+  <ol type="1">
+  <table>
     <% @job.tasks.each do |task| %> <%# iterates through each related task to this job%>
-      <li><%= link_to task.task_description, task %></li>
+        <tr>
+          <td>
+              <li><%= link_to task.task_description, task %></li>
+          </td>
+        </tr>
     <% end %>
-    </ol>
-  <p>
+  </table>
+  </ol>
 </div>
+
 <%# notes of job %>
 <div id="notes">
-  <p>
-    <strong>Notes:</strong></br>
-    <% @job.job_notes.each do |job_note| %> 
-        <strong>Made by <%= job_note.job_note_owner %> on <%= job_note.try(:job_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
-        <%= simple_format(job_note.job_notes) %></br></br>
+
+  <h4>Notes</h4>
+
+  <table>
+
+    <% @job.job_notes.each do |job_note| %>
+    <tr>
+      <td><strong>Made by <%= job_note.job_note_owner %> on <%= job_note.try(:job_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
+      <%= simple_format(job_note.job_notes) %></td>
+    </tr>
     <% end %>
-  </p>
+  </table>
+
 </div>
 
 </br>

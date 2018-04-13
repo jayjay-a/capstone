@@ -1,24 +1,26 @@
+<h4>Project #<%= @rental_list.project.project_and_customer_and_branch %></h4>
 
+<table>
+  <col width="200">
 
-<p>
-  <strong>Project:</strong>
-  #<%= @rental_list.project.project_and_customer_and_branch %>
-</p>
+  <tr>
+    <td><strong>Rental Equipment:</strong></td>
+    <td><%= @rental_list.rental_equipment.rental_description %></td>
+  </tr>
 
-<p>
-  <strong>Rental Equipment:</strong>
-  <%= @rental_list.rental_equipment.rental_description %>
-</p>
+  <tr>
+    <td><strong>Rental Price:</strong></td>
+    <td><%= number_to_currency(@rental_list.rental_price) %></td>
+  </tr>
 
-<p>
-  <strong>Rental Price:</strong>
-  <%= number_to_currency(@rental_list.rental_price) %>
-</p>
+  <tr>
+    <td><strong>Cost Frequency:</strong></td>
+    <td><%= @rental_list.cost_frequency %></td>
+  </tr>
 
-<p>
-  <strong>Cost Frequency:</strong>
-  <%= @rental_list.cost_frequency %>
-</p>
+</table>
+
+</br>
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @rental_list.project, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_rental_list_path(@rental_list), class: "btn waves-effect waves-light" %> 

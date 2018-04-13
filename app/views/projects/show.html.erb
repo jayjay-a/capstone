@@ -10,136 +10,159 @@
 
 <%# Project Tab%>
 <div id="project">
-  <p>
-    <p>
-      <strong>Customer:</strong>
-      <%= @project.customer.customer_and_branch %>
-    </p>
+  <h4>Projects</h4>
 
-    <p>
-      <strong>Project Type:</strong>
-      <%= @project.project_type.project_type_description %>
-    </p>
-    
-    <p>
-      <strong>Project Status:</strong>
-      <%= @project.project_status.project_status_description %>
-    </p>
+  <table>
+    <col width="225">
+    <tr>
+      <td><strong>Customer:</strong></td>
+      <td><%= @project.customer.customer_and_branch %></td>
+    </tr>
 
-    <p>
-      <strong>Project Start Date:</strong>
-      <%= @project.try(:project_start_date).try(:strftime, ("%m/%d/%Y")) %>
-    </p>
+    <tr>
+      <td><strong>Project Type:</strong></td>
+      <td><%= @project.project_type.project_type_description %></td>
+    </tr>
 
-    <p>
-      <strong>Project End Date:</strong>
-      <%= @project.try(:project_end_date).try(:strftime, ("%m/%d/%Y")) %>
-    </p>
+    <tr>
+      <td><strong>Project Status:</strong></td>
+      <td><%= @project.project_status.project_status_description %></td>
+    </tr>
 
-    <p>
-      <strong>Bid Submit Date:</strong>
-      <%= @project.bid_submit_date.strftime("%m/%d/%Y") %>
-    </p>
-  </p>
+    <tr>
+      <td><strong>Project Start Date:</strong></td>
+      <td><%= @project.try(:project_start_date).try(:strftime, ("%m/%d/%Y")) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Project End Date:</strong></td>
+      <td><%= @project.try(:project_end_date).try(:strftime, ("%m/%d/%Y")) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Bid Submit Date:</strong></td>
+      <td><%= @project.bid_submit_date.strftime("%m/%d/%Y") %></td>
+    </tr>
+  </table>
 </div>
 
 <%# Job Tab%>
 <div id="job">
-  <p>
-    <strong>Jobs:</strong></br>
+
+  <h4>Jobs</h4>
+
+  <table>
+
     <% @project.jobs.each do |job| %> <%# iterates through each related job to this project%>
-      <li><%= link_to job.job_type.job_type_description, job %></li>
-      <% comment do %>if you want task on the jobs for the show, uncomment this
-      <ul>
-        <% job.tasks.each do |task| %> <%# iterates through each related task to this job%>
-         <li><%= task.task_description %></li>
-        <% end %> 
-      <% comment end %>
-      </ul>
+    <tr>
+      <td><%= link_to job.job_type.job_type_description, job %></td>
+    </tr>
     <% end %>
-  </p>
+  </table>
+
 </div>
 
 <%# Material List Tab%>
 <div id="material_list">
-  <p>
-    <strong>Materials:</strong></br>
-      <% @project.material_lists.each do |material_list| %> <%# iterates through each related job to this project%>
-      <li><%= link_to material_list.material.material_description, material_list %></li>
-      <% end %>
-  </p>
+
+  <h4>Materials</h4>
+
+  <table>
+
+    <% @project.material_lists.each do |material_list| %> <%# iterates through each related job to this project%>
+        <tr>
+          <td><%= link_to material_list.material.material_description, material_list %></td>
+        </tr>
+    <% end %>
+  </table>
+
 </div>
 
 <%# Rental List Tab%>
 <div id="rental_list">
-  <p>
-    <strong>Rental Equipment:</strong></br>
-      <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
-      <li><%= link_to rental_list.rental_equipment.rental_description, rental_list %></li>
-      <% end %>
-  </p>
+
+  <h4>Rental Equipment</h4>
+
+  <table>
+
+    <% @project.rental_lists.each do |rental_list| %> <%# iterates through each related job to this project%>
+        <tr>
+          <td><%= link_to rental_list.rental_equipment.rental_description, rental_list %></td>
+        </tr>
+    <% end %>
+  </table>
+
 </div>
 
 <%# Cost Tab%>
 <div id="cost">
-  <p>
-    <p>
-      <strong>Material Cost:</strong>
-      <%= number_to_currency(@project.bid_material_cost) %>
-    </p>
-    
-    <p>
-      <strong>Labor Cost:</strong>
-      <%= number_to_currency(@project.bid_cost_of_labor) %>
-    </p>
-    
-    <p>
-      <strong>Permits Cost:</strong>
-      <%= number_to_currency(@project.bid_cost_of_permits) %>
-    </p>
-    
-    <p>
-      <strong>Rental Equipment Cost:</strong>
-      <%= number_to_currency(@project.bid_equipment_rental) %>
-    </p>
-    
-    <p>
-      <strong>Freight Cost:</strong>
-      <%= number_to_currency(@project.bid_freight) %>
-    </p>
-    
-    <p>
-      <strong>Fuel Cost:</strong>
-      <%= number_to_currency(@project.bid_fuel_cost) %>
-    </p>
-    
-    <p>
-      <strong>Lodging Cost:</strong>
-      <%= number_to_currency(@project.bid_lodging_cost) %>
-    </p>
-    
-    <p>
-      <strong>Applicable Tax:</strong>
-      <%= number_to_currency(@project.applicable_tax) %>
-    </p>
-    
-    <p>
-      <strong>Project Bid Amount:</strong>
-      <%= number_to_currency(@project.bid_amount) %>
-    </p>
 
-  </p>
+  <h4>Costs</h4>
+
+  <table>
+    <col width="225">
+    <tr>
+      <td><strong>Material Cost:</strong></td>
+      <td><%= number_to_currency(@project.bid_material_cost) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Labor Cost:</strong></td>
+      <td><%= number_to_currency(@project.bid_cost_of_labor) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Permits Cost:</strong></td>
+      <td><%= number_to_currency(@project.bid_cost_of_permits) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Rental Equipment Cost:</strong></td>
+      <td><%= number_to_currency(@project.bid_equipment_rental) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Freight Cost:</strong></td>
+      <td><%= number_to_currency(@project.bid_freight) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Fuel Cost:</strong></td>
+      <td><%= number_to_currency(@project.bid_fuel_cost) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Lodging Cost:</strong></td>
+      <td><%= number_to_currency(@project.bid_lodging_cost) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Applicable Tax:</strong></td>
+      <td><%= number_to_currency(@project.applicable_tax) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Project Bid Amount:</strong></td>
+      <td><%= number_to_currency(@project.bid_amount) %></td>
+    </tr>
+
+  </table>
+
 </div>
 
 <%# Notes Tab%> 
 <div id="notes">
-  <p>
-    <strong>Notes:</strong></br>
-      <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
-      <strong>Made by <%= project_note.project_note_owner %> on <%= project_note.try(:project_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
-      <%= simple_format(project_note.project_notes) %></br></br>
+    <h4>Notes</h4>
+
+  <table>
+
+    <% @project.project_notes.each do |project_note| %> <%# iterates through each related job to this project%>
+        <tr>
+          <td><strong>Made by <%= project_note.project_note_owner %> on <%= project_note.try(:project_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
+          <%= simple_format(project_note.project_notes) %></td>
+        </tr>
     <% end %>
-  </p>
+  </table>
 </div>
   
 </br>  

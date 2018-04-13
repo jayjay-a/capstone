@@ -1,29 +1,31 @@
+<h3><%= @subcontractor.subcontractor_name %></h3>
 
+<table>
+  <col width="200">
 
-<p>
-  <strong>Subcontractor Name:</strong>
-  <%= @subcontractor.subcontractor_name %>
-</p>
+  <tr>
+    <td><strong>Subcontractor Phone:</strong></td>
+    <td><%= number_to_phone(@subcontractor.subcontractor_phone, area_code: true) %></td>
+  </tr>
 
-<p>
-  <strong>Subcontractor Phone:</strong>
-  <%= number_to_phone(@subcontractor.subcontractor_phone, area_code: true) %>
-</p>
+  <tr>
+    <td><strong>Subcontractor Email:</strong></td>
+    <td><%= @subcontractor.subcontractor_email %></td>
+  </tr>
 
-<p>
-  <strong>Subcontractor Email:</strong>
-  <%= @subcontractor.subcontractor_email %>
-</p>
+  <tr>
+    <td><strong>Company:</strong></td>
+    <td><%= @subcontractor.company %></td>
+  </tr>
 
-<p>
-  <strong>Company:</strong>
-  <%= @subcontractor.company %>
-</p>
+  <tr>
+    <td><strong>Subcontractor Status:</strong></td>
+    <td><%= @subcontractor.subcontractor_status.subcontractor_status_description %></td>
+  </tr>
 
-<p>
-  <strong>Subcontractor Status:</strong>
-  <%= @subcontractor.subcontractor_status.subcontractor_status_description %>
-</p>
+</table>
+
+</br>
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  subcontractors_path, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_subcontractor_path(@subcontractor), class: "btn waves-effect waves-light" %> 
