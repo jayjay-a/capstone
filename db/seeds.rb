@@ -1,10 +1,10 @@
 # Users
-User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
-                { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
-                { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
-                { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
-                { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
-])
+# User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
+#                 { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
+#                 { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
+#                 { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
+#                 { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
+# ])
 
 # Customer Statuses
 CustomerStatus.create!([
