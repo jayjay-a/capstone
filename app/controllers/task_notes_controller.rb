@@ -7,7 +7,7 @@ class TaskNotesController < ApplicationController
   def index
     if user_signed_in?
       @search = TaskNote.ransack(params[:q]) #for ransack
-      @task_notes = @search.result
+      @task_notes = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end

@@ -7,7 +7,7 @@ class CustomerStatusesController < ApplicationController
   def index
     if user_signed_in?
       @search = CustomerStatus.ransack(params[:q]) #for ransack
-      @customer_statuses = @search.result
+      @customer_statuses = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end
