@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
   belongs_to :state, optional: true
   belongs_to :customer_status
 
+  # Validations
   validates :customer_name, presence: true, length: { maximum: 70 }
   validates :customer_branch, allow_blank: true, length: { maximum: 50 }
   validates :customer_address_1, allow_blank: true, length: { maximum: 100 }

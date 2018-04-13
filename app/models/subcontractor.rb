@@ -2,6 +2,7 @@ class Subcontractor < ApplicationRecord
   has_many :assignments
   belongs_to :subcontractor_status
 
+  # Validations
   validates :subcontractor_status_id, presence: true
   validates :subcontractor_name, length: { maximum: 70 }, format: { with: /\A[a-zA-Z'\-.\s]*\z/, message: 'can only be letters' }
   validates :subcontractor_phone, allow_blank: true, length: { maximum: 15 }, format: { with: /\A\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}\z/, message: 'needs to only be numbers and -\'s or ()\'s' }

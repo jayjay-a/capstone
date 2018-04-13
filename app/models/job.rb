@@ -5,6 +5,7 @@ class Job < ApplicationRecord
   belongs_to :job_type
   belongs_to :job_status
 
+  # Validations
   validate :job_end_date_cannot_be_before_job_start_date, unless: -> { job_end_date.blank? }
   validate :job_start_date_has_to_be_between_project_start_and_end, unless: -> { job_start_date.blank? }
   validate :job_end_date_has_to_be_between_project_start_and_end, unless: -> { job_end_date.blank? }
