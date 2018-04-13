@@ -27,13 +27,6 @@
       <%= form.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => assignment.assignment_date || Date.today.strftime('%Y-%m-%d') %>
     </div>
   </div><%# end row 1 %>
-
-  <div class="row"> <%# row 2 %>
-    <div class="field col l9">
-      <%= form.label :task_id %>
-      <%= form.collection_select :task_id, Task.all, :task_id, :task_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Task' } %>
-    </div>
-  </div> <%# end row 2 %>
  
   <%= button_tag( :class => "btn waves-effect waves-light right") do %>
     Save<i class="material-icons right">save</i>

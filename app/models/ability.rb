@@ -11,7 +11,7 @@ class Ability
         cannot :create, [User, ProjectStatus, JobStatus, TaskStatus,
                          ProjectType, JobType, SubcontractorStatus,
                          CustomerStatus, EmployeeStatus, EmployeeType,
-                         Employee, State]
+                         Employee, State ]
         cannot :read, [User, ProjectStatus, JobStatus, TaskStatus,
                        ProjectType, JobType, SubcontractorStatus,
                        CustomerStatus, EmployeeStatus, EmployeeType,

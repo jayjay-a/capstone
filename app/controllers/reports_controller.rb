@@ -1,6 +1,10 @@
 class ReportsController < ApplicationController
+  authorize_resource :class => false
   def index
-
+    if user_signed_in?
+    else
+      redirect_to new_user_session_path
+    end  
   end
 
   #subcontractors by activity status

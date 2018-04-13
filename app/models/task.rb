@@ -15,7 +15,7 @@ class Task < ApplicationRecord
 
   def task_end_date_cannot_be_before_task_start_date
      if task_end_date.present? && task_start_date.present? && task_end_date < task_start_date
-       errors.add(:task_end_date, "can't be before the task start date")
+       errors.add(:task_end_date, "can't be before the Task Start Date")
      elsif task_end_date.present? && task_start_date.blank?
        errors.add(:task_end_date, "can't exist without a Task Start Date")
      end
@@ -23,19 +23,19 @@ class Task < ApplicationRecord
 
   def task_start_date_has_to_be_between_job_start_and_end
     if task_start_date.present? && job.job_start_date.present? && task_start_date < job.job_start_date
-      errors.add(:task_start_date, "can't be before job start date")
+      errors.add(:task_start_date, "can't be before Job Start Date")
     elsif task_start_date.present? && job.job_end_date.present? && task_start_date > job.job_end_date
-      errors.add(:task_start_date, "can't be after job end date")
+      errors.add(:task_start_date, "can't be after Job End Date")
     elsif task_start_date.present? && job.job_start_date.blank?
-      errors.add(:task_start_date, "can't exist without a job start date")
+      errors.add(:task_start_date, "can't exist without a Job Start Date")
     end
   end
 
   def task_end_date_has_to_be_between_job_start_and_end
     if task_end_date.present? && job.job_start_date.present? && task_end_date < job.job_start_date
-      errors.add(:task_end_date, "can't be before job start date")
+      errors.add(:task_end_date, "can't be before Job Start Date")
     elsif task_end_date.present? && job.job_end_date.present? && task_end_date > job.job_end_date
-      errors.add(:task_end_date, "can't be after job end date")
+      errors.add(:task_end_date, "can't be after Job End Date")
     end
   end
 end
