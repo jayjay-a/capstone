@@ -8,6 +8,7 @@ class Job < ApplicationRecord
   validate :job_end_date_cannot_be_before_job_start_date, unless: -> { job_end_date.blank? }
   validate :job_start_date_has_to_be_between_project_start_and_end, unless: -> { job_start_date.blank? }
   validate :job_end_date_has_to_be_between_project_start_and_end, unless: -> { job_end_date.blank? }
+  validate :job_status_must_be_started_if_there_is_a_start_date, unless: -> { job_start_date.blank? }
 
   #nested forms
   accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
@@ -43,4 +44,9 @@ class Job < ApplicationRecord
     end
   end
 
+  def job_status_must_be_started_if_there_is_a_start_date
+    if job_start_date.present? && job_status_id.present? && job_status_id <= 1
+      errors.add(:job_status, "Must not be \"Not Started\" if there is a start date ")
+    end
+  end
 end
