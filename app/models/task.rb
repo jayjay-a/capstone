@@ -44,7 +44,7 @@ class Task < ApplicationRecord
 
   def task_status_must_be_started_if_there_is_a_start_date
     if task_start_date.present? && task_status_id.present? && task_status_id <= 1
-      errors.add(:task_status, "must not be \"Not Started\" if there is a start date")
+      errors.add(:task_status, "must be \"Not Started\" for current or future dates only")
     end
   end
 end
