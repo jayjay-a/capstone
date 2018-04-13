@@ -27,19 +27,19 @@ class Job < ApplicationRecord
 
   def job_start_date_has_to_be_between_project_start_and_end
     if job_start_date.present? && project.project_start_date.present? && job_start_date < project.project_start_date
-        errors.add(:job_start_date, "can't be before the project start date")
+        errors.add(:job_start_date, "can't be before the Project Start Date")
     elsif job_start_date.present? && project.project_end_date.present? && job_start_date > project.project_end_date
-        errors.add(:job_start_date, "can't be after project end date")
+        errors.add(:job_start_date, "can't be after Project End Date")
     elsif job_start_date.present? && project.project_start_date.blank?
-        errors.add(:job_start_date, "can't exist without a project start date")
+        errors.add(:job_start_date, "can't exist without a Project Start Date")
     end
   end
 
   def job_end_date_has_to_be_between_project_start_and_end
     if job_end_date.present? && project.project_start_date.present? && job_end_date < project.project_start_date
-      errors.add(:job_end_date, "can't be before project start date")
+      errors.add(:job_end_date, "can't be before Project Start Date")
     elsif job_end_date.present? && project.project_end_date.present? && job_end_date > project.project_end_date
-        errors.add(:job_end_date, "can't be after project end date")
+        errors.add(:job_end_date, "can't be after Project End Date")
     end
   end
 
