@@ -7,7 +7,7 @@ class SubcontractorsController < ApplicationController
   def index
     if user_signed_in?
       @search = Subcontractor.ransack(params[:q]) #for ransack
-      @subcontractors = @search.result
+      @subcontractors = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end
