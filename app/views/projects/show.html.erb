@@ -10,7 +10,7 @@
 
 <%# Project Tab%>
 <div id="project">
-  <h4>Projects</h4>
+  <h4>Project</h4>
 
   <table>
     <col width="225">
@@ -99,51 +99,43 @@
 
   <h4>Costs</h4>
 
-  <table>
-    <col width="225">
+  <table width="100%">
+
     <tr>
-      <td><strong>Material Cost:</strong></td>
-      <td><%= number_to_currency(@project.bid_material_cost) %></td>
+      <td width="25%"><strong>Material Cost:</strong></td>
+      <td width="15%" style="border-right:solid 1px #e0e0e0;"><%= number_to_currency(@project.bid_material_cost) %></td>
+
+      <td width="25%" style="padding-left: 5%"><strong>Freight Cost:</strong></td>
+      <td width="25%"><%= number_to_currency(@project.bid_freight) %></td>
     </tr>
 
     <tr>
       <td><strong>Labor Cost:</strong></td>
-      <td><%= number_to_currency(@project.bid_cost_of_labor) %></td>
-    </tr>
+      <td style="border-right:solid 1px #e0e0e0;"><%= number_to_currency(@project.bid_cost_of_labor) %></td>
 
-    <tr>
-      <td><strong>Permits Cost:</strong></td>
-      <td><%= number_to_currency(@project.bid_cost_of_permits) %></td>
-    </tr>
-
-    <tr>
-      <td><strong>Rental Equipment Cost:</strong></td>
-      <td><%= number_to_currency(@project.bid_equipment_rental) %></td>
-    </tr>
-
-    <tr>
-      <td><strong>Freight Cost:</strong></td>
-      <td><%= number_to_currency(@project.bid_freight) %></td>
-    </tr>
-
-    <tr>
-      <td><strong>Fuel Cost:</strong></td>
+      <td style="padding-left: 5%"><strong>Fuel Cost:</strong></td>
       <td><%= number_to_currency(@project.bid_fuel_cost) %></td>
     </tr>
 
     <tr>
-      <td><strong>Lodging Cost:</strong></td>
+      <td><strong>Permits Cost:</strong></td>
+      <td style="border-right:solid 1px #e0e0e0;"><%= number_to_currency(@project.bid_cost_of_permits) %></td>
+
+      <td style="padding-left: 5%"><strong>Lodging Cost:</strong></td>
       <td><%= number_to_currency(@project.bid_lodging_cost) %></td>
     </tr>
 
     <tr>
-      <td><strong>Applicable Tax:</strong></td>
+      <td><strong>Rental Equipment Cost:</strong></td>
+      <td style="border-right:solid 1px #e0e0e0;"><%= number_to_currency(@project.bid_equipment_rental) %></td>
+
+      <td style="padding-left: 5%"><strong>Applicable Tax:</strong></td>
       <td><%= number_to_currency(@project.applicable_tax) %></td>
     </tr>
 
     <tr>
-      <td><strong>Project Bid Amount:</strong></td>
-      <td><%= number_to_currency(@project.bid_amount) %></td>
+      <td style="padding-top: 5%"><strong>Project Bid Amount:</strong></td>
+      <td style="padding-top: 5%"><%= number_to_currency(@project.bid_amount) %></td>
     </tr>
 
   </table>
