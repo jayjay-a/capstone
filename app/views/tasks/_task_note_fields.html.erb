@@ -3,7 +3,7 @@
   <div class="row">
     <div class="field col l2">
       <%= f.label :task_note_owner, "Note Owner *" %>
-      <%= f.text_field :task_note_owner, id: :task_note_task_note_owner %>
+      <%= f.text_field :task_note_owner, id: :task_note_task_note_owner, :value => f.object.task_note_owner || current_user.name %>
     </div>
     <div class="field col l2">
       <%= f.label :task_note_date, "Note Date *" %>
