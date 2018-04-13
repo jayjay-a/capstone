@@ -46,7 +46,7 @@ class Job < ApplicationRecord
   end
 
   def job_status_must_be_started_if_there_is_a_start_date
-    if job_start_date.present? && job_status_id.present? && job_status_id <= 1
+    if job_start_date.present? && job_status_id.present? && job_status_id <= 1 && job_start_date < Date.today
       errors.add(:job_status, "must be \"Not Started\" for current or future dates only")
     end
   end
