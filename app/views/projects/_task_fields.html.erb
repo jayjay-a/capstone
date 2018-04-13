@@ -2,7 +2,7 @@
 <div id = task-fields class="task-fields" >
   <div class="row">
     <div class="field col l3">
-      <%= f.label :task_status_id %>
+      <%= f.label :task_status_id, "Task Status *" %>
       <%= f.collection_select :task_status_id, TaskStatus.all, :task_status_id, :task_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'}%>
     </div>
 
@@ -18,7 +18,7 @@
 
   <div class="row">
     <div class="field col l9">
-      <%= f.label :task_description %>
+      <%= f.label :task_description, "Task Description *" %>
       <%= f.text_area :task_description, id: :task_task_description%>
     </div>
   </div>

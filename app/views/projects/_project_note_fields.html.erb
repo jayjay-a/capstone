@@ -2,18 +2,18 @@
 <div id = nested-fields class="nested-fields">
   <div class="row">
     <div class="field col l2">
-      <%= f.label :project_note_owner, "Note Owner" %>
+      <%= f.label :project_note_owner, "Note Owner *" %>
       <%= f.text_field :project_note_owner, id: :project_note_project_note_owner %>
     </div>
     <div class="field col l2">
-      <%= f.label :project_note_date, "Note Date" %>
+      <%= f.label :project_note_date, "Note Date *" %>
       <%= f.text_field :project_note_date, id: :project_note_project_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => f.object.project_note_date || Date.today.strftime('%Y-%m-%d') %>
     </div>   
   </div>
 
   <div class="row">
     <div class="field col l12 m12 s12">
-      <%= f.label :project_notes, "Project Note" %>
+      <%= f.label :project_notes, "Project Note *" %>
       <%= f.text_area :project_notes, id: :project_note_project_notes %>
     </div>
   </div>

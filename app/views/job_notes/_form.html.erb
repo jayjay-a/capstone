@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :job_id, "Job ID *" %>
+    <%= form.label :job_id, "Job *" %>
     <%= form.collection_select :job_id, Job.all, :job_id, :job_id, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Job' } %>
   </div>
 

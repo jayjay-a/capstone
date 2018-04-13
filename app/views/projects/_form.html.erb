@@ -24,7 +24,7 @@
     <p>
     <div class="row">
       <div class="field col l4">
-        <%= form.label :customer_id, "Customer ID *" %>
+        <%= form.label :customer_id, "Customer *" %>
         <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_and_branch, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Customer'} %>
       </div>
       <div class="field col l3">
