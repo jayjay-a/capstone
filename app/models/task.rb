@@ -9,6 +9,8 @@ class Task < ApplicationRecord
   validate :task_end_date_cannot_be_before_task_start_date, unless: -> { task_end_date.blank? }
   validate :task_start_date_has_to_be_between_job_start_and_end, unless: -> { task_start_date.blank? }
   validate :task_end_date_has_to_be_between_job_start_and_end, unless: -> { task_end_date.blank? }
+  validate :task_status_must_be_started_if_there_is_a_start_date, unless: -> { task_start_date.blank? }
+
   #nested form
   accepts_nested_attributes_for :task_notes, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :assignments, allow_destroy: true, reject_if: :all_blank
@@ -36,6 +38,12 @@ class Task < ApplicationRecord
       errors.add(:task_end_date, "can't be before job start date")
     elsif task_end_date.present? && job.job_end_date.present? && task_end_date > job.job_end_date
       errors.add(:task_end_date, "can't be after job end date")
+    end
+  end
+
+  def task_status_must_be_started_if_there_is_a_start_date
+    if task_start_date.present? && task_status_id.present? && task_status_id <= 1
+      errors.add(:task_status, "must not be \"Not Started\" if there is a start date")
     end
   end
 end

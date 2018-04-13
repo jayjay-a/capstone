@@ -64,6 +64,8 @@ en:
         task_status_id: Task Status
         task_start_date: Task Start Date
         task_end_date: Task End Date
+        task_status: Task Status
+        task_description: Task Description
       tasks:
         task_status_id: Task Status
         task_start_date: Task Start Date
