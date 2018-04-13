@@ -34,7 +34,7 @@
         </li>
       <% end %>
 
-      <li><a class="dropdown-trigger" href="#!" data-target="user"><% if user_signed_in? %> <%= current_user.name %> <% end %></a></li>
+      <li><a class="dropdown-trigger" href="#!" data-target="user">Signed in as: <% if user_signed_in? %> <%= current_user.name %> <% end %></a></li>
 
     </ul>
   </div>
