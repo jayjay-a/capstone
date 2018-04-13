@@ -13,7 +13,7 @@
 
   <div class="row"> <%# row 1 %>
     <div class="field col l3">
-      <%= form.label :subcontractor_id, "Subcontracor *" %>
+      <%= form.label :subcontractor_id, "Subcontractor *" %>
       <%= form.collection_select :subcontractor_id, Subcontractor.all, :subcontractor_id, :subcontractor_name ,{:prompt => true}, {:class=> 'select2', :id => 'subbies', :selected => 1, "data-placeholder" => 'Select a Subcontractor'}%>
     </div>
 
