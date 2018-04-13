@@ -13,7 +13,7 @@
 
   <div class="row"> <%# row 1 %>
      <div class="field col l3">
-      <%= form.label :subcontractor_name, "Name" %>
+      <%= form.label :subcontractor_name, "Name *" %>
       <%= form.text_field :subcontractor_name, id: :subcontractor_subcontractor_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
     </div>
 
@@ -35,7 +35,7 @@
     </div>
 
     <div class="field col l3">
-      <%= form.label :subcontractor_status_id, "Status"  %>
+      <%= form.label :subcontractor_status_id, "Status *"  %>
       <%= form.collection_select :subcontractor_status_id, SubcontractorStatus.all, :subcontractor_status_id, :subcontractor_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
     </div>
   </div> <%# row 2 end %>

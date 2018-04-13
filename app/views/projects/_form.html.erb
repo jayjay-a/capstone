@@ -24,15 +24,15 @@
     <p>
     <div class="row">
       <div class="field col l4">
-        <%= form.label :customer_id %>
+        <%= form.label :customer_id, "Customer *" %>
         <%= form.collection_select :customer_id, Customer.all, :customer_id, :customer_and_branch, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Customer'} %>
       </div>
       <div class="field col l3">
-        <%= form.label :project_type_id, "Type" %>
+        <%= form.label :project_type_id, "Type *" %>
         <%= form.collection_select :project_type_id, ProjectType.all, :project_type_id, :project_type_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type'} %>
       </div>
       <div class="field col l3">
-        <%= form.label :project_status_id, "Status" %>
+        <%= form.label :project_status_id, "Status *" %>
         <%= form.collection_select :project_status_id, ProjectStatus.all, :project_status_id, :project_status_description, {:prompt => true}, {:class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status'} %>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <%= form.text_field :project_end_date, id: :project_project_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
       <div class="field col l2">
-        <%= form.label :bid_submit_date, "Bid Submit Date" %>
+        <%= form.label :bid_submit_date, "Bid Submit Date *" %>
         <%= form.text_field :bid_submit_date, id: :project_bid_submit_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => project.bid_submit_date || Date.today.strftime('%Y-%m-%d') %>
       </div>
     </div>
@@ -127,7 +127,7 @@
     
     <div class="row">
       <div class="field col l2">
-        <%= form.label :bid_amount, "Project Bid Amount ($)" %>
+        <%= form.label :bid_amount, "Project Bid Amount ($) *" %>
         <%= form.number_field :bid_amount, id: :project_bid_amount, value: number_to_currency(form.object.bid_amount.to_f, delimiter: '', unit: ''), step: :any %>
       </div>
     </div>

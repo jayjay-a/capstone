@@ -21,12 +21,12 @@
     <p>
       <div class="row"><%# row 1 %>
         <div class="field col l3">
-          <%= form.label :job_type_id, "Type" %>
+          <%= form.label :job_type_id, "Type *" %>
           <%= form.collection_select :job_type_id, JobType.all, :job_type_id, :job_type_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Type' } %>
         </div>
 
         <div class="field col l3">
-          <%= form.label :job_status_id, "Status" %>
+          <%= form.label :job_status_id, "Status *" %>
           <%= form.collection_select :job_status_id, JobStatus.all, :job_status_id, :job_status_description, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Status' } %>
         </div>
       </div> <%# row 1 end%>

@@ -2,7 +2,7 @@
 <div id = nested-fields class="nested-fields">
   <div class="row"> <%# row 1 %>
     <div class="field col l3">
-      <%= f.label :subcontractor_id %>
+      <%= f.label :subcontractor_id, "Subcontractor *" %>
       <%= f.collection_select :subcontractor_id, Subcontractor.all, :subcontractor_id, :subcontractor_name, {:prompt => true}, { :class => 'select2', :selected => 1, "data-placeholder" => 'Select a Subcontractor' }%>
     </div>
 
@@ -12,7 +12,7 @@
     </div> 
 
     <div class="field col l3">
-      <%= f.label :assignment_date, "Assignment Date" %>
+      <%= f.label :assignment_date, "Assignment Date *" %>
       <%= f.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => f.object.assignment_date || Date.today.strftime('%Y-%m-%d') %>
     </div>
   </div><%# end row 1 %>
