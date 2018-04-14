@@ -1,40 +1,32 @@
+<h3><%= @employee.first_name %> <%= @employee.last_name %></h3>
+
+<table width="100%">
 
 
-<p>
-  <strong>First Name:</strong>
-  <%= @employee.first_name %>
-</p>
+  <tr>
+    <td width="20%"><strong>Employee Status:</strong></td>
+    <td width="20%" style="border-right:solid 1px #e0e0e0;"><%= @employee.employee_status.employee_status_description %></td>
 
-<p>
-  <strong>Last Lame:</strong>
-  <%= @employee.last_name %>
-</p>
+    <td width="25%" style="padding-left: 5%"><strong>Employee Type:</strong></td>
+    <td><%= @employee.employee_type.employee_type_description %></td>
+  </tr>
 
-<p>
-  <strong>Employee Status:</strong>
-  <%= @employee.employee_status.employee_status_description %>
-</p>
+  <tr>
+    <td width="20%"><strong>Join Date:</strong></td>
+    <td width="20%" style="border-right:solid 1px #e0e0e0;"><%= @employee.join_date.strftime("%m/%d/%Y") %></td>
 
-<p>
-  <strong>Employee Type:</strong>
-  <%= @employee.employee_type.employee_type_description %>
-</p>
+    <td width="25%" style="padding-left: 5%"><strong>Dismiss date:</strong></td>
+    <td><%= @employee.try(:dismiss_date).try(:strftime, ("%m/%d/%Y")) %></td>
+  </tr>
 
+  <tr>
+    <td><strong>State:</strong></td>
+    <td><%= @employee.state.state_name %></td>
+  </tr>
 
-<p>
-  <strong>Join Date:</strong>
-  <%= @employee.join_date.strftime("%m/%d/%Y") %>
-</p>
+</table>
 
-<p>
-  <strong>Dismiss date:</strong>
-  <%= @employee.try(:dismiss_date).try(:strftime, ("%m/%d/%Y")) %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @employee.state.state_name %>
-</p>
+</br>
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  employees_path, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_employee_path(@employee), class: "btn waves-effect waves-light" %> 

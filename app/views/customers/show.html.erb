@@ -1,74 +1,69 @@
+<h3><%= @customer.customer_name %> <%= @customer.customer_branch %></h3>
+
+<table width="100%">
 
 
-<p>
-  <strong>Customer name:</strong>
-  <%= @customer.customer_name %>
-</p>
+  <tr>
+    <td width="25%"><strong>Status:</strong></td>
+    <td><%= @customer.customer_status.customer_status_description %></td>
+  </tr>
 
-<p>
-  <strong>Branch:</strong>
-  <%= @customer.customer_branch %>
-</p>
+  <tr>
+    <td><strong>Street Address:</strong></td>
+    <td><%= @customer.customer_address_1 %></td>
+  </tr>
 
-<p>
-  <strong>Status:</strong>
-  <%= @customer.customer_status.customer_status_description %>
-</p>
+  <tr>
+    <td><strong>Suite #:</strong></td>
+    <td><%= @customer.customer_address_2 %></td>
+  </tr>
 
-<p>
-  <strong>Street address:</strong>
-  <%= @customer.customer_address_1 %>
-</p>
+  <tr>
+    <td><strong>City:</strong></td>
+    <td><%= @customer.customer_city %></td>
+  </tr>
 
-<p>
-  <strong>Suite #:</strong>
-  <%= @customer.customer_address_2 %>
-</p>
+  <tr>
+    <td><strong>State:</strong></td>
+    <td><%= @customer.state.try(:state_name) %></td>
+  </tr>
 
-<p>
-  <strong>City:</strong>
-  <%= @customer.customer_city %>
-</p>
+  <tr>
+    <td><strong>Zipcode:</strong></td>
+    <td><%= @customer.customer_zipcode %></td>
 
-<p>
-  <strong>State:</strong>
-  <%= @customer.state.try(:state_name) %>
-</p>
+    <td></td>
+    <td></td>
+  </tr>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @customer.customer_zipcode %>
-</p>
+  <tr>
+    <td><strong>First Representative Name:</strong></td>
+    <td width="15%" style="border-right:solid 1px #e0e0e0;"><%= @customer.customer_rep_name_1 %></td>
 
-<p>
-  <strong>First Representative Name:</strong>
-  <%= @customer.customer_rep_name_1 %>
-</p>
+    <td width=30%" style="padding-left: 3%"><strong>Second Representative Name:</strong></td>
+    <td><%= @customer.customer_rep_name_2 %></td>
+  </tr>
 
-<p>
-  <strong>First Representative Phone:</strong>
-  <%= number_to_phone(@customer.customer_rep_phone_1, area_code: true) %>
-</p>
+  <tr>
+    <td><strong>First Representative Phone:</strong></td>
+  <td width="15%" style="border-right:solid 1px #e0e0e0;"><%= number_to_phone(@customer.customer_rep_phone_1, area_code: true) %></td>
 
-<p>
-  <strong>First Representative Email:</strong>
-  <%= @customer.customer_rep_email_1 %>
-</p>
+    <td style="padding-left: 3%"><strong>Second Representative Phone:</strong></td>
+    <td><%= number_to_phone(@customer.customer_rep_phone_2, area_code: true) %></td>
+  </tr>
 
-<p>
-  <strong>Second Representative Name:</strong>
-  <%= @customer.customer_rep_name_2 %>
-</p>
+  <tr>
+    <td><strong>First Representative Email:</strong></td>
+    <td width="15%" style="border-right:solid 1px #e0e0e0; padding-right: 3%"><%= @customer.customer_rep_email_1 %></td>
 
-<p>
-  <strong>Second Representative Phone:</strong>
-  <%= number_to_phone(@customer.customer_rep_phone_2, area_code: true) %>
-</p>
+    <td style="padding-left: 3%"><strong>Second Representative Email:</strong></td>
+    <td><%= @customer.customer_rep_email_2 %></td>
+  </tr>
 
-<p>
-  <strong>Second Representative Email:</strong>
-  <%= @customer.customer_rep_email_2 %>
-</p>
+
+</table>
+
+<br>
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  customers_path, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_customer_path(@customer), class: "btn waves-effect waves-light" %> 

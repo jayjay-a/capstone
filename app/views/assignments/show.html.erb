@@ -1,25 +1,24 @@
+<h4>Task: <%= @assignment.task.task_description %></h4>
 
+<table width="100%">
+  <tr>
+    <td width="25%"><strong>Assignment Date:</strong></td>
+    <td><%= @assignment.assignment_date.strftime("%m/%d/%Y") %></td>
 
-<p>
-  <strong>Subcontractor Assigned:</strong>
-  <%= @assignment.subcontractor.subcontractor_name %>
-</p>
+    <td></td>
+    <td></td>
+  </tr>
 
-<p>
+  <tr>
+    <td width="25%"><strong>Subcontractor Assigned:</strong></td>
+    <td width="20%" style="border-right:solid 1px #e0e0e0;"><%= @assignment.subcontractor.subcontractor_name %></td>
 
-</p>
-  <strong>Employee Assigned:</strong>
-  <%= @assignment.employee.try(:first_name) %>
+    <td width="25%" style="padding-left: 5%"><strong>Employee Assigned:</strong></td>
+    <td><%= @assignment.employee.try(:first_and_last_name) %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Assignment Date:</strong>
-  <%= @assignment.assignment_date.strftime("%m/%d/%Y") %>
-</p>
-
-<p>
-  <strong>Task:</strong>
-  <%= @assignment.task.task_description %>
-</p>
+</br>
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @assignment.task, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_assignment_path(@assignment), class: "btn waves-effect waves-light" %> 

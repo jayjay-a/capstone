@@ -1,24 +1,26 @@
+<h4>Project #<%= @material_list.project.project_and_customer_and_branch %></h4>
 
+<table>
+  <col width="150">
 
-<p>
-  <strong>Project:</strong>
-  #<%= @material_list.project.project_and_customer_and_branch %>
-</p>
+  <tr>
+    <td><strong>Material:</strong></td>
+    <td><%= @material_list.material.material_description %></td>
+  </tr>
 
-<p>
-  <strong>Material:</strong>
-  <%= @material_list.material.material_description %>
-</p>
+  <tr>
+    <td><strong>Unit Price:</strong></td>
+    <td><%= number_to_currency(@material_list.unit_price) %></td>
+  </tr>
 
-<p>
-  <strong>Unit Price:</strong>
-  <%= number_to_currency(@material_list.unit_price) %>
-</p>
+  <tr>
+    <td><strong>Quantity:</strong></td>
+    <td><%= @material_list.quantity %></td>
+  </tr>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @material_list.quantity %>
-</p>
+</table>
+
+</br>
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @material_list.project, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_material_list_path(@material_list), class: "btn waves-effect waves-light" %> 

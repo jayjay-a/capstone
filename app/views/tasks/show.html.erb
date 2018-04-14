@@ -5,58 +5,78 @@
   <li class="tab"><a href="#notes">Notes</a></li>
 </ul>
 <div id="task">
-  <p>
-    <strong>Project:</strong>
-    #<%= @task.job.project.project_and_customer_and_branch %>
-  </p>
 
-  <p>
-    <strong>Job:</strong>
-    <%= @task.job.job_type.job_type_description %>
-  </p>
+  <h4>Project #<%= @task.job.project.project_and_customer_and_branch %></h4>
 
-  <p>
-    <strong>Task:</strong>
-    <%= @task.task_description %>
-  </p>
+  <h5>Job: <%= @task.job.job_type.job_type_description %></h5>
 
-  <p>
-    <strong>Task Status:</strong>
-    <%= @task.task_status.task_status_description %>
-  </p>
+  <table>
+    <col width="200">
 
-  <p>
-    <strong>Task Start Date:</strong>
-    <%= @task.try(:task_start_date).try(:strftime, ("%m/%d/%Y")) %>
-  </p>
+    <tr>
+      <td><strong>Task:</strong></td>
+      <td><%= @task.task_description %></td>
+    </tr>
 
-  <p>
-    <strong>Task End Date:</strong>
-    <%= @task.try(:task_end_date).try(:strftime, ("%m/%d/%Y")) %>
-  </p>
+    <tr>
+      <td><strong>Task Status:</strong></td>
+      <td><%= @task.task_status.task_status_description %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Task Start Date:</strong></td>
+      <td><%= @task.try(:task_start_date).try(:strftime, ("%m/%d/%Y")) %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Task End Date:</strong></td>
+      <td><%= @task.try(:task_end_date).try(:strftime, ("%m/%d/%Y")) %></td>
+    </tr>
+
+  </table>
+
 </div>
 
 <div id="assignments">
-  <p>
-    <strong>Assignments:</strong></br>
+
+  <h4>Assignments</h4>
+
+  <table>
+
     <% @task.assignments.each do |assignment| %>
-      <li><%= link_to assignment.subcontractor.subcontractor_name, assignment %></li>
-      <% unless assignment.employee.blank? %>
-        <li><%= link_to assignment.employee.first_and_last_name, assignment %></li>
-      <% end %>
+        <tr>
+          <td><%= link_to assignment.subcontractor.subcontractor_name, assignment %></td>
+        </tr>
+        <% unless assignment.employee.blank? %>
+        <tr>
+              <td><%= link_to assignment.employee.first_and_last_name, assignment %></td>
+        </tr>
+        <% end %>
+
+
     <% end %>
-  </p>
+
+  </table>
+
 </div>
 
 <div id="notes">
-  <p>
-  <strong>Notes:</strong></br>
-    <% @task.task_notes.each do |task_note| %> 
-      <strong>Made by <%= task_note.task_note_owner %> on <%= task_note.try(:task_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
-      <%= simple_format(task_note.task_notes) %></br></br>
+
+  <h4>Notes</h4>
+
+  <table>
+
+    <% @task.task_notes.each do |task_note| %>
+      <tr>
+        <td><strong>Made by <%= task_note.task_note_owner %> on <%= task_note.try(:task_note_date).try(:strftime, ("%m/%d/%Y")) %>:</strong>
+        <%= simple_format(task_note.task_notes) %></td>
+        </tr>
     <% end %>
-  </p>
+  </table>
+
 </div>
+
+</br>
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  @task.job, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_task_path(@task), class: "btn waves-effect waves-light" %> 
