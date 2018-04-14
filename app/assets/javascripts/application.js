@@ -11,13 +11,14 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require materialize-sprockets
 //= require select2
 //= require cocoon
 
-$(document).ready(function(){ //loads
+$(document).on('turbolinks:load', function() {
     $('.select2').select2({     //select2
         placeholder: function(){ //sets placeholder based on data-placeholder in the field
             $(this).data('placeholder');
@@ -39,6 +40,7 @@ $(document).ready(function(){ //loads
 
     $('.sidenav').sidenav(); //show side navbar on mobile
 
+    M.Modal._count = 0;
     $('.modal').modal({
         preventScrolling: false
     }); //display modals

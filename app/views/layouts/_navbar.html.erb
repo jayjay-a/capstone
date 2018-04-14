@@ -1,5 +1,5 @@
 <% unless controller.controller_name == "sessions" || controller.controller_name == "passwords"%>
-
+<body data-turbolinks="false">
 <nav>
   <div class="nav-wrapper">
     <a class="brand-logo" <%= link_to 'Rollingstone Construction', root_path %></a>
@@ -99,26 +99,5 @@
   
   <li><a <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a></li>
 </ul>
-
-
-<%comment do %> this is just how an if logged in, show or dont show login button and logout. this used bootstrap styling
-    <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           Account <b class="caret"></b>
-          </a>     
-
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" <%= link_to "Sign out", destroy_user_session_path, :method=> 'delete'%></a>
-          </div>
-      <% else %>
-            <a class="nav-link" <%= link_to 'Log In', new_user_session_path %></a>
-      <% end %>
-        </li>
-    </ul>
-  </div>
-</nav>
-<% comment end %>
+</body>
 <%end%>
