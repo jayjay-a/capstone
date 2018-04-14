@@ -2,11 +2,11 @@ wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Project Notes") do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Project_Type Project_Status Bud_Submit_Date Project_Start_Date Project_Notes)
+  sheet.add_row %w(Project_ID Customer_Name Customer_Branch Project_Type Project_Status Bud_Submit_Date Project_Start_Date Project_Notes Project_Note_Date)
 
   # each user is a row on your spreadsheet
   @proj_notes.each do |p|
     sheet.add_row [p['project_id'], p['customer_name'], p['customer_branch'], p['project_type_description'],
-                    p['project_status_description'], p['bid_submit_date'], p['project_start_date'], p['project_notes']]
+                    p['project_status_description'], p['bid_submit_date'], p['project_start_date'], p['project_notes'], p['project_note_date']]
   end
 end
