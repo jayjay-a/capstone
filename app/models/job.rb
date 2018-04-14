@@ -2,10 +2,12 @@ class Job < ApplicationRecord
   has_many :job_notes, dependent: :destroy
   has_many :tasks, dependent: :destroy
   belongs_to :project, optional: true
-  belongs_to :job_type
-  belongs_to :job_status
+  belongs_to :job_type, optional: true
+  belongs_to :job_status, optional: true
 
   # Validations
+  validates :job_status_id, presence: true
+  validates :job_type_id, presence: true
   validate :job_end_date_cannot_be_before_job_start_date, unless: -> { job_end_date.blank? }
   validate :job_start_date_has_to_be_between_project_start_and_end, unless: -> { job_start_date.blank? }
   validate :job_end_date_has_to_be_between_project_start_and_end, unless: -> { job_end_date.blank? }
