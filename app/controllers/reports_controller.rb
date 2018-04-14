@@ -9,14 +9,16 @@ class ReportsController < ApplicationController
     @sub_status = nil
     @sub_status ||= params[:q]
     if @sub_status == nil
-    sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email, MAX(a.assignment_date) AS last_date
+    sql = "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email,
+            to_char(MAX(a.assignment_date), 'MM/DD/YYYY') AS last_date
             FROM Subcontractors sub
             JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
 		        JOIN assignments a ON sub.subcontractor_id = a.subcontractor_id
             GROUP BY subcontractor_name, company, subcontractor_phone, subcontractor_email
 		        ORDER BY subcontractor_name;"
     elsif @sub_status != nil
-     sql =  "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email, MAX(a.assignment_date) AS last_date
+     sql =  "SELECT sub.subcontractor_name, sub.company, sub.subcontractor_phone, sub.subcontractor_email,
+            to_char(MAX(a.assignment_date), 'MM/DD/YYYY') AS last_date
             FROM Subcontractors sub
             JOIN Subcontractor_statuses subst ON sub.subcontractor_status_id = subst.subcontractor_status_id
 		        JOIN assignments a ON sub.subcontractor_id = a.subcontractor_id
@@ -45,7 +47,9 @@ class ReportsController < ApplicationController
     @job_type_in ||= params[:t] #when text field is empty or wrong data type, need an error exception handling
     if @job_type_in == nil && @bid_amount_in == nil
       sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                  p.bid_amount, p.project_start_date, p.project_end_date
+                  p.bid_amount,
+                  to_char(p.project_start_date, 'MM/DD/YYYY') AS project_start_date,
+                  to_char(p.project_end_date, 'MM/DD/YYYY') AS project_end_date
  	                FROM projects p
  	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                  	JOIN customers c ON p.customer_id = c.customer_id
@@ -55,7 +59,9 @@ class ReportsController < ApplicationController
  	                ORDER BY jt.job_type_description, p.project_end_date desc, p.bid_amount;"
     elsif @job_type_in == "" && @bid_amount_in != nil
       sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                  p.bid_amount, p.project_start_date, p.project_end_date
+                  p.bid_amount,
+                  to_char(p.project_start_date, 'MM/DD/YYYY') AS project_start_date,
+                  to_char(p.project_end_date, 'MM/DD/YYYY') AS project_end_date
  	                FROM projects p
  	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                  	JOIN customers c ON p.customer_id = c.customer_id
@@ -66,7 +72,9 @@ class ReportsController < ApplicationController
  	                ORDER BY p.project_end_date desc;"
     elsif @job_type_in != nil && @bid_amount_in == ""
       sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                   p.bid_amount, p.project_start_date, p.project_end_date
+                   p.bid_amount,
+                  to_char(p.project_start_date, 'MM/DD/YYYY') AS project_start_date,
+                  to_char(p.project_end_date, 'MM/DD/YYYY') AS project_end_date
  	                FROM projects p
  	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                  	JOIN customers c ON p.customer_id = c.customer_id
@@ -77,7 +85,9 @@ class ReportsController < ApplicationController
  	                ORDER BY p.project_end_date desc;"
     elsif @job_type_in != nil && @bid_amount_in != nil
       sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-                  p.bid_amount, p.project_start_date, p.project_end_date
+                  p.bid_amount,
+                  to_char(p.project_start_date, 'MM/DD/YYYY') AS project_start_date,
+                  to_char(p.project_end_date, 'MM/DD/YYYY') AS project_end_date
  	                FROM projects p
  	                JOIN project_statuses pt ON p.project_status_id = pt.project_status_id
                  	JOIN customers c ON p.customer_id = c.customer_id
@@ -101,7 +111,8 @@ class ReportsController < ApplicationController
   #show bid information from a project - kristina
   def bid_info
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description,
-          p.bid_submit_date, p.bid_amount, ps.project_status_description
+          to_char(p.bid_submit_date, 'MM/DD/YYYY') AS bid_submit_date,
+          p.bid_amount, ps.project_status_description
           FROM projects p
           JOIN jobs j ON p.project_id = j.project_id
           JOIN job_types jt ON j.job_type_id = jt.job_type_id
@@ -124,12 +135,14 @@ class ReportsController < ApplicationController
   # show duration of project - kristina
   def project_duration
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
-            p.project_start_date, p.project_end_date, p.project_end_date - p.project_start_date AS days
+            to_char(p.project_start_date, 'MM/DD/YYYY') AS project_start_date,
+            to_char(p.project_end_date, 'MM/DD/YYYY') AS project_end_date,
+            p.project_end_date - p.project_start_date AS days
             FROM projects p
             JOIN project_types pt ON p.project_type_id = pt.project_type_id
             JOIN customers c ON p.customer_id = c.customer_id
 			      JOIN project_statuses ps ON p.project_status_id = ps.project_status_id
-			      WHERE project_status_description = 'Project Completed'
+            WHERE project_status_description = 'Project Completed'
 			      ORDER BY project_end_date desc, days desc;"
 
     @duration_proj = ActiveRecord::Base.connection.execute(sql)
@@ -145,8 +158,10 @@ class ReportsController < ApplicationController
  
   #show duration of job in project - kristina
   def job_duration
-    sql = "SELECT p.project_id, customer_name, customer_branch, jt.job_type_description, job_start_date,
-           job_end_date, job_end_date - job_start_date AS days
+    sql = "SELECT p.project_id, customer_name, customer_branch, jt.job_type_description,
+           to_char(job_start_date, 'MM/DD/YYYY') AS job_start_date,
+           to_char(job_end_date, 'MM/DD/YYYY') AS job_end_date,
+           job_end_date - job_start_date AS days
            FROM projects p
            JOIN customers c ON p.customer_id = c.customer_id
            JOIN jobs j ON p.project_id = j.project_id
@@ -169,7 +184,9 @@ class ReportsController < ApplicationController
   # show duration of task in project
   def task_duration
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, job_type_description, task_description,
-           task_start_date, task_end_date, task_end_date - task_start_date AS days, ts.task_status_description
+           to_char(task_start_date, 'MM/DD/YYYY') AS task_start_date,
+           to_char(task_end_date, 'MM/DD/YYYY') AS task_start_date,
+           task_end_date - task_start_date AS days, ts.task_status_description
            FROM projects p
            JOIN customers c ON p.customer_id = c.customer_id
            JOIN jobs j ON p.project_id = j.project_id
@@ -221,7 +238,9 @@ class ReportsController < ApplicationController
     @task_status ||= params[:q]
     if @task_status == nil
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description, t.task_description,
-           ts.task_status_description, t.task_start_date, t.task_end_date
+           ts.task_status_description,
+           to_char(t.task_start_date, 'MM/DD/YYYY') AS task_start_date,
+           to_char(t.task_end_date, 'MM/DD/YYYY') AS task_end_date
            FROM Tasks t
            JOIN task_statuses ts ON t.task_status_id = ts.task_status_id
 			     JOIN jobs j ON t.job_id = j.job_id
@@ -230,7 +249,9 @@ class ReportsController < ApplicationController
 			     JOIN customers c ON c.customer_id = p.customer_id;"
     elsif @task_status != nil
       sql = "SELECT p.project_id, c.customer_name, c.customer_branch, jt.job_type_description, t.task_description,
-           ts.task_status_description, t.task_start_date, t.task_end_date
+           ts.task_status_description,
+           to_char(t.task_start_date, 'MM/DD/YYYY') AS task_start_date,
+           to_char(t.task_end_date, 'MM/DD/YYYY') AS task_end_date
            FROM Tasks t
            JOIN task_statuses ts ON t.task_status_id = ts.task_status_id
 			     JOIN jobs j ON t.job_id = j.job_id
@@ -277,7 +298,9 @@ class ReportsController < ApplicationController
   #show project notes
   def project_notes
     sql = "SELECT p.project_id, c.customer_name, c.customer_branch, pt.project_type_description,
-          ps.project_status_description, p.bid_submit_date, p.project_start_date, pn.project_notes, pn.project_note_date
+          ps.project_status_description, to_char(p.bid_submit_date, 'MM/DD/YYYY') AS bid_submit_date,
+          to_char(p.project_start_date, 'MM/DD/YYYY') AS project_start_date, pn.project_notes,
+          to_char(pn.project_note_date, 'MM/DD/YYYY') AS project_note_date
           FROM projects p
           JOIN customers c ON p.customer_id = c.customer_id
           JOIN project_types pt ON p.project_type_id = pt.project_type_id
