@@ -46,10 +46,6 @@ $(document).ready(function(){ //loads
     $('.tabs').tabs();
 });
 
-document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   
-    //currently unused cause we dont got turbolink no mo
-})
-
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields
     $(document).ready(function() { //select2 drop boxes
         $('select').select2({     //select2
