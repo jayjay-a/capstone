@@ -28,6 +28,7 @@
          </div>
         </div>
         <%= f.submit 'Apply', class: "btn" %>
+        <%= link_to 'Clear',  rental_lists_path, class: "btn waves-effect waves-light grey" %> 
       <% end %>
     </div>
   </div> <%# end filter modal %>
@@ -77,6 +78,8 @@
 </table>
 
 <br>
+
+<center><%= paginate @rental_lists %></center>
 
 <style>
   tr{

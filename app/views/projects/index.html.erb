@@ -1,8 +1,6 @@
 
 
-<div>
   <h1>Projects</h1>
-</div>
 
   <%# button to open up the modal at bottom which has filter options%> 
   <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
@@ -43,6 +41,7 @@
         </div>
 
         <%= f.submit 'Apply', class: "btn" %>
+        <%= link_to 'Clear',  projects_path, class: "btn waves-effect waves-light grey" %> 
       <% end %>
     </div>
   </div> <%# end filter modal %>
@@ -128,6 +127,8 @@
 </table>
 
 <br>
+
+<center><%= paginate @projects %></center>
 
 <style>
   tr{

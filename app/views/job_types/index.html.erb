@@ -6,7 +6,7 @@
 <table class="responsive-table highlight">
   <thead>
     <tr>
-      <th><%= sort_link(@search, :job_type_description) %></th>
+      <th><%= sort_link(@search, :job_type_description, "Job Type Description") %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,3 +23,5 @@
 </table>
 
 <br>
+
+<center><%= paginate @job_types %></center>

@@ -42,6 +42,7 @@
           </div>
         </div>
         <%= f.submit 'Apply', class: "btn" %>
+        <%= link_to 'Clear',  material_lists_path, class: "btn waves-effect waves-light grey" %> 
       <% end %>
     </div>
   </div> <%# end filter modal %>
@@ -94,6 +95,8 @@
 </table>
 
 <br>
+
+<center><%= paginate @material_lists %></center>
 
 <style>
   tr{

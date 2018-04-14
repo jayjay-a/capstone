@@ -14,7 +14,7 @@
     <div class="row"><%# row 1%>
       <div class="input col l4">
         <%= form.label :Name, "Name *" %>
-        <%= form.text_field :customer_name, id: :customer_customer_name, required: true, pattern: "[a-zA-Z\s]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+        <%= form.text_field :customer_name, id: :customer_customer_name, required: true %>
       </div>
       <div class="input col l4">
         <%= form.label :Branch %>

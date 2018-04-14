@@ -17,9 +17,10 @@
         <%= button_tag( :class => "btn waves-effect waves-light") do %>
           Submit<i class="material-icons right">send</i>
         <% end %>
-        <%= link_to ("Clear"), reports_compare_projects_path %>
+        <%= link_to 'Clear',  reports_compare_projects_path, class: "btn waves-effect waves-light grey" %> 
       </div>
-      <div class="input-field col s2">
+      <div class="col s2">
+        <%= label_tag(:q, "Bid Amount") %>
         <%= text_field_tag :q, @bid_amount_in , :placeholder => "Bid Amount >" %>
       </div>
     </div>

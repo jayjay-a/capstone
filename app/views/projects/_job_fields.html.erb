@@ -14,11 +14,11 @@
 
     <div class="row"><%# start row 2 %>
       <div class="field col l3">
-        <%= f.label :job_start_date %>
+        <%= f.label :job_start_date, "Job Start Date" %>
         <%= f.text_field :job_start_date, id: :job_job_start_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => f.object.job_start_date || Date.today.strftime('%Y-%m-%d') %>
       </div>
       <div class="field col l3">
-        <%= f.label :job_end_date %>
+        <%= f.label :job_end_date, "Job End Date" %>
         <%= f.text_field :job_end_date, id: :job_job_end_date, placeholder: "YYYY-MM-DD", :class => 'datepicker' %>
       </div>
     </div><%# end row 2 %>

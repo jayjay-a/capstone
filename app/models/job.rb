@@ -5,9 +5,11 @@ class Job < ApplicationRecord
   belongs_to :job_type
   belongs_to :job_status
 
+  # Validations
   validate :job_end_date_cannot_be_before_job_start_date, unless: -> { job_end_date.blank? }
   validate :job_start_date_has_to_be_between_project_start_and_end, unless: -> { job_start_date.blank? }
   validate :job_end_date_has_to_be_between_project_start_and_end, unless: -> { job_end_date.blank? }
+  validate :job_status_must_be_started_if_there_is_a_start_date, unless: -> { job_start_date.blank? }
 
   #nested forms
   accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
@@ -27,20 +29,25 @@ class Job < ApplicationRecord
 
   def job_start_date_has_to_be_between_project_start_and_end
     if job_start_date.present? && project.project_start_date.present? && job_start_date < project.project_start_date
-        errors.add(:job_start_date, "can't be before the project start date")
+        errors.add(:job_start_date, "can't be before the Project Start Date")
     elsif job_start_date.present? && project.project_end_date.present? && job_start_date > project.project_end_date
-        errors.add(:job_start_date, "can't be after project end date")
+        errors.add(:job_start_date, "can't be after Project End Date")
     elsif job_start_date.present? && project.project_start_date.blank?
-        errors.add(:job_start_date, "can't exist without a project start date")
+        errors.add(:job_start_date, "can't exist without a Project Start Date")
     end
   end
 
   def job_end_date_has_to_be_between_project_start_and_end
     if job_end_date.present? && project.project_start_date.present? && job_end_date < project.project_start_date
-      errors.add(:job_end_date, "can't be before project start date")
+      errors.add(:job_end_date, "can't be before Project Start Date")
     elsif job_end_date.present? && project.project_end_date.present? && job_end_date > project.project_end_date
-        errors.add(:job_end_date, "can't be after project end date")
+        errors.add(:job_end_date, "can't be after Project End Date")
     end
   end
 
+  def job_status_must_be_started_if_there_is_a_start_date
+    if job_start_date.present? && job_status_id.present? && job_status_id <= 1 && job_start_date < Date.today
+      errors.add(:job_status, "must be \"Not Started\" for current or future dates only")
+    end
+  end
 end

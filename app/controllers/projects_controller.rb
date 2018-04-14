@@ -7,8 +7,8 @@ class ProjectsController < ApplicationController
   def index
     if user_signed_in?
       @search = Project.ransack(params[:q]) #for ransack
-      @projects = @search.result
-    else
+      @projects = @search.result.order("created_at DESC").page(params[:page]).per(50)
+  else
       redirect_to new_user_session_path
     end       
   end
@@ -85,7 +85,7 @@ class ProjectsController < ApplicationController
                                                       ],
                                       project_notes_attributes:[:id, :project_note_id, :project_notes, :project_note_date, :project_note_owner, :_destroy],
                                       material_lists_attributes:[:id, :material_list_id, :project_id, :material_id, :unit_price, :quantity, :_destroy],
-                                      rental_lists_attributes:[:id, :renta_list_id, :project_id, :rental_equipment_id, :rental_price, :cost_frequency, :_destroy]
+                                      rental_lists_attributes:[:id, :rental_list_id, :project_id, :rental_equipment_id, :rental_price, :cost_frequency, :_destroy]
                                       )
                                       #model_attributes are nested. id and _destroy are required cause it prevents a bug where the fields duplicate when update/deleting
     end

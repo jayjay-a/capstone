@@ -40,6 +40,9 @@ gem 'devise'
 # Use cancancan for authorization
 gem 'cancancan'
 
+# Use for Karminari
+gem 'kaminari'
+
 # Use for Materialize
 gem 'materialize-sass', '~> 1.0.0.beta'
 
