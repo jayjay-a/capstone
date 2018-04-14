@@ -1,27 +1,23 @@
 <h3><%= @subcontractor.subcontractor_name %></h3>
 
-<table>
-  <col width="200">
+<table width="100%">
+
+  <tr>
+    <td width="20%"><strong>Company:</strong></td>
+    <td width="30%" style="border-right:solid 1px #e0e0e0;"><%= @subcontractor.company %></td>
+
+    <td style="padding-left: 3%"><strong>Subcontractor Status:</strong></td>
+    <td><%= @subcontractor.subcontractor_status.subcontractor_status_description %></td>
+  </tr>
 
   <tr>
     <td><strong>Subcontractor Phone:</strong></td>
-    <td><%= number_to_phone(@subcontractor.subcontractor_phone, area_code: true) %></td>
-  </tr>
+    <td width="15%" style="border-right:solid 1px #e0e0e0;"><%= number_to_phone(@subcontractor.subcontractor_phone, area_code: true) %></td>
 
-  <tr>
-    <td><strong>Subcontractor Email:</strong></td>
+    <td style="padding-left: 3%"><strong>Subcontractor Email:</strong></td>
     <td><%= @subcontractor.subcontractor_email %></td>
   </tr>
 
-  <tr>
-    <td><strong>Company:</strong></td>
-    <td><%= @subcontractor.company %></td>
-  </tr>
-
-  <tr>
-    <td><strong>Subcontractor Status:</strong></td>
-    <td><%= @subcontractor.subcontractor_status.subcontractor_status_description %></td>
-  </tr>
 
 </table>
 

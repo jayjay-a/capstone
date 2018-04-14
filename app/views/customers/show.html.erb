@@ -1,10 +1,10 @@
 <h3><%= @customer.customer_name %> <%= @customer.customer_branch %></h3>
 
-<table>
-  <col width="300">
+<table width="100%">
+
 
   <tr>
-    <td><strong>Status:</strong></td>
+    <td width="25%"><strong>Status:</strong></td>
     <td><%= @customer.customer_status.customer_status_description %></td>
   </tr>
 
@@ -31,37 +31,35 @@
   <tr>
     <td><strong>Zipcode:</strong></td>
     <td><%= @customer.customer_zipcode %></td>
+
+    <td></td>
+    <td></td>
   </tr>
 
   <tr>
     <td><strong>First Representative Name:</strong></td>
-    <td><%= @customer.customer_rep_name_1 %></td>
-  </tr>
+    <td width="15%" style="border-right:solid 1px #e0e0e0;"><%= @customer.customer_rep_name_1 %></td>
 
-  <tr>
-    <td><strong>First Representative Phone:</strong></td>
-  <td><%= number_to_phone(@customer.customer_rep_phone_1, area_code: true) %></td>
-  </tr>
-
-  <tr>
-    <td><strong>First Representative Email:</strong></td>
-    <td><%= @customer.customer_rep_email_1 %></td>
-  </tr>
-
-  <tr>
-    <td><strong>Second Representative Name:</strong></td>
+    <td width=30%" style="padding-left: 3%"><strong>Second Representative Name:</strong></td>
     <td><%= @customer.customer_rep_name_2 %></td>
   </tr>
 
   <tr>
-    <td><strong>Second Representative Phone:</strong></td>
+    <td><strong>First Representative Phone:</strong></td>
+  <td width="15%" style="border-right:solid 1px #e0e0e0;"><%= number_to_phone(@customer.customer_rep_phone_1, area_code: true) %></td>
+
+    <td style="padding-left: 3%"><strong>Second Representative Phone:</strong></td>
     <td><%= number_to_phone(@customer.customer_rep_phone_2, area_code: true) %></td>
   </tr>
 
   <tr>
-    <td><strong>Second Representative Email:</strong></td>
+    <td><strong>First Representative Email:</strong></td>
+    <td width="15%" style="border-right:solid 1px #e0e0e0; padding-right: 3%"><%= @customer.customer_rep_email_1 %></td>
+
+    <td style="padding-left: 3%"><strong>Second Representative Email:</strong></td>
     <td><%= @customer.customer_rep_email_2 %></td>
   </tr>
+
 
 </table>
 
