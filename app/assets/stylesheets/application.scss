@@ -19,11 +19,6 @@
  @import 'https://fonts.googleapis.com/icon?family=Material+Icons'; //icons for materialize
  @import 'select2-materialize.scss'; //for select2 dropdown boxes styling
 
-table {
-  table-layout: fixed;
-  width: 100%;   
-}
-
  #nested-fields { //default cocoon id
   margin-bottom: 10px;
 }
