@@ -85,7 +85,7 @@ class ProjectsController < ApplicationController
                                                       ],
                                       project_notes_attributes:[:id, :project_note_id, :project_notes, :project_note_date, :project_note_owner, :_destroy],
                                       material_lists_attributes:[:id, :material_list_id, :project_id, :material_id, :unit_price, :quantity, :_destroy],
-                                      rental_lists_attributes:[:id, :renta_list_id, :project_id, :rental_equipment_id, :rental_price, :cost_frequency, :_destroy]
+                                      rental_lists_attributes:[:id, :rental_list_id, :project_id, :rental_equipment_id, :rental_price, :cost_frequency, :_destroy]
                                       )
                                       #model_attributes are nested. id and _destroy are required cause it prevents a bug where the fields duplicate when update/deleting
     end
