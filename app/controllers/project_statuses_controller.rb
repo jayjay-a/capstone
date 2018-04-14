@@ -7,7 +7,7 @@ class ProjectStatusesController < ApplicationController
   def index
     if user_signed_in?
       @search = ProjectStatus.ransack(params[:q]) #for ransack
-      @project_statuses = @search.result
+      @project_statuses = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end

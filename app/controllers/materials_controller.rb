@@ -7,7 +7,7 @@ class MaterialsController < ApplicationController
   def index
     if user_signed_in?
       @search = Material.ransack(params[:q]) #for ransack
-      @materials = @search.result
+      @materials = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end

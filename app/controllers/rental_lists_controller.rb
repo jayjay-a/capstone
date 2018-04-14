@@ -7,7 +7,7 @@ class RentalListsController < ApplicationController
   def index
     if user_signed_in?
       @search = RentalList.ransack(params[:q]) #for ransack
-      @rental_lists = @search.result
+      @rental_lists = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end

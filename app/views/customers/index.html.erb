@@ -22,6 +22,7 @@
           </div>
         </div>
         <%= f.submit 'Apply', class: "btn" %>
+        <%= link_to 'Clear',  customers_path, class: "btn waves-effect waves-light grey" %> 
       <% end %>
     </div>
   </div> <%# end filter modal %>
@@ -97,6 +98,8 @@
 </table>
 
 <br>
+
+<center><%= paginate @customers %></center>
 
 <style>
   tr{

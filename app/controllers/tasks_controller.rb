@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   def index
     if user_signed_in?
       @search = Task.ransack(params[:q]) #for ransack
-      @tasks = @search.result
+      @tasks = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end  

@@ -17,17 +17,17 @@
   </div>
 
   <div class="field">
-    <%= form.label :task_note_owner, "Note Owner*" %>
+    <%= form.label :task_note_owner, "Note Owner *" %>
     <%= form.text_field :task_note_owner, id: :task_note_task_note_owner, required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :task_note_date, "Note Date*" %>
+    <%= form.label :task_note_date, "Note Date *" %>
     <%= form.text_field :task_note_date, id: :task_note_task_note_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => task_note.task_note_date || Date.today.strftime('%Y-%m-%d'), required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :task_notes, "Task Notes*" %>
+    <%= form.label :task_notes, "Task Notes *" %>
     <%= form.text_area :task_notes, id: :task_note_task_notes, required: true %>
   </div>
 

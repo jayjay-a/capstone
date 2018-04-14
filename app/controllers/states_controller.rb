@@ -7,7 +7,7 @@ class StatesController < ApplicationController
   def index
     if user_signed_in?
       @search = State.ransack(params[:q]) #for ransack
-      @states = @search.result
+      @states = @search.result.order("created_at DESC").page(params[:page]).per(50)
     else
       redirect_to new_user_session_path
     end

@@ -1,18 +1,18 @@
 
 
 <p>
-  <strong>name:</strong>
+  <strong>Name: </strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>email:</strong>
+  <strong>Email: </strong>
   <%= @user.email %>
 </p>
 
 <% if user_signed_in? && current_user.admin? %>
 <p>
-  <strong>admin:</strong>
+  <strong>Admin: </strong>
   <%= @user.admin %>
 </p>
 <% end %>
