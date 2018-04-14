@@ -800,6 +800,18 @@ Task.create!([
                { job_id: 75, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Fix cracks in floor' },
                { job_id: 76, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Replace tiles with new ones' },
                { job_id: 77, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Repainting of the walls' },
+               { job_id: 78, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Strip off old paint' },
+               { job_id: 78, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Apply new paint' },
+               { job_id: 79, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Install new stalls' },
+               { job_id: 80, task_status_id: 3, task_start_date: '2018-02-01', task_end_date: '2018-02-20', task_description: 'Replace tiles' },
+               { job_id: 81, task_status_id: 2, task_start_date: '2018-01-20', task_end_date: '', task_description: 'Paint the back room' },
+               { job_id: 82, task_status_id: 2, task_start_date: '2018-02-10', task_end_date: '', task_description: 'Install new tiles' },
+               { job_id: 83, task_status_id: 2, task_start_date: '2018-02-04', task_end_date: '', task_description: 'Strip old paint' },
+               { job_id: 83, task_status_id: 2, task_start_date: '2018-02-04', task_end_date: '', task_description: 'Apply new paint' },
+               { job_id: 84, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Install new booths' },
+               { job_id: 85, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Repaint walls in the lobby' },
+               { job_id: 86, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Test old wood for damage' },
+               { job_id: 86, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Replace damaged wood' }
              ])
 
 # Task Notes
