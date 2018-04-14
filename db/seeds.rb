@@ -1,10 +1,10 @@
-# Users
-User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
-                { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
-                { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
-                { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
-                { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
-])
+# # Users
+# User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
+#                 { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
+#                 { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
+#                 { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
+#                 { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
+# ])
 
 # Customer Statuses
 CustomerStatus.create!([
@@ -754,7 +754,34 @@ Task.create!([
                { job_id: 47, task_status_id: 3, task_start_date: '2018-02-10', task_end_date: '2018-02-19', task_description: 'Replace bathroom sinks' },
                { job_id: 48, task_status_id: 3, task_start_date: '2018-01-20', task_end_date: '2018-02-04', task_description: 'Fix cracks across the wall' },
                { job_id: 49, task_status_id: 3, task_start_date: '2017-10-30', task_end_date: '2017-11-04', task_description: 'Tint the window' },
-               { job_id: 50, task_status_id: 3, task_start_date: '2017-11-07', task_end_date: '2017-11-14', task_description: 'Build new storage cabinet' }
+               { job_id: 50, task_status_id: 3, task_start_date: '2017-11-07', task_end_date: '2017-11-14', task_description: 'Build new storage cabinet' },
+               { job_id: 51, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Reorganize sinks' },
+               { job_id: 52, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Fix cracks on tiles' },
+               { job_id: 53, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Cover graffiti' },
+               { job_id: 54, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Install new toilets' },
+               { job_id: 55, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Coating over tile and cement' },
+               { job_id: 56, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Repair broken booths' },
+               { job_id: 57, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Replace wood tabletops' },
+               { job_id: 58, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Polish flooring' },
+               { job_id: 59, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Fill holes in the wall' },
+               { job_id: 60, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Replace old equipment' },
+               { job_id: 61, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Reseat wall mounted items' },
+               { job_id: 62, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Bolt down furniture to the floor' },
+               { job_id: 63, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Replace old wood' },
+               { job_id: 64, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Repair deck out the back' },
+               { job_id: 65, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Place new ceiling tile' },
+               { job_id: 66, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Realign collapsed wall' },
+               { job_id: 67, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Set up new wall' },
+               { job_id: 68, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Create storage place for equipment' },
+               { job_id: 69, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Fill missing tiles' },
+               { job_id: 70, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Repair cracked tiles' },
+               { job_id: 71, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Cover holes in floor' },
+               { job_id: 72, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Cover holes in ceiling' },
+               { job_id: 73, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Replace wooden tabletops' },
+               { job_id: 74, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Demolish counters' },
+               { job_id: 75, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Fix cracks in floor' },
+               { job_id: 76, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Replace tiles with new ones' },
+               { job_id: 77, task_status_id: 1, task_start_date: '', task_end_date: '', task_description: 'Repainting of the walls' },
              ])
 
 # Task Notes
