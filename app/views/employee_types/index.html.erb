@@ -3,11 +3,12 @@
 <h1>Employee Types</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Employee Type"), new_employee_type_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table highlight">
+
+<table class="table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :employee_type_description, "Employee Type Description") %></th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 

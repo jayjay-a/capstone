@@ -3,7 +3,8 @@
 <h1>Tasks</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Task"), new_task_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table highlight">
+
+<table class="table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :job_job_id) %></th>

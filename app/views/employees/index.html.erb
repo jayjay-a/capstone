@@ -3,7 +3,8 @@
 <h1>Employees</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Employee"), new_employee_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table highlight">
+
+<table class="table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :first_name, "First Name") %></th>
