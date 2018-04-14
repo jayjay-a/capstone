@@ -40,9 +40,11 @@ en:
         customer_address_1: Customer Street Address
         customer_address_2: Customer Suite Number
         customer_status: Customer Status
-      project:
+      project: 
         project_status: Project Status
         project_type: Project Type
+        project_status_id: Project Status
+        project_type_id: Project Type
         project_start_date: Project Start Date
         project_end_date: Project End Date
         bid_submit_date: Bid Submit Date
@@ -58,6 +60,8 @@ en:
       jobs:
         job_status: Job Status
         job_type: Job Type
+        job_status_id: Job Status
+        job_type_id: Job Type
         job_start_date: Job Start Date
         job_end_date: Job End Date
       jobs/tasks:
@@ -73,10 +77,12 @@ en:
         task_description: Task Description
       material_lists:
         material: Material
+        material_id: Material
         unit_price: Unit Price
         quantity: Quantity
       rental_lists:
         rental_equipment: Rental Equipment
+        rental_equipment_id: Rental Equipment
         rental_price: Rental Price
         cost_frequency: Cost Frequency
       project_notes:

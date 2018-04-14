@@ -37,7 +37,7 @@
       </div>
       <div class="input col l2">
         <%= form.label :customer_city, "City" %>
-        <%= form.text_field :customer_city, id: :customer_customer_city, pattern: "[a-zA-Z\s]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+        <%= form.text_field :customer_city, id: :customer_customer_city %>
       </div>
       <div class="input col l2">
         <%= form.label :state_id %>
@@ -45,7 +45,7 @@
       </div>
       <div class="input col l2">
         <%= form.label :customer_zipcode, "Zipcode" %>
-        <%= form.text_field :customer_zipcode, id: :customer_customer_zipcode, :pattern => "{5}(-{4})?/", :message => 'Zip Codes should be in 12345 or 12345-1234 format' %>
+        <%= form.text_field :customer_zipcode, id: :customer_customer_zipcode %>
       </div>
     </div><%# row 2 end%>
 
@@ -53,7 +53,7 @@
       <div class="input col l4">
 
         <%= form.label :customer_rep_name_1, "First Representative Name *" %>
-        <%= form.text_field :customer_rep_name_1, id: :customer_customer_rep_name_1, required: true, pattern: "[a-zA-Z\s]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+        <%= form.text_field :customer_rep_name_1, id: :customer_customer_rep_name_1, required: true %>
       </div>
       <div class="input col l4">
         <%= form.label :customer_rep_phone_1, "First Representative Phone" %>
@@ -68,7 +68,7 @@
     <div class="row"> <%# row 4 end %>
       <div class="input col l4">
         <%= form.label :customer_rep_name_2, "Second Representative Name" %>
-        <%= form.text_field :customer_rep_name_2, id: :customer_customer_rep_name_2, pattern: "[a-zA-Z\s]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+        <%= form.text_field :customer_rep_name_2, id: :customer_customer_rep_name_2 %>
       </div>
       <div class="input col l4">
         <%= form.label :customer_rep_phone_2, "Second Representative Phone" %>

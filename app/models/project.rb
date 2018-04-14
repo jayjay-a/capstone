@@ -6,11 +6,14 @@ class Project < ApplicationRecord
   has_many :tasks, through: :jobs
   has_many :materials, through: :material_lists
   has_many :rental_equipments, through: :rental_lists
-  belongs_to :customer
-  belongs_to :project_status
-  belongs_to :project_type
+  belongs_to :customer, optional: true
+  belongs_to :project_status, optional: true
+  belongs_to :project_type, optional: true
 
   # Validations
+  validates :customer_id, presence: true
+  validates :project_status_id, presence: true
+  validates :project_type_id, presence: true 
   validates :bid_material_cost, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_cost_of_labor, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }
   validates :bid_cost_of_permits, allow_nil: true, numericality: { greater_than_or_equal_to: 0, message: 'has to be 0 or greater' }

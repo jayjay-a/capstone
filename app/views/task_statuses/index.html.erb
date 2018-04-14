@@ -3,11 +3,12 @@
 <h1>Task Statuses</h1>
 
 <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Task Status"), new_task_status_path, class: "btn waves-effect waves-light right" %> 
-<table class="responsive-table highlight">
+
+<table class="table highlight">
   <thead>
     <tr>
       <th><%= sort_link(@search, :task_status_description, "Task Status Description") %></th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 

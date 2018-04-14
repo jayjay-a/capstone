@@ -2,11 +2,7 @@
 
 <h1>Subcontractors</h1>
 
-  <%# button to open up the modal at bottom which has filter options%> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
-
-  <%# filter modal at bottom for filtering options %>
-  <div id="filter" class="modal bottom-sheet"><%# start modal %>
+  <div id="filter" class="modal bottom-sheet"><%# start filter modal %>
     <div class="modal-content">
       <h4>Filters</h4>
       <%# using ransack to search for these inputs%>
@@ -23,11 +19,7 @@
     </div>
   </div> <%# end filter modal %>
 
-  <%# button to open up the modal at bottom which has search %> 
-  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons right">search</i>search</a>
-
-  <%# search modal at bottom for search %>
-  <div id="search" class="modal bottom-sheet"><%# start modal %>
+  <div id="search" class="modal bottom-sheet"><%# start search modal %>
     <div class="modal-content">
       <h4>Search</h4>
       <%# using ransack to search for these inputs%>
@@ -42,7 +34,15 @@
     </div>
   </div> <%# end search modal %>
 
-<%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Subcontractor"), new_subcontractor_path, class: "btn waves-effect waves-light right" %> 
+<div class="row">
+  <%# button to open up the modal at bottom which has filter options%> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#filter"><i class="material-icons right">filter_list</i>filter</a>
+  <%# button to open up the modal at bottom which has search %> 
+  <a class="waves-effect waves-light btn modal-trigger" href="#search"><i class="material-icons right">search</i>search</a>
+  <%= link_to raw("<i class=\"material-icons right\">add_circle</i>New Subcontractor"), new_subcontractor_path, class: "btn waves-effect waves-light right" %> 
+</div>
+
+
 <table class="responsive-table highlight">
   <thead>
     <tr>

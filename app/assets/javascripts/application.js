@@ -11,13 +11,14 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require materialize-sprockets
 //= require select2
 //= require cocoon
 
-$(document).ready(function(){ //loads
+$(document).on('turbolinks:load', function() {
     $('.select2').select2({     //select2
         placeholder: function(){ //sets placeholder based on data-placeholder in the field
             $(this).data('placeholder');
@@ -28,8 +29,9 @@ $(document).ready(function(){ //loads
     $('.datepicker').datepicker({ //datepicker
         format: 'yyyy-mm-dd',
         showDaysInNextAndPreviousMonths: true,
-        showClearBtn: true,
+        showClearBtn: true
     });
+
     $(".datepicker").datepicker('setDate', new Date()); //defaults current date as default selected
 
     $(".dropdown-trigger").dropdown({ //dropdown on the navbar
@@ -38,16 +40,13 @@ $(document).ready(function(){ //loads
 
     $('.sidenav').sidenav(); //show side navbar on mobile
 
+    M.Modal._count = 0;
     $('.modal').modal({
         preventScrolling: false
     }); //display modals
 
     $('.tabs').tabs();
 });
-
-document.addEventListener("turbolinks:load", function() { //fixes having to refresh to get javascript to work cause of turbolinks   
-    //currently unused cause we dont got turbolink no mo
-})
 
 $(document).on('cocoon:before-insert', function(e, insertedItem) { //adds select2 to cocoon nested fields
     $(document).ready(function() { //select2 drop boxes

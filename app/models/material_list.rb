@@ -1,7 +1,7 @@
 class MaterialList < ApplicationRecord
 
   belongs_to :project
-  belongs_to :material
+  belongs_to :material, optional: true
 
   # Validations
   validates :material_id, presence: true

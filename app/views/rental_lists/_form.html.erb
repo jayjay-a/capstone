@@ -21,12 +21,12 @@
   <div class="row">
     <div class="field col l2">
       <%= form.label :rental_price, "Rental Price($) *" %>
-      <%= form.number_field :rental_price, id: :rental_list_rental_price, value: number_to_currency(form.object.rental_price.to_f, delimiter: '', unit: ''), step: :any %>
+      <%= form.number_field :rental_price, id: :rental_list_rental_price, value: number_to_currency(form.object.rental_price.to_f, delimiter: '', unit: ''), step: :any, required: true %>
     </div>
   
     <div class="field col l2">
       <%= form.label :cost_frequency, "Cost Frequency *" %>
-      <%= form.text_field :cost_frequency, id: :rental_list_cost_frequency %>
+      <%= form.text_field :cost_frequency, id: :rental_list_cost_frequency, required: true %>
     </div>
   </div>
 
