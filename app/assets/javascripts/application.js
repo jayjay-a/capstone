@@ -28,8 +28,9 @@ $(document).ready(function(){ //loads
     $('.datepicker').datepicker({ //datepicker
         format: 'yyyy-mm-dd',
         showDaysInNextAndPreviousMonths: true,
-        showClearBtn: true,
+        showClearBtn: true
     });
+
     $(".datepicker").datepicker('setDate', new Date()); //defaults current date as default selected
 
     $(".dropdown-trigger").dropdown({ //dropdown on the navbar

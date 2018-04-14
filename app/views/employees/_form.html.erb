@@ -42,12 +42,12 @@
 
     <div class="field col l4">
       <%= form.label :first_name, "First Name *" %>
-      <%= form.text_field :first_name, id: :employee_first_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+      <%= form.text_field :first_name, id: :employee_first_name, required: true %>
     </div>
 
     <div class="field col l4">
       <%= form.label :last_name, "Last Name *" %>
-      <%= form.text_field :last_name, id: :employee_last_name, required: true, pattern: "[a-zA-Z]+",  oninvalid: "setCustomValidity('Please fill this field with letters A-Z')", onchange: "try{setCustomValidity('')}catch(e){}" %>
+      <%= form.text_field :last_name, id: :employee_last_name, required: true %>
     </div>
   </div><%# row 2 end %>
     

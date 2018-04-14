@@ -24,7 +24,7 @@
 
     <div class="field col l3">
       <%= form.label :assignment_date, "Assignment Date *" %>
-      <%= form.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => assignment.assignment_date || Date.today.strftime('%Y-%m-%d') %>
+      <%= form.text_field :assignment_date, id: :assignment_assignment_date, placeholder: "YYYY-MM-DD", :class => 'datepicker', :value => assignment.assignment_date || Date.today.strftime('%Y-%m-%d'), required: true %>
     </div>
   </div><%# end row 1 %>
  
