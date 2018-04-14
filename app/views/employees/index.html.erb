@@ -6,8 +6,8 @@
 <table class="responsive-table highlight">
   <thead>
     <tr>
-      <th><%= sort_link(@search, :last_name, [:last_name, 'first_name asc']) %></th>
-      <th><%= sort_link(@search, :first_name, [:first_name, 'last_name asc']) %></th>
+      <th><%= sort_link(@search, :first_name, "First Name") %></th>
+      <th><%= sort_link(@search, :last_name, "Last Name") %></th>
       <th><%= sort_link(@search, :employee_employee_type_description, "Type") %></th>
       <th><%= sort_link(@search, :join_date) %></th>
       <th><%= sort_link(@search, :dismiss_date) %></th>
