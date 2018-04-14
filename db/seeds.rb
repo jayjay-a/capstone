@@ -1,10 +1,10 @@
-# Users
-User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
-                { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
-                { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
-                { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
-                { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
-])
+# # Users
+# User.create!([  { name: 'admin', email: 'admin@admin.admin', admin: true, password: '123456' },
+#                 { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
+#                 { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
+#                 { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: false, password: '123456' },
+#                 { name: 'test', email: 'test@test.com', admin: false, password: '123456' }
+# ])
 
 # Customer Statuses
 CustomerStatus.create!([
@@ -395,7 +395,16 @@ Project.create!([
                   { customer_id: 47, project_status_id: 7, project_type_id: 1,  project_start_date: '2017-10-25',	project_end_date: '2017-11-15', bid_submit_date: '2017-8-5',	bid_material_cost: '1500', bid_cost_of_labor: '3050', bid_cost_of_permits: '270', bid_equipment_rental: '1138', bid_freight: '462', applicable_tax: '692.01', bid_amount: '9080', bid_fuel_cost: '750', bid_lodging_cost: '750' },
                   { customer_id: 48, project_status_id: 2, project_type_id: 1,  project_start_date: '2018-9-25', project_end_date: '', bid_submit_date: '2018-3-5',	bid_material_cost: '9800', bid_cost_of_labor: '19750', bid_cost_of_permits: '221', bid_equipment_rental: '2047', bid_freight: '556', applicable_tax: '3850.41', bid_amount: '50522', bid_fuel_cost: '750', bid_lodging_cost: '750' },
                   { customer_id: 49, project_status_id: 3, project_type_id: 1,  project_start_date: '', project_end_date: '', bid_submit_date: '2017-8-19',	bid_material_cost: '2000', bid_cost_of_labor: '4000', bid_cost_of_permits: '335', bid_equipment_rental: '370', bid_freight: '709', applicable_tax: '874.08', bid_amount: '11469', bid_fuel_cost: '750', bid_lodging_cost: '750' },
-                  { customer_id: 50, project_status_id: 3, project_type_id: 1,  project_start_date: '', project_end_date: '', bid_submit_date: '2018-2-27',	bid_material_cost: '10100', bid_cost_of_labor: '19775', bid_cost_of_permits: '169', bid_equipment_rental: '2339', bid_freight: '436', applicable_tax: '833.69', bid_amount: '10939', bid_fuel_cost: '750', bid_lodging_cost: '750' }
+                  { customer_id: 50, project_status_id: 3, project_type_id: 1,  project_start_date: '', project_end_date: '', bid_submit_date: '2018-2-27',	bid_material_cost: '10100', bid_cost_of_labor: '19775', bid_cost_of_permits: '169', bid_equipment_rental: '2339', bid_freight: '436', applicable_tax: '833.69', bid_amount: '10939', bid_fuel_cost: '750', bid_lodging_cost: '750' },
+                  { customer_id: 101, project_status_id: 4, project_type_id: 4,  project_start_date: '', project_end_date: '', bid_submit_date: '2017-05-12',	bid_material_cost: '3100', bid_cost_of_labor: '6177', bid_cost_of_permits: '305', bid_equipment_rental: '1086', bid_freight: '572', applicable_tax: '1291.34', bid_amount: '16944', bid_fuel_cost: '750', bid_lodging_cost: '750' },
+                  { customer_id: 102, project_status_id: 4, project_type_id: 4,  project_start_date: '', project_end_date: '', bid_submit_date: '2017-05-23',	bid_material_cost: '4500', bid_cost_of_labor: '8861', bid_cost_of_permits: '297', bid_equipment_rental: '264', bid_freight: '394', applicable_tax: '1726.44', bid_amount: '22653', bid_fuel_cost: '500', bid_lodging_cost: '' },
+                  { customer_id: 103, project_status_id: 6, project_type_id: 2,  project_start_date: '2018-01-30', project_end_date: '2018-02-25', bid_submit_date: '2018-01-15',	bid_material_cost: '2200', bid_cost_of_labor: '4419', bid_cost_of_permits: '183', bid_equipment_rental: '853', bid_freight: '557', applicable_tax: '738.18', bid_amount: '12549', bid_fuel_cost: '500', bid_lodging_cost: '1000' },
+                  { customer_id: 104, project_status_id: 5, project_type_id: 2,  project_start_date: '2018', project_end_date: '', bid_submit_date: '2018-01-15', bid_cost_of_labor: '6200', bid_cost_of_permits: '335', bid_equipment_rental: '570', bid_freight: '680', applicable_tax: '1294.39', bid_amount: '16984', bid_fuel_cost: '500', bid_lodging_cost: '1000' },
+                  { customer_id: 105, project_status_id: 5, project_type_id: 2,  project_start_date: '2018-02-01', project_end_date: '', bid_submit_date: '2018-01-20',	bid_material_cost: '2500', bid_cost_of_labor: '5150', bid_cost_of_permits: '311', bid_equipment_rental: '2351', bid_freight: '649', applicable_tax: '1066.97', bid_amount: '14000', bid_fuel_cost: '750', bid_lodging_cost: '750' },
+                  { customer_id: 106, project_status_id: 6, project_type_id: 2,  project_start_date: '2018-02-03', project_end_date: '2018-02-15', bid_submit_date: '2018-01-04',	bid_material_cost: '10100', bid_cost_of_labor: '19775', bid_cost_of_permits: '169', bid_equipment_rental: '2339', bid_freight: '436', applicable_tax: '833.69', bid_amount: '10939', bid_fuel_cost: '750', bid_lodging_cost: '750' },
+                  { customer_id: 107, project_status_id: 2, project_type_id: 2,  project_start_date: '', project_end_date: '', bid_submit_date: '2017-02-11', bid_material_cost: '7000', bid_cost_of_labor: '13814', bid_cost_of_permits: '348', bid_equipment_rental: '1245', bid_freight: '410', applicable_tax: '2670.10', bid_amount: '35035', bid_fuel_cost: '500', bid_lodging_cost: '' },
+                  { customer_id: 108, project_status_id: 4, project_type_id: 3,  project_start_date: '', project_end_date: '', bid_submit_date: '2017-07-04', bid_material_cost: '2715', bid_cost_of_labor: '5425', bid_cost_of_permits: '180', bid_equipment_rental: '533', bid_freight: '593', applicable_tax: '886.12', bid_amount: '15064', bid_fuel_cost: '750', bid_lodging_cost: '750' },
+                  { customer_id: 109, project_status_id: 1, project_type_id: 3,  project_start_date: '', project_end_date: '', bid_submit_date: '2017-03-15',	bid_material_cost: '3730', bid_cost_of_labor: '7460', bid_cost_of_permits: '185', bid_equipment_rental: '2151', bid_freight: '486', applicable_tax: '1573.79', bid_amount: '20650', bid_fuel_cost: '750', bid_lodging_cost: '1250' }
                 ])
 
 # Material Lists
