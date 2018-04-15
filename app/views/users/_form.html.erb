@@ -34,14 +34,15 @@
   </div>
 
   <div class="row">
-  <% if user_signed_in? && current_user.admin? %>
-    <div class="field col l3">
-      <%= form.label "admin" %>
-      <%= form.select :admin, ['false', 'true'] %>
-    </div>
-  <% end %>
+    <% if user_signed_in? && current_user.admin? %>
+      <div class="field col l3">
+        <%= form.label "Admin" %>
+        <%= form.select :admin, ['false', 'true'] %>
+      </div>
+    <% end %>
   </div>
-
+  
+  </br>
 
   <div class="row">
     <div class="field col l3">
@@ -49,8 +50,6 @@
       <%= form.password_field :current_password, autocomplete: "off" %>
     </div>
   </div>
-
-  
 
   <%= button_tag( :class => "btn waves-effect waves-light right") do %>
     Save<i class="material-icons right">save</i>
