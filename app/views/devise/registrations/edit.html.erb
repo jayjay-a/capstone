@@ -32,9 +32,11 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+  
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>
 
-<%= link_to "Back", :back %>
+<%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"), @user, class: "btn waves-effect waves-light grey" %> 
