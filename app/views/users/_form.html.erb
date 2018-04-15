@@ -11,35 +11,46 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <div class="row">
+    <div class="field col l3">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="field col l3">
+      <%= form.label :password, "New Password" %>
+      <%= form.password_field :password, autocomplete: "off" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :email %><br />
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row">
+    <div class="field col l3">
+      <%= form.label :email %><br />
+      <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="field col l3">
+      <%= form.label :password_confirmation, "Confirm Password"  %><br />
+      <%= form.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
   </div>
 
+  <div class="row">
   <% if user_signed_in? && current_user.admin? %>
-    <div class="field">
+    <div class="field col l3">
       <%= form.label "admin" %>
       <%= form.select :admin, ['false', 'true'] %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= form.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "off" %>
+
+  <div class="row">
+    <div class="field col l3">
+      <%= form.label :current_password, "Current Password" %>
+      <%= form.password_field :current_password, autocomplete: "off" %>
+    </div>
   </div>
+
+  
 
   <%= button_tag( :class => "btn waves-effect waves-light right") do %>
     Save<i class="material-icons right">save</i>
