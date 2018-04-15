@@ -196,7 +196,7 @@ class ReportsController < ApplicationController
            JOIN jobs j ON p.project_id = j.project_id
            JOIN job_types jt ON j.job_type_id = jt.job_type_id
            JOIN tasks t ON t.job_id = j.job_id
-           JOIN task_statuses ts ON t.task_id = ts.task_status_id
+           JOIN task_statuses ts ON t.task_status_id = ts.task_status_id
            WHERE ts.task_status_description = 'Completed'
            ORDER BY task_end_date desc, days desc;"
 
