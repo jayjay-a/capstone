@@ -26,6 +26,8 @@
 
 </table>
 
+</br>
+
 <% if user_signed_in? && current_user.admin? %>
   <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  users_path, class: "btn waves-effect w> aves-light grey" %>
 <% else %>
