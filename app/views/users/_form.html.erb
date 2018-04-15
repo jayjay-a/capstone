@@ -20,12 +20,13 @@
     <%= form.label :email %><br />
     <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-<% if user_signed_in? && current_user.admin? %>
-  <div class="field">
-    <%= form.label "admin" %>
-    <%= form.select :admin, ['false', 'true'] %>
-  </div>
-<% end %>
+
+  <% if user_signed_in? && current_user.admin? %>
+    <div class="field">
+      <%= form.label "admin" %>
+      <%= form.select :admin, ['false', 'true'] %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :password %>
@@ -40,10 +41,12 @@
     <%= form.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= button_tag( :class => "btn waves-effect waves-light right") do %>
+    Save<i class="material-icons right">save</i>
+  <% end %>
+
 <% end %>
+
 <script>
 $(document).ready(function(){
     $('select').formSelect();

@@ -1,22 +1,41 @@
+<h3><%= @user.name %></h3>
 
+<table width="50%">
 
-<p>
-  <strong>Name: </strong>
-  <%= @user.name %>
-</p>
+  <tr colspan="20%">
+    <td ><strong>Name: </strong></td>
+    <td ><%= @user.name %></td>
+  </tr>
 
-<p>
-  <strong>Email: </strong>
-  <%= @user.email %>
-</p>
+  <tr>
+    <td><strong>Email: </strong></td>
+    <td><%= @user.email %></td>
+  </tr>
+  
+  <% if user_signed_in? && current_user.admin? %>
+  <tr>
+    <td><strong>Admin?: </strong></td>
+    <td><%= @user.admin %></td>
+  </tr>
+  <% end %>
+
+  <tr>
+    <td><strong>Created On:</strong></td>
+    <td><%= @user.created_at.strftime("%m/%d/%Y") %></td>
+  </tr>
+
+</table>
 
 <% if user_signed_in? && current_user.admin? %>
-<p>
-  <strong>Admin: </strong>
-  <%= @user.admin %>
-</p>
+  <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  users_path, class: "btn waves-effect w> aves-light grey" %>
+<% else %>
+  <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  root_path, class: "btn waves-effect waves-light grey" %> 
 <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-<%= link_to "Change your password", edit_user_registration_path %>
+<% if user_signed_in? && @user.id == current_user.id %>
+  <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_user_registration_path, class: "btn waves-effect waves-light" %> 
+<% elsif user_signed_in? && current_user.admin?  %>
+  <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_user_path(@user), class: "btn waves-effect waves-light" %> 
+<% end %>
+
+<% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>
