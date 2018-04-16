@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   has_many :task_notes, dependent: :destroy
   has_many :assignments, dependent: :destroy
   belongs_to :task_status, optional: true

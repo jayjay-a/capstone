@@ -1,4 +1,5 @@
 class JobNote < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   belongs_to :job
 
   # Validations

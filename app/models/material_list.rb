@@ -1,4 +1,5 @@
 class MaterialList < ApplicationRecord
+  acts_as_paranoid #for soft deletes
 
   belongs_to :project
   belongs_to :material, optional: true

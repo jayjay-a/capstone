@@ -1,4 +1,5 @@
 class RentalList < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   belongs_to :project
   belongs_to :rental_equipment, optional: true
 

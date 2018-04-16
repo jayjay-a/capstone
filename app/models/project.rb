@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   has_many :jobs, dependent: :destroy
   has_many :project_notes, dependent: :destroy
   has_many :material_lists, dependent: :destroy
