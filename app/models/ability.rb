@@ -25,6 +25,7 @@ class Ability
         
         if user.admin?
           can :manage, :all
+          cannot :destroy, User, id: user.id
         end
       end
     # Define abilities for the passed in user here. For example:
