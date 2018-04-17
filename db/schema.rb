@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410202219) do
+ActiveRecord::Schema.define(version: 20180416211919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,16 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.date "assignment_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_assignments_on_deleted_at"
   end
 
   create_table "customer_statuses", primary_key: "customer_status_id", id: :serial, force: :cascade do |t|
     t.string "customer_status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_customer_statuses_on_deleted_at"
   end
 
   create_table "customers", primary_key: "customer_id", id: :serial, force: :cascade do |t|
@@ -47,18 +51,24 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.datetime "updated_at", null: false
     t.string "customer_city"
     t.string "customer_zipcode"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_customers_on_deleted_at"
   end
 
   create_table "employee_statuses", primary_key: "employee_status_id", id: :serial, force: :cascade do |t|
     t.string "employee_status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_employee_statuses_on_deleted_at"
   end
 
   create_table "employee_types", primary_key: "employee_type_id", id: :serial, force: :cascade do |t|
     t.string "employee_type_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_employee_types_on_deleted_at"
   end
 
   create_table "employees", primary_key: "employee_id", id: :serial, force: :cascade do |t|
@@ -71,6 +81,8 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.date "dismiss_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_employees_on_deleted_at"
   end
 
   create_table "job_notes", primary_key: "job_note_id", id: :integer, default: -> { "nextval('job_notes_job_notes_id_seq'::regclass)" }, force: :cascade do |t|
@@ -80,18 +92,24 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.date "job_note_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_job_notes_on_deleted_at"
   end
 
   create_table "job_statuses", primary_key: "job_status_id", id: :serial, force: :cascade do |t|
     t.string "job_status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_job_statuses_on_deleted_at"
   end
 
   create_table "job_types", primary_key: "job_type_id", id: :serial, force: :cascade do |t|
     t.string "job_type_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_job_types_on_deleted_at"
   end
 
   create_table "jobs", primary_key: "job_id", id: :serial, force: :cascade do |t|
@@ -102,6 +120,8 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.date "job_end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
     t.index ["project_id"], name: "index_jobs_on_project_id"
   end
 
@@ -112,12 +132,16 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.decimal "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_material_lists_on_deleted_at"
   end
 
   create_table "materials", primary_key: "material_id", id: :serial, force: :cascade do |t|
     t.string "material_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_materials_on_deleted_at"
   end
 
   create_table "project_notes", primary_key: "project_note_id", id: :serial, force: :cascade do |t|
@@ -127,18 +151,24 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.string "project_note_owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_project_notes_on_deleted_at"
   end
 
   create_table "project_statuses", primary_key: "project_status_id", id: :serial, force: :cascade do |t|
     t.string "project_status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_project_statuses_on_deleted_at"
   end
 
   create_table "project_types", primary_key: "project_type_id", id: :serial, force: :cascade do |t|
     t.string "project_type_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_project_types_on_deleted_at"
   end
 
   create_table "projects", primary_key: "project_id", id: :serial, force: :cascade do |t|
@@ -159,12 +189,16 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.datetime "updated_at", null: false
     t.decimal "bid_fuel_cost", precision: 8, scale: 2
     t.decimal "bid_lodging_cost", precision: 8, scale: 2
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_projects_on_deleted_at"
   end
 
   create_table "rental_equipments", primary_key: "rental_equipment_id", id: :serial, force: :cascade do |t|
     t.string "rental_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_rental_equipments_on_deleted_at"
   end
 
   create_table "rental_lists", primary_key: "rental_list_id", id: :serial, force: :cascade do |t|
@@ -174,6 +208,8 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.string "cost_frequency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_rental_lists_on_deleted_at"
   end
 
   create_table "states", primary_key: "state_id", id: :serial, force: :cascade do |t|
@@ -181,12 +217,16 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.string "state_abbrev"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_states_on_deleted_at"
   end
 
   create_table "subcontractor_statuses", primary_key: "subcontractor_status_id", id: :serial, force: :cascade do |t|
     t.string "subcontractor_status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_subcontractor_statuses_on_deleted_at"
   end
 
   create_table "subcontractors", primary_key: "subcontractor_id", id: :serial, force: :cascade do |t|
@@ -197,6 +237,8 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.string "company"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_subcontractors_on_deleted_at"
   end
 
   create_table "task_notes", primary_key: "task_note_id", id: :serial, force: :cascade do |t|
@@ -206,12 +248,16 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.date "task_note_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_task_notes_on_deleted_at"
   end
 
   create_table "task_statuses", primary_key: "task_status_id", id: :serial, force: :cascade do |t|
     t.string "task_status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_task_statuses_on_deleted_at"
   end
 
   create_table "tasks", primary_key: "task_id", id: :serial, force: :cascade do |t|
@@ -222,6 +268,8 @@ ActiveRecord::Schema.define(version: 20180410202219) do
     t.string "task_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_tasks_on_deleted_at"
     t.index ["job_id"], name: "index_tasks_on_job_id"
   end
 

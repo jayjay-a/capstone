@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   has_many :assignments
   belongs_to :employee_status
   belongs_to :employee_type

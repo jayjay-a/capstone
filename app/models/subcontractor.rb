@@ -1,4 +1,5 @@
 class Subcontractor < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   has_many :assignments
   belongs_to :subcontractor_status
 

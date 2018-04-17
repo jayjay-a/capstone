@@ -1,4 +1,5 @@
 class ProjectType < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   has_many :projects
 
   # Validations

@@ -1,4 +1,5 @@
 class ProjectNote < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   belongs_to :project
 
   # Validations

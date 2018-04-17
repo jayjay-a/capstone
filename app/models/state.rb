@@ -1,4 +1,5 @@
 class State < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   has_many :customers
   has_many :employees
 

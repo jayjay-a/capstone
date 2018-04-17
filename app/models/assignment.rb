@@ -1,4 +1,5 @@
 class Assignment < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   belongs_to :employee, optional: true
   belongs_to :task
   belongs_to :subcontractor, optional: true

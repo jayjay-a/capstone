@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   has_many :projects
   belongs_to :state, optional: true
   belongs_to :customer_status

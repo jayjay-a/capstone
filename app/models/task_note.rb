@@ -1,4 +1,5 @@
 class TaskNote < ApplicationRecord
+  acts_as_paranoid #for soft deletes
   belongs_to :task
 
   # Validations
