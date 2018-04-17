@@ -34,10 +34,6 @@
   <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  root_path, class: "btn waves-effect waves-light grey" %> 
 <% end %>
 
-<% if user_signed_in? && @user.id == current_user.id %>
-  <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_user_registration_path, class: "btn waves-effect waves-light" %> 
-<% elsif user_signed_in? && current_user.admin?  %>
-  <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_user_path(@user), class: "btn waves-effect waves-light" %> 
-<% end %>
+<%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_user_path(@user), class: "btn waves-effect waves-light" %> 
 
 <% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>

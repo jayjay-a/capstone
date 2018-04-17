@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 20180416211919) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
-    t.index ["project_id"], name: "index_jobs_on_project_id"
   end
 
   create_table "material_lists", primary_key: "material_list_id", id: :serial, force: :cascade do |t|
@@ -270,7 +269,6 @@ ActiveRecord::Schema.define(version: 20180416211919) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_tasks_on_deleted_at"
-    t.index ["job_id"], name: "index_tasks_on_job_id"
   end
 
   create_table "users", primary_key: "user_id", force: :cascade do |t|
@@ -287,6 +285,4 @@ ActiveRecord::Schema.define(version: 20180416211919) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "jobs", "projects", primary_key: "project_id"
-  add_foreign_key "tasks", "jobs", primary_key: "job_id"
 end

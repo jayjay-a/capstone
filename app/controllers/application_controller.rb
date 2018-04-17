@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::StatementInvalid, with: :catchthis
   private
   def catchthis
-    flash[:error] = "Please enter a field"
-    redirect_back(fallback_location: reports_compare_projects_path)
+    redirect_back fallback_location: root_path
   end
 end

@@ -1,5 +1,5 @@
 # Users
-User.create!([  { name: 'Admin', email: 'admin@admin.admin', admin: true, password: '123456' },
+User.create!([  { name: 'Admin', email: 'admin@rollingstoneconstruction.com', admin: true, password: '123456' },
                 { name: 'Alex', email: 'alex@rollingstoneconstruction.com', admin: true, password: '123456' },
                 { name: 'April', email: 'april@rollingstoneconstruction.com', admin: true, password: '123456' },
                 { name: 'Mary', email: 'mary@rollingstoneconstruction.com', admin: true, password: '123456' },
