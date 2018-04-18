@@ -161,4 +161,4 @@
 
 <%= link_to raw("<i class=\"material-icons right\">arrow_back</i>Back"),  projects_path, class: "btn waves-effect waves-light grey" %> 
 <%= link_to raw("<i class=\"material-icons right\">edit</i>Edit"), edit_project_path(@project), class: "btn waves-effect waves-light" %> 
-<% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete"), @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>
+<% if user_signed_in? && current_user.admin? %><%= link_to raw("<i class=\"material-icons right\">delete</i>Delete Project"), @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn waves-effect waves-ligh red right" %><% end %>
