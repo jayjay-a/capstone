@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
@@ -67,7 +68,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully deleted.' }
+      format.html { redirect_to projects_url, notice: 'Task was successfully deleted.' }
       format.json { head :no_content }
     end
   end

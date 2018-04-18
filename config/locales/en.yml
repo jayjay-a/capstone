@@ -33,6 +33,8 @@ en:
   activerecord:
     attributes:
       customer:
+        customer_rep_name_1: First Representative's Name
+        customer_rep_name_2: Second Representative's Name
         customer_rep_phone_1: First Representative's Phone
         customer_rep_phone_2: Second Representative's Phone
         customer_rep_email_1: First representative's Email
