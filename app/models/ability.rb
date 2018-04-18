@@ -19,6 +19,7 @@ class Ability
                          ProjectType, JobType, SubcontractorStatus,
                          CustomerStatus, EmployeeStatus, EmployeeType,
                          Employee, State]
+        cannot :index, [Job, Task, ProjectNote, JobNote, TaskNote, MaterialList, RentalList]             
         can :show, User, id: user.id
         can :update, User, id: user.id
         if user.email.blank? # cheap way of finding out of they're logged in
@@ -28,6 +29,7 @@ class Ability
         if user.admin?
           can :manage, :all
           cannot :destroy, User, id: user.id
+          cannot :index, [Job, Task, ProjectNote, JobNote, TaskNote, MaterialList, RentalList]
         end
       end
     # Define abilities for the passed in user here. For example:
