@@ -46,7 +46,7 @@ class Task < ApplicationRecord
   end
 
   def task_end_date_cannot_be_after_project_end_date
-    if task_end_date.present? && job.job_end_date.blank? && task_end_date > job.project.project_end_date
+    if task_end_date.present? && job.project.project_end_date.present? && task_end_date > job.project.project_end_date
       errors.add(:task_end_date, "can't be after Project End Date")
     end
   end
