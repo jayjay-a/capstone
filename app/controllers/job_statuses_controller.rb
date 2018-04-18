@@ -40,7 +40,7 @@ class JobStatusesController < ApplicationController
 
     respond_to do |format|
       if @job_status.save
-        format.html { redirect_to @job_status, notice: 'Job status was successfully created.' }
+        format.html { redirect_to job_statuses_url, notice: 'Job status was successfully created.' }
         format.json { render :show, status: :created, location: @job_status }
       else
         format.html { render :new }

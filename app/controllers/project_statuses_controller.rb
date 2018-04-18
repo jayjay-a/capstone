@@ -39,7 +39,7 @@ class ProjectStatusesController < ApplicationController
 
     respond_to do |format|
       if @project_status.save
-        format.html { redirect_to @project_status, notice: 'Project status was successfully created.' }
+        format.html { redirect_to project_statuses_url, notice: 'Project status was successfully created.' }
         format.json { render :show, status: :created, location: @project_status }
       else
         format.html { render :new }

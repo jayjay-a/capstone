@@ -39,7 +39,7 @@ class CustomerStatusesController < ApplicationController
 
     respond_to do |format|
       if @customer_status.save
-        format.html { redirect_to @customer_status, notice: 'Customer status was successfully created.' }
+        format.html { redirect_to customer_statuses_url, notice: 'Customer status was successfully created.' }
         format.json { render :show, status: :created, location: @customer_status }
       else
         format.html { render :new }

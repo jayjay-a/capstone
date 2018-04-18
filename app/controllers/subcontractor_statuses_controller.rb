@@ -39,7 +39,7 @@ class SubcontractorStatusesController < ApplicationController
 
     respond_to do |format|
       if @subcontractor_status.save
-        format.html { redirect_to @subcontractor_status, notice: 'Subcontractor status was successfully created.' }
+        format.html { redirect_to subcontractor_statuses_url, notice: 'Subcontractor status was successfully created.' }
         format.json { render :show, status: :created, location: @subcontractor_status }
       else
         format.html { render :new }

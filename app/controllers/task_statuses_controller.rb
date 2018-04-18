@@ -40,7 +40,7 @@ class TaskStatusesController < ApplicationController
 
     respond_to do |format|
       if @task_status.save
-        format.html { redirect_to @task_status, notice: 'Task status was successfully created.' }
+        format.html { redirect_to task_statuses_url, notice: 'Task status was successfully created.' }
         format.json { render :show, status: :created, location: @task_status }
       else
         format.html { render :new }
