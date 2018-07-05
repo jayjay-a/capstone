@@ -19,8 +19,8 @@ centos7, ruby2.4.3, rails5.1.5, postgresql10.2, nodejs8.9.4
     - actually its probably there already check with rails -v
 3. install [postgresql](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
     - open pgadmin
-	- make user (d8taflow:ireallyhopeidontfailthisclass) with super rights
-	- make databases (make sure to set owner d8taflow)
+	- make user
+	- make databases
 4. install git [here](https://git-scm.com/downloads)
 5. install nodejs [here] (https://nodejs.org/en/download/)
 
@@ -38,6 +38,3 @@ centos7, ruby2.4.3, rails5.1.5, postgresql10.2, nodejs8.9.4
 	\q
 	```
 3. install nodejs [here] (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
-
-### macos
-idk goodluck
