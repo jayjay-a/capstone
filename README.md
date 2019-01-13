@@ -1,5 +1,5 @@
-# capstone project for D  
-
+# capstone project for school
+  
 ## getting started  
 centos7, ruby2.4.3, rails5.1.5, postgresql10.2, nodejs8.9.4
 ### windows  
@@ -34,7 +34,7 @@ centos7, ruby2.4.3, rails5.1.5, postgresql10.2, nodejs8.9.4
 	sudo -u postgres createuser -s d8taflow
 	sudo -u postgres psql
 	\password d8taflow
-	ireallyhopeidontfailthisclass
+	passssssssssssword
 	\q
 	```
 3. install nodejs [here] (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
